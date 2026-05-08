@@ -1,5 +1,7 @@
 ﻿# tnbike-project
 
+README ngắn gọn để chạy pipeline: khởi tạo env, khởi tạo PostgreSQL bằng Docker, tạo bảng + import dữ liệu ban đầu, xử lý dữ liệu (extract ra staging), import log + ghi dữ liệu tháng 3/2026, và đồng bộ `fact_sales`.
+
 ## 1. Khởi tạo env
 
 ### 1.1. Tạo venv + cài thư viện
@@ -76,6 +78,21 @@ python src/extract_data.py
 docker cp sql/03_create_email_log.sql tnbike_postgres:/03_create_email_log.sql
 docker exec -it tnbike_postgres psql -U postgres -d tnbike_db -f /03_create_email_log.sql
 ```
+
+### 5.1a. Chú thích `email_log.processing_status`
+
+File `data/staging/staging_email_log.csv` có cột `processing_status` (được ghi bởi `python src/extract_data.py`). Ý nghĩa:
+
+- `STARTED`: bắt đầu xử lý email (đã parse header/body, chưa kết luận).
+- `SUCCESS`: xử lý thành công, có ghi `sales_order` + `order_line`, không có lỗi kèm theo.
+- `PARTIAL_SUCCESS`: xử lý được nhưng có phát sinh lỗi dòng (`staging_fail.csv`) hoặc phát sinh customer mới cần staging.
+- `FAILED_NO_ATTACHMENT`: không tìm thấy file PDF đính kèm.
+- `FAILED_VALIDATION`: header đơn hàng thiếu trường bắt buộc nên không ghi `sales_order/order_line`.
+- `FAILED_NO_LINES`: không trích xuất được dòng hàng nào từ PDF nên không ghi `sales_order/order_line`.
+- `FAILED_NO_VALID_LINES`: có parse line nhưng không còn line hợp lệ (ví dụ product_code không có trong master) nên không ghi `sales_order`.
+- `FAILED_CUSTOMER`: không tạo/lấy được `customer_code` nên không ghi `sales_order/order_line`.
+
+Ghi chú: `NEW_CUSTOMER` là status dùng cho `staging_customer_log.csv` (không phải `email_log.processing_status`).
 
 ### 5.2. Import staging CSV vào DB (email_log / sales_order / order_line)
 

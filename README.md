@@ -1,7 +1,5 @@
 ﻿# tnbike-project
 
-README ngắn gọn để chạy pipeline: khởi tạo env, khởi tạo PostgreSQL bằng Docker, tạo bảng + import dữ liệu ban đầu, xử lý dữ liệu (extract ra staging), import log + ghi dữ liệu tháng 3/2026, và đồng bộ `fact_sales`.
-
 ## 1. Khởi tạo env
 
 ### 1.1. Tạo venv
@@ -40,6 +38,15 @@ docker ps
 ```
 
 Postgres chạy ở `localhost:5432` (mặc định: user `postgres`, pass `postgres`, db `tnbike_db`).
+
+Adminer chạy ở `http://localhost:8080` để quản trị DB trên local.
+
+Thông tin login Adminer (PostgreSQL):
+- System: `PostgreSQL`
+- Server: `postgres` (nếu Adminer chạy trong Docker Compose) hoặc `localhost` (nếu bạn chạy Adminer ngoài Docker)
+- Username: `postgres`
+- Password: `postgres`
+- Database: `tnbike_db`
 
 ## 3. Import dữ liệu
 

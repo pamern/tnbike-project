@@ -4,16 +4,21 @@ README ngắn gọn để chạy pipeline: khởi tạo env, khởi tạo Postgr
 
 ## 1. Khởi tạo env
 
-### 1.1. Tạo venv + cài thư viện
+### 1.1. Tạo venv
 
 ```powershell
 python -m venv venv
 .\venv\Scripts\Activate.ps1
+```
+
+### 1.2. Cài thư viện
+
+```powershell
 python -m pip install -U pip
 pip install -r requirements.txt
 ```
 
-### 1.2. Cấu hình `.env`
+### 1.3. Cấu hình `.env`
 
 Tạo file `.env` ở root project (hoặc sửa file `.env` hiện có) với các biến tối thiểu:
 
@@ -108,3 +113,23 @@ Chạy refresh `fact_sales` cho tháng 03/2026 (xóa/insert lại để tránh d
 docker cp sql/04_refresh_fact_sales_03_2026.sql tnbike_postgres:/04_refresh_fact_sales_03_2026.sql
 docker exec -it tnbike_postgres psql -U postgres -d tnbike_db -f /04_refresh_fact_sales_03_2026.sql
 ```
+
+## 7. Connect DB với Power BI
+
+### 7.1. Thông tin kết nối (mặc định)
+
+- Server: `localhost`
+- Port: `5432`
+- Database: `tnbike_db`
+- Username: `postgres`
+- Password: `postgres`
+
+### 7.2. Kết nối trong Power BI Desktop
+
+1. `Home` → `Get data` → `PostgreSQL database`.
+2. Nhập:
+   - `Server`: `localhost`
+   - `Database`: `tnbike_db`
+3. Chọn mode: `Import` (khuyến nghị).
+4. Khi được hỏi credentials, chọn `Database` và nhập user/password ở trên.
+5. Trong Navigator, chọn schema `tnbike` và các bảng cần dùng (thường: `fact_sales`, `sales_order`, `order_line`, `customer`, `product`...).

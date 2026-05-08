@@ -1,7 +1,5 @@
 ﻿group_type,group_value,count
-record_type,order_line_blocked_by_sales_order_error,1163
-record_type,sales_order,246
-record_type,order_line,50
-error_group,Không map được customer_code từ MST,1397
-error_group,product_code không tồn tại trong DB,50
-error_group,Không còn order_line hợp lệ sau khi lọc lỗi product/validate nên không ghi sales_order,12
+record_type,order_line,81
+record_type,sales_order,40
+error_group,product_code không tồn tại trong master,81
+error_group,Không còn order_line hợp lệ,40

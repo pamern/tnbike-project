@@ -13,6 +13,8 @@ load_dotenv()
 STAGING_DIR = Path("data/staging")
 
 EMAIL_LOG_CSV = STAGING_DIR / "staging_email_log.csv"
+STAGING_CUSTOMER_CSV = STAGING_DIR / "staging_customer.csv"
+STAGING_CUSTOMER_LOG_CSV = STAGING_DIR / "staging_customer_log.csv"
 SALES_ORDER_CSV = STAGING_DIR / "staging_sales_order.csv"
 ORDER_LINE_CSV = STAGING_DIR / "staging_order_line.csv"
 
@@ -57,9 +59,11 @@ def empty_to_none(value):
     return value if value else None
 
 
-def read_csv_rows(path: Path) -> list[dict]:
+def read_csv_rows(path: Path, required: bool = True) -> list[dict]:
     if not path.exists():
-        raise FileNotFoundError(f"Không tìm thấy file: {path}")
+        if required:
+            raise FileNotFoundError(f"Không tìm thấy file: {path}")
+        return []
 
     with open(path, newline="", encoding="utf-8-sig") as f:
         return list(csv.DictReader(f))
@@ -84,7 +88,7 @@ def require_columns(path: Path, rows: list[dict], required_columns: list[str]) -
 # ============================================================
 
 def load_email_log_rows() -> list[tuple]:
-    rows = read_csv_rows(EMAIL_LOG_CSV)
+    rows = read_csv_rows(EMAIL_LOG_CSV, required=True)
 
     require_columns(
         EMAIL_LOG_CSV,
@@ -101,9 +105,15 @@ def load_email_log_rows() -> list[tuple]:
     output = []
 
     for row in rows:
+        message_id = empty_to_none(row.get("message_id"))
+
+        # message_id là UNIQUE key. Nếu rỗng thì không import để tránh conflict NULL lặp khó kiểm soát.
+        if not message_id:
+            continue
+
         output.append(
             (
-                empty_to_none(row.get("message_id")),
+                message_id,
                 empty_to_none(row.get("from_address")),
                 empty_to_none(row.get("received_at")),
                 empty_to_none(row.get("attachment_name")),
@@ -114,8 +124,98 @@ def load_email_log_rows() -> list[tuple]:
     return output
 
 
+def load_staging_customer_rows() -> list[tuple]:
+    rows = read_csv_rows(STAGING_CUSTOMER_CSV, required=False)
+
+    require_columns(
+        STAGING_CUSTOMER_CSV,
+        rows,
+        [
+            "customer_code",
+            "customer_name",
+            "tax_code",
+            "address",
+            "province_id",
+            "customer_tier",
+            "is_active",
+            "created_at",
+            "updated_at",
+        ],
+    )
+
+    output = []
+    seen_customer_codes = set()
+
+    for row in rows:
+        customer_code = empty_to_none(row.get("customer_code"))
+        customer_name = empty_to_none(row.get("customer_name"))
+
+        if not customer_code or not customer_name:
+            raise RuntimeError(
+                f"staging_customer có dòng thiếu NOT NULL: "
+                f"customer_code={customer_code}, customer_name={customer_name}"
+            )
+
+        if customer_code in seen_customer_codes:
+            continue
+
+        seen_customer_codes.add(customer_code)
+
+        output.append(
+            (
+                customer_code,
+                customer_name,
+                empty_to_none(row.get("tax_code")),
+                empty_to_none(row.get("address")),
+                empty_to_none(row.get("province_id")),
+                empty_to_none(row.get("customer_tier")) or "STANDARD",
+                empty_to_none(row.get("is_active")) or "true",
+            )
+        )
+
+    return output
+
+
+def load_staging_customer_log_rows() -> list[tuple]:
+    rows = read_csv_rows(STAGING_CUSTOMER_LOG_CSV, required=False)
+
+    require_columns(
+        STAGING_CUSTOMER_LOG_CSV,
+        rows,
+        [
+            "customer_code",
+            "tax_code",
+            "so_number",
+            "source_email_file",
+            "status",
+            "created_at",
+        ],
+    )
+
+    output = []
+
+    for row in rows:
+        customer_code = empty_to_none(row.get("customer_code"))
+
+        if not customer_code:
+            continue
+
+        output.append(
+            (
+                customer_code,
+                empty_to_none(row.get("tax_code")),
+                empty_to_none(row.get("so_number")),
+                empty_to_none(row.get("source_email_file")),
+                empty_to_none(row.get("status")),
+                empty_to_none(row.get("created_at")),
+            )
+        )
+
+    return output
+
+
 def load_sales_order_rows() -> list[tuple]:
-    rows = read_csv_rows(SALES_ORDER_CSV)
+    rows = read_csv_rows(SALES_ORDER_CSV, required=True)
 
     require_columns(
         SALES_ORDER_CSV,
@@ -130,6 +230,7 @@ def load_sales_order_rows() -> list[tuple]:
     )
 
     output = []
+    seen_so_numbers = set()
 
     for row in rows:
         so_number = empty_to_none(row.get("so_number"))
@@ -141,6 +242,11 @@ def load_sales_order_rows() -> list[tuple]:
                 f"sales_order có dòng thiếu NOT NULL: "
                 f"so_number={so_number}, order_date={order_date}, customer_code={customer_code}"
             )
+
+        if so_number in seen_so_numbers:
+            raise RuntimeError(f"Trùng so_number trong {SALES_ORDER_CSV}: {so_number}")
+
+        seen_so_numbers.add(so_number)
 
         output.append(
             (
@@ -156,7 +262,7 @@ def load_sales_order_rows() -> list[tuple]:
 
 
 def load_order_line_rows() -> list[tuple]:
-    rows = read_csv_rows(ORDER_LINE_CSV)
+    rows = read_csv_rows(ORDER_LINE_CSV, required=True)
 
     require_columns(
         ORDER_LINE_CSV,
@@ -201,7 +307,7 @@ def load_order_line_rows() -> list[tuple]:
 
 
 # ============================================================
-# DDL for email_log
+# DDL for logs
 # ============================================================
 
 def ensure_email_log_table(cur) -> None:
@@ -220,8 +326,25 @@ def ensure_email_log_table(cur) -> None:
     )
 
 
+def ensure_customer_log_table(cur) -> None:
+    cur.execute(
+        """
+        CREATE TABLE IF NOT EXISTS tnbike.customer_log (
+            customer_log_id     BIGSERIAL PRIMARY KEY,
+            customer_code       VARCHAR(20),
+            tax_code            VARCHAR(15),
+            so_number           VARCHAR(20),
+            source_email_file   TEXT,
+            status              TEXT,
+            source_created_at   TIMESTAMPTZ,
+            created_at          TIMESTAMPTZ DEFAULT NOW()
+        );
+        """
+    )
+
+
 # ============================================================
-# Import logic
+# Import logs and master data
 # ============================================================
 
 def import_email_log(cur, rows: list[tuple]) -> int:
@@ -251,6 +374,66 @@ def import_email_log(cur, rows: list[tuple]) -> int:
 
     return len(rows)
 
+
+def import_customer_log(cur, rows: list[tuple]) -> int:
+    if not rows:
+        return 0
+
+    execute_values(
+        cur,
+        """
+        INSERT INTO tnbike.customer_log (
+            customer_code,
+            tax_code,
+            so_number,
+            source_email_file,
+            status,
+            source_created_at
+        )
+        VALUES %s;
+        """,
+        rows,
+    )
+
+    return len(rows)
+
+
+def import_staging_customer(cur, rows: list[tuple]) -> int:
+    if not rows:
+        return 0
+
+    execute_values(
+        cur,
+        """
+        INSERT INTO tnbike.customer (
+            customer_code,
+            customer_name,
+            tax_code,
+            address,
+            province_id,
+            customer_tier,
+            is_active
+        )
+        VALUES %s
+        ON CONFLICT (customer_code) DO UPDATE
+        SET
+            customer_name = EXCLUDED.customer_name,
+            tax_code = EXCLUDED.tax_code,
+            address = EXCLUDED.address,
+            province_id = EXCLUDED.province_id,
+            customer_tier = EXCLUDED.customer_tier,
+            is_active = EXCLUDED.is_active,
+            updated_at = NOW();
+        """,
+        rows,
+    )
+
+    return len(rows)
+
+
+# ============================================================
+# Temp tables
+# ============================================================
 
 def create_temp_tables(cur) -> None:
     cur.execute(
@@ -314,12 +497,11 @@ def bulk_insert_temp_order_line(cur, rows: list[tuple]) -> None:
     )
 
 
-def validate_temp_data(cur) -> None:
-    """
-    Check lại FK trước khi insert thật.
-    Nếu còn lỗi thì dừng import.
-    """
+# ============================================================
+# Validation before transaction import
+# ============================================================
 
+def validate_temp_data(cur) -> None:
     cur.execute(
         """
         SELECT tso.customer_code
@@ -371,19 +553,29 @@ def validate_temp_data(cur) -> None:
             f"Có order_line không có sales_order tương ứng trong staging, ví dụ: {orphan_lines}"
         )
 
+    cur.execute(
+        """
+        SELECT tso.so_number
+        FROM tmp_sales_order tso
+        LEFT JOIN tmp_order_line tol
+            ON tol.so_number = tso.so_number
+        WHERE tol.so_number IS NULL
+        LIMIT 10;
+        """
+    )
+    empty_orders = cur.fetchall()
+
+    if empty_orders:
+        raise RuntimeError(
+            f"Có sales_order không có order_line hợp lệ trong staging, ví dụ: {empty_orders}"
+        )
+
+
+# ============================================================
+# Import transaction data
+# ============================================================
 
 def import_sales_order(cur) -> int:
-    """
-    Insert/upsert sales_order.
-    Không insert:
-    - order_id
-    - total_amount
-    - total_quantity
-    - line_count
-    - fiscal_year/month/quarter
-    - created_at
-    """
-
     cur.execute(
         """
         INSERT INTO tnbike.sales_order (
@@ -413,12 +605,6 @@ def import_sales_order(cur) -> int:
 
 
 def delete_existing_order_lines_for_batch(cur) -> int:
-    """
-    Để import idempotent:
-    xóa toàn bộ order_line của các so_number trong batch rồi insert lại.
-    Trigger sẽ tự cập nhật total_amount, total_quantity, line_count.
-    """
-
     cur.execute(
         """
         DELETE FROM tnbike.order_line ol
@@ -431,11 +617,6 @@ def delete_existing_order_lines_for_batch(cur) -> int:
 
 
 def import_order_line(cur) -> int:
-    """
-    Insert order_line.
-    order_id được lookup từ tnbike.sales_order bằng so_number.
-    """
-
     cur.execute(
         """
         INSERT INTO tnbike.order_line (
@@ -462,13 +643,11 @@ def import_order_line(cur) -> int:
     return cur.rowcount
 
 
-def verify_import(cur) -> dict:
-    """
-    Verify theo batch so_number, không join trực tiếp tmp_order_line với order_line
-    theo product/quantity/price vì nếu có dòng trùng hoàn toàn sẽ bị many-to-many
-    và COUNT(*) bị lớn hơn thực tế.
-    """
+# ============================================================
+# Verify
+# ============================================================
 
+def verify_import(cur) -> dict:
     cur.execute("SELECT COUNT(*) FROM tmp_sales_order;")
     staging_orders = cur.fetchone()[0]
 
@@ -525,6 +704,8 @@ def verify_import(cur) -> dict:
 
 def main():
     email_rows = load_email_log_rows()
+    staging_customer_rows = load_staging_customer_rows()
+    staging_customer_log_rows = load_staging_customer_log_rows()
     sales_order_rows = load_sales_order_rows()
     order_line_rows = load_order_line_rows()
 
@@ -540,14 +721,18 @@ def main():
                 cur.execute("SET search_path TO tnbike, public;")
 
                 ensure_email_log_table(cur)
+                ensure_customer_log_table(cur)
 
                 create_temp_tables(cur)
                 bulk_insert_temp_sales_order(cur, sales_order_rows)
                 bulk_insert_temp_order_line(cur, order_line_rows)
 
+                email_count = import_email_log(cur, email_rows)
+                customer_count = import_staging_customer(cur, staging_customer_rows)
+                customer_log_count = import_customer_log(cur, staging_customer_log_rows)
+
                 validate_temp_data(cur)
 
-                email_count = import_email_log(cur, email_rows)
                 sales_order_count = import_sales_order(cur)
                 deleted_line_count = delete_existing_order_lines_for_batch(cur)
                 order_line_count = import_order_line(cur)
@@ -561,6 +746,8 @@ def main():
             raise
 
     print(f"Email log imported        : {email_count}")
+    print(f"Customers upserted        : {customer_count}")
+    print(f"Customer logs inserted    : {customer_log_count}")
     print(f"Sales orders upserted     : {sales_order_count}")
     print(f"Old order lines deleted   : {deleted_line_count}")
     print(f"Order lines inserted      : {order_line_count}")

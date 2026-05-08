@@ -3,6 +3,8 @@ import csv
 import os
 import re
 import tempfile
+import unicodedata
+from datetime import datetime
 from decimal import Decimal, ROUND_HALF_UP
 from email import policy
 from email.parser import BytesParser
@@ -26,8 +28,25 @@ OUT_SALES_ORDER = OUT_DIR / "staging_sales_order.csv"
 OUT_ORDER_LINE = OUT_DIR / "staging_order_line.csv"
 OUT_FAILED = OUT_DIR / "staging_fail.csv"
 OUT_FAILED_SUMMARY = OUT_DIR / "staging_fail_summary.csv"
-OUT_MISSING_CUSTOMER = OUT_DIR / "missing_customer.csv"
-OUT_MISSING_PRODUCT = OUT_DIR / "missing_product.csv"
+
+# Chỉ staging customer mới. Không staging product vì product_name trong PDF lỗi font.
+OUT_STAGING_CUSTOMER = OUT_DIR / "staging_customer.csv"
+OUT_STAGING_CUSTOMER_LOG = OUT_DIR / "staging_customer_log.csv"
+
+
+# ============================================================
+# Standard status values
+# ============================================================
+
+STATUS_STARTED = "STARTED"
+STATUS_SUCCESS = "SUCCESS"
+STATUS_PARTIAL = "PARTIAL_SUCCESS"
+STATUS_FAILED_NO_ATTACHMENT = "FAILED_NO_ATTACHMENT"
+STATUS_FAILED_VALIDATION = "FAILED_VALIDATION"
+STATUS_FAILED_NO_LINES = "FAILED_NO_LINES"
+STATUS_FAILED_NO_VALID_LINES = "FAILED_NO_VALID_LINES"
+STATUS_FAILED_CUSTOMER = "FAILED_CUSTOMER"
+STATUS_NEW_CUSTOMER = "NEW_CUSTOMER"
 
 
 # ============================================================
@@ -59,10 +78,22 @@ DB_CONFIG = {
 # Helpers
 # ============================================================
 
+def now_iso() -> str:
+    return datetime.now().isoformat(timespec="seconds")
+
+
 def clean_text(value: str | None) -> str:
     if not value:
         return ""
     return re.sub(r"\s+", " ", str(value)).strip()
+
+
+def clean_multiline_text(value: str | None) -> str:
+    if not value:
+        return ""
+    lines = [clean_text(line) for line in str(value).splitlines()]
+    lines = [line for line in lines if line]
+    return "\n".join(lines)
 
 
 def parse_money(value: str | None) -> Decimal:
@@ -73,7 +104,7 @@ def parse_money(value: str | None) -> Decimal:
         return Decimal("0")
 
     cleaned = (
-        value.strip()
+        str(value).strip()
         .replace(".", "")
         .replace(",", "")
         .replace(" ", "")
@@ -90,7 +121,7 @@ def parse_quantity(value: str | None) -> Decimal:
     if not value:
         return Decimal("0")
 
-    return Decimal(value.strip().replace(",", "."))
+    return Decimal(str(value).strip().replace(",", "."))
 
 
 def decimal_to_str(value: Decimal | None) -> str:
@@ -107,6 +138,47 @@ def money_to_str(value: Decimal | None) -> str:
 
 def none_to_empty(value) -> str:
     return "" if value is None else str(value)
+
+
+def normalize_vietnamese_text(value: str | None) -> str:
+    value = clean_text(value).lower()
+    value = unicodedata.normalize("NFD", value)
+    value = "".join(ch for ch in value if unicodedata.category(ch) != "Mn")
+    value = value.replace("đ", "d")
+    value = re.sub(r"[^a-z0-9\s]", " ", value)
+    return re.sub(r"\s+", " ", value).strip()
+
+
+def looks_like_bad_customer_name(value: str) -> bool:
+    value = clean_text(value)
+    normalized = normalize_vietnamese_text(value)
+
+    if not value:
+        return True
+
+    if len(value) < 5:
+        return True
+
+    bad_tokens = [
+        "file pdf",
+        "tong",
+        "tong gia tri",
+        "mong som",
+        "kinh gui",
+        "phong kinh doanh",
+        "don hang",
+        "purchase order",
+        "dia chi",
+        "lien he",
+    ]
+
+    if any(token in normalized for token in bad_tokens):
+        return True
+
+    if re.fullmatch(r"[0-9\s.\-]+", value):
+        return True
+
+    return False
 
 
 # ============================================================
@@ -148,6 +220,7 @@ def load_product_codes_from_db() -> set[str]:
     """
     READ ONLY:
     Lấy product.product_code để validate SKU.
+    Product mới không được tự động thêm vào master vì product_name trong PDF không đáng tin cậy.
     """
 
     sql = """
@@ -167,6 +240,94 @@ def load_product_codes_from_db() -> set[str]:
                 product_codes.add(clean_text(product_code).upper())
 
     return product_codes
+
+
+def load_next_customer_sequence_from_db() -> int:
+    """
+    Lấy số thứ tự customer_code lớn nhất hiện có trong master customer.
+    Ví dụ đang có KH-00702 -> trả về 703.
+    """
+
+    sql = """
+        SELECT customer_code
+        FROM tnbike.customer
+        WHERE customer_code IS NOT NULL;
+    """
+
+    max_no = 0
+
+    with psycopg2.connect(**DB_CONFIG) as conn:
+        conn.set_session(readonly=True, autocommit=True)
+
+        with conn.cursor() as cur:
+            cur.execute(sql)
+
+            for (customer_code,) in cur.fetchall():
+                match = re.search(r"KH-(\d+)", clean_text(customer_code), flags=re.IGNORECASE)
+                if match:
+                    max_no = max(max_no, int(match.group(1)))
+
+    return max_no + 1
+
+
+def load_province_lookup_from_db() -> dict[str, int]:
+    """
+    READ ONLY:
+    normalized province_name -> province_id.
+    """
+
+    sql = """
+        SELECT province_id, province_name
+        FROM tnbike.province;
+    """
+
+    lookup = {}
+
+    with psycopg2.connect(**DB_CONFIG) as conn:
+        conn.set_session(readonly=True, autocommit=True)
+
+        with conn.cursor() as cur:
+            cur.execute(sql)
+
+            for province_id, province_name in cur.fetchall():
+                normalized_name = normalize_vietnamese_text(province_name)
+                if normalized_name:
+                    lookup[normalized_name] = province_id
+
+    return lookup
+
+
+def generate_customer_code(seq: int) -> str:
+    return f"KH-{seq:05d}"
+
+
+def infer_province_id_from_address(address: str, province_lookup: dict[str, int]) -> str:
+    normalized_address = normalize_vietnamese_text(address)
+
+    if not normalized_address:
+        return ""
+
+    for normalized_province_name, province_id in province_lookup.items():
+        if normalized_province_name and normalized_province_name in normalized_address:
+            return str(province_id)
+
+    aliases = {
+        "ha noi": ["tp ha noi", "hanoi"],
+        "ho chi minh": ["tp ho chi minh", "hcm", "tphcm", "sai gon"],
+        "da nang": ["tp da nang"],
+        "hai phong": ["tp hai phong"],
+        "can tho": ["tp can tho"],
+    }
+
+    for province_name, alias_list in aliases.items():
+        province_id = province_lookup.get(province_name)
+        if not province_id:
+            continue
+
+        if any(alias in normalized_address for alias in alias_list):
+            return str(province_id)
+
+    return ""
 
 
 # ============================================================
@@ -198,13 +359,6 @@ def get_email_body(msg) -> str:
 
 
 def get_email_header_date(msg) -> str:
-    """
-    Chỉ lấy order_date từ email header Date.
-
-    Date: Sun, 01 Mar 2026 14:28:41 +0700
-    -> 2026-03-01
-    """
-
     raw_date = msg.get("Date")
 
     if not raw_date:
@@ -256,11 +410,7 @@ def extract_pdf_attachment(msg, output_dir: Path) -> Path | None:
     return None
 
 
-def build_email_log_row(
-    msg,
-    attachment_name: str = "",
-    processing_status: str = "parsed",
-) -> dict:
+def build_email_log_row(msg, attachment_name: str = "", processing_status: str = "parsed") -> dict:
     raw_from = msg.get("From", "")
     _, from_address = parseaddr(raw_from)
 
@@ -274,10 +424,10 @@ def build_email_log_row(
 
 
 # ============================================================
-# PDF extraction
+# PDF extraction: only pdfplumber
 # ============================================================
 
-def extract_pdf_text(pdf_path: Path) -> str:
+def extract_pdf_text(pdf_path: Path) -> tuple[str, str]:
     chunks = []
 
     with pdfplumber.open(pdf_path) as pdf:
@@ -285,18 +435,14 @@ def extract_pdf_text(pdf_path: Path) -> str:
             text = page.extract_text(x_tolerance=1, y_tolerance=3) or ""
             chunks.append(text)
 
-    return "\n".join(chunks)
+    return "\n".join(chunks), "pdfplumber"
 
 
 # ============================================================
-# Header parsing
+# Header/customer parsing
 # ============================================================
 
 def normalize_so_number(value: str | None) -> str:
-    """
-    BH26.0935 / BH26_0935 / BH26-0935 -> BH26.0935
-    """
-
     if not value:
         return ""
 
@@ -317,11 +463,6 @@ def extract_so_number(source: str) -> str:
 
 
 def infer_invoice_symbol(so_number: str) -> str:
-    """
-    BH26.0935 -> C26TTN
-    BH25.0123 -> C25TTN
-    """
-
     match = re.search(r"BH(\d{2})\.", so_number)
 
     if not match:
@@ -331,51 +472,125 @@ def infer_invoice_symbol(so_number: str) -> str:
 
 
 def extract_tax_code(source: str) -> str:
-    match = re.search(
-        r"\bMST\s*[:\-]?\s*(\d{8,15})\b",
-        source,
-        flags=re.IGNORECASE,
-    )
-
+    match = re.search(r"\bMST\s*[:\-]?\s*(\d{8,15})\b", source, flags=re.IGNORECASE)
     return match.group(1) if match else ""
 
 
-def extract_customer_name(source: str) -> str:
+def strip_customer_name(value: str) -> str:
+    value = clean_text(value)
+
+    value = re.sub(
+        r"^(Đại\s*lý|Dai\s*ly|Tên\s*đại\s*lý|Ten\s*dai\s*ly|Khách\s*hàng|Khach\s*hang|Tên|Ten|Đơn\s*vị|Don\s*vi)\s*[:\-]?\s*",
+        "",
+        value,
+        flags=re.IGNORECASE,
+    )
+
+    value = re.sub(r"\s+MST\s*[:\-]?\s*\d{8,15}\b.*$", "", value, flags=re.IGNORECASE)
+    value = re.sub(r"\s+(Địa\s*chỉ|Dia\s*chi|Liên\s*hệ|Lien\s*he)\s*[:\-].*$", "", value, flags=re.IGNORECASE)
+
+    return clean_text(value)
+
+
+def extract_first_labeled_value(text: str, labels: list[str], stop_labels: list[str]) -> str:
     """
-    Cố gắng lấy tên đại lý để hỗ trợ missing_customer.csv.
-    Không dùng làm FK.
+    Extract linh hoạt dạng:
+    - Label: value
+    - Label : value xuống dòng tiếp theo
+    - Value có thể bị wrap nhiều dòng
+    Dừng khi gặp label khác.
     """
 
-    patterns = [
-        r"(?:Đại lý|Dai ly)\s*[:\-]\s*(.+?)(?:\s+MST\b|\n)",
-        r"(?:Đại lý|Dai ly)\s*[:\-]\s*(.+)$",
+    text = clean_multiline_text(text)
+    label_pattern = "|".join(labels)
+    stop_pattern = "|".join(stop_labels)
+
+    pattern = rf"(?:^|\n)\s*(?:{label_pattern})\s*[:\-]?\s*(.*?)(?=\n\s*(?:{stop_pattern})\s*[:\-]?|\n\s*$|$)"
+
+    match = re.search(pattern, text, flags=re.IGNORECASE | re.DOTALL)
+
+    if not match:
+        return ""
+
+    return clean_text(match.group(1))
+
+
+def extract_customer_from_email_body(email_body: str) -> dict:
+    """
+    Parse customer từ email body, không lấy từ PDF để tránh lỗi font.
+    Mục tiêu: linh hoạt nhưng nhanh, không AI/OCR.
+    """
+
+    body = clean_multiline_text(email_body)
+
+    result = {
+        "customer_name_raw": "",
+        "tax_code": extract_tax_code(body),
+        "address_raw": "",
+    }
+
+    customer_labels = [
+        r"Đại\s*lý",
+        r"Dai\s*ly",
+        r"Tên\s*đại\s*lý",
+        r"Ten\s*dai\s*ly",
+        r"Khách\s*hàng",
+        r"Khach\s*hang",
+        r"Đơn\s*vị",
+        r"Don\s*vi",
+        r"Tên",
+        r"Ten",
     ]
 
-    for pattern in patterns:
-        match = re.search(pattern, source, flags=re.IGNORECASE | re.DOTALL)
-        if match:
-            return clean_text(match.group(1))
+    address_labels = [r"Địa\s*chỉ", r"Dia\s*chi"]
+    contact_labels = [r"Liên\s*hệ", r"Lien\s*he", r"SĐT", r"SDT", r"Điện\s*thoại", r"Dien\s*thoai"]
+    other_stop_labels = [r"MST", r"File\s*PDF", r"Tổng", r"Tong", r"Mong", r"Kính", r"Kinh"]
 
-    return ""
+    stop_for_name = address_labels + contact_labels + other_stop_labels
+    stop_for_address = contact_labels + other_stop_labels
+
+    raw_name = extract_first_labeled_value(body, customer_labels, stop_for_name)
+    raw_address = extract_first_labeled_value(body, address_labels, stop_for_address)
+
+    # Fallback: nếu label Đại lý/Tên không bắt được, tìm dòng chứa cụm doanh nghiệp phổ biến.
+    candidates = []
+    if raw_name:
+        candidates.append(raw_name)
+
+    for line in body.splitlines():
+        line = clean_text(line)
+        if re.search(r"(CÔNG\s*TY|CONG\s*TY|CỬA\s*HÀNG|CUA\s*HANG|HỘ\s*KINH\s*DOANH|HO\s*KINH\s*DOANH|TNHH|CP|CỔ\s*PHẦN|CO\s*PHAN)", line, flags=re.IGNORECASE):
+            candidates.append(line)
+
+    cleaned_candidates = []
+    for candidate in candidates:
+        candidate = strip_customer_name(candidate)
+        if candidate and not looks_like_bad_customer_name(candidate):
+            cleaned_candidates.append(candidate)
+
+    if cleaned_candidates:
+        # Chọn candidate ngắn nhất đủ sạch để tránh nuốt nhiều dòng.
+        result["customer_name_raw"] = sorted(cleaned_candidates, key=len)[0]
+
+    result["address_raw"] = clean_text(raw_address)
+
+    return result
 
 
-def extract_order_header(
-    email_subject: str,
-    email_body: str,
-    pdf_text: str,
-    email_header_date: str,
-) -> dict:
-    source = "\n".join([email_subject, email_body, pdf_text])
+def extract_order_header(email_subject: str, email_body: str, pdf_text: str, email_header_date: str) -> dict:
+    source_for_order = "\n".join([email_subject, email_body, pdf_text])
+    email_customer = extract_customer_from_email_body(email_body)
 
-    so_number = extract_so_number(source)
+    so_number = extract_so_number(source_for_order)
 
     return {
         "so_number": so_number,
         "invoice_symbol": infer_invoice_symbol(so_number),
-        "invoice_number": "",              # NULL/rỗng theo flow đã chốt
-        "order_date": email_header_date,   # Chỉ lấy từ header Date
-        "tax_code": extract_tax_code(source),
-        "customer_name_raw": extract_customer_name(source),
+        "invoice_number": "",
+        "order_date": email_header_date,
+        "tax_code": email_customer["tax_code"],
+        "customer_name_raw": email_customer["customer_name_raw"],
+        "address_raw": email_customer["address_raw"],
     }
 
 
@@ -383,19 +598,41 @@ def extract_order_header(
 # Order line parsing
 # ============================================================
 
+PRODUCT_UNITS = [
+    "Chiếc", "Chiec", "Cái", "Cai", "Bộ", "Bo", "Cặp", "Cap", "Thùng", "Thung",
+    "Hộp", "Hop", "Cây", "Cay", "Ngày", "Ngay"
+]
+
+
+def split_product_line_rest(rest: str) -> tuple[str, str, str, str, str]:
+    """
+    Output:
+    - unit
+    - quantity_text
+    - unit_price_text
+    - line_total_text
+    - parse_error
+
+    Không dùng product_name để tạo master vì PDF lỗi font.
+    Chỉ cần product_code, quantity, unit_price, line_total cho giao dịch.
+    """
+
+    unit_pattern = "|".join(re.escape(unit) for unit in PRODUCT_UNITS)
+    pattern = rf"^.+?\s+({unit_pattern})\s+(\d+(?:[,.]\d+)*)\s+(\d+(?:[,.]\d+)*)\s+(\d+(?:[,.]\d+)*)$"
+    match = re.match(pattern, rest, flags=re.IGNORECASE)
+
+    if match:
+        return clean_text(match.group(1)), match.group(2), match.group(3), match.group(4), ""
+
+    numbers = re.findall(r"\d+(?:[,.]\d+)*", rest)
+
+    if len(numbers) < 3:
+        return "", "", "", "", "Không đủ 3 số cuối để lấy quantity, unit_price, line_total"
+
+    return "", numbers[-3], numbers[-2], numbers[-1], ""
+
+
 def extract_order_lines(pdf_text: str) -> list[dict]:
-    """
-    Hỗ trợ product_code dạng:
-    - 000104002009000
-    - TP0099.0000570
-    - TP0023.02.25.00
-    - 156.01.12.0003
-
-    Logic:
-    - Bắt dòng bắt đầu bằng STT + product_code.
-    - 3 cụm số cuối là quantity, unit_price, line_total.
-    """
-
     rows = []
 
     for raw_line in pdf_text.splitlines():
@@ -414,32 +651,34 @@ def extract_order_lines(pdf_text: str) -> list[dict]:
         product_code = match.group(2).upper()
         rest = match.group(3)
 
-        numbers = re.findall(r"\d+(?:[,.]\d+)*", rest)
+        unit, quantity_text, unit_price_text, line_total_text, split_error = split_product_line_rest(rest)
 
-        if len(numbers) < 3:
+        if split_error:
             rows.append(
                 {
                     "stt": stt,
                     "product_code": product_code,
+                    "unit": unit,
                     "quantity": None,
                     "unit_price": None,
                     "line_total": None,
                     "raw_line": line,
-                    "parse_error": "Không đủ 3 số cuối để lấy quantity, unit_price, line_total",
+                    "parse_error": split_error,
                     "warning": "",
                 }
             )
             continue
 
         try:
-            quantity = parse_quantity(numbers[-3])
-            unit_price = parse_money(numbers[-2])
-            line_total = parse_money(numbers[-1])
+            quantity = parse_quantity(quantity_text)
+            unit_price = parse_money(unit_price_text)
+            line_total = parse_money(line_total_text)
         except Exception as e:
             rows.append(
                 {
                     "stt": stt,
                     "product_code": product_code,
+                    "unit": unit,
                     "quantity": None,
                     "unit_price": None,
                     "line_total": None,
@@ -450,29 +689,20 @@ def extract_order_lines(pdf_text: str) -> list[dict]:
             )
             continue
 
-        calculated_total = (quantity * unit_price).quantize(
-            Decimal("1"),
-            rounding=ROUND_HALF_UP,
-        )
-
+        calculated_total = (quantity * unit_price).quantize(Decimal("1"), rounding=ROUND_HALF_UP)
         warning = ""
 
         if line_total <= 0:
             line_total = calculated_total
             warning = "line_total <= 0 nên dùng quantity * unit_price"
-
         elif abs(line_total - calculated_total) > Decimal("1"):
-            # Chỉ warning, không đưa vào staging_fail.
-            # Giữ line_total theo PDF.
-            warning = (
-                f"line_total lệch calculated_total: "
-                f"pdf={line_total}, calculated={calculated_total}"
-            )
+            warning = f"line_total lệch calculated_total: pdf={line_total}, calculated={calculated_total}"
 
         rows.append(
             {
                 "stt": stt,
                 "product_code": product_code,
+                "unit": unit,
                 "quantity": quantity,
                 "unit_price": unit_price,
                 "line_total": line_total,
@@ -489,7 +719,7 @@ def extract_order_lines(pdf_text: str) -> list[dict]:
 # Validation
 # ============================================================
 
-def validate_header(header: dict, customer_code: str) -> list[str]:
+def validate_header_required(header: dict) -> list[str]:
     errors = []
 
     if not header["so_number"]:
@@ -501,8 +731,8 @@ def validate_header(header: dict, customer_code: str) -> list[str]:
     if not header["tax_code"]:
         errors.append("Không trích xuất được MST")
 
-    if not customer_code:
-        errors.append(f"Không map được customer_code từ MST={header['tax_code']}")
+    if not header["customer_name_raw"]:
+        errors.append("Không trích xuất được customer_name từ email body")
 
     return errors
 
@@ -521,7 +751,7 @@ def validate_order_line(line: dict, product_codes: set[str]) -> list[str]:
     if not product_code:
         errors.append("Thiếu product_code")
     elif product_code not in product_codes:
-        errors.append(f"product_code không tồn tại trong DB: {product_code}")
+        errors.append(f"product_code không tồn tại trong master, không ghi order_line: {product_code}")
 
     if quantity is None:
         errors.append("Thiếu quantity")
@@ -542,6 +772,67 @@ def validate_order_line(line: dict, product_codes: set[str]) -> list[str]:
 
 
 # ============================================================
+# Staging customer builder
+# ============================================================
+
+def build_new_customer_rows(
+    header: dict,
+    eml_path: Path,
+    customer_lookup: dict[str, str],
+    staged_customer_tax_codes: set[str],
+    province_lookup: dict[str, int],
+    next_customer_seq: dict,
+) -> tuple[str, dict | None, dict | None]:
+    tax_code = clean_text(header.get("tax_code"))
+
+    if not tax_code:
+        return "", None, None
+
+    existing_customer_code = customer_lookup.get(tax_code)
+
+    if existing_customer_code:
+        return existing_customer_code, None, None
+
+    customer_code = generate_customer_code(next_customer_seq["value"])
+    next_customer_seq["value"] += 1
+    customer_lookup[tax_code] = customer_code
+
+    customer_name = clean_text(header.get("customer_name_raw"))
+    address = clean_text(header.get("address_raw"))
+    province_id = infer_province_id_from_address(address, province_lookup)
+    created_at = now_iso()
+
+    staging_customer_row = None
+    staging_customer_log_row = None
+
+    if tax_code not in staged_customer_tax_codes:
+        staged_customer_tax_codes.add(tax_code)
+
+        staging_customer_row = {
+            "customer_code": customer_code,
+            "customer_name": customer_name,
+            "tax_code": tax_code,
+            "address": address,
+            "province_id": province_id,
+            "customer_tier": "STANDARD",
+            "is_active": "true",
+            "created_at": created_at,
+            "updated_at": created_at,
+        }
+
+        staging_customer_log_row = {
+            "customer_code": customer_code,
+            "tax_code": tax_code,
+            "so_number": header.get("so_number", ""),
+            "source_email_file": eml_path.name,
+            "status": STATUS_NEW_CUSTOMER,
+            "created_at": created_at,
+        }
+
+    return customer_code, staging_customer_row, staging_customer_log_row
+
+
+# ============================================================
 # Parse one email
 # ============================================================
 
@@ -549,6 +840,9 @@ def parse_email_file(
     eml_path: Path,
     customer_lookup: dict[str, str],
     product_codes: set[str],
+    province_lookup: dict[str, int],
+    staged_customer_tax_codes: set[str],
+    next_customer_seq: dict,
 ) -> tuple[dict | None, list[dict], list[dict], dict, list[dict], list[dict]]:
     """
     Return:
@@ -556,19 +850,19 @@ def parse_email_file(
     - valid_order_line_rows
     - fail_rows
     - email_log_row
-    - missing_customer_rows
-    - missing_product_rows
+    - staging_customer_rows
+    - staging_customer_log_rows
 
-    Rule:
-    - Customer/header lỗi: KHÔNG ghi sales_order, KHÔNG ghi order_line.
-    - Product lỗi: KHÔNG ghi order_line lỗi đó.
-    - Nếu sau khi lọc product lỗi mà không còn order_line hợp lệ: KHÔNG ghi sales_order.
-    - line_total lệch calculated_total: bỏ qua lỗi, vẫn ghi order_line hợp lệ.
+    Product mới/chưa có master:
+    - không tạo staging_product
+    - không ghi order_line để tránh lỗi FK order_line.product_code -> product.product_code
+    - ghi vào staging_fail
+    - nếu đơn không còn dòng hợp lệ thì không ghi sales_order
     """
 
     fail_rows = []
-    missing_customer_rows = []
-    missing_product_rows = []
+    staging_customer_rows = []
+    staging_customer_log_rows = []
 
     msg = parse_email(eml_path)
 
@@ -577,11 +871,7 @@ def parse_email_file(
     email_header_date = get_email_header_date(msg)
 
     attachment_name = ""
-    email_log_row = build_email_log_row(
-        msg=msg,
-        attachment_name=attachment_name,
-        processing_status="started",
-    )
+    email_log_row = build_email_log_row(msg=msg, attachment_name=attachment_name, processing_status=STATUS_STARTED)
 
     with tempfile.TemporaryDirectory() as tmp:
         pdf_path = extract_pdf_attachment(msg, Path(tmp))
@@ -599,17 +889,11 @@ def parse_email_file(
                 }
             )
 
-            email_log_row.update(
-                {
-                    "attachment_name": "",
-                    "processing_status": "failed_no_pdf_attachment",
-                }
-            )
-
-            return None, [], fail_rows, email_log_row, missing_customer_rows, missing_product_rows
+            email_log_row.update({"attachment_name": "", "processing_status": STATUS_FAILED_NO_ATTACHMENT})
+            return None, [], fail_rows, email_log_row, [], []
 
         attachment_name = pdf_path.name
-        pdf_text = extract_pdf_text(pdf_path)
+        pdf_text, extraction_method = extract_pdf_text(pdf_path)
 
     header = extract_order_header(
         email_subject=email_subject,
@@ -618,31 +902,8 @@ def parse_email_file(
         email_header_date=email_header_date,
     )
 
-    customer_code = customer_lookup.get(header["tax_code"], "")
     parsed_lines = extract_order_lines(pdf_text)
-
-    header_errors = validate_header(header, customer_code)
-
-    # ============================================================
-    # Customer/header lỗi:
-    # - ghi fail
-    # - ghi missing_customer nếu thiếu customer_code
-    # - block toàn bộ order_line
-    # - return sales_order_row = None
-    # ============================================================
-
-    if not customer_code:
-        missing_customer_rows.append(
-            {
-                "tax_code": header["tax_code"],
-                "customer_name_raw": header.get("customer_name_raw", ""),
-                "so_number": header["so_number"],
-                "order_date": header["order_date"],
-                "source_email_file": eml_path.name,
-                "email_subject": email_subject,
-                "line_count_parsed": str(len(parsed_lines)),
-            }
-        )
+    header_errors = validate_header_required(header)
 
     if header_errors:
         header_error_text = " | ".join(header_errors)
@@ -651,7 +912,7 @@ def parse_email_file(
             {
                 "record_type": "sales_order",
                 "source_email_file": eml_path.name,
-                "so_number": header["so_number"],
+                "so_number": header.get("so_number", ""),
                 "stt": "",
                 "product_code": "",
                 "error": header_error_text,
@@ -659,72 +920,21 @@ def parse_email_file(
             }
         )
 
-        if parsed_lines:
-            for line in parsed_lines:
-                line_errors = validate_order_line(line, product_codes)
-
-                error_parts = [f"Sales_order lỗi nên không ghi sales_order/order_line: {header_error_text}"]
-
-                if line_errors:
-                    error_parts.append("Order_line cũng lỗi: " + " | ".join(line_errors))
-
-                if line.get("warning"):
-                    error_parts.append("Order_line warning ignored: " + line.get("warning", ""))
-
-                if any("product_code không tồn tại trong DB:" in err for err in line_errors):
-                    missing_product_rows.append(
-                        {
-                            "product_code": line.get("product_code", ""),
-                            "so_number": header["so_number"],
-                            "stt": line.get("stt", ""),
-                            "quantity": decimal_to_str(line.get("quantity")),
-                            "unit_price": money_to_str(line.get("unit_price")),
-                            "line_total": money_to_str(line.get("line_total")),
-                            "source_email_file": eml_path.name,
-                            "raw_line": line.get("raw_line", ""),
-                        }
-                    )
-
-                fail_rows.append(
-                    {
-                        "record_type": "order_line_blocked_by_sales_order_error",
-                        "source_email_file": eml_path.name,
-                        "so_number": header["so_number"],
-                        "stt": line.get("stt", ""),
-                        "product_code": line.get("product_code", ""),
-                        "error": " | ".join(error_parts),
-                        "raw_line": line.get("raw_line", ""),
-                    }
-                )
-        else:
+        for line in parsed_lines:
             fail_rows.append(
                 {
                     "record_type": "order_line_blocked_by_sales_order_error",
                     "source_email_file": eml_path.name,
-                    "so_number": header["so_number"],
-                    "stt": "",
-                    "product_code": "",
-                    "error": (
-                        f"Sales_order lỗi nên không ghi sales_order/order_line: {header_error_text} | "
-                        "Không trích xuất được dòng hàng nào từ PDF"
-                    ),
-                    "raw_line": "\n".join(pdf_text.splitlines()[:20]),
+                    "so_number": header.get("so_number", ""),
+                    "stt": line.get("stt", ""),
+                    "product_code": line.get("product_code", ""),
+                    "error": f"Sales_order lỗi nên không ghi sales_order/order_line: {header_error_text}",
+                    "raw_line": line.get("raw_line", ""),
                 }
             )
 
-        email_log_row.update(
-            {
-                "attachment_name": attachment_name,
-                "processing_status": "failed_sales_order_validation",
-            }
-        )
-
-        return None, [], fail_rows, email_log_row, missing_customer_rows, missing_product_rows
-
-    # ============================================================
-    # Header/customer hợp lệ, nhưng không parse được dòng hàng
-    # → không ghi sales_order vì không có dòng order_line hợp lệ
-    # ============================================================
+        email_log_row.update({"attachment_name": attachment_name, "processing_status": STATUS_FAILED_VALIDATION})
+        return None, [], fail_rows, email_log_row, [], []
 
     if not parsed_lines:
         fail_rows.append(
@@ -739,20 +949,8 @@ def parse_email_file(
             }
         )
 
-        email_log_row.update(
-            {
-                "attachment_name": attachment_name,
-                "processing_status": "failed_no_order_line",
-            }
-        )
-
-        return None, [], fail_rows, email_log_row, missing_customer_rows, missing_product_rows
-
-    # ============================================================
-    # Header/customer hợp lệ:
-    # - product lỗi: không ghi line đó vào order_line
-    # - line hợp lệ: ghi vào order_line
-    # ============================================================
+        email_log_row.update({"attachment_name": attachment_name, "processing_status": STATUS_FAILED_NO_LINES})
+        return None, [], fail_rows, email_log_row, [], []
 
     valid_order_line_rows = []
 
@@ -771,21 +969,6 @@ def parse_email_file(
                     "raw_line": line.get("raw_line", ""),
                 }
             )
-
-            if any("product_code không tồn tại trong DB:" in err for err in line_errors):
-                missing_product_rows.append(
-                    {
-                        "product_code": line.get("product_code", ""),
-                        "so_number": header["so_number"],
-                        "stt": line.get("stt", ""),
-                        "quantity": decimal_to_str(line.get("quantity")),
-                        "unit_price": money_to_str(line.get("unit_price")),
-                        "line_total": money_to_str(line.get("line_total")),
-                        "source_email_file": eml_path.name,
-                        "raw_line": line.get("raw_line", ""),
-                    }
-                )
-
             continue
 
         valid_order_line_rows.append(
@@ -799,11 +982,6 @@ def parse_email_file(
             }
         )
 
-    # ============================================================
-    # Nếu tất cả order_line đều lỗi product/validate
-    # → không ghi sales_order để tránh order không có dòng hàng
-    # ============================================================
-
     if not valid_order_line_rows:
         fail_rows.append(
             {
@@ -812,21 +990,45 @@ def parse_email_file(
                 "so_number": header["so_number"],
                 "stt": "",
                 "product_code": "",
-                "error": "Không còn order_line hợp lệ sau khi lọc lỗi product/validate nên không ghi sales_order",
+                "error": "Không còn order_line hợp lệ sau khi lọc product_code không có trong master nên không ghi sales_order",
                 "raw_line": "",
             }
         )
 
-        email_log_row.update(
+        email_log_row.update({"attachment_name": attachment_name, "processing_status": STATUS_FAILED_NO_VALID_LINES})
+        return None, [], fail_rows, email_log_row, [], []
+
+    customer_code, staging_customer_row, staging_customer_log_row = build_new_customer_rows(
+        header=header,
+        eml_path=eml_path,
+        customer_lookup=customer_lookup,
+        staged_customer_tax_codes=staged_customer_tax_codes,
+        province_lookup=province_lookup,
+        next_customer_seq=next_customer_seq,
+    )
+
+    if not customer_code:
+        fail_rows.append(
             {
-                "attachment_name": attachment_name,
-                "processing_status": "failed_no_valid_order_line",
+                "record_type": "sales_order",
+                "source_email_file": eml_path.name,
+                "so_number": header.get("so_number", ""),
+                "stt": "",
+                "product_code": "",
+                "error": "Không tạo/lấy được customer_code",
+                "raw_line": "",
             }
         )
 
-        return None, [], fail_rows, email_log_row, missing_customer_rows, missing_product_rows
+        email_log_row.update({"attachment_name": attachment_name, "processing_status": STATUS_FAILED_CUSTOMER})
+        return None, [], fail_rows, email_log_row, [], []
 
-    # Chỉ tạo sales_order khi customer hợp lệ và có ít nhất 1 order_line hợp lệ.
+    if staging_customer_row:
+        staging_customer_rows.append(staging_customer_row)
+
+    if staging_customer_log_row:
+        staging_customer_log_rows.append(staging_customer_log_row)
+
     sales_order_row = {
         "so_number": header["so_number"],
         "invoice_symbol": header["invoice_symbol"],
@@ -835,24 +1037,30 @@ def parse_email_file(
         "customer_code": customer_code,
     }
 
-    email_log_row.update(
-        {
-            "attachment_name": attachment_name,
-            "processing_status": "success" if not fail_rows else "parsed_with_issues",
-        }
+    if staging_customer_rows:
+        processing_status = STATUS_PARTIAL
+    elif fail_rows:
+        processing_status = STATUS_PARTIAL
+    else:
+        processing_status = STATUS_SUCCESS
+
+    email_log_row.update({"attachment_name": attachment_name, "processing_status": processing_status})
+
+    return (
+        sales_order_row,
+        valid_order_line_rows,
+        fail_rows,
+        email_log_row,
+        staging_customer_rows,
+        staging_customer_log_rows,
     )
 
-    return sales_order_row, valid_order_line_rows, fail_rows, email_log_row, missing_customer_rows, missing_product_rows
 
 # ============================================================
 # Fail summary
 # ============================================================
 
 def normalize_error(error: str) -> str:
-    """
-    Gom nhóm lỗi để summary không bị tách nhỏ theo MST, product_code, số tiền.
-    """
-
     error = clean_text(error)
 
     if not error:
@@ -873,22 +1081,14 @@ def normalize_error(error: str) -> str:
     if "Không trích xuất được MST" in error:
         return "Không trích xuất được MST"
 
-    if "Không map được customer_code từ MST=" in error:
-        return "Không map được customer_code từ MST"
+    if "Không trích xuất được customer_name" in error:
+        return "Không trích xuất được customer_name từ email body"
 
-    if "Sales_order lỗi:" in error and "Không map được customer_code từ MST=" in error:
-        if "Không trích xuất được dòng hàng nào từ PDF" in error:
-            return "Sales_order lỗi do không map customer_code + không parse được order_line"
-        return "Sales_order lỗi do không map được customer_code"
+    if "Không tạo/lấy được customer_code" in error:
+        return "Không tạo/lấy được customer_code"
 
-    if "Sales_order lỗi:" in error:
-        return "Sales_order lỗi"
-
-    if "Order_line cũng lỗi:" in error and "product_code không tồn tại trong DB:" in error:
-        return "Order_line bị chặn do sales_order lỗi + product_code không tồn tại trong DB"
-
-    if "product_code không tồn tại trong DB:" in error:
-        return "product_code không tồn tại trong DB"
+    if "product_code không tồn tại trong master" in error:
+        return "product_code không tồn tại trong master"
 
     if "Không đủ 3 số cuối" in error:
         return "Không đủ 3 số cuối để lấy quantity, unit_price, line_total"
@@ -923,104 +1123,28 @@ def normalize_error(error: str) -> str:
     if "Không trích xuất được dòng hàng nào từ PDF" in error:
         return "Không trích xuất được dòng hàng nào từ PDF"
 
+    if "Không còn order_line hợp lệ" in error:
+        return "Không còn order_line hợp lệ"
+
+    if "Sales_order lỗi" in error:
+        return "Sales_order lỗi"
+
     return error
 
 
 def summarize_fail_rows(fail_rows: list[dict]) -> list[dict]:
-    """
-    Thống kê lỗi đã gom nhóm.
-
-    Output:
-    - group_type = record_type hoặc error_group
-    - group_value = nhóm lỗi
-    - count
-    """
-
     summary_rows = []
 
     by_record_type = Counter(row.get("record_type", "") for row in fail_rows)
     by_error_group = Counter(normalize_error(row.get("error", "")) for row in fail_rows)
 
     for record_type, count in by_record_type.most_common():
-        summary_rows.append(
-            {
-                "group_type": "record_type",
-                "group_value": record_type,
-                "count": count,
-            }
-        )
+        summary_rows.append({"group_type": "record_type", "group_value": record_type, "count": count})
 
     for error_group, count in by_error_group.most_common():
-        summary_rows.append(
-            {
-                "group_type": "error_group",
-                "group_value": error_group,
-                "count": count,
-            }
-        )
+        summary_rows.append({"group_type": "error_group", "group_value": error_group, "count": count})
 
     return summary_rows
-
-
-def summarize_missing_customers(rows: list[dict]) -> list[dict]:
-    grouped = {}
-
-    for row in rows:
-        key = row.get("tax_code", "")
-        if key not in grouped:
-            grouped[key] = {
-                "tax_code": row.get("tax_code", ""),
-                "customer_name_raw": row.get("customer_name_raw", ""),
-                "affected_orders": 0,
-                "affected_lines_parsed": 0,
-                "example_so_number": row.get("so_number", ""),
-                "example_email_file": row.get("source_email_file", ""),
-                "example_subject": row.get("email_subject", ""),
-            }
-
-        grouped[key]["affected_orders"] += 1
-        grouped[key]["affected_lines_parsed"] += int(row.get("line_count_parsed") or 0)
-
-    return list(grouped.values())
-
-
-def summarize_missing_products(rows: list[dict]) -> list[dict]:
-    grouped = {}
-
-    for row in rows:
-        key = row.get("product_code", "")
-
-        if key not in grouped:
-            grouped[key] = {
-                "product_code": key,
-                "affected_lines": 0,
-                "total_quantity": Decimal("0"),
-                "total_line_total": Decimal("0"),
-                "example_so_number": row.get("so_number", ""),
-                "example_email_file": row.get("source_email_file", ""),
-                "example_raw_line": row.get("raw_line", ""),
-            }
-
-        grouped[key]["affected_lines"] += 1
-        grouped[key]["total_quantity"] += parse_quantity(row.get("quantity", "0") or "0")
-        grouped[key]["total_line_total"] += parse_money(row.get("line_total", "0") or "0")
-
-    output = []
-
-    for item in grouped.values():
-        output.append(
-            {
-                "product_code": item["product_code"],
-                "affected_lines": str(item["affected_lines"]),
-                "total_quantity": decimal_to_str(item["total_quantity"]),
-                "total_line_total": money_to_str(item["total_line_total"]),
-                "example_so_number": item["example_so_number"],
-                "example_email_file": item["example_email_file"],
-                "example_raw_line": item["example_raw_line"],
-            }
-        )
-
-    return output
 
 
 # ============================================================
@@ -1031,18 +1155,11 @@ def write_csv(path: Path, fieldnames: list[str], rows: list[dict]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
 
     with open(path, "w", newline="", encoding="utf-8-sig") as f:
-        writer = csv.DictWriter(
-            f,
-            fieldnames=fieldnames,
-            extrasaction="ignore",
-        )
-
+        writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction="ignore")
         writer.writeheader()
 
         for row in rows:
-            writer.writerow(
-                {key: none_to_empty(row.get(key)) for key in fieldnames}
-            )
+            writer.writerow({key: none_to_empty(row.get(key)) for key in fieldnames})
 
 
 # ============================================================
@@ -1054,13 +1171,17 @@ def main():
 
     customer_lookup = load_customer_lookup_from_db()
     product_codes = load_product_codes_from_db()
+    province_lookup = load_province_lookup_from_db()
+
+    next_customer_seq = {"value": load_next_customer_sequence_from_db()}
+    staged_customer_tax_codes = set()
 
     email_log_rows = []
     sales_order_rows = []
     order_line_rows = []
     fail_rows = []
-    missing_customer_raw_rows = []
-    missing_product_raw_rows = []
+    staging_customer_rows = []
+    staging_customer_log_rows = []
 
     eml_files = sorted(RAW_EMAIL_DIR.glob("*.eml"))
 
@@ -1076,17 +1197,20 @@ def main():
                 valid_line_rows,
                 file_fail_rows,
                 email_log_row,
-                file_missing_customers,
-                file_missing_products,
+                file_staging_customers,
+                file_staging_customer_logs,
             ) = parse_email_file(
                 eml_path=eml_path,
                 customer_lookup=customer_lookup,
                 product_codes=product_codes,
+                province_lookup=province_lookup,
+                staged_customer_tax_codes=staged_customer_tax_codes,
+                next_customer_seq=next_customer_seq,
             )
 
             fail_rows.extend(file_fail_rows)
-            missing_customer_raw_rows.extend(file_missing_customers)
-            missing_product_raw_rows.extend(file_missing_products)
+            staging_customer_rows.extend(file_staging_customers)
+            staging_customer_log_rows.extend(file_staging_customer_logs)
 
             if email_log_row:
                 email_log_rows.append(email_log_row)
@@ -1121,7 +1245,6 @@ def main():
                         )
 
                     valid_line_rows = []
-
                 else:
                     if so_number:
                         seen_so_numbers.add(so_number)
@@ -1144,105 +1267,66 @@ def main():
             )
 
     fail_summary_rows = summarize_fail_rows(fail_rows)
-    missing_customer_rows = summarize_missing_customers(missing_customer_raw_rows)
-    missing_product_rows = summarize_missing_products(missing_product_raw_rows)
 
     write_csv(
         OUT_EMAIL_LOG,
-        [
-            "message_id",
-            "from_address",
-            "received_at",
-            "attachment_name",
-            "processing_status",
-        ],
+        ["message_id", "from_address", "received_at", "attachment_name", "processing_status"],
         email_log_rows,
     )
 
     write_csv(
-        OUT_SALES_ORDER,
+        OUT_STAGING_CUSTOMER,
         [
-            "so_number",
-            "invoice_symbol",
-            "invoice_number",
-            "order_date",
             "customer_code",
+            "customer_name",
+            "tax_code",
+            "address",
+            "province_id",
+            "customer_tier",
+            "is_active",
+            "created_at",
+            "updated_at",
         ],
+        staging_customer_rows,
+    )
+
+    write_csv(
+        OUT_SALES_ORDER,
+        ["so_number", "invoice_symbol", "invoice_number", "order_date", "customer_code"],
         sales_order_rows,
     )
 
     write_csv(
         OUT_ORDER_LINE,
-        [
-            "order_id",
-            "so_number",
-            "product_code",
-            "quantity",
-            "unit_price",
-            "line_total",
-        ],
+        ["order_id", "so_number", "product_code", "quantity", "unit_price", "line_total"],
         order_line_rows,
     )
 
     write_csv(
         OUT_FAILED,
-        [
-            "record_type",
-            "source_email_file",
-            "so_number",
-            "stt",
-            "product_code",
-            "error",
-            "raw_line",
-        ],
+        ["record_type", "source_email_file", "so_number", "stt", "product_code", "error", "raw_line"],
         fail_rows,
     )
 
     write_csv(
         OUT_FAILED_SUMMARY,
-        [
-            "group_type",
-            "group_value",
-            "count",
-        ],
+        ["group_type", "group_value", "count"],
         fail_summary_rows,
     )
 
     write_csv(
-        OUT_MISSING_CUSTOMER,
-        [
-            "tax_code",
-            "customer_name_raw",
-            "affected_orders",
-            "affected_lines_parsed",
-            "example_so_number",
-            "example_email_file",
-            "example_subject",
-        ],
-        missing_customer_rows,
+        OUT_STAGING_CUSTOMER_LOG,
+        ["customer_code", "tax_code", "so_number", "source_email_file", "status", "created_at"],
+        staging_customer_log_rows,
     )
 
-    write_csv(
-        OUT_MISSING_PRODUCT,
-        [
-            "product_code",
-            "affected_lines",
-            "total_quantity",
-            "total_line_total",
-            "example_so_number",
-            "example_email_file",
-            "example_raw_line",
-        ],
-        missing_product_rows,
-    )
-
-    print(f"Email log        : {len(email_log_rows)} -> {OUT_EMAIL_LOG}")
-    print(f"Sales orders     : {len(sales_order_rows)} -> {OUT_SALES_ORDER}")
-    print(f"Order line rows  : {len(order_line_rows)} -> {OUT_ORDER_LINE}")
-    print(f"Fail rows        : {len(fail_rows)} -> {OUT_FAILED}")
-    print(f"Fail summary     : {len(fail_summary_rows)} -> {OUT_FAILED_SUMMARY}")
-    print(f"Missing customer : {len(missing_customer_rows)} -> {OUT_MISSING_CUSTOMER}")
-    print(f"Missing product  : {len(missing_product_rows)} -> {OUT_MISSING_PRODUCT}")
+    print(f"Email log            : {len(email_log_rows)} -> {OUT_EMAIL_LOG}")
+    print(f"Staging customers    : {len(staging_customer_rows)} -> {OUT_STAGING_CUSTOMER}")
+    print(f"Sales orders         : {len(sales_order_rows)} -> {OUT_SALES_ORDER}")
+    print(f"Order line rows      : {len(order_line_rows)} -> {OUT_ORDER_LINE}")
+    print(f"Fail rows            : {len(fail_rows)} -> {OUT_FAILED}")
+    print(f"Fail summary         : {len(fail_summary_rows)} -> {OUT_FAILED_SUMMARY}")
+    print(f"Staging customer log : {len(staging_customer_log_rows)} -> {OUT_STAGING_CUSTOMER_LOG}")
 
 
 if __name__ == "__main__":

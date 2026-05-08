@@ -128,7 +128,7 @@ docker exec -it tnbike_postgres psql -U postgres -d tnbike_db -f /04_refresh_fac
 
 1. `Home` → `Get data` → `PostgreSQL database`.
 2. Nhập:
-   - `Server`: `localhost`
+   - `Server`: `localhost:5432`
    - `Database`: `tnbike_db`
 3. Chọn mode: `Import` (khuyến nghị).
 4. Khi được hỏi credentials, chọn `Database` và nhập user/password ở trên.

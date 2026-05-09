@@ -1,0 +1,796 @@
+customer_code,customer_name,address,province_name_extract,province_id,province_name
+KH-00009,CỬA HÀNG XE ĐẠP THIÊN AN,"Trần Phú, , Quận Ba Đình, Hà Nội",Hà Nội,1,Hà Nội
+KH-00008,CÔNG TY CỔ PHẦN YÊN BÌNH,"Đường B4, Khu B, Khu công nghiệp Phố Nối A, Xã Lạc Hồng, Huyện Văn Lâm, Hưng Yên",Hưng Yên,31,Hưng Yên
+KH-00010,CỬA HÀNG XE ĐẠP QUANG VINH,"đường Bắc Sơn, Phường Hoàng Văn Thụ, Thành phố Thái Nguyên, Thái Nguyên",Thái Nguyên,54,Thái Nguyên
+KH-00011,DOANH NGHIỆP TW NAM TIẾN,"ngõ Trần Cao Vân, Phường Phố Huế, Quận Hai Bà Trưng,TP.Hà Nội",Hà Nội,1,Hà Nội
+KH-00012,HỘ KINH DOANH THIÊN AN,"Xã Thanh Lâm, Huyện Mê Linh, Hà Nội",Hà Nội,1,Hà Nội
+KH-00013,DOANH NGHIỆP TW THANH BÌNH,"Đường 206 KCN Phố Nối A, Xã Trưng Trắc, Huyện Văn Lâm, Hưng Yên",Hưng Yên,31,Hưng Yên
+KH-00014,HỘ KINH DOANH LONG PHÚ,"Phường Tiền An, Thành phố Bắc Ninh, Tỉnh Bắc Ninh, Việt Nam",Bắc Ninh,7,Bắc Ninh
+KH-00015,DOANH NGHIỆP TW MINH PHƯƠNG,"Khu 12, Lâm Thao, Lâm Thao, Phú Thọ",Phú Thọ,43,Phú Thọ
+KH-00016,DOANH NGHIỆP TW VIỆT ANH,Trần Hưng Đạo -khu phố 3 - phường 3 Thị xã Quảng trị - Tỉnh Quảng Trị,Quảng Trị,49,Quảng Trị
+KH-00017,CỬA HÀNG XE ĐẠP THUỶ TIÊN,TT Hương Sơn- Phú Bình- Thái Nguyên,Thái Nguyên,54,Thái Nguyên
+KH-00018,CÔNG TY TNHH THƯƠNG MẠI PHÚ THỊNH,"phố Minh Khai, Phường Vĩnh Tuy, Quận Hai Bà Trưng, Thành phố Hà Nội, Việt Nam",Hà Nội,1,Hà Nội
+KH-00019,CÔNG TY CỔ PHẦN THƯƠNG MẠI LÊ ANH,"Trần Quang Khải, Phường Tân Định, Quận 1, Thành phố Hồ Chí Minh, Việt Nam",TP. Hồ Chí Minh,30,TP. Hồ Chí Minh
+KH-00020,DOANH NGHIỆP TW TRƯỜNG THỊNH,"Tòa nhà FPT Cầu Giấy, số 17 phố Duy Tân, Phường Dịch Vọng Hậu, Quận Cầu Giấy, Hà Nội",Hà Nội,1,Hà Nội
+KH-00021,HỘ KINH DOANH XÂY DỰNG,"4 Số 141 Lê Duẩn, Phường Cửa Nam, Quận Hoàn Kiếm, Hà Nội",Hà Nội,1,Hà Nội
+KH-00022,CÔNG TY CỔ PHẦN VIỆT ANH,"Ngõ 82, Tổ 30 Cụm 4 Đường Phú Thượng, Phường Phú Thượng, Quận Tây Hồ, Hà Nội, Việt Nam",Hà Nội,1,Hà Nội
+KH-00023,CÔNG TY TNHH THANH BÌNH,"tòa nhà số 444 phố Hoàng Hoa Thám, Phường Thuỵ Khuê, Quận Tây Hồ, Thành phố Hà Nội, Việt Nam",Hà Nội,1,Hà Nội
+KH-00024,CÔNG TY TNHH MINH PHƯƠNG,"Phố Mỹ Lộ, Thị trấn Thiên Tôn, Huyện Hoa Lư, Tỉnh Ninh Bình, Việt Nam",Ninh Bình,41,Ninh Bình
+KH-00025,DOANH NGHIỆP TW SƠN HÀ,"Nhà ông Nguyễn Ngọc Biên, ngã tư vòng xuyến đường Lê Doãn Ch, Phường Hải Thượng, Thị xã Nghi Sơn, Thanh Hoá",Thanh Hóa,55,Thanh Hóa
+KH-00026,CÔNG TY CỔ PHẦN LÊ ANH,"Khu công nghiệp Lê Môn, phường Quảng Hưng, thành phố Thanh Hóa",Thanh Hóa,55,Thanh Hóa
+KH-00027,HỘ KINH DOANH ĐẠI DƯƠNG,"khu đấu giá Ngô Thì Nhậm, Phường Hà Cầu, Quận Hà Đông, Hà Nội",Hà Nội,1,Hà Nội
+KH-00028,DOANH NGHIỆP TW PHÚ THỊNH,"A10 Chợ Việt Trì, Minh Nông, Việt Trì, Phú Thọ",Phú Thọ,43,Phú Thọ
+KH-00029,CÔNG TY TNHH THƯƠNG MẠI THANH BÌNH,"Nguyễn Đình Chiểu, Phường Hàm Tiến, Thành phố  Phan Thiết, Bình Thuận",Bình Thuận,12,Bình Thuận
+KH-00030,CỬA HÀNG XE ĐẠP BÌNH MINH,"Xã Đoan Bái, Huyện Hiệp Hoà, Tỉnh Bắc Giang, Việt Nam",Bắc Giang,5,Bắc Giang
+KH-00031,CÔNG TY CỔ PHẦN THƯƠNG MẠI ĐẠI DƯƠNG,"đường Trương Định, Phường Trương Định, Quận Hai Bà Trưng, Hà Nội",Hà Nội,1,Hà Nội
+KH-00032,HỘ KINH DOANH CHI THÀNH,"phố Thanh Lâm, Phường Minh Khai, Quận Bắc Từ Liêm, Hà Nội",Hà Nội,1,Hà Nội
+KH-00033,CỬA HÀNG XE ĐẠP HÙNG CƯỜNG,"Ngõ Máy kéo, khu Liên Cơ, Phường Cầu Diễn, Quận Nam Từ Liêm, Hà Nội",Hà Nội,1,Hà Nội
+KH-00034,CÔNG TY TNHH BÌNH MINH,"Mẹ Thứ, Phường Hoà Xuân, Quận Cẩm Lệ, Thành phố Đà Nẵng, Việt Nam",Đà Nẵng,16,Đà Nẵng
+KH-00035,CỬA HÀNG XE ĐẠP TÂY BẮC,"Trần Kế Xương, Phường Hải Châu II, Quận Hải Châu, Đà Nẵng",Đà Nẵng,16,Đà Nẵng
+KH-00036,CÔNG TY TNHH THƯƠNG MẠI PHÚC AN,"số 11B Cát Linh, Phường Quốc Tử Giám, Quận Đống đa, Hà Nội",Hà Nội,1,Hà Nội
+KH-00037,CÔNG TY TNHH THƯƠNG MẠI THANH BÌNH,"ngách 23 ngõ 82 Phố Nguyễn Phúc Lai, Phường ô Chợ Dừa, Quận Đống đa, Hà Nội",Hà Nội,1,Hà Nội
+KH-00038,DOANH NGHIỆP TW TÂN TIẾN,"Đường Hoàng Văn Thụ, Tổ 1, Phường Phan Đình Phùng, Thành phố Thái Nguyên, Thái Nguyên",Thái Nguyên,54,Thái Nguyên
+KH-00039,CÔNG TY CỔ PHẦN ĐÔNG NAM,"Toà nhà Sun Home 2.1, khu phố 6, Phường An Thới, Thành phố Phú Quốc, Kiên Giang",Kiên Giang,33,Kiên Giang
+KH-00040,CÔNG TY TNHH VẠN LỢI,"đường Nguyễn Thái Học, Phường Quang Trung, Thành phố Vinh, Tỉnh Nghệ An, Việt Nam",Nghệ An,40,Nghệ An
+KH-00041,CỬA HÀNG XE ĐẠP ĐÔNG NAM,"Phường Trúc Lâm, thị xã Nghi Sơn, tỉnh Thanh Hóa",Thanh Hóa,55,Thanh Hóa
+KH-00042,HỘ KINH DOANH MẶT TRỜI,đường Ngọc Hồi - TT. Văn Điển - H. Thanh Trì - TP.Hà Nội - Việt Nam,Hà Nội,1,Hà Nội
+KH-00043,CÔNG TY TNHH LONG PHÚ,"Yên Thế , Phường Hoà An , Quận Cẩm Lệ , TP Đà Nẵng",Đà Nẵng,16,Đà Nẵng
+KH-00044,CÔNG TY TNHH THƯƠNG MẠI NGỌC ANH,"Phan Châu Trinh, Phường An Xuân, Thành phố Tam Kỳ, Quảng Nam",Quảng Nam,46,Quảng Nam
+KH-00045,CÔNG TY TNHH AN PHÁT,"Xã Duy Hải, Huyện Duy Xuyên, Quảng Nam",Quảng Nam,46,Quảng Nam
+KH-00046,CÔNG TY CỔ PHẦN THƯƠNG MẠI MẶT TRỜI,"Mẹ Suốt, Phường Hải Đình, Thành phố Đồng Hới, Tỉnh Quảng Bình",Quảng Bình,45,Quảng Bình
+KH-00047,CÔNG TY CỔ PHẦN THƯƠNG MẠI TÚ ANH,"TDP 3 Đoài, Thị trấn Yên Lạc, Huyện Yên Lạc, Tỉnh Vĩnh Phúc, Việt Nam",Vĩnh Phúc,61,Vĩnh Phúc
+KH-00056,DOANH NGHIỆP TW ĐÔNG NAM,"Đức Lý, Lý Nhân, tỉnh Hà Nam",Hà Nam,24,Hà Nam
+KH-00048,CÔNG TY TNHH THUỶ TIÊN,"khu đô thị Định Công, Đường Trần Điền, Phường Định Công, Quận Hoàng Mai, Thành phố Hà Nội, Việt Nam",Hà Nội,1,Hà Nội
+KH-00049,CÔNG TY CỔ PHẦN THUỶ TIÊN,"Khu phố Chương Xá, Phường Hồ, Thị xã Thuận Thành, Tỉnh Bắc Ninh, Việt Nam",Bắc Ninh,7,Bắc Ninh
+KH-00050,CÔNG TY TNHH AN PHÁT,"Km 78 quốc lộ 5, thôn Lương Xá, Xã Kim Liên, Huyện Kim Thành, Hải Dương",Hải Dương,26,Hải Dương
+KH-00051,CÔNG TY CỔ PHẦN KHẢI HOÀN,"phố Văn Nhuế, Phường Bần Yên Nhân, Thị xã Mỹ Hào, Tỉnh Hưng Yên, Việt Nam",Hưng Yên,31,Hưng Yên
+KH-00052,DOANH NGHIỆP TW TÂN TIẾN,"Km 28+100m, Quốc lộ 18, Phường Phả Lại, Thành phố Chí Linh, Hải Dương",Hải Dương,26,Hải Dương
+KH-00053,CÔNG TY TNHH TRƯỜNG THỊNH,"Khu Công nghiệp Quang Minh, Thị trấn Quang Minh, Huyện Mê Linh, Hà Nội",Hà Nội,1,Hà Nội
+KH-00054,HỘ KINH DOANH TRÍ ĐỨC,"Thôn An Trai, Xã Vân Canh, Huyện Hoài Đức, Hà Nội",Hà Nội,1,Hà Nội
+KH-00055,CÔNG TY TNHH THƯƠNG MẠI TÂY BẮC,"Cụm công nghiệp Cư Kuin, Xã Dray Bhăng, Huyện Cư Kuin, Tỉnh Đắk Lắk, Việt Nam",Đắk Lắk,17,Đắk Lắk
+KH-00057,CÔNG TY CỔ PHẦN THƯƠNG MẠI TOÀN THẮNG,"Điện Biên Cửa Bắc, Nam Định",Điện Biên,19,Điện Biên
+KH-00058,DOANH NGHIỆP TW SÁN LẠP,"Lê Thanh Nghị, TP Hải Dương",Hải Dương,26,Hải Dương
+KH-00059,CÔNG TY TNHH TRÍ ĐỨC,"Đường Độc Lập, Thị Trấn Cẩm Giàng, Huyện Cẩm Giàng, tỉnh Hải Dương",Hải Dương,26,Hải Dương
+KH-00060,CÔNG TY TNHH THƯƠNG MẠI VẠN LỢI,"TK Bình Tiến, thị trấn Bình Mỹ, huyện Bình Lục, tỉnh Hà Nam",Hà Nam,24,Hà Nam
+KH-00061,HỘ KINH DOANH THUỶ TIÊN,"TT. Mãn Đức, Tân Lạc, Hòa Bình",Hòa Bình,29,Hòa Bình
+KH-00062,CÔNG TY CỔ PHẦN YÊN BÌNH,"Lê Lai, Hoàng Văn Thụ, TP. Lạng Sơn, Lạng Sơn",Lạng Sơn,36,Lạng Sơn
+KH-00063,HỘ KINH DOANH VẠN LỢI,"xã Giáp Sơn, huyện Lục Ngạn, tỉnh Bắc Giang",Bắc Giang,5,Bắc Giang
+KH-00064,CÔNG TY TNHH SƠN HÀ,Khu 6 – TT Gia Lộc – Huyện Gia Lộc – Hải Dương,Hải Dương,26,Hải Dương
+KH-00065,CÔNG TY CỔ PHẦN QUANG VINH,"phố Vác, Dân Hòa, Thanh Oai, Hà Nội",Hà Nội,1,Hà Nội
+KH-00066,CÔNG TY CỔ PHẦN NGỌC ANH,"phố Săn, thị trấn Liên Quan, huyện Thạch Thất, thành phố Hà Nộ",Hà Nội,1,Hà Nội
+KH-00067,DOANH NGHIỆP TW NGỌC ANH,"đường Vạn Xuân, thôn Cựu Quán, xã Đức Thượng, huyện Hoài Đức, TP. Hà Nội",Hà Nội,1,Hà Nội
+KH-00068,CÔNG TY CỔ PHẦN SÁN LẠP,"Trưng Trắc, thị xã Phúc Yên, tỉnh Vĩnh Phúc",Vĩnh Phúc,61,Vĩnh Phúc
+KH-00069,CÔNG TY TNHH MINH PHƯƠNG,"hẻm 23 ngách 62, ngõ 29, Phố Khương Hạ, P.Khương Đình,Q. Thanh Xuân, TP. Hà Nội",Hà Nội,1,Hà Nội
+KH-00070,CÔNG TY TNHH THƯƠNG MẠI CHI THÀNH,"Nguyễn Văn Hưởng, Phường Thảo Điền, Thành phố Thủ Đức, TP Hồ Chí Minh",TP. Hồ Chí Minh,30,TP. Hồ Chí Minh
+KH-00071,CỬA HÀNG XE ĐẠP BÌNH MINH,"đường Minh Khai, Phường Vĩnh Tuy, Quận Hai Bà Trưng, Hà Nội",Hà Nội,1,Hà Nội
+KH-00072,DOANH NGHIỆP TW PHÚC AN,"Trần Phú, Phường Bắc Hồng, Thị xã Hồng Lĩnh, Hà Tĩnh",Hà Tĩnh,25,Hà Tĩnh
+KH-00073,CỬA HÀNG XE ĐẠP KHẢI HOÀN,"đường ĐH-HH33, thôn 6, Xã Hoằng Ngọc, Huyện Hoằng Hoá, Tỉnh Thanh Hoá",Thanh Hóa,55,Thanh Hóa
+KH-00074,CÔNG TY TNHH THƯƠNG MẠI HOÀ BÌNH,"khu 11-12, Thị trấn Chi Nê, Huyện Lạc Thuỷ, Tỉnh Hòa Bình, Việt Nam",Hòa Bình,29,Hòa Bình
+KH-00075,CÔNG TY CỔ PHẦN ĐÔNG NAM,"phố Tây Sơn, Trung Liệt, Đống Đa, Hà Nội",Hà Nội,1,Hà Nội
+KH-00076,CỬA HÀNG XE ĐẠP ĐẠI LỢI,"Lý Thái Tổ, Phường Trần Phú, Thành phố  Bắc Giang, Bắc Giang",Bắc Giang,5,Bắc Giang
+KH-00077,CÔNG TY CỔ PHẦN THƯƠNG MẠI NGỌC ANH,"Cụm 12, Xã Tích Giang, Huyện Phúc Thọ, Hà Nội",Hà Nội,1,Hà Nội
+KH-00078,HỘ KINH DOANH VĨNH PHÁT,"Thửa đất số 203-2, Khu đất dịch vụ Khu Đồng Mới, đường An Kh, Xã An Khánh, Huyện Hoài Đức, Hà Nội",Hà Nội,1,Hà Nội
+KH-00079,CÔNG TY TNHH ĐÔNG NAM,"đường Trần Nguyên Hãn, Phường Trần Nguyên Hãn, Thành phố  Bắc Giang, Bắc Giang",Bắc Giang,5,Bắc Giang
+KH-00080,HỘ KINH DOANH VĨNH PHÁT,"xã Vạn Thắng, huyện Ba Vì, Hà Nội",Hà Nội,1,Hà Nội
+KH-00081,CÔNG TY TNHH THƯƠNG MẠI KHẢI HOÀN,"Xã Lương Tài, Huyện Văn Lâm, Hưng Yên",Hưng Yên,31,Hưng Yên
+KH-00082,CÔNG TY TNHH THƯƠNG MẠI PHÚC AN,"Ngã tư thị trấn Lập Thạch, Lập Thạch, Vĩnh Phúc",Vĩnh Phúc,61,Vĩnh Phúc
+KH-00083,CÔNG TY CỔ PHẦN THƯƠNG MẠI THANH BÌNH,"chợ mễ, Xã Mễ Sở, Huyện Văn Giang, Hưng Yên",An Giang,2,An Giang
+KH-00084,CỬA HÀNG XE ĐẠP TOÀN THẮNG,"Ngã tư Kim Huy, Phan Đình Phùng, TX. Mỹ Hào, Hưng Yên",Hưng Yên,31,Hưng Yên
+KH-00085,CÔNG TY CỔ PHẦN THƯƠNG MẠI NGỌC ANH,"phố Ngọc Lâm, Phường Ngọc Lâm, Quận Long Biên, Hà Nội",Hà Nội,1,Hà Nội
+KH-00086,CÔNG TY TNHH NGỌC ANH,"Chợ Bún, Đa Tốn, Gia Lâm, Hà Nội",Hà Nội,1,Hà Nội
+KH-00087,CỬA HÀNG XE ĐẠP SÁN LẠP,"xã Diễn Kỷ, huyện Diễn Châu, tỉnh Nghệ An",Nghệ An,40,Nghệ An
+KH-00088,CỬA HÀNG XE ĐẠP SÁN LẠP,"Khối 5 Thị Trấn Cầu Giát , Huyện Quỳnh Lưu , Tỉnh Nghệ An",Nghệ An,40,Nghệ An
+KH-00089,HỘ KINH DOANH TOÀN THẮNG,"Khối 1, thị trấn Yên Thành, tỉnh Nghệ A",Nghệ An,40,Nghệ An
+KH-00090,CÔNG TY TNHH THƯƠNG MẠI TÂY BẮC,"đường Bà triệu, Phường Đông Thọ, Thành phố Thanh Hoá, Thanh Hoá",Thanh Hóa,55,Thanh Hóa
+KH-00091,CÔNG TY TNHH BÌNH MINH,"Ngõ 68/53/22 Cầu Giấy, Phường Quan Hoa, Quận Cầu Giấy, TP Hà Nội, Việt Nam",Hà Nội,1,Hà Nội
+KH-00092,CÔNG TY CỔ PHẦN THƯƠNG MẠI XUÂN MAI,"Lạc Long Quân, quận Tây Hồ, Hà Nội",Hà Nội,1,Hà Nội
+KH-00093,CÔNG TY CỔ PHẦN PHÚC AN,"Phạm Văn Đồng, Cổ Nhuế 2, Bắc Từ Liêm, Hà Nội",Hà Nội,1,Hà Nội
+KH-00094,HỘ KINH DOANH SÁN LẠP,"Khu Tân Tiến, xã Minh Tân, Cẩm Khê, Phú Thọ",Phú Thọ,43,Phú Thọ
+KH-00095,CÔNG TY CỔ PHẦN THƯƠNG MẠI KHẢI HOÀN,"đường mương Đan Hoài, thôn 6, Xã Song Phương, Huyện Hoài Đức, Hà Nội",Hà Nội,1,Hà Nội
+KH-00096,CÔNG TY TNHH THƯƠNG MẠI SƠN HÀ,"Xã Tiên Phương, Huyện Chương Mỹ, Thành phố Hà Nội, Việt Nam",Hà Nội,1,Hà Nội
+KH-00097,CÔNG TY TNHH XUÂN MAI,"Lũng Kênh, Đức Giang, Hoài Đức, Hà Nội",Hà Nội,1,Hà Nội
+KH-00098,HỘ KINH DOANH MẶT TRỜI,"đường phạm nguyễn du , phường nghi hoà , thị xã của lò , Nghệ An",Nghệ An,40,Nghệ An
+KH-00099,CÔNG TY TNHH NGỌC ANH,"phố Nguyễn Thái Học, Thị trấn Phùng, Huyện Đan Phượng, Hà Nội",Hà Nội,1,Hà Nội
+KH-00100,CỬA HÀNG XE ĐẠP ĐẠI LỢI,"CT1 Bắc Linh Đàm, Q. Hoàng Mai, Hà Nội",Hà Nội,1,Hà Nội
+KH-00101,CÔNG TY CỔ PHẦN THƯƠNG MẠI QUANG VINH,"ngõ 72 Dương Quảng Hàm, Cầu Giấy, Hà Nội",Hà Nội,1,Hà Nội
+KH-00102,CỬA HÀNG XE ĐẠP AN PHÁT,"Ngã 4, Đường 295, Thôn Đông, Xã Hoàn Sơn, Huyện Tiên Du, Bắc Ninh",Bắc Ninh,7,Bắc Ninh
+KH-00103,CÔNG TY CỔ PHẦN AN PHÁT,"phố Đông Hương, Thị trấn Nham Biền, Huyện Yên Dũng, Tỉnh Bắc Giang, Việt Nam",Bắc Giang,5,Bắc Giang
+KH-00104,DOANH NGHIỆP TW THUỶ TIÊN,"Chợ Đà, Thọ Dân, Triệu Sơn, Thanh Hóa",Thanh Hóa,55,Thanh Hóa
+KH-00105,CỬA HÀNG XE ĐẠP PHÚC AN,"Thị trấn Thuận Thành, Bắc Ninh",Bắc Ninh,7,Bắc Ninh
+KH-00106,CÔNG TY TNHH THƯƠNG MẠI TOÀN THẮNG,"Phố Giắt, TT Triệu Sơn, Triệu Sơn, Thanh Hóa",Thanh Hóa,55,Thanh Hóa
+KH-00107,CÔNG TY TNHH LONG PHÚ,"Thị trấn Chờ, Huyện Yên Phong, Bắc Ninh",Bắc Ninh,7,Bắc Ninh
+KH-00108,HỘ KINH DOANH LÊ ANH,"Đường 131, Tiên Dược, Sóc Sơn, Hà Nội",Hà Nội,1,Hà Nội
+KH-00109,CÔNG TY CỔ PHẦN VẠN LỢI,"Phố Yên, Tiền Phong, Mê Linh, Hà Nội",Hà Nội,1,Hà Nội
+KH-00110,CỬA HÀNG XE ĐẠP TÂY BẮC,"Phố Hạ, Xã Mê Linh, Huyện Mê Linh, Thành phố Hà Nội",Hà Nội,1,Hà Nội
+KH-00111,DOANH NGHIỆP TW MẶT TRỜI,"đường Minh Khai, phường Minh Khai, quận Hai Bà Trưng, thành phố Hà Nội",Hà Nội,1,Hà Nội
+KH-00112,HỘ KINH DOANH TÚ ANH,Khu 2- thị trấn Kim Tân- Thạch Thành - Thanh Hóa,Thanh Hóa,55,Thanh Hóa
+KH-00113,DOANH NGHIỆP TW XÂY DỰNG,"Mỹ Sơn, Xã Vĩnh Yên, Huyện Vĩnh Lộc, Thanh Hoá",Thanh Hóa,55,Thanh Hóa
+KH-00114,CỬA HÀNG XE ĐẠP NGỌC ANH,Phố Kiểu - Yên Trường - Yên Định - Thanh Hoá,Thanh Hóa,55,Thanh Hóa
+KH-00115,CÔNG TY CỔ PHẦN YÊN BÌNH,"Hà Bắc, Hà Trung, Thanh Hóa",Thanh Hóa,55,Thanh Hóa
+KH-00116,HỘ KINH DOANH TOÀN THẮNG,"Trung tâm thương mại chợ Đồng Than, xã Đồng Than, h.Yên Mỹ, Hưng Yên",Hưng Yên,31,Hưng Yên
+KH-00117,HỘ KINH DOANH YÊN BÌNH,"Liêu xá, Yên Mỹ, Hưng yên",Hưng Yên,31,Hưng Yên
+KH-00118,HỘ KINH DOANH HÙNG CƯỜNG,"Thửa - CN-2A.2, Lô CN-2A - Khu công nghiệp Bảo Minh mở rộng, Xã Liên Minh, Huyện Vụ Bản, Nam Định",Nam Định,39,Nam Định
+KH-00119,DOANH NGHIỆP TW MẶT TRỜI,"Hoài Đức, Hà Nội",Hà Nội,1,Hà Nội
+KH-00120,CÔNG TY TNHH THANH BÌNH,"Phố Vồi, thị trấn Thường Tín, Huyện Thường Tín, thành phố Hà Nội",Hà Nội,1,Hà Nội
+KH-00121,CÔNG TY TNHH CHI THÀNH,"Khu Giãn Dân Bùi Thị Cúc, TT. Ân Thi, Hưng Yên",Hưng Yên,31,Hưng Yên
+KH-00122,CÔNG TY TNHH CHI THÀNH,"Đội 5, Thôn Hạ Tân, Xã Vĩnh Khúc, Huyện Văn Giang, Hưng Yên",An Giang,2,An Giang
+KH-00123,CÔNG TY CỔ PHẦN THƯƠNG MẠI LONG PHÚ,"xã Tri Thủy, huyện Phú Xuyên, thành phố Hà Nội",Hà Nội,1,Hà Nội
+KH-00124,CÔNG TY CỔ PHẦN THƯƠNG MẠI AN PHÁT,"Xã Đồng Thắng, Huyện Triệu Sơn, Tỉnh Thanh Hoá",Thanh Hóa,55,Thanh Hóa
+KH-00125,HỘ KINH DOANH BÌNH MINH,"Triệu Sơn, Thanh Hóa",Thanh Hóa,55,Thanh Hóa
+KH-00126,HỘ KINH DOANH HOÀ BÌNH,"Xã Thọ Vực, Huyện Triệu Sơn, Tỉnh Thanh Hoá",Thanh Hóa,55,Thanh Hóa
+KH-00127,CỬA HÀNG XE ĐẠP TÂN TIẾN,"xã Tân Sơn, huyện Kim Bảng, tỉnh Hà Nam",Hà Nam,24,Hà Nam
+KH-00128,HỘ KINH DOANH TÂY BẮC,"Ngã tư Chợ Còng, TT Tĩnh Gia, Thanh Hóa",Thanh Hóa,55,Thanh Hóa
+KH-00129,CÔNG TY CỔ PHẦN LÊ ANH,"Xã Quảng Phong , Huyện Quảng Xương , Tĩnh Thanh Hoá",Thanh Hóa,55,Thanh Hóa
+KH-00130,CÔNG TY CỔ PHẦN THƯƠNG MẠI THUỶ TIÊN,"Lê Thái Tổ, phố Giắt, Thị trấn Triệu Sơn, Huyện Triệu Sơn, Thanh Hoá",Thanh Hóa,55,Thanh Hóa
+KH-00131,CÔNG TY TNHH QUANG VINH,"Xã Yên Nam, Duy Tiên, Hà Nam",Hà Nam,24,Hà Nam
+KH-00132,CÔNG TY TNHH THƯƠNG MẠI HOÀ BÌNH,"xã Diễn Tường, huyện Diễn Châu, tỉnh Nghệ An",Nghệ An,40,Nghệ An
+KH-00133,DOANH NGHIỆP TW YÊN BÌNH,"Thị trấn Nga Sơn, Huyện Nga Sơn, Thanh Hoá",Thanh Hóa,55,Thanh Hóa
+KH-00134,DOANH NGHIỆP TW PHÚ THỊNH,"Trần Nhân Tông, Phường Vĩnh Diện, Thị xã Điện Bàn, Tỉnh Quảng Nam, Việt Nam",Quảng Nam,46,Quảng Nam
+KH-00135,CỬA HÀNG XE ĐẠP XUÂN MAI,"xã Gia Tân, Huyện Gia Viễn, tỉnh Ninh Bình, Việt Nam",Ninh Bình,41,Ninh Bình
+KH-00136,CÔNG TY CỔ PHẦN NGỌC ANH,Tây Bình Cách - Xã Đông Xá - Huyện Đông Hưng - Thái Bình.,Thái Bình,53,Thái Bình
+KH-00137,CÔNG TY TNHH THƯƠNG MẠI QUANG VINH,"xã Trác Văn, huyện Duy Tiên, tỉnh Hà Nam",Hà Nam,24,Hà Nam
+KH-00138,CÔNG TY TNHH THƯƠNG MẠI VĨNH PHÁT,"thị trấn An Bài, huyện Quỳnh Phụ, tỉnh Thái Bình",Thái Bình,53,Thái Bình
+KH-00139,HỘ KINH DOANH YÊN BÌNH,"Khánh Thượng, Ba Vì, Hà Nội",Hà Nội,1,Hà Nội
+KH-00140,CÔNG TY TNHH XÂY DỰNG,"La Văn Cầu, Thị trấn Nam Sách, Huyện Nam Sách, Hải Dương",Hải Dương,26,Hải Dương
+KH-00141,CÔNG TY CỔ PHẦN THƯƠNG MẠI TÂN TIẾN,"Số 721+723 đường Trường Chinh, tổ Dân Phố Trường Chinh 2 Phường Quán Trữ, Quận Kiến An, Thành phố Hải Phòng, Việt Nam",Hải Phòng,27,Hải Phòng
+KH-00142,CÔNG TY TNHH THƯƠNG MẠI CHI THÀNH,Từ Liêm-Hà Nội,Hà Nội,1,Hà Nội
+KH-00143,DOANH NGHIỆP TW TÂY BẮC,"Phố Me, Thị trấn Hợp Hòa, Huyện Tam Dương, Tỉnh Vĩnh Phúc, Việt Nam",Vĩnh Phúc,61,Vĩnh Phúc
+KH-00144,CỬA HÀNG XE ĐẠP QUANG VINH,"Đường Hùng Vương, Phường Tích Sơn, Thành phố Vĩnh Yên, Tỉnh Vĩnh Phúc, Việt Nam",Vĩnh Phúc,61,Vĩnh Phúc
+KH-00145,HỘ KINH DOANH PHÚ THỊNH,"KDC số 11, Thôn Mỹ Trang, Xã Phổ Cường, Thị xã Đức Phổ, Quảng Ngãi",Quảng Ngãi,47,Quảng Ngãi
+KH-00146,HỘ KINH DOANH LONG PHÚ,"C17, Xã Thanh Xương, Huyện Điện Biên, Điện Biên",Điện Biên,19,Điện Biên
+KH-00147,CÔNG TY TNHH PHÚ THỊNH,"Quang Trung, phường Phú La, quận Hà Đông, Thành phố Hà Nội, Việt Nam",Hà Nội,1,Hà Nội
+KH-00148,HỘ KINH DOANH THUỶ TIÊN,"đường Tuệ Tĩnh, Thôn Gạch, TT Lai Cách, Cẩm Giàng, Hải Dươn",Hải Dương,26,Hải Dương
+KH-00149,CỬA HÀNG XE ĐẠP TÚ ANH,"Trần Hưng Đạo, P. An Lưu, TX Kinh Môn, Hải Dương",Hải Dương,26,Hải Dương
+KH-00150,HỘ KINH DOANH SÁN LẠP,"Thôn Tiên Tảo, Xã Thanh An, Huyện Thanh Hà, Tỉnh Hải Dương, Việt Nam",Hải Dương,26,Hải Dương
+KH-00151,CÔNG TY TNHH LÊ ANH,"Đường Nguyễn Chí Thanh , Phường Tân Giang , TP Hà Tĩnh , Tỉnh Hà Tĩnh",An Giang,2,An Giang
+KH-00152,HỘ KINH DOANH TRÍ ĐỨC,"Khối 3 Thị Trấn Đô Lương , Huyện Đô Lương , Tỉnh Nghệ An",Nghệ An,40,Nghệ An
+KH-00153,CÔNG TY CỔ PHẦN THƯƠNG MẠI PHÚ THỊNH,"Xã Thạch Châu , Huyện Lộc Hà , Tỉnh Hà Tĩnh",Hà Tĩnh,25,Hà Tĩnh
+KH-00154,DOANH NGHIỆP TW VĨNH PHÁT,"Xuân Giang, Xã Xuân Giang, Huyện Nghi Xuân, Hà Tĩnh",An Giang,2,An Giang
+KH-00155,DOANH NGHIỆP TW HÙNG CƯỜNG,"Phường Quang Trung, Quận Hà Đông, Hà Nội",Hà Nội,1,Hà Nội
+KH-00156,DOANH NGHIỆP TW VIỆT ANH,"Bà Triệu, Thị trấn Hậu Lộc, Huyện Hậu Lộc, Thanh Hoá",Thanh Hóa,55,Thanh Hóa
+KH-00157,CÔNG TY TNHH THƯƠNG MẠI LONG PHÚ,"phố Tràng Thi, phường Hàng Trống, Quận Hoàn Kiếm, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00158,CÔNG TY TNHH THƯƠNG MẠI VIỆT ANH,"Xã Hồng An, Huyện Hưng Hà, Thái Bình",Thái Bình,53,Thái Bình
+KH-00159,CÔNG TY TNHH THƯƠNG MẠI THANH BÌNH,"Đường N5, Khu công nghiệp Sóng Thần 3, Phường Phú Tân, Thành phố Thủ Dầu Một, Bình Dương",Bình Dương,9,Bình Dương
+KH-00160,CÔNG TY TNHH THƯƠNG MẠI TRÍ ĐỨC,"số 167 phố Trung Kính, Phường Yên Hoà, Quận Cầu Giấy, Hà Nội",Hà Nội,1,Hà Nội
+KH-00161,CÔNG TY TNHH THIÊN AN,phố Nguyễn Văn Ngọc - Phường Cống Vị - Quận Ba Đình - Hà Nội,Hà Nội,1,Hà Nội
+KH-00162,CÔNG TY CỔ PHẦN THƯƠNG MẠI CHI THÀNH,"No12, liền kề 519, khu DV 27,28, Phường Dương Nội, Quận Hà Đông, Thành phố Hà Nội, Việt Nam",Hà Nội,1,Hà Nội
+KH-00163,HỘ KINH DOANH XUÂN MAI,"Bà Triệu, Phường Hàng Bài, Quận Hoàn Kiếm, Hà Nội",Hà Nội,1,Hà Nội
+KH-00164,HỘ KINH DOANH XÂY DỰNG,Thân Nhân Trung - TT Bích Động - Việt Yên - Bắc Giang,Bắc Giang,5,Bắc Giang
+KH-00165,CÔNG TY CỔ PHẦN THƯƠNG MẠI TRƯỜNG THỊNH,"Dốc Tràng Than, TT. Thắng, H. Hiệp Hòa, Bắc Giang",Bắc Giang,5,Bắc Giang
+KH-00166,HỘ KINH DOANH QUANG VINH,Tổ 1 - Phường Mường Thanh - TP Điện Biên Phủ,Điện Biên,19,Điện Biên
+KH-00167,CÔNG TY CỔ PHẦN THƯƠNG MẠI LÊ ANH,"A1 tập thể D8 đường Ngọc Hồi, Xã Tứ Hiệp, Huyện Thanh Trì, Hà Nội",Hà Nội,1,Hà Nội
+KH-00168,DOANH NGHIỆP TW ĐẠI LỢI,"Liền Kề 373, NO11, khu Cổng Đồng, tổ dân phố số 4, đường Tố Hữu, Phường La Khê, Quận Hà Đông, Thành phố Hà Nội, Việt Nam",Hà Nội,1,Hà Nội
+KH-00169,CÔNG TY TNHH THƯƠNG MẠI VĨNH PHÁT,"phố Yên Thổ, Thị trấn Yên Thịnh, Huyện Yên Mô, Ninh Bình",Ninh Bình,41,Ninh Bình
+KH-00170,CỬA HÀNG XE ĐẠP TRƯỜNG THỊNH,"xanh, Xã Khánh Thiện, Huyện Yên Khánh, Tỉnh Ninh Bình, Việt Nam",Ninh Bình,41,Ninh Bình
+KH-00171,CÔNG TY CỔ PHẦN QUANG VINH,"Tôn Đức Thắng, P Hàng Bột, quận Đống Đa, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00172,CỬA HÀNG XE ĐẠP XÂY DỰNG,Đường Trang Quan - Xã An Đồng - Huyện An Dương - Hải Phòng.,Hải Phòng,27,Hải Phòng
+KH-00173,DOANH NGHIỆP TW PHÚ THỊNH,"Phố Kim mã, Phường Kim mã, Quận Ba Đình, Thành phố Hà Nội, Việt Nam",Hà Nội,1,Hà Nội
+KH-00174,CÔNG TY CỔ PHẦN THƯƠNG MẠI LÊ ANH,"Tôn Đức Thắng, Phường Hoà Khánh Nam, Quận Liên Chiểu, Đà Nẵng",Đà Nẵng,16,Đà Nẵng
+KH-00175,CÔNG TY CỔ PHẦN THƯƠNG MẠI TÂN TIẾN,"Ngách 8/11/36/144, Đường Lê Quang Đạo,Phường Phú Đô,Quận Nam Từ Liêm,Thành phố Hà Nội,Việt Nam",Hà Nội,1,Hà Nội
+KH-00176,CÔNG TY TNHH THUỶ TIÊN,"Tôn Đức Thắng, Phường Hàng Bột, Quận Đống Đa, Thành phố Hà Nội",Hà Nội,1,Hà Nội
+KH-00177,CÔNG TY CỔ PHẦN TRƯỜNG THỊNH,"Tòa nhà văn phòng điều hành VTK, Khu công nghiệp sạch, Xã Xuân Trúc, Huyện Ân Thi, Tỉnh Hưng Yên, Việt Nam",Hưng Yên,31,Hưng Yên
+KH-00178,CÔNG TY CỔ PHẦN QUANG VINH,"ngõ 91 phố Ô Đồng Lầm, Phường Phương Liên - Trung Tự, Quận Đống Đa, Thành phố Hà Nội, Việt Nam",Hà Nội,1,Hà Nội
+KH-00179,CÔNG TY CỔ PHẦN TÂN TIẾN,"tổ 3, Phường Phú Đô, Quận Nam Từ Liêm, Thành phố Hà Nội, Việt Nam",Hà Nội,1,Hà Nội
+KH-00180,CÔNG TY TNHH THƯƠNG MẠI VẠN LỢI,"Xã Quảng Tâm, Huyện Quảng Xương, Thanh Hoá",Thanh Hóa,55,Thanh Hóa
+KH-00181,CÔNG TY TNHH LONG PHÚ,"Cách mạng Tháng 8, Phường Tứ Hạ, Thị xã Hương Trà, Tỉnh Thừa Thiên Huế, Việt Nam",Thừa Thiên Huế,56,Thừa Thiên Huế
+KH-00182,CÔNG TY CỔ PHẦN PHÚ THỊNH,"Tiểu khu 6 và tiểu khu 19, thị trấn Hát Lót, huyện Mai Sơn, tỉnh Sơn La",Sơn La,51,Sơn La
+KH-00183,DOANH NGHIỆP TW LONG PHÚ,"Ngã 5 Chằm Cũ, TT. Đồi Ngô, Lục Nam, Bắc Giang",Bắc Giang,5,Bắc Giang
+KH-00184,DOANH NGHIỆP TW ĐẠI LỢI,"Tại nhà số 327, đường Cù Chính Lan, tổ 1, Phường Đồng Tiến, Thành phố Hoà Bình, Hòa Bình",Hòa Bình,29,Hòa Bình
+KH-00185,CÔNG TY TNHH THƯƠNG MẠI VĨNH PHÁT,"Xã Phú Thành, Huyện Lạc Thuỷ, Tỉnh Hòa Bình.",Hòa Bình,29,Hòa Bình
+KH-00186,HỘ KINH DOANH XÂY DỰNG,"Khu CN Bình Xuyên,Thị trấn Hương Canh,Huyện Bình Xuyên, Tỉnh Vĩnh Phúc,Việt Nam",Vĩnh Phúc,61,Vĩnh Phúc
+KH-00187,HỘ KINH DOANH NGỌC ANH,"Lotte Center Hà Nội, số 54 đường Liễu Giai, Phường Cống Vị, Quận Ba Đình, Hà Nội",Hà Nội,1,Hà Nội
+KH-00188,DOANH NGHIỆP TW XÂY DỰNG,"Bà Triệu, Phường Điện Biên, Thành phố Thanh Hóa, Tỉnh Thanh Hóa, Việt Nam",Điện Biên,19,Điện Biên
+KH-00189,CÔNG TY CỔ PHẦN MẶT TRỜI,"Trích Sài,  Quận Tây Hồ, Thành Phố Hà Nội",Hà Nội,1,Hà Nội
+KH-00190,HỘ KINH DOANH XÂY DỰNG,"Xã An Khánh, huyện Hoài Đức, Hà Nội",Hà Nội,1,Hà Nội
+KH-00191,CÔNG TY CỔ PHẦN THƯƠNG MẠI XUÂN MAI,"Khu công nghiệp Tân Quang, Thôn Ngọc Đà, Xã Tân Quang, Huyện Văn Lâm, Tỉnh Hưng Yên",Hưng Yên,31,Hưng Yên
+KH-00192,HỘ KINH DOANH KHẢI HOÀN,"đường Cầu Diễn, phường Minh Khai, quận Bắc Từ Liêm, thành phố Hà Nội, Việt Nam",Hà Nội,1,Hà Nội
+KH-00193,CÔNG TY TNHH TÚ ANH,Đường Nguyễn Trải - P Ba Đình TP Thanh Hoá,Thanh Hóa,55,Thanh Hóa
+KH-00194,CỬA HÀNG XE ĐẠP SÁN LẠP,"Xã Thanh Lâm, Huyện Mê Linh, Thành phố Hà Nội",Hà Nội,1,Hà Nội
+KH-00195,CỬA HÀNG XE ĐẠP BÌNH MINH,"Cao Lỗ, Phan Xá, Uy Nỗ, Đông Anh, Hà Nội",Hà Nội,1,Hà Nội
+KH-00196,CÔNG TY CỔ PHẦN NAM TIẾN,"Phố Mới, Thanh Khương, Thuận Thành, Bắc Ninh",Bắc Ninh,7,Bắc Ninh
+KH-00197,CÔNG TY TNHH THƯƠNG MẠI MINH PHƯƠNG,"đường Nguyễn Văn Hưởng, Phường Giang Biên, Quận Long Biên, Thành phố Hà Nội, Việt Nam",Hà Nội,1,Hà Nội
+KH-00198,CÔNG TY TNHH TRÍ ĐỨC,"CC Eurowindow River Park, Đông Hội, Đông Anh, Hà Nội",Hà Nội,1,Hà Nội
+KH-00199,CỬA HÀNG XE ĐẠP TÚ ANH,"Tiểu Khu 3 , Thị Trấn Hà Trung , Hà Trung , Tỉnh Thanh Hoá",Thanh Hóa,55,Thanh Hóa
+KH-00200,CÔNG TY CỔ PHẦN TOÀN THẮNG,"Hà Huy Tập, Thị trấn Yên Viên, Huyện Gia Lâm, Hà Nội",Hà Nội,1,Hà Nội
+KH-00201,HỘ KINH DOANH XUÂN MAI,"KDC Đại Tân, phường Hoàng Tân, TP. Chí Linh, Hải Dương",Hải Dương,26,Hải Dương
+KH-00202,CÔNG TY CỔ PHẦN XUÂN MAI,"tổ dân phố Hòa Sơn, thị trấn Chúc Sơn, huyện Chương Mỹ, thành phố Hà Nội",Hà Nội,1,Hà Nội
+KH-00203,CÔNG TY CỔ PHẦN THƯƠNG MẠI HOÀ BÌNH,"Khu 15, Thị trấn Hùng Sơn, Huyện Lâm Thao, Tỉnh Phú Thọ, Việt Nam",Phú Thọ,43,Phú Thọ
+KH-00204,CÔNG TY CỔ PHẦN ĐẠI DƯƠNG,"Xã Hiển Khánh,Huyện Vụ Bản, Tỉnh Nam Định,Việt Nam",Nam Định,39,Nam Định
+KH-00205,CỬA HÀNG XE ĐẠP QUANG VINH,"khu Trới 10, Phường Hoành Bồ, Thành phố Hạ Long, Tỉnh Quảng Ninh, Việt Nam",Quảng Ninh,48,Quảng Ninh
+KH-00206,CÔNG TY TNHH THƯƠNG MẠI MẶT TRỜI,"Thọ Xuân, Đan Phượng, Hà Nội",Hà Nội,1,Hà Nội
+KH-00207,CỬA HÀNG XE ĐẠP VẠN LỢI,"Khu 2, TT Nếnh, Phường Nếnh, Thị xã Việt Yên, Bắc Giang",Bắc Giang,5,Bắc Giang
+KH-00208,CỬA HÀNG XE ĐẠP TÂY BẮC,"đường Xuân Thủy, phường dịch vọng hậu quận Cầu Giấy, Hà Nội",Hà Nội,1,Hà Nội
+KH-00209,CÔNG TY TNHH THƯƠNG MẠI VIỆT ANH,"Tô Hiệu, phường Hồ Nam, quận Lê Chân, TP Hải Phòng",Hải Phòng,27,Hải Phòng
+KH-00210,DOANH NGHIỆP TW SÁN LẠP,"Tòa nhà Công Nghĩa , 295 Trần Nhân Tông, Phường Yên Thanh, Thành phố Uông Bí, Quảng Ninh",Quảng Ninh,48,Quảng Ninh
+KH-00211,CỬA HÀNG XE ĐẠP NAM TIẾN,"Đường Nguyễn Du , Thị Trấn Tiên Điền ,Huyện Nghi Xuân ,Tỉnh Hà Tĩnh",Hà Tĩnh,25,Hà Tĩnh
+KH-00212,CỬA HÀNG XE ĐẠP TÂY BẮC,"Đường 424 - Xóm Bãi, xã Hòa Xá, huyện Ứng Hòa, thành phố Hà Nội",Hà Nội,1,Hà Nội
+KH-00213,CÔNG TY CỔ PHẦN HOÀ BÌNH,"tổ dân phố 12, Phường Mộ Lao, Quận Hà Đông, Thành phố Hà Nội, Việt Nam",Hà Nội,1,Hà Nội
+KH-00214,DOANH NGHIỆP TW QUANG VINH,"Nguyễn Chế Nghĩa, Thị trấn Gia Lộc, Huyện Gia Lộc, Tỉnh Hải Dương, Việt Nam",Hải Dương,26,Hải Dương
+KH-00215,DOANH NGHIỆP TW LÊ ANH,"phố Kim Thành, Thị trấn Đồng Lộc, Huyện Can Lộc, Hà Tĩnh",Hà Tĩnh,25,Hà Tĩnh
+KH-00216,HỘ KINH DOANH NGỌC ANH,"Thi Sơn, Kim Bảng, Hà Nam",Hà Nam,24,Hà Nam
+KH-00217,DOANH NGHIỆP TW ĐẠI DƯƠNG,"Lý Bôn, Phường Đề Thám, thành phố Thái Bình, tỉnh Thái Bình",Thái Bình,53,Thái Bình
+KH-00218,CÔNG TY TNHH THƯƠNG MẠI BÌNH MINH,"xã Kim Anh, Kim Thành, Hải Dương",Hải Dương,26,Hải Dương
+KH-00219,CÔNG TY CỔ PHẦN THƯƠNG MẠI PHÚ THỊNH,"phố 9 Phường Vân Giang, TP. Ninh Bình, Tỉnh Ninh Bình",An Giang,2,An Giang
+KH-00220,CỬA HÀNG XE ĐẠP VIỆT ANH,"Lễ, xã Hải Hưng, huyện Hải Hậu, tỉnh Nam Định",Nam Định,39,Nam Định
+KH-00221,CÔNG TY CỔ PHẦN VĨNH PHÁT,"Đội 3, Dị Chế, Tiên Lữ, Hưng Yên",Hưng Yên,31,Hưng Yên
+KH-00222,CÔNG TY CỔ PHẦN TÂN TIẾN,"tổ 3, phường Phú La, quận Hà Đông,TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00223,CÔNG TY CỔ PHẦN THƯƠNG MẠI AN PHÁT,"Phố Mới, Thôn Dộc, Xã Bình Minh, Huyện Thanh Oai, Thành phố Hà Nội",Hà Nội,1,Hà Nội
+KH-00224,DOANH NGHIỆP TW ĐÔNG NAM,"xã Quỳnh Lưu, huyện Nho Quan, tỉnh Ninh Bình",Ninh Bình,41,Ninh Bình
+KH-00225,CÔNG TY TNHH TÂY BẮC,"Phạm Ngọc Nhị, TT Đồng Văn, Duy Tiên, Hà Nam",Hà Nam,24,Hà Nam
+KH-00226,CÔNG TY CỔ PHẦN VĨNH PHÁT,"Đầu đê Tiến Thịnh, Mê Linh, Hà Nội",Hà Nội,1,Hà Nội
+KH-00227,CÔNG TY TNHH THƯƠNG MẠI TRÍ ĐỨC,"Minh Khai, Đông Ngàn, Từ Sơn, Bắc Ninh",Bắc Ninh,7,Bắc Ninh
+KH-00228,CÔNG TY CỔ PHẦN THƯƠNG MẠI XUÂN MAI,"Trâu Quỳ, Gia Lâm, Hà Nội",Hà Nội,1,Hà Nội
+KH-00229,DOANH NGHIỆP TW TRÍ ĐỨC,"Đường 295, Lý Viên, Bắc Lý, Hiệp Hòa, Bắc Giang",Bắc Giang,5,Bắc Giang
+KH-00230,DOANH NGHIỆP TW ĐẠI LỢI,"Cầu Diễn, Phúc Diễn, Bắc Từ Liêm, Hà Nội",Hà Nội,1,Hà Nội
+KH-00231,CÔNG TY CỔ PHẦN THANH BÌNH,"Chợ Đường Cái, Văn Lâm, Hưng Yên",Hưng Yên,31,Hưng Yên
+KH-00232,HỘ KINH DOANH HOÀ BÌNH,"Khối Phước Trạch, Phường Cửa Đại, Thành phố Hội An, Tỉnh Quảng Nam, Việt Nam",Quảng Nam,46,Quảng Nam
+KH-00233,DOANH NGHIỆP TW CHI THÀNH,"xã Thái Thịnh, huyện Thái Thụy, tỉnh Thái Bình",Thái Bình,53,Thái Bình
+KH-00234,CÔNG TY TNHH KHẢI HOÀN,"xã Nam Hồng, huyện Tiền Hải, tỉnh Thái Bình",Thái Bình,53,Thái Bình
+KH-00235,CÔNG TY CỔ PHẦN THƯƠNG MẠI CHI THÀNH,"Non Côi, thị trấn Gôi, Vụ Bản, Nam Định",Nam Định,39,Nam Định
+KH-00236,CỬA HÀNG XE ĐẠP ĐÔNG NAM,"TDP Phượng Bãi, Phường Biên Giang, Quận Hà Đông, Thành Phố Hà Nội",Hà Nội,1,Hà Nội
+KH-00237,DOANH NGHIỆP TW LÊ ANH,"đường chiến thắng Sông Lô, tổ 2, Phường Tân Quang, Thành Phố Tuyên Quang, Tỉnh Tuyên Quang, Việt Nam",Tuyên Quang,59,Tuyên Quang
+KH-00238,CÔNG TY CỔ PHẦN THƯƠNG MẠI TRƯỜNG THỊNH,"đường Hùng Vương, phường Bến Gót, TP. Việt Trì, Phú Thọ",Phú Thọ,43,Phú Thọ
+KH-00239,HỘ KINH DOANH THANH BÌNH,"Khối Thanh Chiếm, Phường Thanh Hà, Thành phố Hội An, Quảng Nam",Quảng Nam,46,Quảng Nam
+KH-00240,CÔNG TY CỔ PHẦN TRÍ ĐỨC,"Tiểu khu Cơ Quan, thị trấn NT Mộc Châu, huyện Mộc Châu, tỉnh Sơn La",Sơn La,51,Sơn La
+KH-00241,HỘ KINH DOANH PHÚ THỊNH,"tổ dân phố 4, phường Ba Hàng, thị xã Phổ Yên, tỉnh Thái Nguyên",Thái Nguyên,54,Thái Nguyên
+KH-00242,CÔNG TY CỔ PHẦN THƯƠNG MẠI HÙNG CƯỜNG,"Tổ 4,  Phường Sông Cầu, Thành Phố Bắc Kạn, Bắc Kạn",Bắc Kạn,6,Bắc Kạn
+KH-00243,HỘ KINH DOANH VĨNH PHÁT,"Xã Bình Nghĩa, Huyện Bình Lục, Tỉnh Hà Nam",Hà Nam,24,Hà Nam
+KH-00244,CÔNG TY CỔ PHẦN THƯƠNG MẠI AN PHÁT,"khu 2- trạm thản, Xã Trạm Thản, Huyện Phù Ninh, Tỉnh Phú Thọ, Việt Nam",Phú Thọ,43,Phú Thọ
+KH-00245,CỬA HÀNG XE ĐẠP TÂN TIẾN,"Hồng Hà, Phường Chương Dương, Quận Hoàn Kiếm, Thành phố Hà Nội",Hà Nội,1,Hà Nội
+KH-00246,CỬA HÀNG XE ĐẠP TRƯỜNG THỊNH,"Thụy Khuê, Xã Sài Sơn, Huyện Quốc Oai, Hà Nội",Hà Nội,1,Hà Nội
+KH-00247,HỘ KINH DOANH NGỌC ANH,"Nho Lâm, Tân Lập, Yên Mỹ, Hưng Yên",Hưng Yên,31,Hưng Yên
+KH-00248,CÔNG TY CỔ PHẦN THƯƠNG MẠI ĐẠI DƯƠNG,"Khối 5, ngã tư thị trấn Cầu Giát, huyện Quỳnh Lưu, Nghệ An",Nghệ An,40,Nghệ An
+KH-00249,HỘ KINH DOANH PHÚC AN,"Ngã tư Chợ Túc, xã Xuân Lâm, huyện Tĩnh Gia, tỉnh Thanh Hóa",Thanh Hóa,55,Thanh Hóa
+KH-00250,DOANH NGHIỆP TW XUÂN MAI,"đường Nguyễn Trãi, phường Thanh Xuân, quận Thanh Xuân, thành phố Hà Nội",Hà Nội,1,Hà Nội
+KH-00251,HỘ KINH DOANH KHẢI HOÀN,"Tân Việt, Xã Tân Việt, Huyện Yên Mỹ, Hưng Yên",Hưng Yên,31,Hưng Yên
+KH-00252,CÔNG TY TNHH TÂY BẮC,"xã Hữu Văn, Chương Mỹ, Hà Nội",Hà Nội,1,Hà Nội
+KH-00253,CÔNG TY TNHH YÊN BÌNH,"Nhà số 7, Khu đấu giá Đồng Đỗ, Tổ 13, Phường Thượng Thanh, Quận Long Biên, Thành phố Hà Nội, Việt Nam",Hà Nội,1,Hà Nội
+KH-00254,CỬA HÀNG XE ĐẠP ĐÔNG NAM,"đường Lê Công Thanh, P. HBT, TP Phủ Lý, Hà Nam",Hà Nam,24,Hà Nam
+KH-00255,CÔNG TY TNHH PHÚ THỊNH,"Tân An, Thanh Hà, Hải Dương",Hải Dương,26,Hải Dương
+KH-00256,CÔNG TY TNHH XUÂN MAI,"đường 70, xã Tân Triều, huyện Thanh Trì, thành phố Hà Nội",Hà Nội,1,Hà Nội
+KH-00257,HỘ KINH DOANH PHÚC AN,"phố Trương Công Giai, Phường Dịch Vọng, Quận Cầu Giấy, Hà Nội",Hà Nội,1,Hà Nội
+KH-00258,CỬA HÀNG XE ĐẠP HOÀ BÌNH,"phố Xã Đàn, Phường Nam Đồng, Quận Đống đa, Hà Nội",Hà Nội,1,Hà Nội
+KH-00259,DOANH NGHIỆP TW MINH PHƯƠNG,"Kim Nỗ, Đông Anh, Hà Nội",Hà Nội,1,Hà Nội
+KH-00260,CỬA HÀNG XE ĐẠP XUÂN MAI,Sóc Sơn-Hà Nội,Hà Nội,1,Hà Nội
+KH-00261,CÔNG TY TNHH THƯƠNG MẠI VẠN LỢI,"TDP Nhuệ Giang, Phường Tây Mỗ, Quận Nam Từ Liêm, Hà Nội",Hà Nội,1,Hà Nội
+KH-00262,CÔNG TY TNHH VIỆT ANH,"thôn Bạch Trữ, xã Tiến Thắng, Mê Linh, Hà Nội",Hà Nội,1,Hà Nội
+KH-00263,DOANH NGHIỆP TW TRƯỜNG THỊNH,"TK 2, Thị trấn Thiệu Hóa, Huyện Thiệu Hoá, Thanh Hoá",Thanh Hóa,55,Thanh Hóa
+KH-00264,DOANH NGHIỆP TW NGỌC ANH,"Xả Hải Châu , Thị Xã Nghi Sơn , Tỉnh Thanh Hoá",Thanh Hóa,55,Thanh Hóa
+KH-00265,CÔNG TY TNHH THƯƠNG MẠI PHÚC AN,phố số 6 - Thị trấn Diêm Điền - Huyện Thái Thụy - Thái Bình.,Thái Bình,53,Thái Bình
+KH-00266,CỬA HÀNG XE ĐẠP TÂN TIẾN,"Thị trấn Xuân Trường, huyện Xuân Trường, tỉnh Nam Định",Nam Định,39,Nam Định
+KH-00267,CÔNG TY CỔ PHẦN HÙNG CƯỜNG,"Đội 16, Yên Cường, Ý Yên, Nam Định",Nam Định,39,Nam Định
+KH-00268,CÔNG TY CỔ PHẦN THƯƠNG MẠI TRƯỜNG THỊNH,"tổ dân phố Văn Giang, Thị trấn Đại Nghĩa, Huyện Mỹ Đức, Thành phố Hà Nội, Việt Nam",Hà Nội,1,Hà Nội
+KH-00269,HỘ KINH DOANH AN PHÁT,"Khu 8, thị trấn Hạ Hòa, Hạ Hòa, Phú Thọ",Phú Thọ,43,Phú Thọ
+KH-00270,DOANH NGHIỆP TW TÚ ANH,"Khu 22, Hoàng Xá, Xã Hoàng Xá, Huyện Thanh Thuỷ, Tỉnh Phú Thọ, Việt Nam",Phú Thọ,43,Phú Thọ
+KH-00271,CÔNG TY CỔ PHẦN THƯƠNG MẠI HÙNG CƯỜNG,"TDP 15, Phường Tây Tựu, Quận Bắc Từ Liêm, Hà Nội",Hà Nội,1,Hà Nội
+KH-00272,CÔNG TY TNHH THƯƠNG MẠI VĨNH PHÁT,"Phố Chợ Lầm, thị trấn Tam Hồng, Yên Lạc, Vĩnh Phúc",Vĩnh Phúc,61,Vĩnh Phúc
+KH-00273,CÔNG TY TNHH THƯƠNG MẠI PHÚ THỊNH,"Hợp lý, Xã Hợp Lý, Huyện Lập Thạch, Tỉnh Vĩnh Phúc, Việt Nam",Vĩnh Phúc,61,Vĩnh Phúc
+KH-00274,CÔNG TY CỔ PHẦN THƯƠNG MẠI YÊN BÌNH,"Khu 4, thị trấn Tứ Trưng, Vĩnh Tường, Vĩnh Phúc",Vĩnh Phúc,61,Vĩnh Phúc
+KH-00275,CÔNG TY CỔ PHẦN THƯƠNG MẠI QUANG VINH,"xã Kỳ Phú, huyện Đại Từ, Thái Nguyên",Thái Nguyên,54,Thái Nguyên
+KH-00276,CÔNG TY TNHH VẠN LỢI,"Ngọc Lâm, Long Biên, Hà Nội",Hà Nội,1,Hà Nội
+KH-00277,CÔNG TY CỔ PHẦN THƯƠNG MẠI VĨNH PHÁT,"Khối 1, Phường Hồng Sơn, Thành phố Vinh, Nghệ An",Nghệ An,40,Nghệ An
+KH-00278,CÔNG TY TNHH QUANG VINH,"Cổng chợ Đường 2, Phủ Lỗ, Sóc Sơn, Hà Nội",Hà Nội,1,Hà Nội
+KH-00279,CỬA HÀNG XE ĐẠP CHI THÀNH,"Ki ốt số 14 Chợ Hòa Mạc, phố Phú Hòa, thị trấn Hòa Mạc, huyện Duy Tiên, tỉnh Hà Nam",Hà Nam,24,Hà Nam
+KH-00280,CÔNG TY TNHH THƯƠNG MẠI MINH PHƯƠNG,"xã Yên Bắc, Duy Tiên, Hà Nam",Hà Nam,24,Hà Nam
+KH-00281,CỬA HÀNG XE ĐẠP PHÚC AN,"Trần Hưng Đạo , Phường Quảng Tiến , TP Sầm Sơn , Tỉnh Thanh Hoá",Thanh Hóa,55,Thanh Hóa
+KH-00282,CÔNG TY TNHH THƯƠNG MẠI LONG PHÚ,"xã Ngũ Hiệp, quận Thanh Trì, thành phố Hà Nội.",Hà Nội,1,Hà Nội
+KH-00283,CỬA HÀNG XE ĐẠP TRƯỜNG THỊNH,"Bồ Thời, Hồng Tiến, Khoái Châu, Hưng Yên",Hưng Yên,31,Hưng Yên
+KH-00284,HỘ KINH DOANH NGỌC ANH,"Ngã 35, Tứ Mỹ, Phùng Chí Kiên, Mỹ Hào, Hưng Yên",Hưng Yên,31,Hưng Yên
+KH-00285,CÔNG TY TNHH ĐÔNG NAM,"thị trấn Quốc Oai, Quốc Oai, Hà Nội",Hà Nội,1,Hà Nội
+KH-00286,DOANH NGHIỆP TW VIỆT ANH,"Liễu Giai, Cống Vị, Ba Đình, Hà Nội",Hà Nội,1,Hà Nội
+KH-00287,CÔNG TY TNHH THƯƠNG MẠI THUỶ TIÊN,"Khu phố 1 ,Thị trấn Hương Canh,Huyện Bình Xuyên, Tỉnh Vĩnh Phúc,Việt Nam",Vĩnh Phúc,61,Vĩnh Phúc
+KH-00288,CÔNG TY TNHH THƯƠNG MẠI TOÀN THẮNG,"Khối Bắc Mỹ, phường Quỳnh Thiện, thị xã Hoàng Mai, tỉnh Nghệ An",Nghệ An,40,Nghệ An
+KH-00289,CÔNG TY CỔ PHẦN KHẢI HOÀN,"Ga Lạc Đạo, Văn Lâm, Hưng Yên",Hưng Yên,31,Hưng Yên
+KH-00290,CÔNG TY CỔ PHẦN THƯƠNG MẠI TÂY BẮC,"đường Nguyễn Lương Bằng, TT. Kim Động, Hưng Yên",Hưng Yên,31,Hưng Yên
+KH-00291,CÔNG TY TNHH VĨNH PHÁT,"Xã Đức Lý, Huyện Lý Nhân, Tỉnh Hà Nam",Hà Nam,24,Hà Nam
+KH-00292,CÔNG TY TNHH VIỆT ANH,"phố Vũ Tông Phan, Phường Khương Đình, Quận Thanh Xuân, Hà Nội",Hà Nội,1,Hà Nội
+KH-00293,CÔNG TY TNHH THƯƠNG MẠI TÚ ANH,"Phòng 303, tầng 3, tòa nhà Detech, số 8 Tôn Thất Thuyết, phường Mỹ Đình 2, quận Nam Từ Liêm, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00294,HỘ KINH DOANH SÁN LẠP,"Khu Công nghiệp Đình Vũ,Phường Đông Hải 2,Quận Hải An,Thành phố Hải Phòng,Việt Nam",Hải Phòng,27,Hải Phòng
+KH-00295,DOANH NGHIỆP TW XÂY DỰNG,"Phố Mới, Xóm Thượng, Cổ Loa, Đông Anh, Hà Nội",Hà Nội,1,Hà Nội
+KH-00296,CÔNG TY TNHH THƯƠNG MẠI HOÀ BÌNH,"phố Cầu Bây, Phường Sài Đồng, quận Long Biên, thành phố Hà Nội",Hà Nội,1,Hà Nội
+KH-00297,CỬA HÀNG XE ĐẠP TÂY BẮC,"đường Ngọc Lâm, phường Ngọc Lâm, quận Long Biên, Hà Nội",Hà Nội,1,Hà Nội
+KH-00298,CÔNG TY CỔ PHẦN THƯƠNG MẠI ĐÔNG NAM,"Cầu Xây, Xã Tân Dân, Huyện Sóc Sơn, Hà Nội",Hà Nội,1,Hà Nội
+KH-00299,CỬA HÀNG XE ĐẠP VIỆT ANH,"đường Nguyễn Tấn Thiện, Thị trấn Phổ Châu, Hương Sơn, Hà Tĩnh",Hà Tĩnh,25,Hà Tĩnh
+KH-00300,CÔNG TY TNHH THƯƠNG MẠI QUANG VINH,"Dương Xá, xã Dương Quang, TX. Mỹ Hào, Hưng Yên
+Hưng Yên, Việt Nam",Hưng Yên,31,Hưng Yên
+KH-00301,CÔNG TY TNHH THƯƠNG MẠI THUỶ TIÊN,"xã Thanh Sơn, huyện Kiến Thụy, thành phố Hải Phòng, Việt Nam",Hải Phòng,27,Hải Phòng
+KH-00302,CÔNG TY TNHH XÂY DỰNG,"đường Trần Phú, tổ 21, Phường Minh Khai, TP Hà Giang, Hà Giang",Hà Giang,23,Hà Giang
+KH-00303,CÔNG TY CỔ PHẦN BÌNH MINH,"huyện Thanh Oai, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00304,DOANH NGHIỆP TW TÚ ANH,"Phú Thượng, Tây Hồ, Hà Nội",Hà Nội,1,Hà Nội
+KH-00305,CÔNG TY CỔ PHẦN TÂY BẮC,"chùa Thông, Phường sơn lộc, Thị Xã Sơn Tây, Thành phố Hà Nội, Việt Nam",Hà Nội,1,Hà Nội
+KH-00306,CÔNG TY TNHH HOÀ BÌNH,"đường Trường Chinh, phường Đồng Xuân, TT. Phúc Yên, Vĩnh Phúc",Vĩnh Phúc,61,Vĩnh Phúc
+KH-00307,DOANH NGHIỆP TW THIÊN AN,"Nguyễn Bình, Khu 3, Phường Đông Triều, TX Đông Triều, Tỉnh Quảng Ninh",Quảng Ninh,48,Quảng Ninh
+KH-00308,CÔNG TY TNHH THIÊN AN,Cường Tráng - An Thịnh - Lương Tài - Bắc Ninh,Bắc Ninh,7,Bắc Ninh
+KH-00309,CÔNG TY CỔ PHẦN PHÚC AN,"Phao Sơn, phường Phả Lại, TP. Chí Linh, Hải Dương",Hải Dương,26,Hải Dương
+KH-00310,HỘ KINH DOANH VẠN LỢI,"khu Minh Khai, phường Đại Yên, TP. Hạ Long, Quảng Ninh",Quảng Ninh,48,Quảng Ninh
+KH-00311,CÔNG TY TNHH THƯƠNG MẠI QUANG VINH,"Lý Bôn, Phường Cẩm Đông, TP Cẩm Phả, Quảng Ninh",Quảng Ninh,48,Quảng Ninh
+KH-00312,DOANH NGHIỆP TW HOÀ BÌNH,"phố Vườn Trầu, phường Trần Phú, Móng Cái, Quảng Ninh",Quảng Ninh,48,Quảng Ninh
+KH-00313,DOANH NGHIỆP TW BÌNH MINH,"phố Yên Sở, tổ 7, phường Yên Sở, quận Hoàng Mai, thành phố Hà Nội",Hà Nội,1,Hà Nội
+KH-00314,CÔNG TY TNHH THƯƠNG MẠI YÊN BÌNH,"Tú Sơn, Kiến Thụy, Hải Phòng",Hải Phòng,27,Hải Phòng
+KH-00315,CÔNG TY CỔ PHẦN THƯƠNG MẠI THUỶ TIÊN,"đường Nguyễn Tất Thành, Phường Định Trung, Thành phố Vĩnh Yên, Vĩnh Phúc",Vĩnh Phúc,61,Vĩnh Phúc
+KH-00316,CÔNG TY CỔ PHẦN THƯƠNG MẠI THUỶ TIÊN,"Nguyễn Trãi, Thanh Xuân, Hà Nội",Hà Nội,1,Hà Nội
+KH-00317,CỬA HÀNG XE ĐẠP THIÊN AN,"Tây Tựu, Thượng Cát, Bắc Từ Liêm, Hà Nội",Hà Nội,1,Hà Nội
+KH-00318,HỘ KINH DOANH BÌNH MINH,"Tiểu khu 4, thị trấn Mai Châu, huyện Mai Châu, tỉnh Hòa Bình",Hòa Bình,29,Hòa Bình
+KH-00319,CỬA HÀNG XE ĐẠP QUANG VINH,"đường Điện Biên 1, P. Lê Lợi, TP Hưng Yên",Điện Biên,19,Điện Biên
+KH-00320,HỘ KINH DOANH PHÚC AN,"Đường Đa Tốn, Xã Đa Tốn, Huyện Gia Lâm, Hà Nội",Hà Nội,1,Hà Nội
+KH-00321,CỬA HÀNG XE ĐẠP VIỆT ANH,"Lê Lợi, Phường Gia Viên, Quận Ngô Quyền, Thành phố Hải Phòng, Việt Nam",Hải Phòng,27,Hải Phòng
+KH-00322,CÔNG TY TNHH THƯƠNG MẠI THANH BÌNH,"Khu Phố, Tân Hòa, thị trấn Vĩnh Bảo, Hải Phòng",Hải Phòng,27,Hải Phòng
+KH-00323,CÔNG TY CỔ PHẦN PHÚ THỊNH,"Khối kim Tân , Phường Hoà Hiếu , Thị Xã Thái Hoà , Tỉnh Nghệ An",Nghệ An,40,Nghệ An
+KH-00324,CÔNG TY CỔ PHẦN ĐÔNG NAM,"Lý Thường Kiệt, Cửa Ông, Cẩm Phả, Quảng Ninh",Quảng Ninh,48,Quảng Ninh
+KH-00325,HỘ KINH DOANH THANH BÌNH,"Số 568+570, đường Nguyễn Văn Cừ, Tổ 11, Khu 9, Phường Hồng Hà, Thành phố Hạ Long, Quảng Ninh",Quảng Ninh,48,Quảng Ninh
+KH-00326,CỬA HÀNG XE ĐẠP VĨNH PHÁT,"đường Tô Hiệu, phường Cẩm Trung, TP Cẩm Phả, Quảng NinhSố",Quảng Ninh,48,Quảng Ninh
+KH-00327,CÔNG TY TNHH MẶT TRỜI,"Phố Tân Hoa, thị trấn Thổ Tang, Vĩnh Phúc",Vĩnh Phúc,61,Vĩnh Phúc
+KH-00328,CÔNG TY CỔ PHẦN PHÚC AN,"TDP Tích Cực,  TT Hợp Châu,  huyện Tam Đảo,  tỉnh Vĩnh Phúc",Vĩnh Phúc,61,Vĩnh Phúc
+KH-00329,HỘ KINH DOANH TRÍ ĐỨC,"UBND Phường Mỹ Đình 2, Quận Nam Từ Liêm, TP. Hà Nội",Hà Nội,1,Hà Nội
+KH-00330,CÔNG TY TNHH THIÊN AN,"Đồng Kem, Đồng Yên, Bắc Quang, Hà Giang",Hà Giang,23,Hà Giang
+KH-00331,HỘ KINH DOANH ĐẠI DƯƠNG,"đường Trần Phú, tổ 11, Phường Trần Phú, TP Hà Giang, Tỉnh Hà Giang, Việt Nam",Hà Giang,23,Hà Giang
+KH-00332,DOANH NGHIỆP TW TOÀN THẮNG,"Phố Nỷ, Truy Giã, Sóc Sơn, Hà Nội",Hà Nội,1,Hà Nội
+KH-00333,DOANH NGHIỆP TW ĐÔNG NAM,"khu Trung Phú, Thị trấn Hậu Lộc, Huyện Hậu Lộc, Tỉnh Thanh Hoá, Việt Nam",Thanh Hóa,55,Thanh Hóa
+KH-00334,HỘ KINH DOANH YÊN BÌNH,"444 Hoàng Hoa Thám, Phường Thụy Khuê, Quận Tây Hồ, Hà Nội",Hà Nội,1,Hà Nội
+KH-00335,CÔNG TY CỔ PHẦN THUỶ TIÊN,"khu đất dịch vụ cụm công nghiệp Lai Xá, Xã Hoài Đức, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00336,CÔNG TY CỔ PHẦN LONG PHÚ,"Khu Thái Bảo, Phường Nam Sơn, Bắc Ninh",Bắc Ninh,7,Bắc Ninh
+KH-00337,DOANH NGHIỆP TW VĨNH PHÁT,"Ngõ 6 phố Kim Đồng, Phường Hoàng Mai, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00338,CÔNG TY TNHH THƯƠNG MẠI ĐẠI LỢI,"đường Vạn Xuân, Thôn Cựu Quán, Xã Hoài Đức, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00339,CỬA HÀNG XE ĐẠP ĐẠI LỢI,"phố Ngọc Lâm, Phường Bồ Đề, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00340,CÔNG TY TNHH THANH BÌNH,"Bà Triệu, Phường Cửa Nam, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00341,CỬA HÀNG XE ĐẠP VIỆT ANH,"Đường Điện Biên, Phường Đông A, Tỉnh Ninh Bình, Việt Nam",Điện Biên,19,Điện Biên
+KH-00342,HỘ KINH DOANH VĨNH PHÁT,"phố Vác, Xã Dân Hòa, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00343,CÔNG TY CỔ PHẦN THƯƠNG MẠI THUỶ TIÊN,"Thôn Tân Ngữ 2, Xã Yên Định, Thanh Hóa",Thanh Hóa,55,Thanh Hóa
+KH-00344,CÔNG TY TNHH PHÚC AN,"TDP Tảo Phú, Xã Tam Hồng, Phú Thọ",Phú Thọ,43,Phú Thọ
+KH-00345,DOANH NGHIỆP TW PHÚ THỊNH,"Xã Thổ Tang, Phú Thọ",Phú Thọ,43,Phú Thọ
+KH-00346,DOANH NGHIỆP TW TRƯỜNG THỊNH,"SN19, Đường Hùng Vương, Phường Vĩnh Yên, Tỉnh Phú Thọ",Phú Thọ,43,Phú Thọ
+KH-00347,CÔNG TY TNHH THƯƠNG MẠI VẠN LỢI,"Phố Tân Hoa, Thị Trấn Thổ Tang, Huyện Vĩnh Tường, Tỉnh Vĩnh Phúc, Việt Nam",Vĩnh Phúc,61,Vĩnh Phúc
+KH-00348,CÔNG TY TNHH THƯƠNG MẠI YÊN BÌNH,"Tiểu khu 3 - Thị trấn Hà trung, Xã Hà Trung, Tỉnh Thanh Hóa",Thanh Hóa,55,Thanh Hóa
+KH-00349,HỘ KINH DOANH TRƯỜNG THỊNH,"Khu Tái Định Cư Tiên Dược - Mai Đình, Xã Sóc Sơn, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00350,CÔNG TY TNHH BÌNH MINH,"Đường 2, Xã Sóc Sơn, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00351,CÔNG TY TNHH AN PHÁT,"khu phố Minh Khai, Phường Từ Sơn, Bắc Ninh",Bắc Ninh,7,Bắc Ninh
+KH-00352,CỬA HÀNG XE ĐẠP LONG PHÚ,"khu 3B, Phường Việt Hưng, Tỉnh Quảng Ninh",Quảng Ninh,48,Quảng Ninh
+KH-00353,CỬA HÀNG XE ĐẠP THANH BÌNH,"Xã Đông Anh, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00354,CÔNG TY TNHH THƯƠNG MẠI NAM TIẾN,"Phường Tích Lương, Thái Nguyên",Thái Nguyên,54,Thái Nguyên
+KH-00355,DOANH NGHIỆP TW PHÚC AN,"135-QL 1A-Khu 1, Phường Quang Trung, Thanh Hóa",Thanh Hóa,55,Thanh Hóa
+KH-00356,CÔNG TY TNHH THƯƠNG MẠI QUANG VINH,"Khu 2, Xã Kim Tân, Thanh Hóa",Thanh Hóa,55,Thanh Hóa
+KH-00357,CÔNG TY TNHH THƯƠNG MẠI THANH BÌNH,"Ngô Quyền, Phường Trung Sơn, Thành Phố Sầm Sơn, Thanh Hoá",Thanh Hóa,55,Thanh Hóa
+KH-00358,CÔNG TY TNHH SƠN HÀ,"Đường 7, thôn Bắc Sơn, Xã Hà Long, Tỉnh Thanh Hóa",Thanh Hóa,55,Thanh Hóa
+KH-00359,CÔNG TY CỔ PHẦN VẠN LỢI,"Thửa đất số 223-1 , Tờ bản đồ số 07, Đường 422, Thôn Lũng Kênh, Xã Hoài Đức, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00360,CÔNG TY TNHH THƯƠNG MẠI LONG PHÚ,"QL 45,Phố Kiểu, Xã Yên Trường, Tỉnh Thanh Hóa",Thanh Hóa,55,Thanh Hóa
+KH-00361,CÔNG TY CỔ PHẦN THƯƠNG MẠI TÂY BẮC,"tổ dân phố Hồng Ngự, Phường Thụy Phương, Quận Bắc Từ Liêm, Thành phố Hà Nội, Việt Nam",Hà Nội,1,Hà Nội
+KH-00362,HỘ KINH DOANH MẶT TRỜI,"Tòa nhà Mitec, Lô E2, Khu đô thị mới Cầu Giấy,Phường Yên Hoà,Quận Cầu Giấy, Hà Nội,Việt Nam",Hà Nội,1,Hà Nội
+KH-00363,HỘ KINH DOANH ĐẠI LỢI,"Đường Trần Hưng Đạo, Phường Kinh Môn, Thành phố Hải Phòng",Hải Phòng,27,Hải Phòng
+KH-00364,DOANH NGHIỆP TW XUÂN MAI,"Phường Việt Hòa, TP Hải Phòng",Hải Phòng,27,Hải Phòng
+KH-00365,CÔNG TY CỔ PHẦN THƯƠNG MẠI TRÍ ĐỨC,"Nguyễn Trãi -Thanh xuân Trung, Phường Khương Đình, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00366,HỘ KINH DOANH THIÊN AN,"Xã Diễn Trường, Huyện Diễn Châu, Nghệ An",Nghệ An,40,Nghệ An
+KH-00367,CÔNG TY CỔ PHẦN ĐÔNG NAM,"Hòa Bình, Phường Ngọc Sơn, Tỉnh Thanh Hóa",Hòa Bình,29,Hòa Bình
+KH-00368,HỘ KINH DOANH HOÀ BÌNH,"Nhà bà Hoàng Thị Bẩy, Khu X2, Thôn Đông Trù, Xã Đông Anh, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00369,CÔNG TY TNHH VẠN LỢI,"Hà Huy Tập, Xã Phù Đổng, Thành phố Hà Nội",Hà Nội,1,Hà Nội
+KH-00370,CÔNG TY CỔ PHẦN THƯƠNG MẠI PHÚ THỊNH,"Phường Phượng Sơn, Bắc Ninh",Bắc Ninh,7,Bắc Ninh
+KH-00371,CÔNG TY TNHH THƯƠNG MẠI LONG PHÚ,"Thửa 159, tờ bản đồ 25, tổ dân phố 3, Phường Yên Dũng, Bắc Ninh",Bắc Ninh,7,Bắc Ninh
+KH-00372,CÔNG TY CỔ PHẦN THƯƠNG MẠI MẶT TRỜI,"Quốc lộ 47, thôn Nhật Quả, Xã Thọ Phú, Thanh Hóa",Thanh Hóa,55,Thanh Hóa
+KH-00373,DOANH NGHIỆP TW THIÊN AN,"Thôn Nho Lâm - Tân Lập, Xã Yên Mỹ, Tỉnh Hưng Yên",Hưng Yên,31,Hưng Yên
+KH-00374,CÔNG TY CỔ PHẦN XÂY DỰNG,"Xã Yên Mỹ, Hưng Yên",Hưng Yên,31,Hưng Yên
+KH-00375,CÔNG TY TNHH ĐẠI DƯƠNG,"Xuân Thuỷ, Phường Cầu Giấy, Thành phố Hà Nội",Hà Nội,1,Hà Nội
+KH-00376,CÔNG TY TNHH THƯƠNG MẠI AN PHÁT,"Hoàng Quốc Việt, Phường Nghĩa Tân, Quận Cầu Giấy, Hà Nội",Hà Nội,1,Hà Nội
+KH-00377,DOANH NGHIỆP TW PHÚ THỊNH,"Đường Đa Tốn, Xã Bát Tràng, Thành phố Hà Nội",Hà Nội,1,Hà Nội
+KH-00378,CỬA HÀNG XE ĐẠP VĨNH PHÁT,"Nguyễn Đức Thuận, Xã Gia Lâm, Thành phố Hà Nội",Hà Nội,1,Hà Nội
+KH-00379,CÔNG TY TNHH MINH PHƯƠNG,"Tân Sơn 9, Xã Phú Bình, Tỉnh Thái Nguyên",Thái Nguyên,54,Thái Nguyên
+KH-00380,DOANH NGHIỆP TW HÙNG CƯỜNG,Tỉnh Ninh Bình,Ninh Bình,41,Ninh Bình
+KH-00381,DOANH NGHIỆP TW TÚ ANH,"Phố phú hoà - Thị trấn Hoà Mạc, Phường Hòa Mạc(Hết hiệu lực), Tỉnh Ninh Bình",Ninh Bình,41,Ninh Bình
+KH-00382,CÔNG TY TNHH LÊ ANH,"Xã Yên Cường, Tỉnh Ninh Bình",Ninh Bình,41,Ninh Bình
+KH-00383,HỘ KINH DOANH VẠN LỢI,"Thị Trấn Gôi, Xã Vụ Bản, Ninh Bình",Ninh Bình,41,Ninh Bình
+KH-00384,CỬA HÀNG XE ĐẠP PHÚC AN,"Khu dân cư Thái Học 1, Phường Chu Văn An, TP Hải Phòng",Hải Phòng,27,Hải Phòng
+KH-00385,CÔNG TY CỔ PHẦN THƯƠNG MẠI THIÊN AN,"Lê Thanh Nghị, Phường Lê Thanh Nghị, Thành phố Hải Dương, Hải Dương",Hải Dương,26,Hải Dương
+KH-00386,CÔNG TY TNHH THƯƠNG MẠI KHẢI HOÀN,"Thụy Sơn 2, Phường Tân Sơn, Thị Xã Kim Bảng, Tỉnh Hà Nam, Việt Nam",Hà Nam,24,Hà Nam
+KH-00387,CÔNG TY CỔ PHẦN THANH BÌNH,"Khu Dương Xá 3, phường Kinh Bắc, Tỉnh Bắc Ninh",Bắc Ninh,7,Bắc Ninh
+KH-00388,CÔNG TY CỔ PHẦN MẶT TRỜI,"đường Đê La Thành, Phường Ô Chợ Dừa, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00389,CÔNG TY CỔ PHẦN TRƯỜNG THỊNH,"Đường Đình Hương, Phường Đông Cương, Thành phố Thanh Hoá, Tỉnh Thanh Hoá",Thanh Hóa,55,Thanh Hóa
+KH-00436,CÔNG TY TNHH XÂY DỰNG,"xã Tân Lập, huyện Yên Mỹ, tỉnh Hưng Yên",Hưng Yên,31,Hưng Yên
+KH-00390,HỘ KINH DOANH ĐẠI LỢI,"đường Cổ Vân, Khu Trung, Thôn Dục Nội, Xã Đông Anh, Thành phố Hà Nội",Hà Nội,1,Hà Nội
+KH-00391,CÔNG TY TNHH THƯƠNG MẠI NAM TIẾN,"Xã Đức Thọ, Hà Tĩnh",Hà Tĩnh,25,Hà Tĩnh
+KH-00392,HỘ KINH DOANH SƠN HÀ,"7, Xã Đức Thọ, Hà Tĩnh",Hà Tĩnh,25,Hà Tĩnh
+KH-00393,CÔNG TY TNHH THƯƠNG MẠI SƠN HÀ,"thôn 1, Xã Kim Tân, Thanh Hóa",Thanh Hóa,55,Thanh Hóa
+KH-00394,CÔNG TY TNHH THƯƠNG MẠI NAM TIẾN,"TDP Cửa Hà, Xã Cẩm Thủy, Thanh Hóa",Thanh Hóa,55,Thanh Hóa
+KH-00395,HỘ KINH DOANH TÂY BẮC,"Ki ốt số 6,7 Chợ Mọc , Phố Mới, Xã Tân Yên, Bắc Ninh",Bắc Ninh,7,Bắc Ninh
+KH-00396,CÔNG TY CỔ PHẦN VIỆT ANH,"TDP Trung Nghĩa, Phường Chũ, Tỉnh Bắc Ninh",Bắc Ninh,7,Bắc Ninh
+KH-00397,CÔNG TY CỔ PHẦN THUỶ TIÊN,"hoàng liên, Phường Lào Cai, Tỉnh Lào Cai",Lào Cai,37,Lào Cai
+KH-00398,CÔNG TY TNHH PHÚC AN,"Tôn Đức Thắng, Phường Hòa Khánh, TP Đà Nẵng",Đà Nẵng,16,Đà Nẵng
+KH-00399,CÔNG TY TNHH ĐẠI LỢI,"ngõ 562, đường Trần Cung, Phường Xuân Đỉnh, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00400,CÔNG TY TNHH XÂY DỰNG,"C4/110, KP 3, Khu dân cư An Bình, Phường Trấn Biên, Đồng Nai",Đồng Nai,20,Đồng Nai
+KH-00401,HỘ KINH DOANH THUỶ TIÊN,"Khu Miếu Môn, Xã Trần Phú, Thành phố Hà Nội",Hà Nội,1,Hà Nội
+KH-00402,CÔNG TY CỔ PHẦN ĐẠI LỢI,"Ngô Gia Tự, Phường Việt Hưng, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00403,CÔNG TY CỔ PHẦN THƯƠNG MẠI LONG PHÚ,"đường Quang Trung, tiểu khu 3, Phường Tĩnh Gia, Thanh Hóa",Thanh Hóa,55,Thanh Hóa
+KH-00404,HỘ KINH DOANH PHÚ THỊNH,"phố Hoà Bình, Phường Ngọc Sơn, Tỉnh Thanh Hóa",Hòa Bình,29,Hòa Bình
+KH-00405,CÔNG TY CỔ PHẦN THƯƠNG MẠI QUANG VINH,"đường ĐH-HH33, thôn 6, Xã Hoằng Thanh, Thanh Hóa",Thanh Hóa,55,Thanh Hóa
+KH-00406,CÔNG TY CỔ PHẦN THƯƠNG MẠI LONG PHÚ,"Ngõ xóm Chùa, Thôn Lôi Cầu, Xã Việt Tiến, Tỉnh Hưng Yên",Hưng Yên,31,Hưng Yên
+KH-00407,DOANH NGHIỆP TW LONG PHÚ,"Yên Thế, Hòa An, Phường An Khê, Thành phố Đà Nẵng",Đà Nẵng,16,Đà Nẵng
+KH-00408,CÔNG TY CỔ PHẦN MINH PHƯƠNG,"Đường ĐH-HH.25, Thôn 1, Xã Hoằng Thành, tỉnh Thanh Hóa",Thanh Hóa,55,Thanh Hóa
+KH-00409,CÔNG TY CỔ PHẦN THƯƠNG MẠI BÌNH MINH,"Thôn 4B, Xã Thọ Phú, Huyện Triệu Sơn, Tỉnh Thanh Hoá, Việt Nam",Thanh Hóa,55,Thanh Hóa
+KH-00410,CỬA HÀNG XE ĐẠP NAM TIẾN,"Xã Đức Châu, Nghệ An",Nghệ An,40,Nghệ An
+KH-00411,CỬA HÀNG XE ĐẠP MẶT TRỜI,"Phòng 808, toà nhà C8 Đại Cồ Việt, Phường Bách Khoa,Quận Hai Bà Trưng, TP Hà Nội,Việt Nam",Hà Nội,1,Hà Nội
+KH-00412,CÔNG TY TNHH TRÍ ĐỨC,"Đường D2 - Khu D - Khu công nghiệp Phố Nối A, Xã Như Quỳnh, Hưng Yên",Hưng Yên,31,Hưng Yên
+KH-00413,CÔNG TY CỔ PHẦN CHI THÀNH,"Điện biên Phủ, Phường Hồng Bàng, TP Hải Phòng",Điện Biên,19,Điện Biên
+KH-00414,HỘ KINH DOANH ĐẠI LỢI,"Nhà số 7, đường Tam Đạc 2, cụm 7, xã Liên Minh, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00415,DOANH NGHIỆP TW KHẢI HOÀN,"57B Nguyễn Trãi, Phường Hạc Thành, Thanh Hóa",Thanh Hóa,55,Thanh Hóa
+KH-00416,DOANH NGHIỆP TW HOÀ BÌNH,"Khu 3, Phường Đông Triều, Quảng Ninh",Quảng Ninh,48,Quảng Ninh
+KH-00417,CÔNG TY CỔ PHẦN THƯƠNG MẠI VIỆT ANH,"Đường Mạc Đăng Dung, Khu Tân Thành, Phường Đông Mai, Quảng Ninh, Việt Nam",Quảng Ninh,48,Quảng Ninh
+KH-00418,CÔNG TY CỔ PHẦN PHÚ THỊNH,"Xã Tam Hưng, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00419,DOANH NGHIỆP TW ĐẠI DƯƠNG,"ngách 6, Ngõ 13 Tả Thanh Oai, Xã Đại Thanh, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00420,CÔNG TY CỔ PHẦN QUANG VINH,"Trần Kế Xương, Phường Hải Châu, Thành phố Đà Nẵng",Đà Nẵng,16,Đà Nẵng
+KH-00421,DOANH NGHIỆP TW YÊN BÌNH,"tổ 15, phường Phương Lâm, thành phố Hòa Bình, tỉnh Hòa Bình",Hòa Bình,29,Hòa Bình
+KH-00422,CÔNG TY CỔ PHẦN THƯƠNG MẠI SƠN HÀ,"Khu D, Xã Sóc Sơn, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00423,DOANH NGHIỆP TW THIÊN AN,"đường Thân Nhân Trung, phường Bích Động, Thị xã Việt Yên, Tỉnh Bắc Giang",Bắc Giang,5,Bắc Giang
+KH-00424,CÔNG TY TNHH TRÍ ĐỨC,"Tổ 10, Thôn Xuân Thủy, Xã Xuân Mai, Thành phố Hà Nội",Hà Nội,1,Hà Nội
+KH-00425,CỬA HÀNG XE ĐẠP MINH PHƯƠNG,"14, MBQH 06, đường Kim Xuân, thôn 1 Nghĩa Trang, Xã Hoằng Phú, Thanh Hóa",Thanh Hóa,55,Thanh Hóa
+KH-00426,CÔNG TY CỔ PHẦN THƯƠNG MẠI THIÊN AN,"TDP 4, Phường Phổ Yên, Thái Nguyên",Thái Nguyên,54,Thái Nguyên
+KH-00427,CÔNG TY CỔ PHẦN THƯƠNG MẠI TÚ ANH,"Phường Láng, Thành phố Hà Nội",Hà Nội,1,Hà Nội
+KH-00428,CỬA HÀNG XE ĐẠP NAM TIẾN,"khu 6, Phường Hồng Gai, Quảng Ninh",Quảng Ninh,48,Quảng Ninh
+KH-00429,CỬA HÀNG XE ĐẠP XUÂN MAI,"thôn Làng, Xã Thống Nhất, Quảng Ninh",Quảng Ninh,48,Quảng Ninh
+KH-00430,CÔNG TY CỔ PHẦN BÌNH MINH,"Xã Vân Đình, Thành phố Hà Nội",Hà Nội,1,Hà Nội
+KH-00431,CÔNG TY CỔ PHẦN THƯƠNG MẠI KHẢI HOÀN,"Tử Dương, Xã Chương Dương, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00432,CÔNG TY TNHH THƯƠNG MẠI THUỶ TIÊN,"Xã Đại Xuyên, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00433,CÔNG TY CỔ PHẦN THƯƠNG MẠI TRƯỜNG THỊNH,"Tk Phú Mỹ, Xã Phú Xuyên, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00434,HỘ KINH DOANH TRƯỜNG THỊNH,"TDP 15, Phường Tây Tựu, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00435,DOANH NGHIỆP TW NGỌC ANH,"TDP Chợ, đường Đại Mỗ, Phường Tây Mỗ, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00437,DOANH NGHIỆP TW HÙNG CƯỜNG,"Dương Xá, Phường Thượng Hồng, Hưng Yên",Hưng Yên,31,Hưng Yên
+KH-00438,CỬA HÀNG XE ĐẠP ĐẠI LỢI,"Xã Khoái Châu, Hưng Yên",Hưng Yên,31,Hưng Yên
+KH-00439,DOANH NGHIỆP TW THUỶ TIÊN,"Khối Xuân Khoa, Xã Vạn An, Tỉnh Nghệ An",Nghệ An,40,Nghệ An
+KH-00440,CÔNG TY TNHH THƯƠNG MẠI ĐÔNG NAM,"đường Tây Tựu, Phường Thượng Cát, Thành phố Hà Nội",Hà Nội,1,Hà Nội
+KH-00441,CỬA HÀNG XE ĐẠP NGỌC ANH,"Xuân Giang, Xã Nghi Xuân, Hà Tĩnh",An Giang,2,An Giang
+KH-00442,CÔNG TY TNHH HOÀ BÌNH,"TDP 3 Đoài, Xã Yên Lạc, Phú Thọ",Phú Thọ,43,Phú Thọ
+KH-00443,CÔNG TY TNHH HÙNG CƯỜNG,"Khu Tân Bình, Xã Xuân Mai, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00444,CÔNG TY TNHH THƯƠNG MẠI SÁN LẠP,"đường Cao Lỗ, Thôn Phan Xá, Xã Đông Anh, Thành phố Hà Nội",Hà Nội,1,Hà Nội
+KH-00445,CÔNG TY CỔ PHẦN TÂN TIẾN,"Thạch Trụ Tây, Xã Lân Phong, Tỉnh Quảng Ngãi",Quảng Ngãi,47,Quảng Ngãi
+KH-00446,CÔNG TY TNHH THƯƠNG MẠI MINH PHƯƠNG,"Hùng Vương, Phường Nam Đông Hà, Quảng Trị",Quảng Trị,49,Quảng Trị
+KH-00447,CÔNG TY TNHH THƯƠNG MẠI KHẢI HOÀN,"Phường Chương Mỹ, Thành phố Hà Nội",Hà Nội,1,Hà Nội
+KH-00448,CÔNG TY TNHH THUỶ TIÊN,"Tiểu khu Phú Gia, Thị Trấn Phú Minh, Huyện Phú Xuyên, Thành phố Hà Nội, Việt Nam",Hà Nội,1,Hà Nội
+KH-00449,CÔNG TY CỔ PHẦN THUỶ TIÊN,"Khu 5, Xã Phù Ninh, Tỉnh Phú Thọ",Phú Thọ,43,Phú Thọ
+KH-00450,HỘ KINH DOANH QUANG VINH,"Lê Thái Tổ, Thôn Tân Minh, Xã Triệu Sơn, Tỉnh Thanh Hoá, Việt Nam",Thanh Hóa,55,Thanh Hóa
+KH-00451,CÔNG TY CỔ PHẦN THƯƠNG MẠI TRƯỜNG THỊNH,"TDP Tân Lập, Xã Bình Thuyền, Tỉnh Phú Thọ",Phú Thọ,43,Phú Thọ
+KH-00452,CÔNG TY CỔ PHẦN THƯƠNG MẠI BÌNH MINH,"Phố Giắt, Xã Triệu Sơn, Thanh Hóa",Thanh Hóa,55,Thanh Hóa
+KH-00453,CÔNG TY TNHH YÊN BÌNH,"Xã Phú Sơn, Tỉnh Ninh Bình",Ninh Bình,41,Ninh Bình
+KH-00454,HỘ KINH DOANH LONG PHÚ,"Phố Đồng Tâm, Xã Đoan Hùng, Phú Thọ",Phú Thọ,43,Phú Thọ
+KH-00455,CÔNG TY TNHH THƯƠNG MẠI ĐẠI LỢI,"Trần Phú, Xã Hương Khê, Hà Tĩnh",Hà Tĩnh,25,Hà Tĩnh
+KH-00456,CÔNG TY TNHH THƯƠNG MẠI AN PHÁT,"đường Nguyễn Đổng Chi, TDP 1, Phường Nam Hồng Lĩnh, Hà Tĩnh",Hà Tĩnh,25,Hà Tĩnh
+KH-00457,CÔNG TY TNHH THƯƠNG MẠI VIỆT ANH,"Xã Đồng Tiến, Thanh Hóa",Thanh Hóa,55,Thanh Hóa
+KH-00458,HỘ KINH DOANH VẠN LỢI,"An Lộc, Xã Mai Phụ, Tỉnh Hà Tĩnh",Hà Tĩnh,25,Hà Tĩnh
+KH-00459,CÔNG TY CỔ PHẦN TOÀN THẮNG,"Xã Bình Minh, Thành phố Hà Nội",Hà Nội,1,Hà Nội
+KH-00460,DOANH NGHIỆP TW THUỶ TIÊN,"Khu Đồng Xốc, Xã Thái Hòa, Phú Thọ",Phú Thọ,43,Phú Thọ
+KH-00461,CÔNG TY TNHH THUỶ TIÊN,"Hoàng Lộc, Phường Lê Thanh Nghị, Thành phố Hải Dương, Tỉnh Hải Dương, Việt Nam",Hải Dương,26,Hải Dương
+KH-00462,HỘ KINH DOANH TRƯỜNG THỊNH,"số B-1, Khu công nghiệp Thăng Long II, Xã Nguyễn Văn Linh, Hưng Yên",Hưng Yên,31,Hưng Yên
+KH-00463,CÔNG TY TNHH THƯƠNG MẠI YÊN BÌNH,"Xã Thuận An, Thành phố Hà Nội",Hà Nội,1,Hà Nội
+KH-00464,CÔNG TY TNHH THƯƠNG MẠI KHẢI HOÀN,"0Ki ốt T1A 10, Phường Việt Trì, Tỉnh Phú Thọ",Phú Thọ,43,Phú Thọ
+KH-00465,CÔNG TY CỔ PHẦN KHẢI HOÀN,"Khu Phố 1, Phường Mạo Khê, Quảng Ninh",Quảng Ninh,48,Quảng Ninh
+KH-00466,HỘ KINH DOANH HÙNG CƯỜNG,"phố Trần Bình Trọng, Xã Quảng Hà, Quảng Ninh",Quảng Ninh,48,Quảng Ninh
+KH-00467,DOANH NGHIỆP TW TÂY BẮC,"48B Quang Trung, Phường Bắc Gianh, Tỉnh Quảng Trị",Quảng Trị,49,Quảng Trị
+KH-00468,CÔNG TY CỔ PHẦN KHẢI HOÀN,"Xã Diễn Trung, Huyện Diễn Châu, Nghệ An",Nghệ An,40,Nghệ An
+KH-00469,CỬA HÀNG XE ĐẠP HOÀ BÌNH,"Khối Tân Đông, Phường Tân Mai, Nghệ An",Nghệ An,40,Nghệ An
+KH-00470,CÔNG TY CỔ PHẦN VĨNH PHÁT,"phố số 3, Xã Nghi Lộc, Nghệ An",Nghệ An,40,Nghệ An
+KH-00471,CÔNG TY CỔ PHẦN TRÍ ĐỨC,"phố Kim Thành, Xã Đồng Lộc, Hà Tĩnh",Hà Tĩnh,25,Hà Tĩnh
+KH-00472,CÔNG TY CỔ PHẦN TRÍ ĐỨC,"đường Cát Quế, thôn 1, Xã Dương Hòa, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00473,CÔNG TY TNHH TRÍ ĐỨC,"Xã Đoài Phương, Thành phố Hà Nội",Hà Nội,1,Hà Nội
+KH-00474,HỘ KINH DOANH MẶT TRỜI,"Thôn Đồng Tâm, Phường Trần Lãm, Hưng Yên",Hưng Yên,31,Hưng Yên
+KH-00475,CỬA HÀNG XE ĐẠP THIÊN AN,"Nhân Cầu 2, Xã Hưng Hà, Hưng Yên",Hưng Yên,31,Hưng Yên
+KH-00476,CÔNG TY CỔ PHẦN THƯƠNG MẠI MẶT TRỜI,"Xã Nam Tiền Hải, Hưng Yên",Hưng Yên,31,Hưng Yên
+KH-00477,CỬA HÀNG XE ĐẠP ĐẠI LỢI,"Phường Hà Đông, Thành phố Hà Nội",Hà Nội,1,Hà Nội
+KH-00478,CÔNG TY TNHH BÌNH MINH,"LK 37-02 Khu Đô thị mới Phú Lương, Phường Phú Lương, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00479,DOANH NGHIỆP TW NGỌC ANH,"Phường Đại Mỗ, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00480,DOANH NGHIỆP TW ĐẠI DƯƠNG,"Ngách 108/1, Phố Nguyễn Lân, Phường Phương Liệt, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00481,CÔNG TY CỔ PHẦN HOÀ BÌNH,"Chợ Mơ, Xã Cổ Đô, Thành phố Hà Nội",Hà Nội,1,Hà Nội
+KH-00482,CỬA HÀNG XE ĐẠP KHẢI HOÀN,"đường Giải Phóng, Phường Tương Mai, Thành phố Hà Nội",Hà Nội,1,Hà Nội
+KH-00483,HỘ KINH DOANH VẠN LỢI,"Thanh Hoài, Phường Trí Quả, Tỉnh Bắc Ninh",Bắc Ninh,7,Bắc Ninh
+KH-00484,CÔNG TY CỔ PHẦN THƯƠNG MẠI HOÀ BÌNH,"Cường Tráng, Xã Trung Kênh, Tỉnh Bắc Ninh",Bắc Ninh,7,Bắc Ninh
+KH-00485,CÔNG TY CỔ PHẦN SÁN LẠP,"Thôn Mùi, Xã Bình Minh, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00486,CÔNG TY TNHH VẠN LỢI,"Xã Yên Phong, Bắc Ninh",Bắc Ninh,7,Bắc Ninh
+KH-00487,DOANH NGHIỆP TW TRƯỜNG THỊNH,"Phường Đa Mai, Bắc Ninh",Bắc Ninh,7,Bắc Ninh
+KH-00488,CÔNG TY TNHH TRƯỜNG THỊNH,"Phạm Ngọc Nhị, TDP Phạm Văn Đồng, Phường Đồng Văn, Ninh Bình",Ninh Bình,41,Ninh Bình
+KH-00489,CÔNG TY CỔ PHẦN ĐÔNG NAM,"đường Lê Công Thanh, phường Hai Bà Trưng, thành phố Phủ Lý, tỉnh Hà Nam",Hà Nam,24,Hà Nam
+KH-00490,CÔNG TY TNHH TÂN TIẾN,"Tại nhà số 327, đường Cù Chính Lan, tổ 1, Phường Hòa Bình, Phú Thọ",Hòa Bình,29,Hòa Bình
+KH-00491,CÔNG TY TNHH PHÚC AN,"Trung (thửa đất số 524, tờ bản đồ số 22), Phường Nghi Đức, Thành phố Vinh, Nghệ An",Nghệ An,40,Nghệ An
+KH-00492,HỘ KINH DOANH ĐÔNG NAM,"Bà Triệu, Xã Hậu Lộc, Thanh Hóa",Thanh Hóa,55,Thanh Hóa
+KH-00493,CÔNG TY CỔ PHẦN THƯƠNG MẠI QUANG VINH,"Xã Hà Tây, TP Hải Phòng",Hải Phòng,27,Hải Phòng
+KH-00494,HỘ KINH DOANH AN PHÁT,"Xã Thiên Lộc, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00495,CÔNG TY CỔ PHẦN THƯƠNG MẠI HOÀ BÌNH,"Xã Mê Linh, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00496,CÔNG TY CỔ PHẦN TOÀN THẮNG,"Quốc Lộ 3, Phố Nỷ, Xã Trung Giã, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00497,CÔNG TY TNHH THƯƠNG MẠI QUANG VINH,"Chợ đường cái, Xã Như Quỳnh, Tỉnh Hưng Yên",Hưng Yên,31,Hưng Yên
+KH-00498,CỬA HÀNG XE ĐẠP MINH PHƯƠNG,"Khu giãn dân Bùi Thị Cúc, Xã Ân Thi, Hưng Yên",Hưng Yên,31,Hưng Yên
+KH-00499,CÔNG TY CỔ PHẦN THƯƠNG MẠI TÚ ANH,"Xã Nam Thái Ninh, Hưng Yên",Hưng Yên,31,Hưng Yên
+KH-00500,CÔNG TY CỔ PHẦN THƯƠNG MẠI VĨNH PHÁT,"Tầng 1 LK9 – 20 Khu nhà ở FLC số 24, ngõ 64 Phố Sài Đồng, Phường Phúc Lợi, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00501,CÔNG TY CỔ PHẦN VĨNH PHÁT,"Tố Hữu, TDP Trung Phong, Xã Lưu Vệ, Tỉnh Thanh Hóa",Thanh Hóa,55,Thanh Hóa
+KH-00502,CỬA HÀNG XE ĐẠP BÌNH MINH,"Tương Chúc, Xã Nam Phù, Thành phố Hà Nội",Hà Nội,1,Hà Nội
+KH-00503,DOANH NGHIỆP TW PHÚ THỊNH,"Phố Vồi, Xã Thường Tín, Thành phố Hà Nội",Hà Nội,1,Hà Nội
+KH-00504,CÔNG TY CỔ PHẦN THƯƠNG MẠI TÂY BẮC,"Xã Phúc Sơn, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00505,CÔNG TY CỔ PHẦN TÚ ANH,"Khối 5, Xã Quỳnh Lưu, Nghệ An",Nghệ An,40,Nghệ An
+KH-00506,CÔNG TY TNHH THANH BÌNH,"phố Nguyễn Thái Học, Xã Đan Phượng, Thành phố Hà Nội",Hà Nội,1,Hà Nội
+KH-00507,CỬA HÀNG XE ĐẠP BÌNH MINH,"Xã Vĩnh Hưng, Phú Thọ",Phú Thọ,43,Phú Thọ
+KH-00508,CÔNG TY CỔ PHẦN VĨNH PHÁT,"Xã Hà Đông, TP Hải Phòng",Hải Phòng,27,Hải Phòng
+KH-00509,CÔNG TY TNHH THƯƠNG MẠI BÌNH MINH,"Chợ Thứa, Xã Lương Tài, Tỉnh Bắc Ninh",Bắc Ninh,7,Bắc Ninh
+KH-00510,CỬA HÀNG XE ĐẠP NGỌC ANH,"Phố mới - TT Hồ, Phường Thuận Thành, Bắc Ninh",Bắc Ninh,7,Bắc Ninh
+KH-00511,CÔNG TY TNHH BÌNH MINH,"đường Nguyễn Huệ, Phường Lào Cai, Tỉnh Lào Cai",Lào Cai,37,Lào Cai
+KH-00512,CÔNG TY TNHH ĐẠI DƯƠNG,"Khu 12, Xã Lâm Thao, Tỉnh Phú Thọ",Phú Thọ,43,Phú Thọ
+KH-00513,CÔNG TY CỔ PHẦN THƯƠNG MẠI ĐÔNG NAM,"TDP Phố Huyện, Xã Quốc Oai, Thành phố Hà Nội",Hà Nội,1,Hà Nội
+KH-00514,CỬA HÀNG XE ĐẠP HÙNG CƯỜNG,"TDP phố Săn, thị trấn Liên Quan, huyện Thạch Thất, Hà Nội",Hà Nội,1,Hà Nội
+KH-00515,CÔNG TY CỔ PHẦN THƯƠNG MẠI SƠN HÀ,"109C, khu 2, Thị trấn Cẩm Giang(Hết hiệu lực), TP Hải Phòng",Hải Phòng,27,Hải Phòng
+KH-00516,CÔNG TY TNHH SÁN LẠP,"Xã Tiên Tiến, Tỉnh Hưng Yên",Hưng Yên,31,Hưng Yên
+KH-00517,CỬA HÀNG XE ĐẠP PHÚ THỊNH,"Xã Quang Hưng, Hưng Yên",Hưng Yên,31,Hưng Yên
+KH-00518,CÔNG TY TNHH THƯƠNG MẠI VĨNH PHÁT,"Đội 5, Thôn Hạ Tân, Xã Nghĩa Trụ, Tỉnh Hưng Yên",Hưng Yên,31,Hưng Yên
+KH-00519,CÔNG TY CỔ PHẦN XUÂN MAI,"TT Bô Thời, Hồng Tiến, Xã Việt Tiến, Hưng Yên",Hưng Yên,31,Hưng Yên
+KH-00520,CÔNG TY TNHH TÂY BẮC,"phố Tường Thụy 2, Phường Duy Tiên, Ninh Bình",Ninh Bình,41,Ninh Bình
+KH-00521,CỬA HÀNG XE ĐẠP KHẢI HOÀN,"Xã Bình Lục, Tỉnh Ninh Bình",Ninh Bình,41,Ninh Bình
+KH-00522,CÔNG TY TNHH HÙNG CƯỜNG,"TDP Bình Tiến, Xã Bình Mỹ, Tỉnh Ninh Bình",Ninh Bình,41,Ninh Bình
+KH-00523,HỘ KINH DOANH KHẢI HOÀN,"Lạc long Quân, Phường Bưởi(Hết hiệu lực), Thành phố Hà Nội",Hà Nội,1,Hà Nội
+KH-00524,CÔNG TY CỔ PHẦN THƯƠNG MẠI TRÍ ĐỨC,"trương xá, Xã Nghĩa Dân, Tỉnh Hưng Yên",Hưng Yên,31,Hưng Yên
+KH-00525,CỬA HÀNG XE ĐẠP SÁN LẠP,"Điện Biên, Phường Phố Hiến, Tỉnh Hưng Yên",Điện Biên,19,Điện Biên
+KH-00526,CÔNG TY CỔ PHẦN NAM TIẾN,"phố số 6, Xã Thái Thụy, Hưng Yên",Hưng Yên,31,Hưng Yên
+KH-00527,CÔNG TY CỔ PHẦN THƯƠNG MẠI HOÀ BÌNH,"đường mương Đan Hoài, thôn 6, Xã Sơn Đồng, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00528,CÔNG TY CỔ PHẦN VẠN LỢI,"TDP Nếnh, Phường Nếnh, tỉnh Bắc Ninh, Việt Nam",Bắc Ninh,7,Bắc Ninh
+KH-00529,CÔNG TY CỔ PHẦN THƯƠNG MẠI THIÊN AN,"Khối 6, Thị trấn Tân Kỳ, Huyện Tân Kỳ, Nghệ An",Nghệ An,40,Nghệ An
+KH-00530,DOANH NGHIỆP TW TÂY BẮC,"Xã Quảng Oai, Thành phố Hà Nội",Hà Nội,1,Hà Nội
+KH-00531,CÔNG TY TNHH THƯƠNG MẠI VẠN LỢI,"Xã Vật Lại, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00532,CÔNG TY TNHH THƯƠNG MẠI MẶT TRỜI,"Phường Sơn Tây, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00534,DOANH NGHIỆP TW AN PHÁT,"Phố Me, Xã Tam Dương, Tỉnh Phú Thọ",Phú Thọ,43,Phú Thọ
+KH-00533,CÔNG TY TNHH YÊN BÌNH,"Khu phố II, Xã Bình Nguyên, Tỉnh Phú Thọ",Phú Thọ,43,Phú Thọ
+KH-00535,CỬA HÀNG XE ĐẠP QUANG VINH,"đường Nguyễn Tất Thành, Phường Vĩnh Phúc, Phú Thọ",Phú Thọ,43,Phú Thọ
+KH-00536,CỬA HÀNG XE ĐẠP LONG PHÚ,"tòa nhà CT1 Khu Nhà Bắc Linh Đàm, Phường Định Công, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00537,CÔNG TY CỔ PHẦN ĐÔNG NAM,"Thị trấn Đồng Tâm, Huyện Chợ mới, Bắc Kạn",Bắc Kạn,6,Bắc Kạn
+KH-00538,HỘ KINH DOANH PHÚC AN,"Xã Nguyên Bình, Cao Bằng",Cao Bằng,14,Cao Bằng
+KH-00539,CỬA HÀNG XE ĐẠP CHI THÀNH,"Pháp, Xã Điềm Thụy, Thái Nguyên",Thái Nguyên,54,Thái Nguyên
+KH-00540,CÔNG TY TNHH NGỌC ANH,"Đường vành đai, Thôn Thượng, Xã Sơn Đồng, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00541,HỘ KINH DOANH SÁN LẠP,"Khu du lịch Xuân Thiều, Phường Hải Vân, TP Đà Nẵng",Đà Nẵng,16,Đà Nẵng
+KH-00542,CÔNG TY TNHH THƯƠNG MẠI NAM TIẾN,"Xã Chi Lăng, Lạng Sơn",Lạng Sơn,36,Lạng Sơn
+KH-00543,CÔNG TY CỔ PHẦN SƠN HÀ,"đường Cầu Diễn, Phường Xuân Phương, Thành phố Hà Nội",Hà Nội,1,Hà Nội
+KH-00544,DOANH NGHIỆP TW VIỆT ANH,"tổ 3, Phường Kiến Hưng, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00545,CÔNG TY CỔ PHẦN AN PHÁT,"Tại nhà số 461, tổ 15, Phường Hòa Bình, Phú Thọ",Hòa Bình,29,Hòa Bình
+KH-00546,CÔNG TY CỔ PHẦN SÁN LẠP,"TDP Thượng Giang, Xã Lệ Thủy, Quảng Trị",Quảng Trị,49,Quảng Trị
+KH-00547,DOANH NGHIỆP TW THANH BÌNH,"Xã Mộ Đức, Quảng Ngãi",Quảng Ngãi,47,Quảng Ngãi
+KH-00548,CÔNG TY TNHH KHẢI HOÀN,"Trần Hưng Đạo, KP3, Phường Quảng Trị, Quảng Trị",Quảng Trị,49,Quảng Trị
+KH-00549,CỬA HÀNG XE ĐẠP TÚ ANH,"K8 thị trấn Hạ Hoà, Xã Hạ Hòa, Phú Thọ",Phú Thọ,43,Phú Thọ
+KH-00550,CÔNG TY TNHH ĐÔNG NAM,"Khu Tân Tiến, Xã Cẩm Khê, Tỉnh Phú Thọ",Phú Thọ,43,Phú Thọ
+KH-00551,CÔNG TY CỔ PHẦN THƯƠNG MẠI SÁN LẠP,"phố Phú Bình, Phường Phong Châu, Phú Thọ",Phú Thọ,43,Phú Thọ
+KH-00552,CỬA HÀNG XE ĐẠP YÊN BÌNH,"Khu 7, Xã Phùng Nguyên, Phú Thọ",Phú Thọ,43,Phú Thọ
+KH-00553,CÔNG TY CỔ PHẦN SƠN HÀ,"Tây Sơn, Phường Đống Đa, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00554,CÔNG TY CỔ PHẦN THƯƠNG MẠI SÁN LẠP,"TDP Phượng Bãi, Phường Chương Mỹ, Thành phố Hà Nội",Hà Nội,1,Hà Nội
+KH-00555,CỬA HÀNG XE ĐẠP TRƯỜNG THỊNH,"Chợ Lương, Phường Đồng Văn, Ninh Bình",Ninh Bình,41,Ninh Bình
+KH-00556,DOANH NGHIỆP TW THIÊN AN,"XÓM GIAO THÔNG, Xã An Khánh, Thành phố Hà Nội",Hà Nội,1,Hà Nội
+KH-00557,CÔNG TY TNHH THƯƠNG MẠI MINH PHƯƠNG,"Phố Bà Triệu, Phường Cửa Nam, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00558,CÔNG TY CỔ PHẦN THƯƠNG MẠI SƠN HÀ,"phố Xã Đàn, Phường Văn Miếu - Quốc Tử Giám, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00559,CÔNG TY TNHH THƯƠNG MẠI TÂY BẮC,"Trần Hưng Đạo, Phường Sầm Sơn, Thanh Hóa",Thanh Hóa,55,Thanh Hóa
+KH-00560,CÔNG TY CỔ PHẦN THƯƠNG MẠI NGỌC ANH,"Xã Vĩnh Hải(Hết hiệu lực), Thành phố Hải Phòng",Hải Phòng,27,Hải Phòng
+KH-00561,CÔNG TY TNHH THƯƠNG MẠI VĨNH PHÁT,"Thửa 110, tờ bản đồ 71, tổ dân phố Hương, Phường Tân An, Bắc Ninh",Bắc Ninh,7,Bắc Ninh
+KH-00562,CÔNG TY CỔ PHẦN THƯƠNG MẠI NAM TIẾN,"Quang Trung, Phường Hà Đông, Thành phố Hà Nội",Hà Nội,1,Hà Nội
+KH-00563,HỘ KINH DOANH YÊN BÌNH,"đường Phạm Văn Đồng, Phường Đông Ngạc, Thành phố Hà Nội",Hà Nội,1,Hà Nội
+KH-00564,CỬA HÀNG XE ĐẠP SÁN LẠP,"Xã Quang Lịch, Huyện Kiến Xương, Thái Bình",Thái Bình,53,Thái Bình
+KH-00565,CÔNG TY CỔ PHẦN THƯƠNG MẠI KHẢI HOÀN,"Xã Kiến Hải, Thành phố Hải Phòng",Hải Phòng,27,Hải Phòng
+KH-00566,DOANH NGHIỆP TW PHÚ THỊNH,"KP Tân Hoà, Xã Vĩnh Bảo, Thành phố Hải Phòng",Hải Phòng,27,Hải Phòng
+KH-00567,CÔNG TY CỔ PHẦN THƯƠNG MẠI SƠN HÀ,"Phường An Phong, TP Hải Phòng",Hải Phòng,27,Hải Phòng
+KH-00568,DOANH NGHIỆP TW NGỌC ANH,"Tô Hiệu, Phường Lê Chân, TP Hải Phòng",Hải Phòng,27,Hải Phòng
+KH-00569,CÔNG TY TNHH VẠN LỢI,"Hòa Vang 3, Xã Hưng Lộc, TP Huế",Thừa Thiên Huế,56,Thừa Thiên Huế
+KH-00570,HỘ KINH DOANH TOÀN THẮNG,"(Tầng 1+2) Lê Lợi, Phường Gia Viên, Thành phố Hải Phòng",Hải Phòng,27,Hải Phòng
+KH-00571,CỬA HÀNG XE ĐẠP THUỶ TIÊN,"đường chiến thắng Sông Lô, tổ 2, Phường Minh Xuân, Tuyên Quang",Tuyên Quang,59,Tuyên Quang
+KH-00572,CÔNG TY CỔ PHẦN THƯƠNG MẠI VIỆT ANH,"Đông Hải 1, Phường Cẩm Phả, Tỉnh Quảng Ninh",Quảng Ninh,48,Quảng Ninh
+KH-00573,DOANH NGHIỆP TW THANH BÌNH,"SN: 35, tổ 1, khu 4A, Phường Cẩm Phả, Tỉnh Quảng Ninh",Quảng Ninh,48,Quảng Ninh
+KH-00574,CỬA HÀNG XE ĐẠP LONG PHÚ,"Số:466,tổ 109,khu 8 B, Phường Cửa Ông, Quảng Ninh",Quảng Ninh,48,Quảng Ninh
+KH-00575,CÔNG TY CỔ PHẦN THƯƠNG MẠI NAM TIẾN,"Vườn Trầu 022, Phường Móng Cái 1, Tỉnh Quảng Ninh",Quảng Ninh,48,Quảng Ninh
+KH-00576,DOANH NGHIỆP TW THIÊN AN,"khu Trới 10, phường Hoành Bồ, TP. Hạ Long, Quảng Ninh",Quảng Ninh,48,Quảng Ninh
+KH-00577,CÔNG TY CỔ PHẦN THƯƠNG MẠI ĐẠI DƯƠNG,"Cổng phụ trường THPT Hùng Vương, Xã Như Quỳnh, Tỉnh Hưng Yên",Hưng Yên,31,Hưng Yên
+KH-00578,DOANH NGHIỆP TW NGỌC ANH,"thôn Thụy Khuê, Xã Quốc Oai, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00579,CÔNG TY TNHH THƯƠNG MẠI XÂY DỰNG,"Tổ 1, khu 3A, Phường Cẩm Phả, Quảng Ninh",Quảng Ninh,48,Quảng Ninh
+KH-00580,CÔNG TY CỔ PHẦN THƯƠNG MẠI LONG PHÚ,"Mẹ Thứ, Phường Hòa Xuân, Thành phố Đà Nẵng",Đà Nẵng,16,Đà Nẵng
+KH-00581,DOANH NGHIỆP TW SƠN HÀ,"Phường Điện Biên Phủ, Tỉnh Điện Biên",Điện Biên,19,Điện Biên
+KH-00582,HỘ KINH DOANH LONG PHÚ,"Tổ 2, Phường Mường Thanh, Điện Biên",Điện Biên,19,Điện Biên
+KH-00583,CÔNG TY TNHH THƯƠNG MẠI THANH BÌNH,"Ngô Quyền, Phường An Hải, Thành phố Đà Nẵng",Đà Nẵng,16,Đà Nẵng
+KH-00584,CÔNG TY TNHH CHI THÀNH,"phố Trương Công Giai, Phường Cầu Giấy, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00585,CÔNG TY TNHH TÂY BẮC,"Đồng Mon Đại Lý Việt Hưng, Phường Bình Thuận, Tuyên Quang",Bình Thuận,12,Bình Thuận
+KH-00586,CÔNG TY CỔ PHẦN THƯƠNG MẠI MINH PHƯƠNG,"Khu 22, Xã Tu Vũ, Phú Thọ",Phú Thọ,43,Phú Thọ
+KH-00587,DOANH NGHIỆP TW AN PHÁT,"Minh Cường, Xã Phú Xuyên, Thành phố Hà Nội",Hà Nội,1,Hà Nội
+KH-00588,CÔNG TY CỔ PHẦN TÂY BẮC,"Xã Phú Xuyên, Thành phố Hà Nội",Hà Nội,1,Hà Nội
+KH-00589,DOANH NGHIỆP TW KHẢI HOÀN,"đường Louis II, KĐT Louis City, Phường Đại Mỗ, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00590,CÔNG TY TNHH TOÀN THẮNG,"Khu công nghiệp Lễ Môn, Phường Quảng Phú, Thanh Hóa",Thanh Hóa,55,Thanh Hóa
+KH-00591,CÔNG TY TNHH THƯƠNG MẠI KHẢI HOÀN,"TTTM Mandarin Garden 2, Số 99 Tân Mai, Phường Tương Mai, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00592,CỬA HÀNG XE ĐẠP SÁN LẠP,"Phường Hội An Đông, TP Đà Nẵng",Đà Nẵng,16,Đà Nẵng
+KH-00593,CÔNG TY CỔ PHẦN NGỌC ANH,"Km 9, đường Võ Văn Kiệt, Xã Quang Minh, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00594,DOANH NGHIỆP TW LONG PHÚ,"Khối 4, Xã Yên Thành, Tỉnh Nghệ An, Việt Nam",Nghệ An,40,Nghệ An
+KH-00595,CÔNG TY CỔ PHẦN THƯƠNG MẠI YÊN BÌNH,"Đường Trần Phú, Tổ 21, Phường Hà Giang 2, Tuyên Quang",Hà Giang,23,Hà Giang
+KH-00596,DOANH NGHIỆP TW THUỶ TIÊN,"KDC mới, Xã Nam An Phụ, TP Hải Phòng",Hải Phòng,27,Hải Phòng
+KH-00597,CÔNG TY TNHH THƯƠNG MẠI PHÚ THỊNH,"Đại Tân, Phường Trần Nhân Tông, TP Hải Phòng",Hải Phòng,27,Hải Phòng
+KH-00598,DOANH NGHIỆP TW SƠN HÀ,"Phao Sơn, Phường Chí Linh, Thành phố Hải Phòng",Hải Phòng,27,Hải Phòng
+KH-00599,CÔNG TY CỔ PHẦN XÂY DỰNG,"Trần Đăng Ninh, Phường Nam Định, Tỉnh Ninh Bình",Nam Định,39,Nam Định
+KH-00600,CỬA HÀNG XE ĐẠP TOÀN THẮNG,"tổ 5, Xã Phụ Dực, Hưng Yên",Hưng Yên,31,Hưng Yên
+KH-00601,HỘ KINH DOANH PHÚ THỊNH,"Lê Hồng Phong, Phường Hà Đông, Thành phố Hà Nội",Hà Nội,1,Hà Nội
+KH-00602,CÔNG TY TNHH THƯƠNG MẠI THIÊN AN,"Xã Trần Phú, Thành phố Hà Nội, Việt Nam",Hà Nội,1,Hà Nội
+KH-00603,CÔNG TY CỔ PHẦN QUANG VINH,"Khối Thanh Chiếm, Phường Hội An Tây, Thành phố Đà Nẵng",Đà Nẵng,16,Đà Nẵng
+KH-00604,CÔNG TY CỔ PHẦN THƯƠNG MẠI PHÚC AN,"Phan Châu Trinh, Phường Hương Trà, Thành phố Đà Nẵng",Đà Nẵng,16,Đà Nẵng
+KH-00605,CÔNG TY CỔ PHẦN VĨNH PHÁT,"Tổ dân phố Lê Duẩn, Phường Kiến An, TP Hải Phòng",Hải Phòng,27,Hải Phòng
+KH-00606,CỬA HÀNG XE ĐẠP BÌNH MINH,"Đức Nghiêm, Xã Hoàng Vân, Tỉnh Bắc Ninh",Bắc Ninh,7,Bắc Ninh
+KH-00607,CÔNG TY TNHH TÚ ANH,"Khối 3, Xã Đô Lương, Nghệ An",Nghệ An,40,Nghệ An
+KH-00608,CÔNG TY TNHH THƯƠNG MẠI TÚ ANH,"TDP 3, Xã Hoàn Lão, Quảng Trị",Quảng Trị,49,Quảng Trị
+KH-00609,DOANH NGHIỆP TW NGỌC ANH,"Đội 3, thôn Dị Chế, , Tỉnh Hưng Yên",Hưng Yên,31,Hưng Yên
+KH-00610,DOANH NGHIỆP TW HÙNG CƯỜNG,"Xã Nam Thái Ninh, Tỉnh Hưng Yên",Hưng Yên,31,Hưng Yên
+KH-00611,CÔNG TY TNHH VIỆT ANH,"Xã Đồng Tiến, Huyện Quỳnh Phụ, Thái Bình",Thái Bình,53,Thái Bình
+KH-00612,DOANH NGHIỆP TW XÂY DỰNG,"Phường Bạch Đằng, TP Hải Phòng",Hải Phòng,27,Hải Phòng
+KH-00613,DOANH NGHIỆP TW HÙNG CƯỜNG,"Phường Hiệp Hòa, Quảng Ninh",Quảng Ninh,48,Quảng Ninh
+KH-00614,CỬA HÀNG XE ĐẠP NAM TIẾN,"Khu 7, Đặc khu Vân Đồn, Quảng Ninh",Quảng Ninh,48,Quảng Ninh
+KH-00615,CÔNG TY CỔ PHẦN THƯƠNG MẠI QUANG VINH,"Thị tứ Đồng Gia, Xã Kim Thành, Thành phố Hải Phòng",Hải Phòng,27,Hải Phòng
+KH-00616,CÔNG TY CỔ PHẦN TRÍ ĐỨC,"Ngõ 19, đường Tô Ngọc Vân, Phường Tây Hồ, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00617,CÔNG TY CỔ PHẦN ĐẠI LỢI,"đường Nguyễn Văn Linh, Phường Phúc Lợi, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00618,HỘ KINH DOANH ĐÔNG NAM,"xã An Châu, Tỉnh Nghệ An",Nghệ An,40,Nghệ An
+KH-00619,CỬA HÀNG XE ĐẠP VĨNH PHÁT,"Phan Triêm, Phường Hòa Xuân, TP Đà Nẵng",Đà Nẵng,16,Đà Nẵng
+KH-00620,CỬA HÀNG XE ĐẠP ĐẠI DƯƠNG,"phố Đồng Phú, Xã Kỳ Anh, Hà Tĩnh",Hà Tĩnh,25,Hà Tĩnh
+KH-00621,CÔNG TY TNHH SƠN HÀ,"TTTM chợ Đồng Than, Xã Hoàn Long, Tỉnh Hưng Yên",Hưng Yên,31,Hưng Yên
+KH-00622,CÔNG TY CỔ PHẦN XUÂN MAI,"đường Hoàng Quốc Việt, tổ 2, Bắc Lệnh, Phường Cam Đường, Lào Cai",Lào Cai,37,Lào Cai
+KH-00623,CÔNG TY TNHH THƯƠNG MẠI ĐẠI LỢI,"SN;231 tổ 32 khu 4A, Phường Cửa Ông, Quảng Ninh",Quảng Ninh,48,Quảng Ninh
+KH-00629,CÔNG TY TNHH ĐÔNG NAM,"Xã Lý Nhân, Ninh Bình",Ninh Bình,41,Ninh Bình
+KH-00624,CÔNG TY TNHH THƯƠNG MẠI HÙNG CƯỜNG,"Khu Lạch Đồng Giếng, Thôn Quyết Tiến, Xã Trần Phú, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00625,CÔNG TY TNHH MINH PHƯƠNG,"Xã Hồng Vân, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00626,CÔNG TY TNHH AN PHÁT,"TT Liễu Đề, Xã Nghĩa Hưng, Ninh Bình",Ninh Bình,41,Ninh Bình
+KH-00627,CÔNG TY CỔ PHẦN KHẢI HOÀN,"Phan Kế Bính, Phường Giảng Võ, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00628,CỬA HÀNG XE ĐẠP PHÚ THỊNH,"Xã Quỳnh Lưu, Xã Quỳnh Lưu, Tỉnh Ninh Bình",Ninh Bình,41,Ninh Bình
+KH-00630,CÔNG TY TNHH THƯƠNG MẠI ĐẠI DƯƠNG,"phố Vũ Xuân Thiều, Phường Phúc Lợi, Thành phố Hà Nội",Hà Nội,1,Hà Nội
+KH-00631,CÔNG TY TNHH VIỆT ANH,"Đường Chợ Bún, Xã Bát Tràng, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00632,CỬA HÀNG XE ĐẠP LONG PHÚ,"Xã Quang Trung, Bắc Ninh",Bắc Ninh,7,Bắc Ninh
+KH-00633,DOANH NGHIỆP TW KHẢI HOÀN,"Xã Ngọc Lý, Huyện Tân Yên, Bắc Giang",Bắc Giang,5,Bắc Giang
+KH-00634,CÔNG TY CỔ PHẦN TRÍ ĐỨC,"Xã Yên Lãng, Thành phố Hà Nội",Hà Nội,1,Hà Nội
+KH-00635,DOANH NGHIỆP TW ĐẠI LỢI,"Xã Vạn Phú, Thái Nguyên",Thái Nguyên,54,Thái Nguyên
+KH-00636,CỬA HÀNG XE ĐẠP YÊN BÌNH,"Phố Yên Sở, Phường Hoàng Mai, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00637,CỬA HÀNG XE ĐẠP ĐẠI DƯƠNG,"Cầu Xây, Xã Kim Anh, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00638,CÔNG TY CỔ PHẦN THƯƠNG MẠI THANH BÌNH,"Lương Hội, Xã Lương Bằng, Tỉnh Hưng Yên",Hưng Yên,31,Hưng Yên
+KH-00639,CÔNG TY CỔ PHẦN TRƯỜNG THỊNH,"Quốc lộ 45, Thôn Tân Ngữ 2, Xã Yên Định, Tỉnh Thanh Hóa",Thanh Hóa,55,Thanh Hóa
+KH-00640,CÔNG TY TNHH XUÂN MAI,"Khu 1, Xã Vĩnh Lộc, Thanh Hóa",Thanh Hóa,55,Thanh Hóa
+KH-00641,DOANH NGHIỆP TW ĐÔNG NAM,"ngách 127/32 Đường Lạc Long Quân, Phường Nghĩa Đô, Quận Cầu Giấy, Thành phố Hà Nội, Việt Nam",Hà Nội,1,Hà Nội
+KH-00642,CÔNG TY CỔ PHẦN HOÀ BÌNH,"Liền kề 8 - Ô 31 - Khu đô thị mới Tân Tây Đô, Xã Ô Diên, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00643,CÔNG TY TNHH TÂY BẮC,"NP2- 10 MBQH trung tâm thương mại Đại Siêu Thị Big C, Phường Hạc Thành, Thanh Hóa",Thanh Hóa,55,Thanh Hóa
+KH-00644,HỘ KINH DOANH THUỶ TIÊN,"Xã Đông Ngũ, Quảng Ninh",Quảng Ninh,48,Quảng Ninh
+KH-00645,CỬA HÀNG XE ĐẠP QUANG VINH,"TK Đồng Văn, Xã Đồng Lê, Quảng Trị",Quảng Trị,49,Quảng Trị
+KH-00646,DOANH NGHIỆP TW ĐẠI DƯƠNG,"Xã Phụng Công, Hưng Yên",Hưng Yên,31,Hưng Yên
+KH-00647,CÔNG TY CỔ PHẦN THƯƠNG MẠI MẶT TRỜI,"đường 422, cụm 13, Xã Ô Diên, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00648,CÔNG TY CỔ PHẦN THƯƠNG MẠI MINH PHƯƠNG,"Khu Long Vân, Xã Vân Du, Tỉnh Thanh Hóa",Thanh Hóa,55,Thanh Hóa
+KH-00649,CÔNG TY CỔ PHẦN ĐÔNG NAM,"Khu Ba Đề, Xã Yên Lãng, Thành phố Hà Nội",Hà Nội,1,Hà Nội
+KH-00650,DOANH NGHIỆP TW HOÀ BÌNH,"Cầu Đào, Thị trấn Nhân Thắng(Hết hiệu lưc), Tỉnh Bắc Ninh",Bắc Ninh,7,Bắc Ninh
+KH-00651,CÔNG TY TNHH CHI THÀNH,"Xã Đại Đồng, tỉnh Hưng Yên",Hưng Yên,31,Hưng Yên
+KH-00652,DOANH NGHIỆP TW XUÂN MAI,"Đường Quốc lộ 45, Khu phố 2, Xã Thiệu Hóa, Tỉnh Thanh Hóa",Thanh Hóa,55,Thanh Hóa
+KH-00653,HỘ KINH DOANH SƠN HÀ,"thôn Hạ Lôi, Xã Mê Linh, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00654,HỘ KINH DOANH TÂY BẮC,"Thửa đất 23, tờ bản đồ 02, thôn Dương Huy, Phường Vân Hà, Tỉnh Bắc Ninh, Việt Nam",Bắc Ninh,7,Bắc Ninh
+KH-00655,HỘ KINH DOANH TÂN TIẾN,"Xã Cẩm Trung, Hà Tĩnh",Hà Tĩnh,25,Hà Tĩnh
+KH-00656,CỬA HÀNG XE ĐẠP VĨNH PHÁT,"Phố Giếng Khía, Xã Gia Lộc, TP Hải Phòng",Hải Phòng,27,Hải Phòng
+KH-00657,CÔNG TY TNHH KHẢI HOÀN,"Phố Sàn, Xã Lục Nam, Bắc Ninh",Bắc Ninh,7,Bắc Ninh
+KH-00658,DOANH NGHIỆP TW VĨNH PHÁT,"đường Nguyễn Công Trứ, khối 1, Phường Trường Vinh, Nghệ An",Nghệ An,40,Nghệ An
+KH-00659,CỬA HÀNG XE ĐẠP QUANG VINH,"Xã Hợp Lý, Phú Thọ",Phú Thọ,43,Phú Thọ
+KH-00660,CÔNG TY CỔ PHẦN THƯƠNG MẠI TOÀN THẮNG,"Thôn La Văn Cầu, Xã Nam Sách, TP Hải Phòng",Hải Phòng,27,Hải Phòng
+KH-00661,HỘ KINH DOANH QUANG VINH,"đường 70, Phường Thanh Liệt, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00662,DOANH NGHIỆP TW ĐẠI DƯƠNG,"Cầu Tó, đường Phan Trọng Tuệ, Xã Đại Thanh, Thành phố Hà Nội",Hà Nội,1,Hà Nội
+KH-00663,CÔNG TY CỔ PHẦN TRƯỜNG THỊNH,"Tổ dân phố Hòa Sơn, Phường Chương Mỹ, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00664,CÔNG TY CỔ PHẦN THƯƠNG MẠI TÂN TIẾN,"Xã Hòa Xá, Thành phố Hà Nội",Hà Nội,1,Hà Nội
+KH-00665,CÔNG TY CỔ PHẦN TÂY BẮC,"Hoàng Đạo Thành, Phường Khương Đình, Hà Nội",Hà Nội,1,Hà Nội
+KH-00666,CÔNG TY CỔ PHẦN TÂN TIẾN,"Đường Minh Khai, Phường Tương Mai, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00667,CÔNG TY CỔ PHẦN MINH PHƯƠNG,"Phạm Văn Đồng, Khối 2, Xã Núi Thành, Thành phố Đà Nẵng",Đà Nẵng,16,Đà Nẵng
+KH-00668,CỬA HÀNG XE ĐẠP AN PHÁT,"Xã Tiên Lãng, Thành phố Hải Phòng",Hải Phòng,27,Hải Phòng
+KH-00669,CÔNG TY TNHH THƯƠNG MẠI LONG PHÚ,"Xã Thiên Lộc, Thành phố Hà Nội",Hà Nội,1,Hà Nội
+KH-00670,CỬA HÀNG XE ĐẠP THIÊN AN,"Xã cẩm trung , Huyện Cẩm xuyên , Tĩnh Hà Tĩnh",Hà Tĩnh,25,Hà Tĩnh
+KH-00671,HỘ KINH DOANH VIỆT ANH,"Đường Xuân Thủy, Phường Cầu Giấy, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00672,CÔNG TY CỔ PHẦN TÂN TIẾN,"đường Cầu Diễn, Phường Phú Diễn, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00673,CỬA HÀNG XE ĐẠP HÙNG CƯỜNG,"đường Hồ Tùng Mậu, Phường Phú Diễn, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00717,CÔNG TY TNHH THƯƠNG MẠI QUANG VINH,"Xã Mậu A, Lào Cai",Lào Cai,37,Lào Cai
+KH-00674,CỬA HÀNG XE ĐẠP TÚ ANH,"đường Cầu Diễn, TDP Nguyên xá 2, Phường Tây Tựu, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00675,CỬA HÀNG XE ĐẠP SÁN LẠP,"Nhà số 10, ngõ 7, phố Nguyễn Khả Trạc, Phường Phú Diễn, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00676,CÔNG TY CỔ PHẦN THƯƠNG MẠI VẠN LỢI,"ngõ 2/27 đường Phương Canh, Tổ 2, Phường Xuân Phương, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00677,CỬA HÀNG XE ĐẠP LÊ ANH,"Xã Nội Bài, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00678,DOANH NGHIỆP TW MINH PHƯƠNG,"Quầy Q7 chợ Kim Giang, Phường Khương Đình, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00679,HỘ KINH DOANH ĐẠI DƯƠNG,"TK Cơ Quan, Phường Thảo Nguyên, Tỉnh Sơn La",Sơn La,51,Sơn La
+KH-00680,HỘ KINH DOANH ĐẠI LỢI,"Đường Xô Viết Nghệ Tĩnh, Xã Can Lộc, Tỉnh Hà Tĩnh",Hà Tĩnh,25,Hà Tĩnh
+KH-00681,DOANH NGHIỆP TW NGỌC ANH,"đường Trần Phú, tổ 11, Phường Hà Giang 2, Tuyên Quang",Hà Giang,23,Hà Giang
+KH-00682,DOANH NGHIỆP TW TRƯỜNG THỊNH,"phường sông cầu, Phường Bắc Kạn, Thái Nguyên",Bắc Kạn,6,Bắc Kạn
+KH-00683,DOANH NGHIỆP TW ĐẠI LỢI,"Phường Thi Sơn, Thị xã Kim Bảng, Hà Nam",Hà Nam,24,Hà Nam
+KH-00684,CÔNG TY CỔ PHẦN THƯƠNG MẠI VĨNH PHÁT,"Xã Yên Hòa, Hà Tĩnh",Hà Tĩnh,25,Hà Tĩnh
+KH-00685,CÔNG TY CỔ PHẦN MẶT TRỜI,"Trần Khát Chân, Phường Hai Bà Trưng, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00686,CỬA HÀNG XE ĐẠP LONG PHÚ,"TT Tứ Trưng, Xã Vĩnh Tường, Tỉnh Phú Thọ",Phú Thọ,43,Phú Thọ
+KH-00687,CÔNG TY CỔ PHẦN THƯƠNG MẠI LÊ ANH,"Đội 7, Thôn 2, Xã Quảng Bị, Huyện Chương Mỹ, Hà Nội",Hà Nội,1,Hà Nội
+KH-00688,CÔNG TY CỔ PHẦN THƯƠNG MẠI XUÂN MAI,"Thửa đất số 109, tờ bản đồ số 41, khu Lê Bình, Thị trấn Thanh Miện, Huyện Thanh Miện, Hải Dương",Hải Dương,26,Hải Dương
+KH-00689,CÔNG TY TNHH THƯƠNG MẠI HOÀ BÌNH,"Đường An Khánh, Thôn Vân Lũng, Xã An Khánh, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00690,CỬA HÀNG XE ĐẠP NAM TIẾN,"đường Nguyễn Chí Thanh, Phường Thành Sen, Tỉnh Hà Tĩnh",Hà Tĩnh,25,Hà Tĩnh
+KH-00691,CÔNG TY TNHH PHÚ THỊNH,"Xã Hưng Đạo, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00692,CỬA HÀNG XE ĐẠP SÁN LẠP,"đường Vạn Xuân, thôn Phố Thú Y, Xã Hoài Đức, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00693,CỬA HÀNG XE ĐẠP XÂY DỰNG,"Xã Hòa Phú, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00694,HỘ KINH DOANH NGỌC ANH,"Phố Kênh Đào, Xã Hồng Sơn, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00695,CÔNG TY CỔ PHẦN THƯƠNG MẠI AN PHÁT,"ngách 250/60 Kim Giang, Phường Định Công, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00696,CÔNG TY TNHH THƯƠNG MẠI PHÚ THỊNH,"Đường Trần Hưng Đạo, Xã Kẻ Sặt, TP Hải Phòng",Hải Phòng,27,Hải Phòng
+KH-00697,CÔNG TY TNHH THƯƠNG MẠI TRƯỜNG THỊNH,"Hoàng Quốc Việt, Phường Nghĩa Đô, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00698,CÔNG TY CỔ PHẦN THƯƠNG MẠI HÙNG CƯỜNG,"Ngõ 42 Phố Sài Đồng, Phường Phúc Lợi, Thành phố Hà Nội",Hà Nội,1,Hà Nội
+KH-00699,CÔNG TY CỔ PHẦN YÊN BÌNH,"Thửa đất số 183, tờ bản đồ số 33, thôn Ngò Báng, xã Đức Lý, huyện Lý Nhân, tỉnh Hà Nam",Hà Nam,24,Hà Nam
+KH-00700,CÔNG TY TNHH TÂY BẮC,"Nhân Vinh, Phường Đường Hào, Tỉnh Hưng Yên",Hưng Yên,31,Hưng Yên
+KH-00701,CÔNG TY TNHH THƯƠNG MẠI TRƯỜNG THỊNH,"phố 3, Xã Tiên Điền, Hà Tĩnh",Hà Tĩnh,25,Hà Tĩnh
+KH-00702,CỬA HÀNG XE ĐẠP YÊN BÌNH,"Xã Xuân Trường, Ninh Bình",Ninh Bình,41,Ninh Bình
+KH-00703,CÔNG TY CỔ PHẦN NAM TIẾN,"Phường Phú Diễn, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00704,CÔNG TY CỔ PHẦN THƯƠNG MẠI VIỆT ANH,"Xã Hồng Sơn, Huyện Mỹ Đức, Hà Nội Tel : 0992098027 Gồm 13 mặt hàng, 30 chiếc,",Hà Nội,1,Hà Nội
+KH-00705,HỘ KINH DOANH ĐẠI DƯƠNG,"Đường Núi Vàng, Tổ 9, Phường Trung Sơn, Ninh Bình",Ninh Bình,41,Ninh Bình
+KH-00706,CÔNG TY CỔ PHẦN THƯƠNG MẠI VẠN LỢI,"đường Điện Biên, tổ dân phố số 8 phường Minh Tân, thành phố Yên Bái, tỉnh Yên Bái, Việt Nam",Điện Biên,19,Điện Biên
+KH-00707,CỬA HÀNG XE ĐẠP TÚ ANH,"Thôn Tiên Tảo, Xã Hà Nam, TP Hải Phòng Tel : 0986687000 Gồm 16 mặt hàng, 40 chiếc,",Hà Nam,24,Hà Nam
+KH-00708,DOANH NGHIỆP TW KHẢI HOÀN,"Phường An Dương, TP Hải Phòng",Hải Phòng,27,Hải Phòng
+KH-00709,HỘ KINH DOANH QUANG VINH,"phố 3, Xã Yên Khánh, Tỉnh Ninh Bình",Ninh Bình,41,Ninh Bình
+KH-00710,CÔNG TY TNHH THANH BÌNH,"An Dương Vương, Phường Phú Thượng, TP Hà Nội Tel : 0949124175 Gồm 1 mặt hàng, 1 chiếc,",Hà Nội,1,Hà Nội
+KH-00711,CÔNG TY CỔ PHẦN TÂY BẮC,"Lý Tự Trọng, Xã Liên Hương, Lâm Đồng Tel : 0833874407 Gồm 1 mặt hàng, 3 chiếc,",Lâm Đồng,35,Lâm Đồng
+KH-00712,CÔNG TY TNHH THƯƠNG MẠI TRƯỜNG THỊNH,"Thôn Quán Rẽ, Xã An Khánh, Thành phố Hải Phòng",Hải Phòng,27,Hải Phòng
+KH-00713,CÔNG TY CỔ PHẦN THƯƠNG MẠI BÌNH MINH,"C17, Phường Mường Thanh, Tỉnh Điện Biên Tel : 0817022478 Gồm 7 mặt hàng, 10 chiếc,",Điện Biên,19,Điện Biên
+KH-00714,CỬA HÀNG XE ĐẠP BÌNH MINH,"khu Minh Khai, Phường Tuần Châu, Tỉnh Quảng Ninh",Quảng Ninh,48,Quảng Ninh
+KH-00715,HỘ KINH DOANH XÂY DỰNG,"Triệu Quốc Đạt, Phố Giắt, Xã Triệu Sơn, Thanh Hóa",Thanh Hóa,55,Thanh Hóa
+KH-00716,HỘ KINH DOANH LÊ ANH,"đường Lê Hồng Phong, thôn số 1, Xã Bảo Thắng, Lào Cai",Lào Cai,37,Lào Cai
+KH-00718,CÔNG TY CỔ PHẦN QUANG VINH,"Điệp Sơn, Phường Duy Tiên, Ninh Bình",Ninh Bình,41,Ninh Bình
+KH-00719,CÔNG TY CỔ PHẦN THƯƠNG MẠI TRƯỜNG THỊNH,"Xã Ba Vì, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00720,HỘ KINH DOANH KHẢI HOÀN,"Hà Huy Tập - TT Cẩm Xuyên, Xã Cẩm Xuyên, Tỉnh Hà Tĩnh Tel : 0791885113 Gồm 11 mặt hàng, 26 chiếc,",Hà Tĩnh,25,Hà Tĩnh
+KH-00721,DOANH NGHIỆP TW MINH PHƯƠNG,"Đường số 2, Khu công nghiệp Nhựt Chánh, Xã Bình Đức, tỉnh Tây Ninh",Tây Ninh,52,Tây Ninh
+KH-00722,CÔNG TY TNHH PHÚ THỊNH,"chợ mễ, Xã Mễ Sở, Tỉnh Hưng Yên Tel : 0793743905 Gồm 15 mặt hàng, 50 chiếc,",Hưng Yên,31,Hưng Yên
+KH-00723,CÔNG TY CỔ PHẦN THANH BÌNH,"Khu dân cư Phú Cường, Phường Phong Châu, Phú Thọ",Phú Thọ,43,Phú Thọ
+KH-00724,DOANH NGHIỆP TW VIỆT ANH,"Khu Đồng Hàng, Xã Cẩm Khê, Tỉnh Phú Thọ Tel : 0922887593 Gồm 2 mặt hàng, 10 chiếc,",Phú Thọ,43,Phú Thọ
+KH-00725,CÔNG TY CỔ PHẦN TOÀN THẮNG,"Khu 2, thị trấn Thanh Ba, Xã Thanh Ba, Tỉnh Phú Thọ",Phú Thọ,43,Phú Thọ
+KH-00726,CÔNG TY CỔ PHẦN THƯƠNG MẠI ĐÔNG NAM,"đường Phương Canh, tổ dân phố số 7, Phường Xuân Phương, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00727,HỘ KINH DOANH PHÚ THỊNH,"Phan Đình Phùng, Phường Cẩm Thành, Quảng Ngãi",Quảng Ngãi,47,Quảng Ngãi
+KH-00728,HỘ KINH DOANH SƠN HÀ,"Trần Đăng Ninh, Tổ 6, Phường Quyết Tâm, Thành phố Sơn La, Sơn La Tel : 0717753271 Gồm 10 mặt hàng, 21 chiếc,",Sơn La,51,Sơn La
+KH-00729,CÔNG TY CỔ PHẦN THƯƠNG MẠI HÙNG CƯỜNG,"Xã Thọ Xuân, Thanh Hóa",Thanh Hóa,55,Thanh Hóa
+KH-00730,CÔNG TY TNHH THƯƠNG MẠI PHÚC AN,"Khu Tân Hợp, Xã Tân Lạc, Phú Thọ",Phú Thọ,43,Phú Thọ
+KH-00731,CÔNG TY TNHH THƯƠNG MẠI ĐÔNG NAM,"La Văn Cầu, Xã Nam Sách, Thành phố Hải Phòng",Hải Phòng,27,Hải Phòng
+KH-00732,CÔNG TY TNHH THƯƠNG MẠI TÂN TIẾN,"phố Lý Viên, Xã Xuân Cẩm, Tỉnh Bắc Ninh Tel : 0386243665 Gồm 7 mặt hàng, 28 chiếc,",Bắc Ninh,7,Bắc Ninh
+KH-00733,DOANH NGHIỆP TW NAM TIẾN,"đường ĐH-HH40, phố Trung Sơn, Xã Hoằng Hóa, Thanh Hóa Tel : 0766929072 Gồm 12 mặt hàng, 30 chiếc,",Thanh Hóa,55,Thanh Hóa
+KH-00734,CỬA HÀNG XE ĐẠP AN PHÁT,"Thu Thuỷ, Xã Đa Phúc, Thành phố Hà Nội",Hà Nội,1,Hà Nội
+KH-00735,CỬA HÀNG XE ĐẠP PHÚC AN,"Phường Nghĩa Đô, TP Hà Nội Tel : 0371381468 Gồm 2 mặt hàng, 2 chiếc,",Hà Nội,1,Hà Nội
+KH-00736,CÔNG TY CỔ PHẦN KHẢI HOÀN,"30, Khu Phố 1, Phường Quế Võ, Bắc Ninh Tel : 0717552316 Gồm 8 mặt hàng, 15 chiếc,",Bắc Ninh,7,Bắc Ninh
+KH-00737,CÔNG TY CỔ PHẦN THƯƠNG MẠI VẠN LỢI,"phố 10, Xã Thượng Bằng La, Lào Cai Tel : 0979864963 Gồm 15 mặt hàng, 16 chiếc,",Lào Cai,37,Lào Cai
+KH-00738,CỬA HÀNG XE ĐẠP VĨNH PHÁT,"đường Phùng Hưng, phố Bình Minh, Phường Hạc Thành, Thanh Hóa",Thanh Hóa,55,Thanh Hóa
+KH-00739,HỘ KINH DOANH KHẢI HOÀN,"Kim Đồng, Tổ dân phố 12, Phường Thục Phán, Tỉnh Cao Bằng Tel : 0384874654 Gồm 7 mặt hàng, 10 chiếc,",Cao Bằng,14,Cao Bằng
+KH-00740,CỬA HÀNG XE ĐẠP TOÀN THẮNG,"Thửa đất số 203-2, Khu đất dịch vụ Khu Đồng Mới, đường An Khánh, thôn An Thọ, Xã An Khánh, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00741,HỘ KINH DOANH TÂY BẮC,"Phường Hạc Thành, Thanh Hóa Tel : 0951026733 Gồm 1 mặt hàng, 1 chiếc,",Thanh Hóa,55,Thanh Hóa
+KH-00742,CỬA HÀNG XE ĐẠP ĐÔNG NAM,"Xã An Khánh, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00743,CỬA HÀNG XE ĐẠP AN PHÁT,"Xã Bắc Đông Hưng, Tỉnh Hưng Yên Tel : 0788181640 Gồm 24 mặt hàng, 64 chiếc,",Hưng Yên,31,Hưng Yên
+KH-00744,CÔNG TY CỔ PHẦN PHÚ THỊNH,"ngách 16/38 Đỗ Xuân Hợp, Phường Từ Liêm, TP Hà Nội Tel : 0312563267 Gồm 1 mặt hàng, 1 chiếc,",Hà Nội,1,Hà Nội
+KH-00745,CÔNG TY TNHH THƯƠNG MẠI HÙNG CƯỜNG,"tòa nhà Huệ Lộc, số 146 Nguyễn Sỹ Sách, Phường Trường Vinh, Nghệ An",Nghệ An,40,Nghệ An
+KH-00746,CÔNG TY TNHH THƯƠNG MẠI SÁN LẠP,"NV5.9, Liền Kề Hải Âu, khu đô thị mới Cầu Bươu, Phường Thanh Liệt, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00747,DOANH NGHIỆP TW TÂY BẮC,"Phú Hậu, Xã Khánh Thiện, Ninh Bình",Ninh Bình,41,Ninh Bình
+KH-00748,DOANH NGHIỆP TW TÂN TIẾN,"Dược Thượng, Xã Sóc Sơn, Thành phố Hà Nội Tel : 0903168350 Gồm 6 mặt hàng, 20 chiếc,",Hà Nội,1,Hà Nội
+KH-00749,CÔNG TY CỔ PHẦN KHẢI HOÀN,"ngõ 10 đường Nguyễn Văn Huyên, Phường Cầu Giấy, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00750,CÔNG TY CỔ PHẦN ĐÔNG NAM,"Khu phố 3B, Phường Tam Hiệp, Đồng Nai",Đồng Nai,20,Đồng Nai
+KH-00751,CÔNG TY CỔ PHẦN SÁN LẠP,"Lê Thánh Tông, khối phố An Mỹ, Phường Hội An Đông, TP Đà Nẵng",Đà Nẵng,16,Đà Nẵng
+KH-00752,CÔNG TY CỔ PHẦN THƯƠNG MẠI AN PHÁT,"Xã Đông Trạch, Quảng Trị Tel : 0777503050 Gồm 27 mặt hàng, 29 chiếc,",Quảng Trị,49,Quảng Trị
+KH-00753,CÔNG TY CỔ PHẦN XÂY DỰNG,"Xã Lương Sơn, Phú Thọ",Phú Thọ,43,Phú Thọ
+KH-00754,CÔNG TY CỔ PHẦN THƯƠNG MẠI NAM TIẾN,"Xã Nghĩa Hiệp, Huyện Yên Mỹ, Tỉnh Hưng Yên, Việt Nam",Hưng Yên,31,Hưng Yên
+KH-00001,HỘ KINH DOANH TÚ ANH,"Phường Thanh Lương, Quận Hai Bà Trưng, Hà Nội",Hà Nội,1,Hà Nội
+KH-00002,CÔNG TY TNHH THƯƠNG MẠI VIỆT ANH,"Đường Tạ Quang Bửu, Phường Bạch Mai, Quận Hai Bà Trưng, Hà Nội",Hà Nội,1,Hà Nội
+KH-00003,CÔNG TY CỔ PHẦN THƯƠNG MẠI NAM TIẾN,"đường Trường Chinh, Phường Phương Liệt, Quận Thanh Xuân, Hà Nội",Hà Nội,1,Hà Nội
+KH-00005,CÔNG TY TNHH ĐẠI LỢI,"Khu Liên cơ Võ Chí Công, số 258 Võ Chí Công, Khu 2 Xuân La, Quận Tây Hồ, Thành phố Hà Nội, Việt Nam",Hà Nội,1,Hà Nội
+KH-00006,CÔNG TY TNHH CHI THÀNH,"đường Bờ Bao Tân Thắng, phường Sơn Kỳ, quận Tân Phú, TP Hồ Chí Minh",TP. Hồ Chí Minh,30,TP. Hồ Chí Minh
+KH-00007,CÔNG TY TNHH THƯƠNG MẠI ĐẠI LỢI,Lê Hoàn - Thị trấn Thọ Xuân - Huyện Thọ Xuân - Thanh Hoá,Thanh Hóa,55,Thanh Hóa
+KH-00755,CỬA HÀNG XE ĐẠP SƠN HÀ,"D12b, D12c, Khu 4-Khu du lịch Bắc bán đảo Cam Ranh, Xã Cam Hải Đông, Huyện Cam Lâm, Tỉnh Khánh Hòa, Việt Nam",Khánh Hòa,32,Khánh Hòa
+KH-00756,CÔNG TY CỔ PHẦN THƯƠNG MẠI TRÍ ĐỨC,"Thôn 3, Xã Phúc Thọ, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00757,HỘ KINH DOANH THUỶ TIÊN,"Nguyễn Đức Cảnh, Phường Tương Mai, Thành phố Hà Nội",Hà Nội,1,Hà Nội
+KH-00758,HỘ KINH DOANH THANH BÌNH,"xã Minh Đức, Phường Việt Yên, Bắc Ninh",Bắc Ninh,7,Bắc Ninh
+KH-00765,CỬA HÀNG XE ĐẠP XUÂN MAI,"Cụm công nghiệp vừa và nhỏ Từ Liêm, Bắc Từ Liêm, Hà Nội",Hà Nội,1,Hà Nội
+KH-00766,CÔNG TY CỔ PHẦN THƯƠNG MẠI BÌNH MINH,"đường Hoàng Liên Sơn, tổ 12, Phường Trung Tâm, Tỉnh Lào Cai",Lào Cai,37,Lào Cai
+KH-00767,CÔNG TY CỔ PHẦN THƯƠNG MẠI PHÚ THỊNH,"Đường Lê Lợi, Phường Vĩnh Yên, Phú Thọ",Phú Thọ,43,Phú Thọ
+KH-00768,CÔNG TY CỔ PHẦN THƯƠNG MẠI NAM TIẾN,"Phan Chu Trinh, Phường Hương Trà, TP Đà Nẵng",Đà Nẵng,16,Đà Nẵng
+KH-00769,CÔNG TY TNHH THƯƠNG MẠI CHI THÀNH,"Xã Hải Ninh, Tỉnh Quảng Ninh",Quảng Ninh,48,Quảng Ninh
+KH-00770,CÔNG TY CỔ PHẦN MẶT TRỜI,"đường 32, Xã Hát Môn, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00771,CÔNG TY TNHH THƯƠNG MẠI ĐẠI LỢI,"Đường Hoàng Văn Thụ, Tổ 1, Phường Phan Đình Phùng, Thái Nguyên",Thái Nguyên,54,Thái Nguyên
+KH-00772,CÔNG TY TNHH SƠN HÀ,"Xã Văn Chấn, Lào Cai",Lào Cai,37,Lào Cai
+KH-00773,CÔNG TY CỔ PHẦN THƯƠNG MẠI HOÀ BÌNH,"đường Trần Phú, tiểu khu 12, Xã Lương Sơn, Phú Thọ",Phú Thọ,43,Phú Thọ
+KH-00774,HỘ KINH DOANH HÙNG CƯỜNG,"Đường Nguyễn Trãi,Tổ dân phố 4, Xã Hương Sơn, Hà Tĩnh",Hà Tĩnh,25,Hà Tĩnh
+KH-00775,CÔNG TY TNHH TÂN TIẾN,"phố 5, Xã Hương Sơn, Hà Tĩnh",Hà Tĩnh,25,Hà Tĩnh
+KH-00776,DOANH NGHIỆP TW ĐẠI LỢI,"Phường Nam Định, Tỉnh Ninh Bình, Việt Nam Tel : 0360177881 Gồm 4 mặt hàng, 14 chiếc,",Nam Định,39,Nam Định
+KH-00777,CÔNG TY TNHH THƯƠNG MẠI ĐẠI DƯƠNG,"Khu 2, Phường Nhị Chiểu, TP Hải Phòng",Hải Phòng,27,Hải Phòng
+KH-00778,CỬA HÀNG XE ĐẠP CHI THÀNH,"khu Trới 10, Phường Hoành Bồ, Quảng Ninh, Việt Nam",Quảng Ninh,48,Quảng Ninh
+KH-00779,CÔNG TY CỔ PHẦN THƯƠNG MẠI QUANG VINH,"đường Hoàng Hoa Thám, Phường Đa Mai, Tỉnh Bắc Ninh",Bắc Ninh,7,Bắc Ninh
+KH-00780,CÔNG TY TNHH MINH PHƯƠNG,"đường Nguyễn Hữu Cảnh, Phường Quảng Phú, Thanh Hóa",Thanh Hóa,55,Thanh Hóa
+KH-00781,CÔNG TY TNHH LÊ ANH,"Xã Xuân Cẩm, Bắc Ninh Tel : 0980794404 Gồm 8 mặt hàng, 31 chiếc,",Bắc Ninh,7,Bắc Ninh
+KH-00782,DOANH NGHIỆP TW PHÚ THỊNH,"Khu B-Thị Trấn, Xã Sóc Sơn, Thành phố Hà Nội",Hà Nội,1,Hà Nội
+KH-00783,CÔNG TY TNHH LÊ ANH,"Xã Đồng Yên, Tỉnh Tuyên Quang",Tuyên Quang,59,Tuyên Quang
+KH-00784,CÔNG TY CỔ PHẦN ĐẠI LỢI,"Thị trấn Tứ Kỳ, xã Tứ Kỳ, TP Hải Phòng Tel : 0708748500 Gồm 16 mặt hàng, 40 chiếc,",Hải Phòng,27,Hải Phòng
+KH-00785,CÔNG TY CỔ PHẦN CHI THÀNH,"Thửa đất số 153, tờ bản đồ số 14, Thôn Cao Dương, Xã Gia Lộc, TP Hải Phòng",Hải Phòng,27,Hải Phòng
+KH-00786,CỬA HÀNG XE ĐẠP THIÊN AN,"Xã Trường Tân, TP Hải Phòng",Hải Phòng,27,Hải Phòng
+KH-00787,CÔNG TY CỔ PHẦN THƯƠNG MẠI ĐÔNG NAM,"LK 02-03, Nguyễn Khán, Tổ dân phố 7, Xã Nghi Xuân, Hà Tĩnh",Hà Tĩnh,25,Hà Tĩnh
+KH-00788,CÔNG TY CỔ PHẦN THƯƠNG MẠI PHÚC AN,"., Phường Phúc Yên, Phú Thọ",Phú Thọ,43,Phú Thọ
+KH-00789,CỬA HÀNG XE ĐẠP THANH BÌNH,"tổ 11, đường Hoàng Công Chất, Phường Phú Diễn, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00759,CÔNG TY CỔ PHẦN THƯƠNG MẠI VIỆT ANH,"153, Tổ dân phố Tân Phú, thị trấn Tân Yên, huyện Hàm Yên, Tuyên Quang",Tuyên Quang,59,Tuyên Quang
+KH-00760,CÔNG TY CỔ PHẦN TÚ ANH,"đường Lê Duẩn, Xã Vĩnh Linh, Quảng Trị",Quảng Trị,49,Quảng Trị
+KH-00761,CÔNG TY CỔ PHẦN ĐẠI DƯƠNG,"Liền kề 373, NO11, khu Cổng Đồng, đường Tố Hữu, TDP4, Phường Dương Nội, TP Hà Nội",Hà Nội,1,Hà Nội
+KH-00762,CỬA HÀNG XE ĐẠP TRÍ ĐỨC,"đường Trường Chinh, Đồng Xuân, Phường Xuân Hòa, Tỉnh Phú Thọ",Phú Thọ,43,Phú Thọ
+KH-00763,CÔNG TY CỔ PHẦN THƯƠNG MẠI XUÂN MAI,"Đường Bà Triệu- Hàm Rồng, Phường Hàm Rồng, Thanh Hóa",Thanh Hóa,55,Thanh Hóa
+KH-00764,CÔNG TY CỔ PHẦN PHÚ THỊNH,"Phố Lý Bôn, Tổ 2 (ĐT), Phường Trần Hưng Đạo, Hưng Yên",Hưng Yên,31,Hưng Yên
+KH-00790,CÔNG TY CỔ PHẦN TRƯỜNG THỊNH,"Nguyễn Tri Phương, Phường Hòa Cường, TP Đà Nẵng",Đà Nẵng,16,Đà Nẵng
+KH-00791,CÔNG TY TNHH THƯƠNG MẠI PHÚC AN,"Khối Tân Tiến, Phường Thái Hòa, Tỉnh Nghệ An Tel : 0856576717 Gồm 4 mặt hàng, 6 chiếc,",Nghệ An,40,Nghệ An
+KH-00792,CÔNG TY CỔ PHẦN TRƯỜNG THỊNH,"phố 2, Xã Anh Sơn, Nghệ An",Nghệ An,40,Nghệ An
+KH-00793,HỘ KINH DOANH HÙNG CƯỜNG,"TDP Dự Quần 1, Phường Đào Duy Từ, Thanh Hóa",Thanh Hóa,55,Thanh Hóa
+KH-00794,CÔNG TY TNHH PHÚC AN,"Tổ dân phố 8, Xã Tân Ninh, Thanh Hóa Tel : 0386265699 Gồm 4 mặt hàng, 20 chiếc,",Thanh Hóa,55,Thanh Hóa
+KH-00795,CỬA HÀNG XE ĐẠP MINH PHƯƠNG,"Khu phố Hàng Trạm, Xã Yên Thủy, Phú Thọ",Phú Thọ,43,Phú Thọ

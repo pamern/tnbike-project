@@ -8,3 +8,6 @@ pdfplumber
 # pytesseract
 # plotly
 python-dateutil
+unidecode
+python-Levenshtein
+fuzzywuzzy

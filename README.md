@@ -48,23 +48,45 @@ Thông tin login Adminer (PostgreSQL):
 - Password: `postgres`
 - Database: `tnbike_db`
 
-## 3. Import dữ liệu
+## 3. Restore DB (không cần chạy từng file SQL)
 
-### 3.1. Tạo bảng
+Nếu bạn muốn có sẵn schema + data mẫu để chạy dashboard/Power BI nhanh, có thể restore từ file backup trong `data/backup/`.
+
+### 3.1. (Khuyến nghị) Làm sạch DB trước khi restore
+
+Nếu bạn đã từng import/restore trước đó và muốn reset về trạng thái sạch:
+
+```powershell
+docker compose down -v
+docker compose up -d
+```
+
+### 3.2. Restore từ file backup
+
+File backup hiện có: `data/backup/tnbike_db_backup.sql`.
+
+```powershell
+docker cp data/backup/tnbike_db_backup.sql tnbike_postgres:/tmp/tnbike_db_backup.sql
+docker exec -it tnbike_postgres psql -U postgres -d tnbike_db -f /tmp/tnbike_db_backup.sql
+```
+Lưu ý: Nếu restore db thì trực tiếp connect với Power BI luôn.
+## 4. Import dữ liệu
+
+### 4.1. Tạo bảng
 
 ```powershell
 docker cp sql/01_create_tables.sql tnbike_postgres:/01_create_tables.sql
 docker exec -it tnbike_postgres psql -U postgres -d tnbike_db -f /01_create_tables.sql
 ```
 
-### 3.2. Import dữ liệu ban đầu
+### 4.2. Import dữ liệu ban đầu
 
 ```powershell
 docker cp sql/02_import_data.sql tnbike_postgres:/02_import_data.sql
 docker exec -it tnbike_postgres psql -U postgres -d tnbike_db -f /02_import_data.sql
 ```
 
-## 4. Xử lý dữ liệu
+## 5. Xử lý dữ liệu
 
 Chạy extract để đọc email/PDF tháng 3/2026 và xuất ra các file staging CSV trong `data/staging/`.
 
@@ -82,16 +104,16 @@ Output:
 python src/extract_data.py
 ```
 
-## 5. Import log, ghi dữ liệu 3/2026
+## 6. Import log, ghi dữ liệu 3/2026
 
-### 5.1. Tạo bảng email log
+### 6.1. Tạo bảng email log
 
 ```powershell
 docker cp sql/03_create_email_log.sql tnbike_postgres:/03_create_email_log.sql
 docker exec -it tnbike_postgres psql -U postgres -d tnbike_db -f /03_create_email_log.sql
 ```
 
-### 5.1a. Chú thích `email_log.processing_status`
+### 6.1a. Chú thích `email_log.processing_status`
 
 File `data/staging/staging_email_log.csv` có cột `processing_status` (được ghi bởi `python src/extract_data.py`). Ý nghĩa:
 
@@ -106,13 +128,13 @@ File `data/staging/staging_email_log.csv` có cột `processing_status` (đượ
 
 Ghi chú: `NEW_CUSTOMER` là status dùng cho `staging_customer_log.csv` (không phải `email_log.processing_status`).
 
-### 5.2. Import staging CSV vào DB (email_log / sales_order / order_line)
+### 6.2. Import staging CSV vào DB (email_log / sales_order / order_line)
 
 ```powershell
 python src/import_staging_to_db.py
 ```
 
-## 6. Đồng bộ fact_sales
+## 7. Đồng bộ fact_sales
 
 Chạy refresh `fact_sales` cho tháng 03/2026 (xóa/insert lại để tránh duplicate):
 
@@ -121,9 +143,9 @@ docker cp sql/04_refresh_fact_sales_03_2026.sql tnbike_postgres:/04_refresh_fact
 docker exec -it tnbike_postgres psql -U postgres -d tnbike_db -f /04_refresh_fact_sales_03_2026.sql
 ```
 
-## 7. Connect DB với Power BI
+## 8. Connect DB với Power BI
 
-### 7.1. Thông tin kết nối (mặc định)
+### 8.1. Thông tin kết nối (mặc định)
 
 - Server: `localhost`
 - Port: `5432`
@@ -131,7 +153,7 @@ docker exec -it tnbike_postgres psql -U postgres -d tnbike_db -f /04_refresh_fac
 - Username: `postgres`
 - Password: `postgres`
 
-### 7.2. Kết nối trong Power BI Desktop
+### 8.2. Kết nối trong Power BI Desktop
 
 1. `Home` → `Get data` → `PostgreSQL database`.
 2. Nhập:

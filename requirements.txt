@@ -11,3 +11,7 @@ python-dateutil
 unidecode
 python-Levenshtein
 fuzzywuzzy
+spacy 
+transformers 
+torch
+openrouter

@@ -1,0 +1,516 @@
+ERROR:root:Error: name 'psycopg2' is not defined
+INFO:root:Loaded 247 rows from the CSV.
+INFO:root:Changes committed to the database.
+INFO:root:Database connection closed.
+INFO:root:Loaded 247 rows from the CSV.
+INFO:root:Updating product 214004000000 with color nan
+INFO:root:Updating product 333002022000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 224002004000 with color \u0110\u1ecf
+INFO:root:Updating product 217003001000 with color \u0110en
+INFO:root:Updating product 217002007000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 225002015000 with color Nâu
+INFO:root:Updating product 226003015000 with color Nâu
+INFO:root:Updating product 225002004000 with color \u0110\u1ecf
+INFO:root:Updating product 331002004000 with color \u0110\u1ecf
+INFO:root:Updating product 131002007000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 401002016002 with color Xanh Ng\u1ecdc
+INFO:root:Updating product 207004000000 with color nan
+INFO:root:Updating product 218004005000 with color Cam
+INFO:root:Updating product 117002023000 with color Kem
+INFO:root:Updating product 218002007000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 225002007000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 224002009000 with color H\u1ed3ng
+INFO:root:Updating product 224002002000 with color Tr\u1eafng
+INFO:root:Updating product 224002015000 with color Nâu
+INFO:root:Updating product 225002023000 with color Kem
+INFO:root:Updating product 225002002000 with color Tr\u1eafng
+INFO:root:Updating product 225002025000 with color Xanh Mint
+INFO:root:Updating product 125002009000 with color H\u1ed3ng
+INFO:root:Updating product 125002002000 with color Tr\u1eafng
+INFO:root:Updating product 217003008000 with color Ghi
+INFO:root:Updating product 333002001000 with color \u0110en
+INFO:root:Updating product 217003005000 with color Cam
+INFO:root:Updating product 218003008000 with color Ghi
+INFO:root:Updating product 218003001000 with color \u0110en
+INFO:root:Updating product 218003005000 with color Cam
+INFO:root:Updating product 224002026000 with color Xanh Mint
+INFO:root:Updating product 224002023000 with color Kem
+INFO:root:Updating product 216003008000 with color Ghi
+INFO:root:Updating product 226003023000 with color Kem
+INFO:root:Updating product 401002022000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 216003001000 with color \u0110en
+INFO:root:Updating product 331002022000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 225002009000 with color H\u1ed3ng
+INFO:root:Updating product 226003002000 with color Tr\u1eafng
+INFO:root:Updating product 330002001000 with color \u0110en
+INFO:root:Updating product 125002013000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 226003014000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 314002005000 with color Cam
+INFO:root:Updating product 124002009000 with color H\u1ed3ng
+INFO:root:Updating product 227002009000 with color H\u1ed3ng
+INFO:root:Updating product 330002002200 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 231003002000 with color Tr\u1eafng
+INFO:root:Updating product 331002008000 with color Ghi
+INFO:root:Updating product 304002004000 with color \u0110\u1ecf
+INFO:root:Updating product 314002019000 with color Vàng
+INFO:root:Updating product 217004005000 with color Cam
+INFO:root:Updating product 123002009000 with color H\u1ed3ng
+INFO:root:Updating product 314002020000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 217004008000 with color Ghi
+INFO:root:Updating product 413002001000 with color \u0110en
+INFO:root:Updating product 413002003000 with color \u0110\u1ecf
+INFO:root:Updating product 413002022000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 208002007000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 216002007000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 216003005000 with color Cam
+INFO:root:Updating product 208002023000 with color Tím
+INFO:root:Updating product 209002025000 with color Tím
+INFO:root:Updating product 335002013000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 217002001000 with color \u0110en
+INFO:root:Updating product 218002001000 with color \u0110en
+INFO:root:Updating product 215004000000 with color nan
+INFO:root:Updating product 335002001000 with color \u0110en
+INFO:root:Updating product 324000180000 with color \u0110en
+INFO:root:Updating product 123002007000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 329002005000 with color Cam
+INFO:root:Updating product 329002004001 with color \u0110\u1ecf
+INFO:root:Updating product 217002003000 with color \u0110\u1ecf
+INFO:root:Updating product 324000040000 with color \u0110\u1ecf
+INFO:root:Updating product 125002023000 with color Kem
+INFO:root:Updating product 231003005000 with color \u0110en
+INFO:root:Updating product 218004008000 with color Ghi
+INFO:root:Updating product 231003022000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 304002019000 with color Vàng
+INFO:root:Updating product 305002022000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 209002007000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 131002001002 with color \u0110en
+INFO:root:Updating product 131002004005 with color \u0110\u1ecf
+INFO:root:Updating product 131002008001 with color Ghi
+INFO:root:Updating product 131002019002 with color Vàng
+INFO:root:Updating product 225002024000 with color Tím
+INFO:root:Updating product 216002001000 with color \u0110en
+INFO:root:Updating product 124002024000 with color Tím
+INFO:root:Updating product 401002016000 with color Xanh Ng\u1ecdc
+INFO:root:Updating product 334002001000 with color \u0110en
+INFO:root:Updating product 305002001000 with color \u0110en
+INFO:root:Updating product 335002004000 with color \u0110\u1ecf
+INFO:root:Updating product 334002013000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 334002004000 with color \u0110\u1ecf
+INFO:root:Updating product 116002023000 with color Kem
+INFO:root:Updating product 131002004000 with color \u0110\u1ecf
+INFO:root:Updating product 231003023000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 490002007000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 490002004000 with color \u0110\u1ecf
+INFO:root:Updating product 490002009000 with color H\u1ed3ng
+INFO:root:Updating product 217004022000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 208002003000 with color \u0110\u1ecf
+INFO:root:Updating product 324000100000 with color Xanh Rêu
+INFO:root:Updating product 209002003000 with color \u0110\u1ecf
+INFO:root:Updating product 122002009000 with color H\u1ed3ng
+INFO:root:Updating product 122002004000 with color \u0110\u1ecf
+INFO:root:Updating product 122002002000 with color Tr\u1eafng
+INFO:root:Updating product 122002007000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 224002024000 with color Tím
+INFO:root:Updating product 218002003000 with color \u0110\u1ecf
+INFO:root:Updating product 227002014000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 304002020000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 216002003000 with color \u0110\u1ecf
+INFO:root:Updating product 413002018000 with color \u0110en
+INFO:root:Updating product 226002014000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 230002002000 with color Tr\u1eafng
+INFO:root:Updating product 231003002001 with color Tr\u1eafng
+INFO:root:Updating product 231003005001 with color \u0110en
+INFO:root:Updating product 123002004000 with color \u0110\u1ecf
+INFO:root:Updating product 218004008001 with color Ghi
+INFO:root:Updating product 217004008001 with color Ghi
+INFO:root:Updating product 115002019001 with color Vàng
+INFO:root:Updating product 124002004000 with color \u0110\u1ecf
+INFO:root:Updating product 231003022001 with color Tr\u1eafng
+INFO:root:Updating product 231003023001 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 114002000000 with color nan
+INFO:root:Updating product 218004009001 with color nan
+INFO:root:Updating product 217004022001 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 224002007000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 303002005000 with color Cam
+INFO:root:Updating product 303002019000 with color Vàng
+INFO:root:Updating product 303002004000 with color \u0110\u1ecf
+INFO:root:Updating product 304002005000 with color Cam
+INFO:root:Updating product 303002003000 with color \u0110\u1ecf
+INFO:root:Updating product 123002002000 with color Tr\u1eafng
+INFO:root:Updating product 230002001000 with color \u0110en
+INFO:root:Updating product 230002027000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 331002001000 with color \u0110en
+INFO:root:Updating product 104002009000 with color H\u1ed3ng
+INFO:root:Updating product 333002008000 with color Ghi
+INFO:root:Updating product 230002013000 with color Xanh Lá
+INFO:root:Updating product 232003008000 with color Ghi
+INFO:root:Updating product 232003002000 with color Tr\u1eafng
+INFO:root:Updating product 336002001000 with color \u0110en
+INFO:root:Updating product 336002004000 with color \u0110\u1ecf
+INFO:root:Updating product 336002022000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 337002001000 with color \u0110en
+INFO:root:Updating product 337002008000 with color Ghi
+INFO:root:Updating product 230002014000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 230002009000 with color H\u1ed3ng
+INFO:root:Updating product 230002023000 with color Kem
+INFO:root:Updating product 122002009001 with color H\u1ed3ng
+INFO:root:Updating product 122002019000 with color Vàng
+INFO:root:Updating product 122002022000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 122002024000 with color Tím
+INFO:root:Updating product 219002023000 with color Kem
+INFO:root:Updating product 105002013000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 105002004000 with color \u0110\u1ecf
+INFO:root:Updating product 106002004000 with color \u0110\u1ecf
+INFO:root:Updating product 102002023000 with color Kem
+INFO:root:Updating product 219002022000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 333002022002 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 132002022001 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 132002003001 with color \u0110\u1ecf
+INFO:root:Updating product 103002009000 with color H\u1ed3ng
+INFO:root:Updating product 106002001000 with color \u0110en
+INFO:root:Updating product 106002013000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 337002022000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 104002020000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 303002020000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 231002002000 with color Tr\u1eafng
+INFO:root:Updating product 231002023000 with color Kem
+INFO:root:Updating product 103002025000 with color Xanh Mint
+INFO:root:Updating product 219002012000 with color Ghi
+INFO:root:Updating product 232003009000 with color H\u1ed3ng
+INFO:root:Updating product 1000210020090000 with color H\u1ed3ng
+INFO:root:Updating product 1000220020090000 with color H\u1ed3ng
+INFO:root:Updating product 102002009000 with color H\u1ed3ng
+INFO:root:Updating product 132002001001 with color \u0110en
+INFO:root:Updating product 233003022001 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 406002004000 with color \u0110\u1ecf
+INFO:root:Updating product 225002002001 with color Tr\u1eafng
+INFO:root:Updating product 225002007001 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 225002004001 with color \u0110\u1ecf
+INFO:root:Updating product 225002015001 with color Nâu
+INFO:root:Updating product 333002001003 with color \u0110en
+INFO:root:Updating product 333002022003 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 333002008003 with color Ghi
+INFO:root:Updating product 407002019000 with color Vàng
+INFO:root:Updating product 419002015000 with color Nâu
+INFO:root:Updating product 407002010000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 103002023000 with color Kem
+INFO:root:Updating product 1000270020150000 with color Nâu
+INFO:root:Updating product 1000270020220000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 217002007001 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 333002001002 with color \u0110en
+INFO:root:Updating product 1040010000080000 with color Ghi
+INFO:root:Updating product 1000240020090000 with color H\u1ed3ng
+INFO:root:Updating product 1030010000080000 with color Ghi
+INFO:root:Updating product 1000300050010000 with color \u0110en
+INFO:root:Updating product 1000240020220000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 1000220020220000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 1000250020220000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 100029005020000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 1000260020220000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 100028005020000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 1050010000200000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 1010020010220000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 1000300050200000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 1000310050200000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 1060010000200000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 1000230020090000 with color H\u1ed3ng
+INFO:root:Updating product 1000300050080000 with color Ghi
+INFO:root:Updating product 1000340010090000 with color H\u1ed3ng
+INFO:root:Updating product 1000250020050000 with color Cam
+INFO:root:Updating product 1000330010240000 with color Tím
+INFO:root:Updating product 1000320010090000 with color H\u1ed3ng
+INFO:root:Updating product 100029005001000 with color \u0110en
+INFO:root:Updating product 1000350050220000 with color Ghi
+INFO:root:Updating product 1010020000050000 with color Cam
+INFO:root:Updating product 1000330010090000 with color H\u1ed3ng
+INFO:root:Updating product 1000340010240000 with color Tím
+INFO:root:Updating product 1010020010050000 with color Cam
+INFO:root:Updating product 100028005008000 with color Ghi
+INFO:root:Updating product 100035005001000 with color \u0110en
+INFO:root:Updating product 1000310050080000 with color Ghi
+INFO:root:Updating product 1000310050010000 with color \u0110en
+INFO:root:Updating product 1010020010080000 with color Ghi
+INFO:root:Updating product 1010020000080000 with color Ghi
+INFO:root:Updating product 1010130010220000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 1000400050010000 with color \u0110en
+INFO:root:Updating product 1000400050080010 with color Ghi
+INFO:root:Updating product 100029005090000 with color H\u1ed3ng
+INFO:root:Updating product 100029005080000 with color Ghi
+INFO:root:Updating product 1000400050090000 with color H\u1ed3ng
+INFO:root:Updating product 1000400050080000 with color Ghi
+INFO:root:Updating product 1000320010040000 with color \u0110\u1ecf
+INFO:root:Updating product 1010130010050000 with color Cam
+INFO:root:Updating product 1010030010260000 with color Be
+INFO:root:Updating product 1000320050010000 with color \u0110en
+INFO:root:Updating product 1000320050020000 with color Tr\u1eafng
+INFO:root:Updating product 100029005010000 with color \u0110en
+INFO:root:Updating product 1000400050020000 with color Tr\u1eafng
+INFO:root:Updating product 1010030010130000 with color Xanh Lá
+INFO:root:Updating product 1000400050200000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 100029005220000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 1000320050200000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 1010030010220000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Changes committed to the database.
+INFO:root:Database connection closed.
+INFO:root:Loaded 247 rows from the CSV.
+INFO:root:Updating product 214004000000 with color nan
+INFO:root:Updating product 333002022000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 224002004000 with color \u0110\u1ecf
+INFO:root:Updating product 217003001000 with color \u0110en
+INFO:root:Updating product 217002007000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 225002015000 with color Nâu
+INFO:root:Updating product 226003015000 with color Nâu
+INFO:root:Updating product 225002004000 with color \u0110\u1ecf
+INFO:root:Updating product 331002004000 with color \u0110\u1ecf
+INFO:root:Updating product 131002007000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 401002016002 with color Xanh Ng\u1ecdc
+INFO:root:Updating product 207004000000 with color nan
+INFO:root:Updating product 218004005000 with color Cam
+INFO:root:Updating product 117002023000 with color Kem
+INFO:root:Updating product 218002007000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 225002007000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 224002009000 with color H\u1ed3ng
+INFO:root:Updating product 224002002000 with color Tr\u1eafng
+INFO:root:Updating product 224002015000 with color Nâu
+INFO:root:Updating product 225002023000 with color Kem
+INFO:root:Updating product 225002002000 with color Tr\u1eafng
+INFO:root:Updating product 225002025000 with color Xanh Mint
+INFO:root:Updating product 125002009000 with color H\u1ed3ng
+INFO:root:Updating product 125002002000 with color Tr\u1eafng
+INFO:root:Updating product 217003008000 with color Ghi
+INFO:root:Updating product 333002001000 with color \u0110en
+INFO:root:Updating product 217003005000 with color Cam
+INFO:root:Updating product 218003008000 with color Ghi
+INFO:root:Updating product 218003001000 with color \u0110en
+INFO:root:Updating product 218003005000 with color Cam
+INFO:root:Updating product 224002026000 with color Xanh Mint
+INFO:root:Updating product 224002023000 with color Kem
+INFO:root:Updating product 216003008000 with color Ghi
+INFO:root:Updating product 226003023000 with color Kem
+INFO:root:Updating product 401002022000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 216003001000 with color \u0110en
+INFO:root:Updating product 331002022000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 225002009000 with color H\u1ed3ng
+INFO:root:Updating product 226003002000 with color Tr\u1eafng
+INFO:root:Updating product 330002001000 with color \u0110en
+INFO:root:Updating product 125002013000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 226003014000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 314002005000 with color Cam
+INFO:root:Updating product 124002009000 with color H\u1ed3ng
+INFO:root:Updating product 227002009000 with color H\u1ed3ng
+INFO:root:Updating product 330002002200 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 231003002000 with color Tr\u1eafng
+INFO:root:Updating product 331002008000 with color Ghi
+INFO:root:Updating product 304002004000 with color \u0110\u1ecf
+INFO:root:Updating product 314002019000 with color Vàng
+INFO:root:Updating product 217004005000 with color Cam
+INFO:root:Updating product 123002009000 with color H\u1ed3ng
+INFO:root:Updating product 314002020000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 217004008000 with color Ghi
+INFO:root:Updating product 413002001000 with color \u0110en
+INFO:root:Updating product 413002003000 with color \u0110\u1ecf
+INFO:root:Updating product 413002022000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 208002007000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 216002007000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 216003005000 with color Cam
+INFO:root:Updating product 208002023000 with color Tím
+INFO:root:Updating product 209002025000 with color Tím
+INFO:root:Updating product 335002013000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 217002001000 with color \u0110en
+INFO:root:Updating product 218002001000 with color \u0110en
+INFO:root:Updating product 215004000000 with color nan
+INFO:root:Updating product 335002001000 with color \u0110en
+INFO:root:Updating product 324000180000 with color \u0110en
+INFO:root:Updating product 123002007000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 329002005000 with color Cam
+INFO:root:Updating product 329002004001 with color \u0110\u1ecf
+INFO:root:Updating product 217002003000 with color \u0110\u1ecf
+INFO:root:Updating product 324000040000 with color \u0110\u1ecf
+INFO:root:Updating product 125002023000 with color Kem
+INFO:root:Updating product 231003005000 with color \u0110en
+INFO:root:Updating product 218004008000 with color Ghi
+INFO:root:Updating product 231003022000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 304002019000 with color Vàng
+INFO:root:Updating product 305002022000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 209002007000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 131002001002 with color \u0110en
+INFO:root:Updating product 131002004005 with color \u0110\u1ecf
+INFO:root:Updating product 131002008001 with color Ghi
+INFO:root:Updating product 131002019002 with color Vàng
+INFO:root:Updating product 225002024000 with color Tím
+INFO:root:Updating product 216002001000 with color \u0110en
+INFO:root:Updating product 124002024000 with color Tím
+INFO:root:Updating product 401002016000 with color Xanh Ng\u1ecdc
+INFO:root:Updating product 334002001000 with color \u0110en
+INFO:root:Updating product 305002001000 with color \u0110en
+INFO:root:Updating product 335002004000 with color \u0110\u1ecf
+INFO:root:Updating product 334002013000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 334002004000 with color \u0110\u1ecf
+INFO:root:Updating product 116002023000 with color Kem
+INFO:root:Updating product 131002004000 with color \u0110\u1ecf
+INFO:root:Updating product 231003023000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 490002007000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 490002004000 with color \u0110\u1ecf
+INFO:root:Updating product 490002009000 with color H\u1ed3ng
+INFO:root:Updating product 217004022000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 208002003000 with color \u0110\u1ecf
+INFO:root:Updating product 324000100000 with color Xanh Rêu
+INFO:root:Updating product 209002003000 with color \u0110\u1ecf
+INFO:root:Updating product 122002009000 with color H\u1ed3ng
+INFO:root:Updating product 122002004000 with color \u0110\u1ecf
+INFO:root:Updating product 122002002000 with color Tr\u1eafng
+INFO:root:Updating product 122002007000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 224002024000 with color Tím
+INFO:root:Updating product 218002003000 with color \u0110\u1ecf
+INFO:root:Updating product 227002014000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 304002020000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 216002003000 with color \u0110\u1ecf
+INFO:root:Updating product 413002018000 with color \u0110en
+INFO:root:Updating product 226002014000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 230002002000 with color Tr\u1eafng
+INFO:root:Updating product 231003002001 with color Tr\u1eafng
+INFO:root:Updating product 231003005001 with color \u0110en
+INFO:root:Updating product 123002004000 with color \u0110\u1ecf
+INFO:root:Updating product 218004008001 with color Ghi
+INFO:root:Updating product 217004008001 with color Ghi
+INFO:root:Updating product 115002019001 with color Vàng
+INFO:root:Updating product 124002004000 with color \u0110\u1ecf
+INFO:root:Updating product 231003022001 with color Tr\u1eafng
+INFO:root:Updating product 231003023001 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 114002000000 with color nan
+INFO:root:Updating product 218004009001 with color nan
+INFO:root:Updating product 217004022001 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 224002007000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 303002005000 with color Cam
+INFO:root:Updating product 303002019000 with color Vàng
+INFO:root:Updating product 303002004000 with color \u0110\u1ecf
+INFO:root:Updating product 304002005000 with color Cam
+INFO:root:Updating product 303002003000 with color \u0110\u1ecf
+INFO:root:Updating product 123002002000 with color Tr\u1eafng
+INFO:root:Updating product 230002001000 with color \u0110en
+INFO:root:Updating product 230002027000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 331002001000 with color \u0110en
+INFO:root:Updating product 104002009000 with color H\u1ed3ng
+INFO:root:Updating product 333002008000 with color Ghi
+INFO:root:Updating product 230002013000 with color Xanh Lá
+INFO:root:Updating product 232003008000 with color Ghi
+INFO:root:Updating product 232003002000 with color Tr\u1eafng
+INFO:root:Updating product 336002001000 with color \u0110en
+INFO:root:Updating product 336002004000 with color \u0110\u1ecf
+INFO:root:Updating product 336002022000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 337002001000 with color \u0110en
+INFO:root:Updating product 337002008000 with color Ghi
+INFO:root:Updating product 230002014000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 230002009000 with color H\u1ed3ng
+INFO:root:Updating product 230002023000 with color Kem
+INFO:root:Updating product 122002009001 with color H\u1ed3ng
+INFO:root:Updating product 122002019000 with color Vàng
+INFO:root:Updating product 122002022000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 122002024000 with color Tím
+INFO:root:Updating product 219002023000 with color Kem
+INFO:root:Updating product 105002013000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 105002004000 with color \u0110\u1ecf
+INFO:root:Updating product 106002004000 with color \u0110\u1ecf
+INFO:root:Updating product 102002023000 with color Kem
+INFO:root:Updating product 219002022000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 333002022002 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 132002022001 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 132002003001 with color \u0110\u1ecf
+INFO:root:Updating product 103002009000 with color H\u1ed3ng
+INFO:root:Updating product 106002001000 with color \u0110en
+INFO:root:Updating product 106002013000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 337002022000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 104002020000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 303002020000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 231002002000 with color Tr\u1eafng
+INFO:root:Updating product 231002023000 with color Kem
+INFO:root:Updating product 103002025000 with color Xanh Mint
+INFO:root:Updating product 219002012000 with color Ghi
+INFO:root:Updating product 232003009000 with color H\u1ed3ng
+INFO:root:Updating product 1000210020090000 with color H\u1ed3ng
+INFO:root:Updating product 1000220020090000 with color H\u1ed3ng
+INFO:root:Updating product 102002009000 with color H\u1ed3ng
+INFO:root:Updating product 132002001001 with color \u0110en
+INFO:root:Updating product 233003022001 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 406002004000 with color \u0110\u1ecf
+INFO:root:Updating product 225002002001 with color Tr\u1eafng
+INFO:root:Updating product 225002007001 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 225002004001 with color \u0110\u1ecf
+INFO:root:Updating product 225002015001 with color Nâu
+INFO:root:Updating product 333002001003 with color \u0110en
+INFO:root:Updating product 333002022003 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 333002008003 with color Ghi
+INFO:root:Updating product 407002019000 with color Vàng
+INFO:root:Updating product 419002015000 with color Nâu
+INFO:root:Updating product 407002010000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 103002023000 with color Kem
+INFO:root:Updating product 1000270020150000 with color Nâu
+INFO:root:Updating product 1000270020220000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 217002007001 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 333002001002 with color \u0110en
+INFO:root:Updating product 1040010000080000 with color Ghi
+INFO:root:Updating product 1000240020090000 with color H\u1ed3ng
+INFO:root:Updating product 1030010000080000 with color Ghi
+INFO:root:Updating product 1000300050010000 with color \u0110en
+INFO:root:Updating product 1000240020220000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 1000220020220000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 1000250020220000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 100029005020000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 1000260020220000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 100028005020000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 1050010000200000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 1010020010220000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 1000300050200000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 1000310050200000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 1060010000200000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 1000230020090000 with color H\u1ed3ng
+INFO:root:Updating product 1000300050080000 with color Ghi
+INFO:root:Updating product 1000340010090000 with color H\u1ed3ng
+INFO:root:Updating product 1000250020050000 with color Cam
+INFO:root:Updating product 1000330010240000 with color Tím
+INFO:root:Updating product 1000320010090000 with color H\u1ed3ng
+INFO:root:Updating product 100029005001000 with color \u0110en
+INFO:root:Updating product 1000350050220000 with color Ghi
+INFO:root:Updating product 1010020000050000 with color Cam
+INFO:root:Updating product 1000330010090000 with color H\u1ed3ng
+INFO:root:Updating product 1000340010240000 with color Tím
+INFO:root:Updating product 1010020010050000 with color Cam
+INFO:root:Updating product 100028005008000 with color Ghi
+INFO:root:Updating product 100035005001000 with color \u0110en
+INFO:root:Updating product 1000310050080000 with color Ghi
+INFO:root:Updating product 1000310050010000 with color \u0110en
+INFO:root:Updating product 1010020010080000 with color Ghi
+INFO:root:Updating product 1010020000080000 with color Ghi
+INFO:root:Updating product 1010130010220000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 1000400050010000 with color \u0110en
+INFO:root:Updating product 1000400050080010 with color Ghi
+INFO:root:Updating product 100029005090000 with color H\u1ed3ng
+INFO:root:Updating product 100029005080000 with color Ghi
+INFO:root:Updating product 1000400050090000 with color H\u1ed3ng
+INFO:root:Updating product 1000400050080000 with color Ghi
+INFO:root:Updating product 1000320010040000 with color \u0110\u1ecf
+INFO:root:Updating product 1010130010050000 with color Cam
+INFO:root:Updating product 1010030010260000 with color Be
+INFO:root:Updating product 1000320050010000 with color \u0110en
+INFO:root:Updating product 1000320050020000 with color Tr\u1eafng
+INFO:root:Updating product 100029005010000 with color \u0110en
+INFO:root:Updating product 1000400050020000 with color Tr\u1eafng
+INFO:root:Updating product 1010030010130000 with color Xanh Lá
+INFO:root:Updating product 1000400050200000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 100029005220000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 1000320050200000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Updating product 1010030010220000 with color Xanh D\u01b0\u01a1ng
+INFO:root:Changes committed to the database.
+INFO:root:Database connection closed.
+INFO:root:Loaded 247 rows from the CSV.
+INFO:root:Changes committed to the database.
+INFO:root:Database connection closed.
+INFO:root:Loaded 247 rows from the CSV.
+INFO:root:Changes committed to the database.
+INFO:root:Database connection closed.
+INFO:root:Loaded 247 rows from the CSV.
+INFO:root:Changes committed to the database.
+INFO:root:Database connection closed.
+INFO:root:Loaded 247 rows from the CSV.
+INFO:root:Changes committed to the database.
+INFO:root:Database connection closed.

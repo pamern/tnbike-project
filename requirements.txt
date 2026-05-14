@@ -9,9 +9,10 @@ pdfplumber
 # plotly
 python-dateutil
 unidecode
-python-Levenshtein
-fuzzywuzzy
-spacy 
-transformers 
-torch
-openrouter
+# python-Levenshtein
+# fuzzywuzzy
+# spacy 
+# transformers 
+# torch
+# openrouter
+# watchdog

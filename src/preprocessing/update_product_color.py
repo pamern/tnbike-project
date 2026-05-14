@@ -32,7 +32,7 @@ try:
     cur.execute("SET search_path TO tnbike, public;")
 
     # Load the cleaned product data from the CSV file
-    df_cleaned = pd.read_csv(r'data/processed/product_cleaned.csv', dtype={'product_code': str})  # Ensure product_code is read as string
+    df_cleaned = pd.read_csv(r'data/processed/cleaned/product_cleaned.csv', dtype={'product_code': str})  # Ensure product_code is read as string
     logging.info(f"Loaded {len(df_cleaned)} rows from the CSV.")
 
     # Clean the product_code column (ensure it's treated as a string and remove leading/trailing spaces)

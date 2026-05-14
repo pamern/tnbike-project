@@ -167,8 +167,8 @@ df['color_new'] = df['color_new'].fillna('')
 # ──────────────────────────────────────
 # Xuất file CSV kiểm tra
 # ──────────────────────────────────────
-output_path = 'data/processed/product_cleaned.csv'
-os.makedirs('data/processed', exist_ok=True)
+output_path = 'data/processed/cleaned/product_cleaned.csv'
+os.makedirs('data/processed/cleaned', exist_ok=True)
 
 df_out = df[['product_code', 'product_name', 'color_old', 'color_new']]
 df_out.to_csv(output_path, index=False, encoding='utf-8-sig')

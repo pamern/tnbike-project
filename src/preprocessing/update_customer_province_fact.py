@@ -26,7 +26,7 @@ cur = conn.cursor()
 cur.execute("SET search_path TO tnbike, public;")
 
 # Đọc dữ liệu từ CSV chứa province_id và province_name đã ánh xạ thành công
-success_df = pd.read_csv('data/processed/success_mapping_customer_province.csv')
+success_df = pd.read_csv('data/processed/cleaned/success_mapping_customer_province.csv')
 
 # Cập nhật bảng customer với province_id từ CSV
 for index, row in success_df.iterrows():

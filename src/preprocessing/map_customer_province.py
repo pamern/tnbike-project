@@ -80,11 +80,11 @@ customers_df = customers_df.merge(provinces_df, left_on='province_name_extract',
 
 # Tạo file CSV cho những khách hàng đã thành công trong việc ánh xạ tỉnh
 success_df = customers_df[customers_df['province_id'].notnull()]
-success_df.to_csv('data/processed/success_mapping_customer_province.csv', index=False)
+success_df.to_csv('data/processed/cleaned/success_mapping_customer_province.csv', index=False)
 
 # Tạo file CSV cho những khách hàng không ánh xạ được tỉnh
 failed_df = customers_df[customers_df['province_id'].isnull()]
-failed_df.to_csv('data/processed/failed_mapping_customer_province.csv', index=False)
+failed_df.to_csv('data/processed/cleaned/failed_mapping_customer_province.csv', index=False)
 
 # Đóng kết nối
 cur.close()

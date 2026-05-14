@@ -20,7 +20,7 @@ import psycopg2
 load_dotenv()
 
 
-RAW_EMAIL_DIR = Path("data/raw/tnbike_emails_mar2026")
+RAW_EMAIL_DIR = Path(r"data\incoming\eml")
 
 OUT_DIR = Path("data/staging")
 OUT_EMAIL_LOG = OUT_DIR / "staging_email_log.csv"

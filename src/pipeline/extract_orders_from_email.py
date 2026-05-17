@@ -4,6 +4,7 @@ import os
 import re
 import tempfile
 import unicodedata
+import logging
 from datetime import datetime
 from decimal import Decimal, ROUND_HALF_UP
 from email import policy
@@ -18,6 +19,19 @@ import psycopg2
 
 # Load biến môi trường từ file .env
 load_dotenv()
+
+
+# ============================================================
+# Terminal logging
+# ============================================================
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s | %(levelname)s | %(message)s",
+    datefmt="%Y-%m-%d %H:%M:%S",
+)
+
+logger = logging.getLogger("tnbike_email_parser")
 
 
 RAW_EMAIL_DIR = Path(r"data\incoming\eml")
@@ -35,17 +49,15 @@ OUT_STAGING_CUSTOMER_LOG = OUT_DIR / "staging_customer_log.csv"
 
 
 # ============================================================
-# Standard status values
+# Standard processing_status values for dashboard
 # ============================================================
 
-STATUS_STARTED = "STARTED"
-STATUS_SUCCESS = "SUCCESS"
-STATUS_PARTIAL = "PARTIAL_SUCCESS"
-STATUS_FAILED_NO_ATTACHMENT = "FAILED_NO_ATTACHMENT"
-STATUS_FAILED_VALIDATION = "FAILED_VALIDATION"
-STATUS_FAILED_NO_LINES = "FAILED_NO_LINES"
-STATUS_FAILED_NO_VALID_LINES = "FAILED_NO_VALID_LINES"
-STATUS_FAILED_CUSTOMER = "FAILED_CUSTOMER"
+STATUS_PROCESSING = "PROCESSING"      # Đang xử lý
+STATUS_SUCCESS = "SUCCESS"            # Đã xử lý thành công
+STATUS_NEEDS_REVIEW = "NEEDS_REVIEW"  # Chờ kiểm tra
+STATUS_FAILED = "FAILED"              # Lỗi xử lý
+
+# Chỉ dùng cho staging_customer_log, không dùng cho email_log.processing_status
 STATUS_NEW_CUSTOMER = "NEW_CUSTOMER"
 
 
@@ -264,6 +276,7 @@ def load_next_customer_sequence_from_db() -> int:
 
             for (customer_code,) in cur.fetchall():
                 match = re.search(r"KH-(\d+)", clean_text(customer_code), flags=re.IGNORECASE)
+
                 if match:
                     max_no = max(max_no, int(match.group(1)))
 
@@ -291,6 +304,7 @@ def load_province_lookup_from_db() -> dict[str, int]:
 
             for province_id, province_name in cur.fetchall():
                 normalized_name = normalize_vietnamese_text(province_name)
+
                 if normalized_name:
                     lookup[normalized_name] = province_id
 
@@ -321,6 +335,7 @@ def infer_province_id_from_address(address: str, province_lookup: dict[str, int]
 
     for province_name, alias_list in aliases.items():
         province_id = province_lookup.get(province_name)
+
         if not province_id:
             continue
 
@@ -410,7 +425,11 @@ def extract_pdf_attachment(msg, output_dir: Path) -> Path | None:
     return None
 
 
-def build_email_log_row(msg, attachment_name: str = "", processing_status: str = "parsed") -> dict:
+def build_email_log_row(
+    msg,
+    attachment_name: str = "",
+    processing_status: str = STATUS_PROCESSING
+) -> dict:
     raw_from = msg.get("From", "")
     _, from_address = parseaddr(raw_from)
 
@@ -552,24 +571,30 @@ def extract_customer_from_email_body(email_body: str) -> dict:
     raw_name = extract_first_labeled_value(body, customer_labels, stop_for_name)
     raw_address = extract_first_labeled_value(body, address_labels, stop_for_address)
 
-    # Fallback: nếu label Đại lý/Tên không bắt được, tìm dòng chứa cụm doanh nghiệp phổ biến.
     candidates = []
+
     if raw_name:
         candidates.append(raw_name)
 
     for line in body.splitlines():
         line = clean_text(line)
-        if re.search(r"(CÔNG\s*TY|CONG\s*TY|CỬA\s*HÀNG|CUA\s*HANG|HỘ\s*KINH\s*DOANH|HO\s*KINH\s*DOANH|TNHH|CP|CỔ\s*PHẦN|CO\s*PHAN)", line, flags=re.IGNORECASE):
+
+        if re.search(
+            r"(CÔNG\s*TY|CONG\s*TY|CỬA\s*HÀNG|CUA\s*HANG|HỘ\s*KINH\s*DOANH|HO\s*KINH\s*DOANH|TNHH|CP|CỔ\s*PHẦN|CO\s*PHAN)",
+            line,
+            flags=re.IGNORECASE,
+        ):
             candidates.append(line)
 
     cleaned_candidates = []
+
     for candidate in candidates:
         candidate = strip_customer_name(candidate)
+
         if candidate and not looks_like_bad_customer_name(candidate):
             cleaned_candidates.append(candidate)
 
     if cleaned_candidates:
-        # Chọn candidate ngắn nhất đủ sạch để tránh nuốt nhiều dòng.
         result["customer_name_raw"] = sorted(cleaned_candidates, key=len)[0]
 
     result["address_raw"] = clean_text(raw_address)
@@ -577,7 +602,12 @@ def extract_customer_from_email_body(email_body: str) -> dict:
     return result
 
 
-def extract_order_header(email_subject: str, email_body: str, pdf_text: str, email_header_date: str) -> dict:
+def extract_order_header(
+    email_subject: str,
+    email_body: str,
+    pdf_text: str,
+    email_header_date: str
+) -> dict:
     source_for_order = "\n".join([email_subject, email_body, pdf_text])
     email_customer = extract_customer_from_email_body(email_body)
 
@@ -852,12 +882,6 @@ def parse_email_file(
     - email_log_row
     - staging_customer_rows
     - staging_customer_log_rows
-
-    Product mới/chưa có master:
-    - không tạo staging_product
-    - không ghi order_line để tránh lỗi FK order_line.product_code -> product.product_code
-    - ghi vào staging_fail
-    - nếu đơn không còn dòng hợp lệ thì không ghi sales_order
     """
 
     fail_rows = []
@@ -865,13 +889,26 @@ def parse_email_file(
     staging_customer_log_rows = []
 
     msg = parse_email(eml_path)
+    logger.info("START | File: %s", eml_path.name)
 
     email_subject = clean_text(msg.get("Subject", ""))
     email_body = get_email_body(msg)
     email_header_date = get_email_header_date(msg)
 
+    logger.info(
+        "PARSED EMAIL | File: %s | Subject: %s | Date: %s",
+        eml_path.name,
+        email_subject,
+        email_header_date,
+    )
+
     attachment_name = ""
-    email_log_row = build_email_log_row(msg=msg, attachment_name=attachment_name, processing_status=STATUS_STARTED)
+
+    email_log_row = build_email_log_row(
+        msg=msg,
+        attachment_name=attachment_name,
+        processing_status=STATUS_PROCESSING,
+    )
 
     with tempfile.TemporaryDirectory() as tmp:
         pdf_path = extract_pdf_attachment(msg, Path(tmp))
@@ -889,11 +926,30 @@ def parse_email_file(
                 }
             )
 
-            email_log_row.update({"attachment_name": "", "processing_status": STATUS_FAILED_NO_ATTACHMENT})
+            email_log_row.update(
+                {
+                    "attachment_name": "",
+                    "processing_status": STATUS_FAILED,
+                }
+            )
+
+            logger.error(
+                "FAILED | File: %s | Reason: Không tìm thấy PDF đính kèm",
+                eml_path.name,
+            )
+
             return None, [], fail_rows, email_log_row, [], []
 
         attachment_name = pdf_path.name
         pdf_text, extraction_method = extract_pdf_text(pdf_path)
+
+    logger.info(
+        "PDF EXTRACTED | File: %s | Attachment: %s | Method: %s | Text length: %s",
+        eml_path.name,
+        attachment_name,
+        extraction_method,
+        len(pdf_text),
+    )
 
     header = extract_order_header(
         email_subject=email_subject,
@@ -902,7 +958,24 @@ def parse_email_file(
         email_header_date=email_header_date,
     )
 
+    logger.info(
+        "HEADER | File: %s | SO: %s | Date: %s | Tax code: %s | Customer raw: %s",
+        eml_path.name,
+        header.get("so_number", ""),
+        header.get("order_date", ""),
+        header.get("tax_code", ""),
+        header.get("customer_name_raw", ""),
+    )
+
     parsed_lines = extract_order_lines(pdf_text)
+
+    logger.info(
+        "LINES PARSED | File: %s | SO: %s | Parsed lines: %s",
+        eml_path.name,
+        header.get("so_number", ""),
+        len(parsed_lines),
+    )
+
     header_errors = validate_header_required(header)
 
     if header_errors:
@@ -933,7 +1006,20 @@ def parse_email_file(
                 }
             )
 
-        email_log_row.update({"attachment_name": attachment_name, "processing_status": STATUS_FAILED_VALIDATION})
+        email_log_row.update(
+            {
+                "attachment_name": attachment_name,
+                "processing_status": STATUS_FAILED,
+            }
+        )
+
+        logger.error(
+            "FAILED | File: %s | SO: %s | Header errors: %s",
+            eml_path.name,
+            header.get("so_number", ""),
+            header_error_text,
+        )
+
         return None, [], fail_rows, email_log_row, [], []
 
     if not parsed_lines:
@@ -949,7 +1035,19 @@ def parse_email_file(
             }
         )
 
-        email_log_row.update({"attachment_name": attachment_name, "processing_status": STATUS_FAILED_NO_LINES})
+        email_log_row.update(
+            {
+                "attachment_name": attachment_name,
+                "processing_status": STATUS_FAILED,
+            }
+        )
+
+        logger.error(
+            "FAILED | File: %s | SO: %s | Reason: Không trích xuất được dòng hàng nào",
+            eml_path.name,
+            header.get("so_number", ""),
+        )
+
         return None, [], fail_rows, email_log_row, [], []
 
     valid_order_line_rows = []
@@ -982,6 +1080,14 @@ def parse_email_file(
             }
         )
 
+    logger.info(
+        "LINES VALIDATED | File: %s | SO: %s | Valid lines: %s | Failed rows so far: %s",
+        eml_path.name,
+        header.get("so_number", ""),
+        len(valid_order_line_rows),
+        len(fail_rows),
+    )
+
     if not valid_order_line_rows:
         fail_rows.append(
             {
@@ -995,7 +1101,19 @@ def parse_email_file(
             }
         )
 
-        email_log_row.update({"attachment_name": attachment_name, "processing_status": STATUS_FAILED_NO_VALID_LINES})
+        email_log_row.update(
+            {
+                "attachment_name": attachment_name,
+                "processing_status": STATUS_FAILED,
+            }
+        )
+
+        logger.error(
+            "FAILED | File: %s | SO: %s | Reason: Không còn order_line hợp lệ",
+            eml_path.name,
+            header.get("so_number", ""),
+        )
+
         return None, [], fail_rows, email_log_row, [], []
 
     customer_code, staging_customer_row, staging_customer_log_row = build_new_customer_rows(
@@ -1020,7 +1138,19 @@ def parse_email_file(
             }
         )
 
-        email_log_row.update({"attachment_name": attachment_name, "processing_status": STATUS_FAILED_CUSTOMER})
+        email_log_row.update(
+            {
+                "attachment_name": attachment_name,
+                "processing_status": STATUS_FAILED,
+            }
+        )
+
+        logger.error(
+            "FAILED | File: %s | SO: %s | Reason: Không tạo/lấy được customer_code",
+            eml_path.name,
+            header.get("so_number", ""),
+        )
+
         return None, [], fail_rows, email_log_row, [], []
 
     if staging_customer_row:
@@ -1037,14 +1167,27 @@ def parse_email_file(
         "customer_code": customer_code,
     }
 
-    if staging_customer_rows:
-        processing_status = STATUS_PARTIAL
-    elif fail_rows:
-        processing_status = STATUS_PARTIAL
+    if staging_customer_rows or fail_rows:
+        processing_status = STATUS_NEEDS_REVIEW
     else:
         processing_status = STATUS_SUCCESS
 
-    email_log_row.update({"attachment_name": attachment_name, "processing_status": processing_status})
+    email_log_row.update(
+        {
+            "attachment_name": attachment_name,
+            "processing_status": processing_status,
+        }
+    )
+
+    logger.info(
+        "DONE | File: %s | SO: %s | Status: %s | Valid lines: %s | Fail rows: %s | New customers: %s",
+        eml_path.name,
+        header.get("so_number", ""),
+        processing_status,
+        len(valid_order_line_rows),
+        len(fail_rows),
+        len(staging_customer_rows),
+    )
 
     return (
         sales_order_row,
@@ -1169,12 +1312,25 @@ def write_csv(path: Path, fieldnames: list[str], rows: list[dict]) -> None:
 def main():
     OUT_DIR.mkdir(parents=True, exist_ok=True)
 
+    logger.info("=" * 80)
+    logger.info("START PIPELINE | Email dir: %s | Output dir: %s", RAW_EMAIL_DIR, OUT_DIR)
+    logger.info("=" * 80)
+
     customer_lookup = load_customer_lookup_from_db()
     product_codes = load_product_codes_from_db()
     province_lookup = load_province_lookup_from_db()
 
+    logger.info(
+        "DB LOOKUP LOADED | Customers: %s | Products: %s | Provinces: %s",
+        len(customer_lookup),
+        len(product_codes),
+        len(province_lookup),
+    )
+
     next_customer_seq = {"value": load_next_customer_sequence_from_db()}
     staged_customer_tax_codes = set()
+
+    logger.info("NEXT CUSTOMER SEQUENCE | Start from: KH-%05d", next_customer_seq["value"])
 
     email_log_rows = []
     sales_order_rows = []
@@ -1185,12 +1341,18 @@ def main():
 
     eml_files = sorted(RAW_EMAIL_DIR.glob("*.eml"))
 
+    logger.info("FOUND EMAIL FILES | Count: %s", len(eml_files))
+
     if not eml_files:
+        logger.warning("Không tìm thấy file .eml trong %s", RAW_EMAIL_DIR)
         print(f"[WARN] Không tìm thấy file .eml trong {RAW_EMAIL_DIR}")
 
     seen_so_numbers = set()
 
-    for eml_path in eml_files:
+    for idx, eml_path in enumerate(eml_files, start=1):
+        logger.info("-" * 80)
+        logger.info("PROCESSING %s/%s | %s", idx, len(eml_files), eml_path.name)
+
         try:
             (
                 sales_order_row,
@@ -1212,13 +1374,16 @@ def main():
             staging_customer_rows.extend(file_staging_customers)
             staging_customer_log_rows.extend(file_staging_customer_logs)
 
-            if email_log_row:
-                email_log_rows.append(email_log_row)
-
             if sales_order_row:
                 so_number = sales_order_row.get("so_number", "")
 
                 if so_number and so_number in seen_so_numbers:
+                    logger.warning(
+                        "DUPLICATE SO | File: %s | SO: %s | Mark status FAILED",
+                        eml_path.name,
+                        so_number,
+                    )
+
                     fail_rows.append(
                         {
                             "record_type": "sales_order",
@@ -1245,15 +1410,36 @@ def main():
                         )
 
                     valid_line_rows = []
+
+                    if email_log_row:
+                        email_log_row["processing_status"] = STATUS_FAILED
+
                 else:
                     if so_number:
                         seen_so_numbers.add(so_number)
 
                     sales_order_rows.append(sales_order_row)
 
+            if email_log_row:
+                email_log_rows.append(email_log_row)
+
             order_line_rows.extend(valid_line_rows)
 
+            current_status = email_log_row.get("processing_status", "") if email_log_row else STATUS_FAILED
+
+            logger.info(
+                "FILE SUMMARY | File: %s | Status: %s | Sales order added: %s | Valid lines added: %s | File fail rows: %s | New customers: %s",
+                eml_path.name,
+                current_status,
+                1 if sales_order_row and current_status != STATUS_FAILED else 0,
+                len(valid_line_rows),
+                len(file_fail_rows),
+                len(file_staging_customers),
+            )
+
         except Exception as e:
+            logger.exception("EXCEPTION | File: %s | Error: %s", eml_path.name, e)
+
             fail_rows.append(
                 {
                     "record_type": "file",
@@ -1266,13 +1452,27 @@ def main():
                 }
             )
 
+            email_log_rows.append(
+                {
+                    "message_id": "",
+                    "from_address": "",
+                    "received_at": "",
+                    "attachment_name": "",
+                    "processing_status": STATUS_FAILED,
+                }
+            )
+
     fail_summary_rows = summarize_fail_rows(fail_rows)
+
+    logger.info("-" * 80)
+    logger.info("WRITING CSV OUTPUTS")
 
     write_csv(
         OUT_EMAIL_LOG,
         ["message_id", "from_address", "received_at", "attachment_name", "processing_status"],
         email_log_rows,
     )
+    logger.info("WROTE | %s | Rows: %s", OUT_EMAIL_LOG, len(email_log_rows))
 
     write_csv(
         OUT_STAGING_CUSTOMER,
@@ -1289,36 +1489,42 @@ def main():
         ],
         staging_customer_rows,
     )
+    logger.info("WROTE | %s | Rows: %s", OUT_STAGING_CUSTOMER, len(staging_customer_rows))
 
     write_csv(
         OUT_SALES_ORDER,
         ["so_number", "invoice_symbol", "invoice_number", "order_date", "customer_code"],
         sales_order_rows,
     )
+    logger.info("WROTE | %s | Rows: %s", OUT_SALES_ORDER, len(sales_order_rows))
 
     write_csv(
         OUT_ORDER_LINE,
         ["order_id", "so_number", "product_code", "quantity", "unit_price", "line_total"],
         order_line_rows,
     )
+    logger.info("WROTE | %s | Rows: %s", OUT_ORDER_LINE, len(order_line_rows))
 
     write_csv(
         OUT_FAILED,
         ["record_type", "source_email_file", "so_number", "stt", "product_code", "error", "raw_line"],
         fail_rows,
     )
+    logger.info("WROTE | %s | Rows: %s", OUT_FAILED, len(fail_rows))
 
     write_csv(
         OUT_FAILED_SUMMARY,
         ["group_type", "group_value", "count"],
         fail_summary_rows,
     )
+    logger.info("WROTE | %s | Rows: %s", OUT_FAILED_SUMMARY, len(fail_summary_rows))
 
     write_csv(
         OUT_STAGING_CUSTOMER_LOG,
         ["customer_code", "tax_code", "so_number", "source_email_file", "status", "created_at"],
         staging_customer_log_rows,
     )
+    logger.info("WROTE | %s | Rows: %s", OUT_STAGING_CUSTOMER_LOG, len(staging_customer_log_rows))
 
     print(f"Email log            : {len(email_log_rows)} -> {OUT_EMAIL_LOG}")
     print(f"Staging customers    : {len(staging_customer_rows)} -> {OUT_STAGING_CUSTOMER}")
@@ -1327,6 +1533,23 @@ def main():
     print(f"Fail rows            : {len(fail_rows)} -> {OUT_FAILED}")
     print(f"Fail summary         : {len(fail_summary_rows)} -> {OUT_FAILED_SUMMARY}")
     print(f"Staging customer log : {len(staging_customer_log_rows)} -> {OUT_STAGING_CUSTOMER_LOG}")
+
+    status_counter = Counter(row.get("processing_status", "") for row in email_log_rows)
+
+    logger.info("=" * 80)
+    logger.info("PIPELINE FINISHED")
+    logger.info("Email log rows         : %s", len(email_log_rows))
+    logger.info("Sales orders           : %s", len(sales_order_rows))
+    logger.info("Order line rows        : %s", len(order_line_rows))
+    logger.info("Fail rows              : %s", len(fail_rows))
+    logger.info("Staging customers      : %s", len(staging_customer_rows))
+    logger.info("Staging customer logs  : %s", len(staging_customer_log_rows))
+
+    logger.info("PROCESSING STATUS SUMMARY")
+    for status, count in status_counter.most_common():
+        logger.info("- %s: %s", status, count)
+
+    logger.info("=" * 80)
 
 
 if __name__ == "__main__":

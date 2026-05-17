@@ -16,3 +16,5 @@ unidecode
 # torch
 # openrouter
 # watchdog
+matplotlib
+statsmodels

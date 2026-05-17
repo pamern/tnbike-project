@@ -3,42 +3,38 @@ import pandas as pd
 from unidecode import unidecode
 from dotenv import load_dotenv
 import os
+import logging
+from pathlib import Path
 
-# Tải thông tin từ file .env
+# ============================================================
+# CONFIG LOGGING
+# ============================================================
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s | %(levelname)s | %(message)s",
+    datefmt="%Y-%m-%d %H:%M:%S"
+)
+
+logger = logging.getLogger(__name__)
+
+# ============================================================
+# LOAD ENV
+# ============================================================
 load_dotenv()
 
-# Lấy thông tin cấu hình từ môi trường
 DB_HOST = os.getenv('DB_HOST', 'localhost')
 DB_PORT = os.getenv('DB_PORT', '5432')
 DB_NAME = os.getenv('DB_NAME', 'tnbike_db')
 DB_USER = os.getenv('DB_USER', 'postgres')
 DB_PASSWORD = os.getenv('DB_PASSWORD', 'postgres')
 
-# Kết nối đến PostgreSQL
-conn = psycopg2.connect(
-    host=DB_HOST, port=DB_PORT, database=DB_NAME,
-    user=DB_USER, password=DB_PASSWORD
-)
+OUTPUT_DIR = Path("data/processed/cleaned")
+SUCCESS_FILE = OUTPUT_DIR / "success_mapping_customer_province.csv"
+FAILED_FILE = OUTPUT_DIR / "failed_mapping_customer_province.csv"
 
-# Tạo cursor
-cur = conn.cursor()
-
-# Đặt schema search_path để đảm bảo các truy vấn chạy trong schema tnbike
-cur.execute("SET search_path TO tnbike, public;")
-
-# Truy vấn bảng province để lấy các tỉnh
-cur.execute("SELECT province_id, province_name FROM province")
-province_data = cur.fetchall()
-
-# Truy vấn bảng customer để lấy thông tin địa chỉ khách hàng
-cur.execute("SELECT customer_code, customer_name, address FROM customer WHERE address IS NOT NULL")
-customer_data = cur.fetchall()
-
-# Chuyển dữ liệu thành DataFrame
-provinces_df = pd.DataFrame(province_data, columns=['province_id', 'province_name'])
-customers_df = pd.DataFrame(customer_data, columns=['customer_code', 'customer_name', 'address'])
-
-# Tạo từ điển thay thế các sai sót chính tả phổ biến
+# ============================================================
+# REPLACEMENT DICT
+# ============================================================
 replacement_dict = {
     'TP Hồ Chí Minh': 'TP. Hồ Chí Minh',
     'Thành phố Hồ Chí Minh': 'TP. Hồ Chí Minh',
@@ -48,44 +44,152 @@ replacement_dict = {
     'TP Huế': 'Thừa Thiên Huế'
 }
 
-# Hàm chuẩn hóa văn bản (chuyển thành chữ thường và loại bỏ dấu)
+# ============================================================
+# FUNCTIONS
+# ============================================================
 def normalize_text(text):
-    return unidecode(text.lower()).strip()
+    if pd.isna(text):
+        return ""
+    return unidecode(str(text).lower()).strip()
 
-# Hàm để trích xuất tỉnh từ địa chỉ và thay thế sai sót chính tả trực tiếp trong địa chỉ
+
 def extract_province_from_address(address, province_list):
-    # Thay thế các từ sai chính tả trong địa chỉ (nếu có)
+    if pd.isna(address) or str(address).strip() == "":
+        return None
+
+    address = str(address)
+
+    # Sửa lỗi chính tả phổ biến
     for wrong, correct in replacement_dict.items():
         address = address.replace(wrong, correct)
 
-    # Chuẩn hóa địa chỉ sau khi thay thế sai chính tả
     address_clean = normalize_text(address)
 
     best_match = None
 
-    # Duyệt qua tất cả các tỉnh và tìm kiếm tỉnh trong địa chỉ
     for _, row in province_list.iterrows():
-        province_name = normalize_text(row['province_name'])  # Chuẩn hóa tên tỉnh
-        if province_name in address_clean:
+        province_name_clean = normalize_text(row['province_name'])
+
+        if province_name_clean in address_clean:
             best_match = row['province_name']
-            break  # Dừng khi tìm thấy tỉnh đầu tiên
+            break
 
     return best_match
 
-# Áp dụng hàm trích xuất tỉnh từ địa chỉ cho từng khách hàng
-customers_df['province_name_extract'] = customers_df['address'].apply(lambda x: extract_province_from_address(x, provinces_df))
 
-# Gán province_id dựa trên province_name_extract
-customers_df = customers_df.merge(provinces_df, left_on='province_name_extract', right_on='province_name', how='left')
+# ============================================================
+# MAIN
+# ============================================================
+conn = None
+cur = None
 
-# Tạo file CSV cho những khách hàng đã thành công trong việc ánh xạ tỉnh
-success_df = customers_df[customers_df['province_id'].notnull()]
-success_df.to_csv('data/processed/cleaned/success_mapping_customer_province.csv', index=False)
+try:
+    logger.info("Bắt đầu mapping customer -> province")
+    logger.info(f"Kết nối DB: host={DB_HOST}, port={DB_PORT}, db={DB_NAME}, user={DB_USER}")
 
-# Tạo file CSV cho những khách hàng không ánh xạ được tỉnh
-failed_df = customers_df[customers_df['province_id'].isnull()]
-failed_df.to_csv('data/processed/cleaned/failed_mapping_customer_province.csv', index=False)
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    logger.info(f"Đã kiểm tra/tạo thư mục output: {OUTPUT_DIR}")
 
-# Đóng kết nối
-cur.close()
-conn.close()
+    conn = psycopg2.connect(
+        host=DB_HOST,
+        port=DB_PORT,
+        database=DB_NAME,
+        user=DB_USER,
+        password=DB_PASSWORD
+    )
+
+    cur = conn.cursor()
+    cur.execute("SET search_path TO tnbike, public;")
+    logger.info("Đã set search_path = tnbike, public")
+
+    logger.info("Đang đọc bảng province...")
+    cur.execute("SELECT province_id, province_name FROM province")
+    province_data = cur.fetchall()
+
+    logger.info("Đang đọc bảng customer có address khác NULL...")
+    cur.execute("""
+        SELECT customer_code, customer_name, address
+        FROM customer
+        WHERE address IS NOT NULL
+    """)
+    customer_data = cur.fetchall()
+
+    provinces_df = pd.DataFrame(
+        province_data,
+        columns=['province_id', 'province_name']
+    )
+
+    customers_df = pd.DataFrame(
+        customer_data,
+        columns=['customer_code', 'customer_name', 'address']
+    )
+
+    logger.info(f"Số tỉnh/thành đọc được: {len(provinces_df):,}")
+    logger.info(f"Số customer có address: {len(customers_df):,}")
+
+    if provinces_df.empty:
+        logger.warning("Bảng province không có dữ liệu. Dừng xử lý.")
+        raise ValueError("province table is empty")
+
+    if customers_df.empty:
+        logger.warning("Không có customer nào có address. Dừng xử lý.")
+        raise ValueError("customer address data is empty")
+
+    logger.info("Đang extract province từ address...")
+    customers_df['province_name_extract'] = customers_df['address'].apply(
+        lambda x: extract_province_from_address(x, provinces_df)
+    )
+
+    logger.info("Đang merge province_id theo province_name_extract...")
+    customers_df = customers_df.merge(
+        provinces_df,
+        left_on='province_name_extract',
+        right_on='province_name',
+        how='left'
+    )
+
+    success_df = customers_df[customers_df['province_id'].notnull()].copy()
+    failed_df = customers_df[customers_df['province_id'].isnull()].copy()
+
+    total = len(customers_df)
+    success_count = len(success_df)
+    failed_count = len(failed_df)
+    success_rate = success_count / total * 100 if total > 0 else 0
+
+    logger.info("========== KẾT QUẢ MAPPING ==========")
+    logger.info(f"Tổng customer xử lý     : {total:,}")
+    logger.info(f"Mapping thành công      : {success_count:,}")
+    logger.info(f"Mapping thất bại        : {failed_count:,}")
+    logger.info(f"Tỷ lệ thành công        : {success_rate:.2f}%")
+
+    logger.info(f"Đang xuất file success: {SUCCESS_FILE}")
+    success_df.to_csv(SUCCESS_FILE, index=False, encoding="utf-8-sig")
+
+    logger.info(f"Đang xuất file failed: {FAILED_FILE}")
+    failed_df.to_csv(FAILED_FILE, index=False, encoding="utf-8-sig")
+
+    logger.info("Xuất file hoàn tất.")
+
+    if failed_count > 0:
+        logger.warning("Có customer chưa map được province. Kiểm tra file failed_mapping_customer_province.csv")
+        logger.warning("Ví dụ một số dòng failed:")
+        preview_failed = failed_df[['customer_code', 'customer_name', 'address']].head(5)
+
+        for _, row in preview_failed.iterrows():
+            logger.warning(
+                f"{row['customer_code']} | {row['customer_name']} | {row['address']}"
+            )
+
+    logger.info("Hoàn thành mapping customer province.")
+
+except Exception as e:
+    logger.exception(f"Lỗi trong quá trình mapping: {e}")
+
+finally:
+    if cur is not None:
+        cur.close()
+        logger.info("Đã đóng cursor.")
+
+    if conn is not None:
+        conn.close()
+        logger.info("Đã đóng kết nối database.")

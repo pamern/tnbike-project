@@ -175,4 +175,4 @@ df_out.to_csv(output_path, index=False, encoding='utf-8-sig')
 
 print(f"Đã trích xuất màu từ tên sản phẩm. Kết quả lưu tại: {output_path}")
 print(f"Tổng sản phẩm: {len(df_out)}")
-print(f"❓ Số lượng màu không xác định: {(df_out['color_new'] == '').sum()}")
+print(f"Số lượng màu không xác định: {(df_out['color_new'] == '').sum()}")

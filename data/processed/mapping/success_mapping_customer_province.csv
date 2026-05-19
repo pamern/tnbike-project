@@ -1,0 +1,703 @@
+﻿customer_code,customer_name,tax_code,address,province_id_old,province_id,province_name_extract,region,matched_alias,mapping_status
+KH-00001,HỘ KINH DOANH TÚ ANH,257951869,"Phường Thanh Lương, Quận Hai Bà Trưng, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00002,CÔNG TY TNHH THƯƠNG MẠI VIỆT ANH,152259109,"Đường Tạ Quang Bửu, Phường Bạch Mai, Quận Hai Bà Trưng, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00003,CÔNG TY CỔ PHẦN THƯƠNG MẠI NAM TIẾN,129992862,"đường Trường Chinh, Phường Phương Liệt, Quận Thanh Xuân, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00005,CÔNG TY TNHH ĐẠI LỢI,280049186,"Khu Liên cơ Võ Chí Công, số 258 Võ Chí Công, Khu 2 Xuân La, Quận Tây Hồ, Thành phố Hà Nội, Việt Nam",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00006,CÔNG TY TNHH CHI THÀNH,402385989,"đường Bờ Bao Tân Thắng, phường Sơn Kỳ, quận Tân Phú, TP Hồ Chí Minh",,30,TP. Hồ Chí Minh,Miền Nam,tp ho chi minh,MATCHED_REGEX
+KH-00007,CÔNG TY TNHH THƯƠNG MẠI ĐẠI LỢI,103675633,Lê Hoàn - Thị trấn Thọ Xuân - Huyện Thọ Xuân - Thanh Hoá,,55,Thanh Hóa,Miền Trung,thanh hoa,MATCHED_REGEX
+KH-00008,CÔNG TY CỔ PHẦN YÊN BÌNH,238229576,"Đường B4, Khu B, Khu công nghiệp Phố Nối A, Xã Lạc Hồng, Huyện Văn Lâm, Hưng Yên",,31,Hưng Yên,Miền Bắc,hung yen,MATCHED_REGEX
+KH-00009,CỬA HÀNG XE ĐẠP THIÊN AN,245025729,"Trần Phú, , Quận Ba Đình, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00010,CỬA HÀNG XE ĐẠP QUANG VINH,236208249,"đường Bắc Sơn, Phường Hoàng Văn Thụ, Thành phố Thái Nguyên, Thái Nguyên",,54,Thái Nguyên,Miền Bắc,thai nguyen,MATCHED_REGEX
+KH-00011,DOANH NGHIỆP TW NAM TIẾN,146999046,"ngõ Trần Cao Vân, Phường Phố Huế, Quận Hai Bà Trưng,TP.Hà Nội",,56,Thừa Thiên Huế,Miền Trung,thua thien hue,MATCHED_REGEX
+KH-00012,HỘ KINH DOANH THIÊN AN,230261907,"Xã Thanh Lâm, Huyện Mê Linh, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00013,DOANH NGHIỆP TW THANH BÌNH,120638472,"Đường 206 KCN Phố Nối A, Xã Trưng Trắc, Huyện Văn Lâm, Hưng Yên",,31,Hưng Yên,Miền Bắc,hung yen,MATCHED_REGEX
+KH-00014,HỘ KINH DOANH LONG PHÚ,227665061,"Phường Tiền An, Thành phố Bắc Ninh, Tỉnh Bắc Ninh, Việt Nam",,7,Bắc Ninh,Miền Bắc,bac ninh,MATCHED_REGEX
+KH-00015,DOANH NGHIỆP TW MINH PHƯƠNG,145176910,"Khu 12, Lâm Thao, Lâm Thao, Phú Thọ",,43,Phú Thọ,Miền Bắc,phu tho,MATCHED_REGEX
+KH-00016,DOANH NGHIỆP TW VIỆT ANH,268122475,Trần Hưng Đạo -khu phố 3 - phường 3 Thị xã Quảng trị - Tỉnh Quảng Trị,,49,Quảng Trị,Miền Trung,quang tri,MATCHED_REGEX
+KH-00017,CỬA HÀNG XE ĐẠP THUỶ TIÊN,279893014,TT Hương Sơn- Phú Bình- Thái Nguyên,,54,Thái Nguyên,Miền Bắc,thai nguyen,MATCHED_REGEX
+KH-00018,CÔNG TY TNHH THƯƠNG MẠI PHÚ THỊNH,129056548,"phố Minh Khai, Phường Vĩnh Tuy, Quận Hai Bà Trưng, Thành phố Hà Nội, Việt Nam",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00019,CÔNG TY CỔ PHẦN THƯƠNG MẠI LÊ ANH,319500449,"Trần Quang Khải, Phường Tân Định, Quận 1, Thành phố Hồ Chí Minh, Việt Nam",,30,TP. Hồ Chí Minh,Miền Nam,tp ho chi minh,MATCHED_REGEX
+KH-00020,DOANH NGHIỆP TW TRƯỜNG THỊNH,222919308,"Tòa nhà FPT Cầu Giấy, số 17 phố Duy Tân, Phường Dịch Vọng Hậu, Quận Cầu Giấy, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00021,HỘ KINH DOANH XÂY DỰNG,170772576,"4 Số 141 Lê Duẩn, Phường Cửa Nam, Quận Hoàn Kiếm, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00022,CÔNG TY CỔ PHẦN VIỆT ANH,262182474,"Ngõ 82, Tổ 30 Cụm 4 Đường Phú Thượng, Phường Phú Thượng, Quận Tây Hồ, Hà Nội, Việt Nam",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00023,CÔNG TY TNHH THANH BÌNH,239217728,"tòa nhà số 444 phố Hoàng Hoa Thám, Phường Thuỵ Khuê, Quận Tây Hồ, Thành phố Hà Nội, Việt Nam",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00024,CÔNG TY TNHH MINH PHƯƠNG,223572625,"Phố Mỹ Lộ, Thị trấn Thiên Tôn, Huyện Hoa Lư, Tỉnh Ninh Bình, Việt Nam",,41,Ninh Bình,Miền Bắc,ninh binh,MATCHED_REGEX
+KH-00025,DOANH NGHIỆP TW SƠN HÀ,201191735,"Nhà ông Nguyễn Ngọc Biên, ngã tư vòng xuyến đường Lê Doãn Ch, Phường Hải Thượng, Thị xã Nghi Sơn, Thanh Hoá",,55,Thanh Hóa,Miền Trung,thanh hoa,MATCHED_REGEX
+KH-00026,CÔNG TY CỔ PHẦN LÊ ANH,111542238,"Khu công nghiệp Lê Môn, phường Quảng Hưng, thành phố Thanh Hóa",,55,Thanh Hóa,Miền Trung,thanh hoa,MATCHED_REGEX
+KH-00027,HỘ KINH DOANH ĐẠI DƯƠNG,213776915,"khu đấu giá Ngô Thì Nhậm, Phường Hà Cầu, Quận Hà Đông, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00028,DOANH NGHIỆP TW PHÚ THỊNH,160558291,"A10 Chợ Việt Trì, Minh Nông, Việt Trì, Phú Thọ",,43,Phú Thọ,Miền Bắc,phu tho,MATCHED_REGEX
+KH-00029,CÔNG TY TNHH THƯƠNG MẠI THANH BÌNH,135626358,"Nguyễn Đình Chiểu, Phường Hàm Tiến, Thành phố  Phan Thiết, Bình Thuận",,12,Bình Thuận,Miền Trung,binh thuan,MATCHED_REGEX
+KH-00030,CỬA HÀNG XE ĐẠP BÌNH MINH,200349768,"Xã Đoan Bái, Huyện Hiệp Hoà, Tỉnh Bắc Giang, Việt Nam",,5,Bắc Giang,Miền Bắc,bac giang,MATCHED_REGEX
+KH-00031,CÔNG TY CỔ PHẦN THƯƠNG MẠI ĐẠI DƯƠNG,196205964,"đường Trương Định, Phường Trương Định, Quận Hai Bà Trưng, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00032,HỘ KINH DOANH CHI THÀNH,117720070,"phố Thanh Lâm, Phường Minh Khai, Quận Bắc Từ Liêm, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00033,CỬA HÀNG XE ĐẠP HÙNG CƯỜNG,214985928,"Ngõ Máy kéo, khu Liên Cơ, Phường Cầu Diễn, Quận Nam Từ Liêm, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00034,CÔNG TY TNHH BÌNH MINH,203838579,"Mẹ Thứ, Phường Hoà Xuân, Quận Cẩm Lệ, Thành phố Đà Nẵng, Việt Nam",,16,Đà Nẵng,Miền Trung,da nang,MATCHED_REGEX
+KH-00035,CỬA HÀNG XE ĐẠP TÂY BẮC,271649068,"Trần Kế Xương, Phường Hải Châu II, Quận Hải Châu, Đà Nẵng",,16,Đà Nẵng,Miền Trung,da nang,MATCHED_REGEX
+KH-00036,CÔNG TY TNHH THƯƠNG MẠI PHÚC AN,171263180,"số 11B Cát Linh, Phường Quốc Tử Giám, Quận Đống đa, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00037,CÔNG TY TNHH THƯƠNG MẠI THANH BÌNH,134122886,"ngách 23 ngõ 82 Phố Nguyễn Phúc Lai, Phường ô Chợ Dừa, Quận Đống đa, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00038,DOANH NGHIỆP TW TÂN TIẾN,109280637,"Đường Hoàng Văn Thụ, Tổ 1, Phường Phan Đình Phùng, Thành phố Thái Nguyên, Thái Nguyên",,54,Thái Nguyên,Miền Bắc,thai nguyen,MATCHED_REGEX
+KH-00039,CÔNG TY CỔ PHẦN ĐÔNG NAM,183629493,"Toà nhà Sun Home 2.1, khu phố 6, Phường An Thới, Thành phố Phú Quốc, Kiên Giang",,33,Kiên Giang,Miền Nam,kien giang,MATCHED_REGEX
+KH-00040,CÔNG TY TNHH VẠN LỢI,251901453,"đường Nguyễn Thái Học, Phường Quang Trung, Thành phố Vinh, Tỉnh Nghệ An, Việt Nam",,40,Nghệ An,Miền Trung,nghe an,MATCHED_SUBSTRING_PRIMARY
+KH-00041,CỬA HÀNG XE ĐẠP ĐÔNG NAM,216963363,"Phường Trúc Lâm, thị xã Nghi Sơn, tỉnh Thanh Hóa",,55,Thanh Hóa,Miền Trung,thanh hoa,MATCHED_REGEX
+KH-00042,HỘ KINH DOANH MẶT TRỜI,281448381,đường Ngọc Hồi - TT. Văn Điển - H. Thanh Trì - TP.Hà Nội - Việt Nam,,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00043,CÔNG TY TNHH LONG PHÚ,286451085,"Yên Thế , Phường Hoà An , Quận Cẩm Lệ , TP Đà Nẵng",,16,Đà Nẵng,Miền Trung,da nang,MATCHED_REGEX
+KH-00044,CÔNG TY TNHH THƯƠNG MẠI NGỌC ANH,121456518,"Phan Châu Trinh, Phường An Xuân, Thành phố Tam Kỳ, Quảng Nam",,46,Quảng Nam,Miền Trung,quang nam,MATCHED_REGEX
+KH-00045,CÔNG TY TNHH AN PHÁT,209987788,"Xã Duy Hải, Huyện Duy Xuyên, Quảng Nam",,46,Quảng Nam,Miền Trung,quang nam,MATCHED_REGEX
+KH-00046,CÔNG TY CỔ PHẦN THƯƠNG MẠI MẶT TRỜI,166574876,"Mẹ Suốt, Phường Hải Đình, Thành phố Đồng Hới, Tỉnh Quảng Bình",,45,Quảng Bình,Miền Trung,quang binh,MATCHED_REGEX
+KH-00047,CÔNG TY CỔ PHẦN THƯƠNG MẠI TÚ ANH,194678179,"TDP 3 Đoài, Thị trấn Yên Lạc, Huyện Yên Lạc, Tỉnh Vĩnh Phúc, Việt Nam",,61,Vĩnh Phúc,Miền Bắc,vinh phuc,MATCHED_REGEX
+KH-00048,CÔNG TY TNHH THUỶ TIÊN,297282681,"khu đô thị Định Công, Đường Trần Điền, Phường Định Công, Quận Hoàng Mai, Thành phố Hà Nội, Việt Nam",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00049,CÔNG TY CỔ PHẦN THUỶ TIÊN,209463930,"Khu phố Chương Xá, Phường Hồ, Thị xã Thuận Thành, Tỉnh Bắc Ninh, Việt Nam",,7,Bắc Ninh,Miền Bắc,bac ninh,MATCHED_REGEX
+KH-00050,CÔNG TY TNHH AN PHÁT,207526839,"Km 78 quốc lộ 5, thôn Lương Xá, Xã Kim Liên, Huyện Kim Thành, Hải Dương",,26,Hải Dương,Miền Bắc,hai duong,MATCHED_SUBSTRING_PRIMARY
+KH-00051,CÔNG TY CỔ PHẦN KHẢI HOÀN,186812248,"phố Văn Nhuế, Phường Bần Yên Nhân, Thị xã Mỹ Hào, Tỉnh Hưng Yên, Việt Nam",,31,Hưng Yên,Miền Bắc,hung yen,MATCHED_REGEX
+KH-00052,DOANH NGHIỆP TW TÂN TIẾN,189570860,"Km 28+100m, Quốc lộ 18, Phường Phả Lại, Thành phố Chí Linh, Hải Dương",,26,Hải Dương,Miền Bắc,hai duong,MATCHED_SUBSTRING_PRIMARY
+KH-00053,CÔNG TY TNHH TRƯỜNG THỊNH,242860511,"Khu Công nghiệp Quang Minh, Thị trấn Quang Minh, Huyện Mê Linh, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00054,HỘ KINH DOANH TRÍ ĐỨC,182963970,"Thôn An Trai, Xã Vân Canh, Huyện Hoài Đức, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00055,CÔNG TY TNHH THƯƠNG MẠI TÂY BẮC,171410404,"Cụm công nghiệp Cư Kuin, Xã Dray Bhăng, Huyện Cư Kuin, Tỉnh Đắk Lắk, Việt Nam",,17,Đắk Lắk,Miền Trung,dak lak,MATCHED_REGEX
+KH-00056,DOANH NGHIỆP TW ĐÔNG NAM,176151671,"Đức Lý, Lý Nhân, tỉnh Hà Nam",,24,Hà Nam,Miền Bắc,ha nam,MATCHED_REGEX
+KH-00057,CÔNG TY CỔ PHẦN THƯƠNG MẠI TOÀN THẮNG,141932840,"Điện Biên Cửa Bắc, Nam Định",,19,Điện Biên,Miền Bắc,dien bien,MATCHED_REGEX
+KH-00058,DOANH NGHIỆP TW SÁN LẠP,127997343,"Lê Thanh Nghị, TP Hải Dương",,26,Hải Dương,Miền Bắc,hai duong,MATCHED_SUBSTRING_PRIMARY
+KH-00059,CÔNG TY TNHH TRÍ ĐỨC,280495894,"Đường Độc Lập, Thị Trấn Cẩm Giàng, Huyện Cẩm Giàng, tỉnh Hải Dương",,26,Hải Dương,Miền Bắc,hai duong,MATCHED_SUBSTRING_PRIMARY
+KH-00060,CÔNG TY TNHH THƯƠNG MẠI VẠN LỢI,158104223,"TK Bình Tiến, thị trấn Bình Mỹ, huyện Bình Lục, tỉnh Hà Nam",,24,Hà Nam,Miền Bắc,ha nam,MATCHED_REGEX
+KH-00061,HỘ KINH DOANH THUỶ TIÊN,244531657,"TT. Mãn Đức, Tân Lạc, Hòa Bình",,29,Hòa Bình,Miền Bắc,hoa binh,MATCHED_REGEX
+KH-00062,CÔNG TY CỔ PHẦN YÊN BÌNH,227299798,"Lê Lai, Hoàng Văn Thụ, TP. Lạng Sơn, Lạng Sơn",,36,Lạng Sơn,Miền Bắc,lang son,MATCHED_REGEX
+KH-00063,HỘ KINH DOANH VẠN LỢI,215377450,"xã Giáp Sơn, huyện Lục Ngạn, tỉnh Bắc Giang",,5,Bắc Giang,Miền Bắc,bac giang,MATCHED_REGEX
+KH-00064,CÔNG TY TNHH SƠN HÀ,275306629,Khu 6 – TT Gia Lộc – Huyện Gia Lộc – Hải Dương,,26,Hải Dương,Miền Bắc,hai duong,MATCHED_SUBSTRING_PRIMARY
+KH-00065,CÔNG TY CỔ PHẦN QUANG VINH,171738234,"phố Vác, Dân Hòa, Thanh Oai, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00066,CÔNG TY CỔ PHẦN NGỌC ANH,112533522,"phố Săn, thị trấn Liên Quan, huyện Thạch Thất, thành phố Hà Nộ",,1,Hà Nội,Miền Bắc,thanh pho ha noi,MATCHED_REGEX
+KH-00067,DOANH NGHIỆP TW NGỌC ANH,155578196,"đường Vạn Xuân, thôn Cựu Quán, xã Đức Thượng, huyện Hoài Đức, TP. Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00068,CÔNG TY CỔ PHẦN SÁN LẠP,131374677,"Trưng Trắc, thị xã Phúc Yên, tỉnh Vĩnh Phúc",,61,Vĩnh Phúc,Miền Bắc,vinh phuc,MATCHED_REGEX
+KH-00069,CÔNG TY TNHH MINH PHƯƠNG,222107650,"hẻm 23 ngách 62, ngõ 29, Phố Khương Hạ, P.Khương Đình,Q. Thanh Xuân, TP. Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00070,CÔNG TY TNHH THƯƠNG MẠI CHI THÀNH,308019803,"Nguyễn Văn Hưởng, Phường Thảo Điền, Thành phố Thủ Đức, TP Hồ Chí Minh",,30,TP. Hồ Chí Minh,Miền Nam,tp ho chi minh,MATCHED_REGEX
+KH-00071,CỬA HÀNG XE ĐẠP BÌNH MINH,205898992,"đường Minh Khai, Phường Vĩnh Tuy, Quận Hai Bà Trưng, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00072,DOANH NGHIỆP TW PHÚC AN,248690869,"Trần Phú, Phường Bắc Hồng, Thị xã Hồng Lĩnh, Hà Tĩnh",,25,Hà Tĩnh,Miền Trung,ha tinh,MATCHED_REGEX
+KH-00073,CỬA HÀNG XE ĐẠP KHẢI HOÀN,215854601,"đường ĐH-HH33, thôn 6, Xã Hoằng Ngọc, Huyện Hoằng Hoá, Tỉnh Thanh Hoá",,55,Thanh Hóa,Miền Trung,thanh hoa,MATCHED_REGEX
+KH-00074,CÔNG TY TNHH THƯƠNG MẠI HOÀ BÌNH,162270903,"khu 11-12, Thị trấn Chi Nê, Huyện Lạc Thuỷ, Tỉnh Hòa Bình, Việt Nam",,29,Hòa Bình,Miền Bắc,hoa binh,MATCHED_REGEX
+KH-00075,CÔNG TY CỔ PHẦN ĐÔNG NAM,193530691,"phố Tây Sơn, Trung Liệt, Đống Đa, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00076,CỬA HÀNG XE ĐẠP ĐẠI LỢI,207110960,"Lý Thái Tổ, Phường Trần Phú, Thành phố  Bắc Giang, Bắc Giang",,5,Bắc Giang,Miền Bắc,bac giang,MATCHED_REGEX
+KH-00077,CÔNG TY CỔ PHẦN THƯƠNG MẠI NGỌC ANH,129442890,"Cụm 12, Xã Tích Giang, Huyện Phúc Thọ, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00078,HỘ KINH DOANH VĨNH PHÁT,169872073,"Thửa đất số 203-2, Khu đất dịch vụ Khu Đồng Mới, đường An Kh, Xã An Khánh, Huyện Hoài Đức, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00079,CÔNG TY TNHH ĐÔNG NAM,212296712,"đường Trần Nguyên Hãn, Phường Trần Nguyên Hãn, Thành phố  Bắc Giang, Bắc Giang",,5,Bắc Giang,Miền Bắc,bac giang,MATCHED_REGEX
+KH-00080,HỘ KINH DOANH VĨNH PHÁT,204708911,"xã Vạn Thắng, huyện Ba Vì, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00081,CÔNG TY TNHH THƯƠNG MẠI KHẢI HOÀN,114437050,"Xã Lương Tài, Huyện Văn Lâm, Hưng Yên",,31,Hưng Yên,Miền Bắc,hung yen,MATCHED_REGEX
+KH-00082,CÔNG TY TNHH THƯƠNG MẠI PHÚC AN,173803785,"Ngã tư thị trấn Lập Thạch, Lập Thạch, Vĩnh Phúc",,61,Vĩnh Phúc,Miền Bắc,vinh phuc,MATCHED_REGEX
+KH-00083,CÔNG TY CỔ PHẦN THƯƠNG MẠI THANH BÌNH,199364060,"chợ mễ, Xã Mễ Sở, Huyện Văn Giang, Hưng Yên",,31,Hưng Yên,Miền Bắc,hung yen,MATCHED_REGEX
+KH-00084,CỬA HÀNG XE ĐẠP TOÀN THẮNG,240631861,"Ngã tư Kim Huy, Phan Đình Phùng, TX. Mỹ Hào, Hưng Yên",,31,Hưng Yên,Miền Bắc,hung yen,MATCHED_REGEX
+KH-00085,CÔNG TY CỔ PHẦN THƯƠNG MẠI NGỌC ANH,129408873,"phố Ngọc Lâm, Phường Ngọc Lâm, Quận Long Biên, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00086,CÔNG TY TNHH NGỌC ANH,223360422,"Chợ Bún, Đa Tốn, Gia Lâm, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00087,CỬA HÀNG XE ĐẠP SÁN LẠP,293724739,"xã Diễn Kỷ, huyện Diễn Châu, tỉnh Nghệ An",,40,Nghệ An,Miền Trung,nghe an,MATCHED_SUBSTRING_PRIMARY
+KH-00088,CỬA HÀNG XE ĐẠP SÁN LẠP,234800323,"Khối 5 Thị Trấn Cầu Giát , Huyện Quỳnh Lưu , Tỉnh Nghệ An",,40,Nghệ An,Miền Trung,nghe an,MATCHED_SUBSTRING_PRIMARY
+KH-00089,HỘ KINH DOANH TOÀN THẮNG,299680508,"Khối 1, thị trấn Yên Thành, tỉnh Nghệ A",,40,Nghệ An,Miền Trung,nghe an,MATCHED_REGEX
+KH-00090,CÔNG TY TNHH THƯƠNG MẠI TÂY BẮC,171647676,"đường Bà triệu, Phường Đông Thọ, Thành phố Thanh Hoá, Thanh Hoá",,55,Thanh Hóa,Miền Trung,thanh hoa,MATCHED_REGEX
+KH-00091,CÔNG TY TNHH BÌNH MINH,202478042,"Ngõ 68/53/22 Cầu Giấy, Phường Quan Hoa, Quận Cầu Giấy, TP Hà Nội, Việt Nam",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00092,CÔNG TY CỔ PHẦN THƯƠNG MẠI XUÂN MAI,195817495,"Lạc Long Quân, quận Tây Hồ, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00093,CÔNG TY CỔ PHẦN PHÚC AN,228060819,"Phạm Văn Đồng, Cổ Nhuế 2, Bắc Từ Liêm, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00094,HỘ KINH DOANH SÁN LẠP,113574479,"Khu Tân Tiến, xã Minh Tân, Cẩm Khê, Phú Thọ",,43,Phú Thọ,Miền Bắc,phu tho,MATCHED_REGEX
+KH-00095,CÔNG TY CỔ PHẦN THƯƠNG MẠI KHẢI HOÀN,115961215,"đường mương Đan Hoài, thôn 6, Xã Song Phương, Huyện Hoài Đức, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00096,CÔNG TY TNHH THƯƠNG MẠI SƠN HÀ,171916408,"Xã Tiên Phương, Huyện Chương Mỹ, Thành phố Hà Nội, Việt Nam",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00097,CÔNG TY TNHH XUÂN MAI,251696517,"Lũng Kênh, Đức Giang, Hoài Đức, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00098,HỘ KINH DOANH MẶT TRỜI,233256612,"đường phạm nguyễn du , phường nghi hoà , thị xã của lò , Nghệ An",,40,Nghệ An,Miền Trung,nghe an,MATCHED_SUBSTRING_PRIMARY
+KH-00099,CÔNG TY TNHH NGỌC ANH,223368484,"phố Nguyễn Thái Học, Thị trấn Phùng, Huyện Đan Phượng, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00100,CỬA HÀNG XE ĐẠP ĐẠI LỢI,204436190,"CT1 Bắc Linh Đàm, Q. Hoàng Mai, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00101,CÔNG TY CỔ PHẦN THƯƠNG MẠI QUANG VINH,133186744,"ngõ 72 Dương Quảng Hàm, Cầu Giấy, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00102,CỬA HÀNG XE ĐẠP AN PHÁT,209357696,"Ngã 4, Đường 295, Thôn Đông, Xã Hoàn Sơn, Huyện Tiên Du, Bắc Ninh",,7,Bắc Ninh,Miền Bắc,bac ninh,MATCHED_REGEX
+KH-00103,CÔNG TY CỔ PHẦN AN PHÁT,146215925,"phố Đông Hương, Thị trấn Nham Biền, Huyện Yên Dũng, Tỉnh Bắc Giang, Việt Nam",,5,Bắc Giang,Miền Bắc,bac giang,MATCHED_REGEX
+KH-00104,DOANH NGHIỆP TW THUỶ TIÊN,213878919,"Chợ Đà, Thọ Dân, Triệu Sơn, Thanh Hóa",,55,Thanh Hóa,Miền Trung,thanh hoa,MATCHED_REGEX
+KH-00105,CỬA HÀNG XE ĐẠP PHÚC AN,271411995,"Thị trấn Thuận Thành, Bắc Ninh",,7,Bắc Ninh,Miền Bắc,bac ninh,MATCHED_REGEX
+KH-00106,CÔNG TY TNHH THƯƠNG MẠI TOÀN THẮNG,148512771,"Phố Giắt, TT Triệu Sơn, Triệu Sơn, Thanh Hóa",,55,Thanh Hóa,Miền Trung,thanh hoa,MATCHED_REGEX
+KH-00107,CÔNG TY TNHH LONG PHÚ,296939938,"Thị trấn Chờ, Huyện Yên Phong, Bắc Ninh",,7,Bắc Ninh,Miền Bắc,bac ninh,MATCHED_REGEX
+KH-00108,HỘ KINH DOANH LÊ ANH,172904294,"Đường 131, Tiên Dược, Sóc Sơn, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00109,CÔNG TY CỔ PHẦN VẠN LỢI,235653577,"Phố Yên, Tiền Phong, Mê Linh, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00110,CỬA HÀNG XE ĐẠP TÂY BẮC,277647686,"Phố Hạ, Xã Mê Linh, Huyện Mê Linh, Thành phố Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00111,DOANH NGHIỆP TW MẶT TRỜI,234363244,"đường Minh Khai, phường Minh Khai, quận Hai Bà Trưng, thành phố Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00112,HỘ KINH DOANH TÚ ANH,266240207,Khu 2- thị trấn Kim Tân- Thạch Thành - Thanh Hóa,,55,Thanh Hóa,Miền Trung,thanh hoa,MATCHED_REGEX
+KH-00113,DOANH NGHIỆP TW XÂY DỰNG,211961552,"Mỹ Sơn, Xã Vĩnh Yên, Huyện Vĩnh Lộc, Thanh Hoá",,55,Thanh Hóa,Miền Trung,thanh hoa,MATCHED_REGEX
+KH-00114,CỬA HÀNG XE ĐẠP NGỌC ANH,225069136,Phố Kiểu - Yên Trường - Yên Định - Thanh Hoá,,55,Thanh Hóa,Miền Trung,thanh hoa,MATCHED_REGEX
+KH-00115,CÔNG TY CỔ PHẦN YÊN BÌNH,279076709,"Hà Bắc, Hà Trung, Thanh Hóa",,55,Thanh Hóa,Miền Trung,thanh hoa,MATCHED_REGEX
+KH-00116,HỘ KINH DOANH TOÀN THẮNG,229366789,"Trung tâm thương mại chợ Đồng Than, xã Đồng Than, h.Yên Mỹ, Hưng Yên",,31,Hưng Yên,Miền Bắc,hung yen,MATCHED_REGEX
+KH-00117,HỘ KINH DOANH YÊN BÌNH,296638647,"Liêu xá, Yên Mỹ, Hưng yên",,31,Hưng Yên,Miền Bắc,hung yen,MATCHED_REGEX
+KH-00118,HỘ KINH DOANH HÙNG CƯỜNG,181382933,"Thửa - CN-2A.2, Lô CN-2A - Khu công nghiệp Bảo Minh mở rộng, Xã Liên Minh, Huyện Vụ Bản, Nam Định",,39,Nam Định,Miền Bắc,nam dinh,MATCHED_REGEX
+KH-00119,DOANH NGHIỆP TW MẶT TRỜI,286722585,"Hoài Đức, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00120,CÔNG TY TNHH THANH BÌNH,234072214,"Phố Vồi, thị trấn Thường Tín, Huyện Thường Tín, thành phố Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00121,CÔNG TY TNHH CHI THÀNH,201864865,"Khu Giãn Dân Bùi Thị Cúc, TT. Ân Thi, Hưng Yên",,31,Hưng Yên,Miền Bắc,hung yen,MATCHED_REGEX
+KH-00122,CÔNG TY TNHH CHI THÀNH,202326633,"Đội 5, Thôn Hạ Tân, Xã Vĩnh Khúc, Huyện Văn Giang, Hưng Yên",,31,Hưng Yên,Miền Bắc,hung yen,MATCHED_REGEX
+KH-00123,CÔNG TY CỔ PHẦN THƯƠNG MẠI LONG PHÚ,161454231,"xã Tri Thủy, huyện Phú Xuyên, thành phố Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00124,CÔNG TY CỔ PHẦN THƯƠNG MẠI AN PHÁT,100726496,"Xã Đồng Thắng, Huyện Triệu Sơn, Tỉnh Thanh Hoá",,55,Thanh Hóa,Miền Trung,thanh hoa,MATCHED_REGEX
+KH-00125,HỘ KINH DOANH BÌNH MINH,140113386,"Triệu Sơn, Thanh Hóa",,55,Thanh Hóa,Miền Trung,thanh hoa,MATCHED_REGEX
+KH-00126,HỘ KINH DOANH HOÀ BÌNH,232438492,"Xã Thọ Vực, Huyện Triệu Sơn, Tỉnh Thanh Hoá",,55,Thanh Hóa,Miền Trung,thanh hoa,MATCHED_REGEX
+KH-00127,CỬA HÀNG XE ĐẠP TÂN TIẾN,237884189,"xã Tân Sơn, huyện Kim Bảng, tỉnh Hà Nam",,24,Hà Nam,Miền Bắc,ha nam,MATCHED_REGEX
+KH-00128,HỘ KINH DOANH TÂY BẮC,239163382,"Ngã tư Chợ Còng, TT Tĩnh Gia, Thanh Hóa",,55,Thanh Hóa,Miền Trung,thanh hoa,MATCHED_REGEX
+KH-00129,CÔNG TY CỔ PHẦN LÊ ANH,105885480,"Xã Quảng Phong , Huyện Quảng Xương , Tĩnh Thanh Hoá",,55,Thanh Hóa,Miền Trung,thanh hoa,MATCHED_REGEX
+KH-00130,CÔNG TY CỔ PHẦN THƯƠNG MẠI THUỶ TIÊN,173783946,"Lê Thái Tổ, phố Giắt, Thị trấn Triệu Sơn, Huyện Triệu Sơn, Thanh Hoá",,55,Thanh Hóa,Miền Trung,thanh hoa,MATCHED_REGEX
+KH-00131,CÔNG TY TNHH QUANG VINH,235236596,"Xã Yên Nam, Duy Tiên, Hà Nam",,24,Hà Nam,Miền Bắc,ha nam,MATCHED_REGEX
+KH-00132,CÔNG TY TNHH THƯƠNG MẠI HOÀ BÌNH,169280341,"xã Diễn Tường, huyện Diễn Châu, tỉnh Nghệ An",,40,Nghệ An,Miền Trung,nghe an,MATCHED_SUBSTRING_PRIMARY
+KH-00133,DOANH NGHIỆP TW YÊN BÌNH,277462350,"Thị trấn Nga Sơn, Huyện Nga Sơn, Thanh Hoá",,55,Thanh Hóa,Miền Trung,thanh hoa,MATCHED_REGEX
+KH-00134,DOANH NGHIỆP TW PHÚ THỊNH,134770178,"Trần Nhân Tông, Phường Vĩnh Diện, Thị xã Điện Bàn, Tỉnh Quảng Nam, Việt Nam",,46,Quảng Nam,Miền Trung,quang nam,MATCHED_REGEX
+KH-00135,CỬA HÀNG XE ĐẠP XUÂN MAI,255896680,"xã Gia Tân, Huyện Gia Viễn, tỉnh Ninh Bình, Việt Nam",,41,Ninh Bình,Miền Bắc,ninh binh,MATCHED_REGEX
+KH-00136,CÔNG TY CỔ PHẦN NGỌC ANH,141444046,Tây Bình Cách - Xã Đông Xá - Huyện Đông Hưng - Thái Bình.,,53,Thái Bình,Miền Bắc,thai binh,MATCHED_REGEX
+KH-00137,CÔNG TY TNHH THƯƠNG MẠI QUANG VINH,138267628,"xã Trác Văn, huyện Duy Tiên, tỉnh Hà Nam",,24,Hà Nam,Miền Bắc,ha nam,MATCHED_REGEX
+KH-00138,CÔNG TY TNHH THƯƠNG MẠI VĨNH PHÁT,181170785,"thị trấn An Bài, huyện Quỳnh Phụ, tỉnh Thái Bình",,53,Thái Bình,Miền Bắc,thai binh,MATCHED_REGEX
+KH-00139,HỘ KINH DOANH YÊN BÌNH,262145397,"Khánh Thượng, Ba Vì, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00140,CÔNG TY TNHH XÂY DỰNG,281064804,"La Văn Cầu, Thị trấn Nam Sách, Huyện Nam Sách, Hải Dương",,26,Hải Dương,Miền Bắc,hai duong,MATCHED_SUBSTRING_PRIMARY
+KH-00141,CÔNG TY CỔ PHẦN THƯƠNG MẠI TÂN TIẾN,137375617,"Số 721+723 đường Trường Chinh, tổ Dân Phố Trường Chinh 2 Phường Quán Trữ, Quận Kiến An, Thành phố Hải Phòng, Việt Nam",,27,Hải Phòng,Miền Bắc,hai phong,MATCHED_REGEX
+KH-00142,CÔNG TY TNHH THƯƠNG MẠI CHI THÀNH,190061494,Từ Liêm-Hà Nội,,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00143,DOANH NGHIỆP TW TÂY BẮC,248997840,"Phố Me, Thị trấn Hợp Hòa, Huyện Tam Dương, Tỉnh Vĩnh Phúc, Việt Nam",,61,Vĩnh Phúc,Miền Bắc,vinh phuc,MATCHED_REGEX
+KH-00144,CỬA HÀNG XE ĐẠP QUANG VINH,236392197,"Đường Hùng Vương, Phường Tích Sơn, Thành phố Vĩnh Yên, Tỉnh Vĩnh Phúc, Việt Nam",,61,Vĩnh Phúc,Miền Bắc,vinh phuc,MATCHED_REGEX
+KH-00145,HỘ KINH DOANH PHÚ THỊNH,134287925,"KDC số 11, Thôn Mỹ Trang, Xã Phổ Cường, Thị xã Đức Phổ, Quảng Ngãi",,47,Quảng Ngãi,Miền Trung,quang ngai,MATCHED_REGEX
+KH-00146,HỘ KINH DOANH LONG PHÚ,212043116,"C17, Xã Thanh Xương, Huyện Điện Biên, Điện Biên",,19,Điện Biên,Miền Bắc,dien bien,MATCHED_REGEX
+KH-00147,CÔNG TY TNHH PHÚ THỊNH,221785427,"Quang Trung, phường Phú La, quận Hà Đông, Thành phố Hà Nội, Việt Nam",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00148,HỘ KINH DOANH THUỶ TIÊN,295762114,"đường Tuệ Tĩnh, Thôn Gạch, TT Lai Cách, Cẩm Giàng, Hải Dươn",,26,Hải Dương,Miền Bắc,hai duong,MATCHED_REGEX
+KH-00149,CỬA HÀNG XE ĐẠP TÚ ANH,242813583,"Trần Hưng Đạo, P. An Lưu, TX Kinh Môn, Hải Dương",,26,Hải Dương,Miền Bắc,hai duong,MATCHED_SUBSTRING_PRIMARY
+KH-00150,HỘ KINH DOANH SÁN LẠP,161754149,"Thôn Tiên Tảo, Xã Thanh An, Huyện Thanh Hà, Tỉnh Hải Dương, Việt Nam",,25,Hà Tĩnh,Miền Trung,ha tinh,MATCHED_REGEX
+KH-00151,CÔNG TY TNHH LÊ ANH,210067673,"Đường Nguyễn Chí Thanh , Phường Tân Giang , TP Hà Tĩnh , Tỉnh Hà Tĩnh",,25,Hà Tĩnh,Miền Trung,ha tinh,MATCHED_REGEX
+KH-00152,HỘ KINH DOANH TRÍ ĐỨC,270737936,"Khối 3 Thị Trấn Đô Lương , Huyện Đô Lương , Tỉnh Nghệ An",,40,Nghệ An,Miền Trung,nghe an,MATCHED_SUBSTRING_PRIMARY
+KH-00153,CÔNG TY CỔ PHẦN THƯƠNG MẠI PHÚ THỊNH,192840609,"Xã Thạch Châu , Huyện Lộc Hà , Tỉnh Hà Tĩnh",,25,Hà Tĩnh,Miền Trung,ha tinh,MATCHED_REGEX
+KH-00154,DOANH NGHIỆP TW VĨNH PHÁT,145780660,"Xuân Giang, Xã Xuân Giang, Huyện Nghi Xuân, Hà Tĩnh",,25,Hà Tĩnh,Miền Trung,ha tinh,MATCHED_REGEX
+KH-00155,DOANH NGHIỆP TW HÙNG CƯỜNG,192355747,"Phường Quang Trung, Quận Hà Đông, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00156,DOANH NGHIỆP TW VIỆT ANH,242485184,"Bà Triệu, Thị trấn Hậu Lộc, Huyện Hậu Lộc, Thanh Hoá",,55,Thanh Hóa,Miền Trung,thanh hoa,MATCHED_REGEX
+KH-00157,CÔNG TY TNHH THƯƠNG MẠI LONG PHÚ,167397253,"phố Tràng Thi, phường Hàng Trống, Quận Hoàn Kiếm, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00158,CÔNG TY TNHH THƯƠNG MẠI VIỆT ANH,150349307,"Xã Hồng An, Huyện Hưng Hà, Thái Bình",,53,Thái Bình,Miền Bắc,thai binh,MATCHED_REGEX
+KH-00159,CÔNG TY TNHH THƯƠNG MẠI THANH BÌNH,139592111,"Đường N5, Khu công nghiệp Sóng Thần 3, Phường Phú Tân, Thành phố Thủ Dầu Một, Bình Dương",,9,Bình Dương,Miền Nam,binh duong,MATCHED_REGEX
+KH-00160,CÔNG TY TNHH THƯƠNG MẠI TRÍ ĐỨC,189987695,"số 167 phố Trung Kính, Phường Yên Hoà, Quận Cầu Giấy, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00161,CÔNG TY TNHH THIÊN AN,245736529,phố Nguyễn Văn Ngọc - Phường Cống Vị - Quận Ba Đình - Hà Nội,,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00162,CÔNG TY CỔ PHẦN THƯƠNG MẠI CHI THÀNH,103288657,"No12, liền kề 519, khu DV 27,28, Phường Dương Nội, Quận Hà Đông, Thành phố Hà Nội, Việt Nam",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00163,HỘ KINH DOANH XUÂN MAI,252263483,"Bà Triệu, Phường Hàng Bài, Quận Hoàn Kiếm, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00164,HỘ KINH DOANH XÂY DỰNG,166251851,Thân Nhân Trung - TT Bích Động - Việt Yên - Bắc Giang,,5,Bắc Giang,Miền Bắc,bac giang,MATCHED_REGEX
+KH-00165,CÔNG TY CỔ PHẦN THƯƠNG MẠI TRƯỜNG THỊNH,184884413,"Dốc Tràng Than, TT. Thắng, H. Hiệp Hòa, Bắc Giang",,5,Bắc Giang,Miền Bắc,bac giang,MATCHED_REGEX
+KH-00166,HỘ KINH DOANH QUANG VINH,137129262,Tổ 1 - Phường Mường Thanh - TP Điện Biên Phủ,,19,Điện Biên,Miền Bắc,dien bien,MATCHED_REGEX
+KH-00167,CÔNG TY CỔ PHẦN THƯƠNG MẠI LÊ ANH,191659283,"A1 tập thể D8 đường Ngọc Hồi, Xã Tứ Hiệp, Huyện Thanh Trì, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00168,DOANH NGHIỆP TW ĐẠI LỢI,144863555,"Liền Kề 373, NO11, khu Cổng Đồng, tổ dân phố số 4, đường Tố Hữu, Phường La Khê, Quận Hà Đông, Thành phố Hà Nội, Việt Nam",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00169,CÔNG TY TNHH THƯƠNG MẠI VĨNH PHÁT,187504550,"phố Yên Thổ, Thị trấn Yên Thịnh, Huyện Yên Mô, Ninh Bình",,41,Ninh Bình,Miền Bắc,ninh binh,MATCHED_REGEX
+KH-00170,CỬA HÀNG XE ĐẠP TRƯỜNG THỊNH,245453909,"xanh, Xã Khánh Thiện, Huyện Yên Khánh, Tỉnh Ninh Bình, Việt Nam",,41,Ninh Bình,Miền Bắc,ninh binh,MATCHED_REGEX
+KH-00171,CÔNG TY CỔ PHẦN QUANG VINH,169565946,"Tôn Đức Thắng, P Hàng Bột, quận Đống Đa, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00172,CỬA HÀNG XE ĐẠP XÂY DỰNG,287801758,Đường Trang Quan - Xã An Đồng - Huyện An Dương - Hải Phòng.,,27,Hải Phòng,Miền Bắc,hai phong,MATCHED_REGEX
+KH-00173,DOANH NGHIỆP TW PHÚ THỊNH,118544276,"Phố Kim mã, Phường Kim mã, Quận Ba Đình, Thành phố Hà Nội, Việt Nam",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00174,CÔNG TY CỔ PHẦN THƯƠNG MẠI LÊ ANH,119839663,"Tôn Đức Thắng, Phường Hoà Khánh Nam, Quận Liên Chiểu, Đà Nẵng",,16,Đà Nẵng,Miền Trung,da nang,MATCHED_REGEX
+KH-00175,CÔNG TY CỔ PHẦN THƯƠNG MẠI TÂN TIẾN,131811857,"Ngách 8/11/36/144, Đường Lê Quang Đạo,Phường Phú Đô,Quận Nam Từ Liêm,Thành phố Hà Nội,Việt Nam",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00176,CÔNG TY TNHH THUỶ TIÊN,270413134,"Tôn Đức Thắng, Phường Hàng Bột, Quận Đống Đa, Thành phố Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00177,CÔNG TY CỔ PHẦN TRƯỜNG THỊNH,286143542,"Tòa nhà văn phòng điều hành VTK, Khu công nghiệp sạch, Xã Xuân Trúc, Huyện Ân Thi, Tỉnh Hưng Yên, Việt Nam",,31,Hưng Yên,Miền Bắc,hung yen,MATCHED_REGEX
+KH-00178,CÔNG TY CỔ PHẦN QUANG VINH,112260064,"ngõ 91 phố Ô Đồng Lầm, Phường Phương Liên - Trung Tự, Quận Đống Đa, Thành phố Hà Nội, Việt Nam",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00179,CÔNG TY CỔ PHẦN TÂN TIẾN,190960203,"tổ 3, Phường Phú Đô, Quận Nam Từ Liêm, Thành phố Hà Nội, Việt Nam",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00180,CÔNG TY TNHH THƯƠNG MẠI VẠN LỢI,158474503,"Xã Quảng Tâm, Huyện Quảng Xương, Thanh Hoá",,55,Thanh Hóa,Miền Trung,thanh hoa,MATCHED_REGEX
+KH-00181,CÔNG TY TNHH LONG PHÚ,260242832,"Cách mạng Tháng 8, Phường Tứ Hạ, Thị xã Hương Trà, Tỉnh Thừa Thiên Huế, Việt Nam",,56,Thừa Thiên Huế,Miền Trung,thua thien hue,MATCHED_REGEX
+KH-00182,CÔNG TY CỔ PHẦN PHÚ THỊNH,129743976,"Tiểu khu 6 và tiểu khu 19, thị trấn Hát Lót, huyện Mai Sơn, tỉnh Sơn La",,51,Sơn La,Miền Bắc,son la,MATCHED_REGEX
+KH-00183,DOANH NGHIỆP TW LONG PHÚ,246152686,"Ngã 5 Chằm Cũ, TT. Đồi Ngô, Lục Nam, Bắc Giang",,5,Bắc Giang,Miền Bắc,bac giang,MATCHED_REGEX
+KH-00184,DOANH NGHIỆP TW ĐẠI LỢI,179843435,"Tại nhà số 327, đường Cù Chính Lan, tổ 1, Phường Đồng Tiến, Thành phố Hoà Bình, Hòa Bình",,29,Hòa Bình,Miền Bắc,hoa binh,MATCHED_REGEX
+KH-00185,CÔNG TY TNHH THƯƠNG MẠI VĨNH PHÁT,181980454,"Xã Phú Thành, Huyện Lạc Thuỷ, Tỉnh Hòa Bình.",,29,Hòa Bình,Miền Bắc,hoa binh,MATCHED_REGEX
+KH-00186,HỘ KINH DOANH XÂY DỰNG,156673492,"Khu CN Bình Xuyên,Thị trấn Hương Canh,Huyện Bình Xuyên, Tỉnh Vĩnh Phúc,Việt Nam",,61,Vĩnh Phúc,Miền Bắc,vinh phuc,MATCHED_REGEX
+KH-00187,HỘ KINH DOANH NGỌC ANH,120102685,"Lotte Center Hà Nội, số 54 đường Liễu Giai, Phường Cống Vị, Quận Ba Đình, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00188,DOANH NGHIỆP TW XÂY DỰNG,192287781,"Bà Triệu, Phường Điện Biên, Thành phố Thanh Hóa, Tỉnh Thanh Hóa, Việt Nam",,19,Điện Biên,Miền Bắc,dien bien,MATCHED_REGEX
+KH-00189,CÔNG TY CỔ PHẦN MẶT TRỜI,202946541,"Trích Sài,  Quận Tây Hồ, Thành Phố Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00190,HỘ KINH DOANH XÂY DỰNG,137461749,"Xã An Khánh, huyện Hoài Đức, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00191,CÔNG TY CỔ PHẦN THƯƠNG MẠI XUÂN MAI,152338278,"Khu công nghiệp Tân Quang, Thôn Ngọc Đà, Xã Tân Quang, Huyện Văn Lâm, Tỉnh Hưng Yên",,31,Hưng Yên,Miền Bắc,hung yen,MATCHED_REGEX
+KH-00192,HỘ KINH DOANH KHẢI HOÀN,198261510,"đường Cầu Diễn, phường Minh Khai, quận Bắc Từ Liêm, thành phố Hà Nội, Việt Nam",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00193,CÔNG TY TNHH TÚ ANH,247662596,Đường Nguyễn Trải - P Ba Đình TP Thanh Hoá,,55,Thanh Hóa,Miền Trung,thanh hoa,MATCHED_REGEX
+KH-00194,CỬA HÀNG XE ĐẠP SÁN LẠP,233942103,"Xã Thanh Lâm, Huyện Mê Linh, Thành phố Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00195,CỬA HÀNG XE ĐẠP BÌNH MINH,205319288,"Cao Lỗ, Phan Xá, Uy Nỗ, Đông Anh, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00196,CÔNG TY CỔ PHẦN NAM TIẾN,160563254,"Phố Mới, Thanh Khương, Thuận Thành, Bắc Ninh",,7,Bắc Ninh,Miền Bắc,bac ninh,MATCHED_REGEX
+KH-00197,CÔNG TY TNHH THƯƠNG MẠI MINH PHƯƠNG,123619597,"đường Nguyễn Văn Hưởng, Phường Giang Biên, Quận Long Biên, Thành phố Hà Nội, Việt Nam",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00198,CÔNG TY TNHH TRÍ ĐỨC,298377690,"CC Eurowindow River Park, Đông Hội, Đông Anh, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00199,CỬA HÀNG XE ĐẠP TÚ ANH,246580328,"Tiểu Khu 3 , Thị Trấn Hà Trung , Hà Trung , Tỉnh Thanh Hoá",,55,Thanh Hóa,Miền Trung,thanh hoa,MATCHED_REGEX
+KH-00200,CÔNG TY CỔ PHẦN TOÀN THẮNG,201689924,"Hà Huy Tập, Thị trấn Yên Viên, Huyện Gia Lâm, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00201,HỘ KINH DOANH XUÂN MAI,203638107,"KDC Đại Tân, phường Hoàng Tân, TP. Chí Linh, Hải Dương",,26,Hải Dương,Miền Bắc,hai duong,MATCHED_SUBSTRING_PRIMARY
+KH-00202,CÔNG TY CỔ PHẦN XUÂN MAI,285336607,"tổ dân phố Hòa Sơn, thị trấn Chúc Sơn, huyện Chương Mỹ, thành phố Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00203,CÔNG TY CỔ PHẦN THƯƠNG MẠI HOÀ BÌNH,196312788,"Khu 15, Thị trấn Hùng Sơn, Huyện Lâm Thao, Tỉnh Phú Thọ, Việt Nam",,43,Phú Thọ,Miền Bắc,phu tho,MATCHED_REGEX
+KH-00204,CÔNG TY CỔ PHẦN ĐẠI DƯƠNG,209715487,"Xã Hiển Khánh,Huyện Vụ Bản, Tỉnh Nam Định,Việt Nam",,39,Nam Định,Miền Bắc,nam dinh,MATCHED_REGEX
+KH-00205,CỬA HÀNG XE ĐẠP QUANG VINH,233725474,"khu Trới 10, Phường Hoành Bồ, Thành phố Hạ Long, Tỉnh Quảng Ninh, Việt Nam",,48,Quảng Ninh,Miền Bắc,quang ninh,MATCHED_REGEX
+KH-00206,CÔNG TY TNHH THƯƠNG MẠI MẶT TRỜI,168369422,"Thọ Xuân, Đan Phượng, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00207,CỬA HÀNG XE ĐẠP VẠN LỢI,253999242,"Khu 2, TT Nếnh, Phường Nếnh, Thị xã Việt Yên, Bắc Giang",,5,Bắc Giang,Miền Bắc,bac giang,MATCHED_REGEX
+KH-00208,CỬA HÀNG XE ĐẠP TÂY BẮC,275423520,"đường Xuân Thủy, phường dịch vọng hậu quận Cầu Giấy, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00209,CÔNG TY TNHH THƯƠNG MẠI VIỆT ANH,195974861,"Tô Hiệu, phường Hồ Nam, quận Lê Chân, TP Hải Phòng",,27,Hải Phòng,Miền Bắc,hai phong,MATCHED_REGEX
+KH-00210,DOANH NGHIỆP TW SÁN LẠP,147059693,"Tòa nhà Công Nghĩa , 295 Trần Nhân Tông, Phường Yên Thanh, Thành phố Uông Bí, Quảng Ninh",,48,Quảng Ninh,Miền Bắc,quang ninh,MATCHED_REGEX
+KH-00211,CỬA HÀNG XE ĐẠP NAM TIẾN,229248645,"Đường Nguyễn Du , Thị Trấn Tiên Điền ,Huyện Nghi Xuân ,Tỉnh Hà Tĩnh",,25,Hà Tĩnh,Miền Trung,ha tinh,MATCHED_REGEX
+KH-00212,CỬA HÀNG XE ĐẠP TÂY BẮC,272247362,"Đường 424 - Xóm Bãi, xã Hòa Xá, huyện Ứng Hòa, thành phố Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00213,CÔNG TY CỔ PHẦN HOÀ BÌNH,264018765,"tổ dân phố 12, Phường Mộ Lao, Quận Hà Đông, Thành phố Hà Nội, Việt Nam",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00214,DOANH NGHIỆP TW QUANG VINH,141446235,"Nguyễn Chế Nghĩa, Thị trấn Gia Lộc, Huyện Gia Lộc, Tỉnh Hải Dương, Việt Nam",,26,Hải Dương,Miền Bắc,hai duong,MATCHED_SUBSTRING_PRIMARY
+KH-00215,DOANH NGHIỆP TW LÊ ANH,182566785,"phố Kim Thành, Thị trấn Đồng Lộc, Huyện Can Lộc, Hà Tĩnh",,25,Hà Tĩnh,Miền Trung,ha tinh,MATCHED_REGEX
+KH-00216,HỘ KINH DOANH NGỌC ANH,157797784,"Thi Sơn, Kim Bảng, Hà Nam",,24,Hà Nam,Miền Bắc,ha nam,MATCHED_REGEX
+KH-00217,DOANH NGHIỆP TW ĐẠI DƯƠNG,272364761,"Lý Bôn, Phường Đề Thám, thành phố Thái Bình, tỉnh Thái Bình",,53,Thái Bình,Miền Bắc,thai binh,MATCHED_REGEX
+KH-00218,CÔNG TY TNHH THƯƠNG MẠI BÌNH MINH,100087121,"xã Kim Anh, Kim Thành, Hải Dương",,26,Hải Dương,Miền Bắc,hai duong,MATCHED_SUBSTRING_PRIMARY
+KH-00219,CÔNG TY CỔ PHẦN THƯƠNG MẠI PHÚ THỊNH,123994267,"phố 9 Phường Vân Giang, TP. Ninh Bình, Tỉnh Ninh Bình",,41,Ninh Bình,Miền Bắc,ninh binh,MATCHED_REGEX
+KH-00220,CỬA HÀNG XE ĐẠP VIỆT ANH,250149452,"Lễ, xã Hải Hưng, huyện Hải Hậu, tỉnh Nam Định",,39,Nam Định,Miền Bắc,nam dinh,MATCHED_REGEX
+KH-00221,CÔNG TY CỔ PHẦN VĨNH PHÁT,275027817,"Đội 3, Dị Chế, Tiên Lữ, Hưng Yên",,31,Hưng Yên,Miền Bắc,hung yen,MATCHED_REGEX
+KH-00222,CÔNG TY CỔ PHẦN TÂN TIẾN,121788145,"tổ 3, phường Phú La, quận Hà Đông,TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00223,CÔNG TY CỔ PHẦN THƯƠNG MẠI AN PHÁT,108458231,"Phố Mới, Thôn Dộc, Xã Bình Minh, Huyện Thanh Oai, Thành phố Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00224,DOANH NGHIỆP TW ĐÔNG NAM,133490705,"xã Quỳnh Lưu, huyện Nho Quan, tỉnh Ninh Bình",,41,Ninh Bình,Miền Bắc,ninh binh,MATCHED_REGEX
+KH-00225,CÔNG TY TNHH TÂY BẮC,276135501,"Phạm Ngọc Nhị, TT Đồng Văn, Duy Tiên, Hà Nam",,24,Hà Nam,Miền Bắc,ha nam,MATCHED_REGEX
+KH-00226,CÔNG TY CỔ PHẦN VĨNH PHÁT,117167809,"Đầu đê Tiến Thịnh, Mê Linh, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00227,CÔNG TY TNHH THƯƠNG MẠI TRÍ ĐỨC,182842488,"Minh Khai, Đông Ngàn, Từ Sơn, Bắc Ninh",,7,Bắc Ninh,Miền Bắc,bac ninh,MATCHED_REGEX
+KH-00228,CÔNG TY CỔ PHẦN THƯƠNG MẠI XUÂN MAI,151292866,"Trâu Quỳ, Gia Lâm, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00229,DOANH NGHIỆP TW TRÍ ĐỨC,116140536,"Đường 295, Lý Viên, Bắc Lý, Hiệp Hòa, Bắc Giang",,5,Bắc Giang,Miền Bắc,bac giang,MATCHED_REGEX
+KH-00230,DOANH NGHIỆP TW ĐẠI LỢI,174994369,"Cầu Diễn, Phúc Diễn, Bắc Từ Liêm, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00231,CÔNG TY CỔ PHẦN THANH BÌNH,134507198,"Chợ Đường Cái, Văn Lâm, Hưng Yên",,31,Hưng Yên,Miền Bắc,hung yen,MATCHED_REGEX
+KH-00232,HỘ KINH DOANH HOÀ BÌNH,283790272,"Khối Phước Trạch, Phường Cửa Đại, Thành phố Hội An, Tỉnh Quảng Nam, Việt Nam",,46,Quảng Nam,Miền Trung,quang nam,MATCHED_REGEX
+KH-00233,DOANH NGHIỆP TW CHI THÀNH,123593132,"xã Thái Thịnh, huyện Thái Thụy, tỉnh Thái Bình",,53,Thái Bình,Miền Bắc,thai binh,MATCHED_REGEX
+KH-00234,CÔNG TY TNHH KHẢI HOÀN,217737068,"xã Nam Hồng, huyện Tiền Hải, tỉnh Thái Bình",,53,Thái Bình,Miền Bắc,thai binh,MATCHED_REGEX
+KH-00235,CÔNG TY CỔ PHẦN THƯƠNG MẠI CHI THÀNH,105160211,"Non Côi, thị trấn Gôi, Vụ Bản, Nam Định",,39,Nam Định,Miền Bắc,nam dinh,MATCHED_REGEX
+KH-00236,CỬA HÀNG XE ĐẠP ĐÔNG NAM,217142706,"TDP Phượng Bãi, Phường Biên Giang, Quận Hà Đông, Thành Phố Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00237,DOANH NGHIỆP TW LÊ ANH,161299933,"đường chiến thắng Sông Lô, tổ 2, Phường Tân Quang, Thành Phố Tuyên Quang, Tỉnh Tuyên Quang, Việt Nam",,59,Tuyên Quang,Miền Bắc,tuyen quang,MATCHED_REGEX
+KH-00238,CÔNG TY CỔ PHẦN THƯƠNG MẠI TRƯỜNG THỊNH,147049044,"đường Hùng Vương, phường Bến Gót, TP. Việt Trì, Phú Thọ",,43,Phú Thọ,Miền Bắc,phu tho,MATCHED_REGEX
+KH-00239,HỘ KINH DOANH THANH BÌNH,148801609,"Khối Thanh Chiếm, Phường Thanh Hà, Thành phố Hội An, Quảng Nam",,46,Quảng Nam,Miền Trung,quang nam,MATCHED_REGEX
+KH-00240,CÔNG TY CỔ PHẦN TRÍ ĐỨC,237517524,"Tiểu khu Cơ Quan, thị trấn NT Mộc Châu, huyện Mộc Châu, tỉnh Sơn La",,51,Sơn La,Miền Bắc,son la,MATCHED_REGEX
+KH-00241,HỘ KINH DOANH PHÚ THỊNH,192164254,"tổ dân phố 4, phường Ba Hàng, thị xã Phổ Yên, tỉnh Thái Nguyên",,54,Thái Nguyên,Miền Bắc,thai nguyen,MATCHED_REGEX
+KH-00242,CÔNG TY CỔ PHẦN THƯƠNG MẠI HÙNG CƯỜNG,110114235,"Tổ 4,  Phường Sông Cầu, Thành Phố Bắc Kạn, Bắc Kạn",,6,Bắc Kạn,Miền Bắc,bac kan,MATCHED_REGEX
+KH-00243,HỘ KINH DOANH VĨNH PHÁT,111349819,"Xã Bình Nghĩa, Huyện Bình Lục, Tỉnh Hà Nam",,24,Hà Nam,Miền Bắc,ha nam,MATCHED_REGEX
+KH-00244,CÔNG TY CỔ PHẦN THƯƠNG MẠI AN PHÁT,108124786,"khu 2- trạm thản, Xã Trạm Thản, Huyện Phù Ninh, Tỉnh Phú Thọ, Việt Nam",,43,Phú Thọ,Miền Bắc,phu tho,MATCHED_REGEX
+KH-00245,CỬA HÀNG XE ĐẠP TÂN TIẾN,231779921,"Hồng Hà, Phường Chương Dương, Quận Hoàn Kiếm, Thành phố Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00246,CỬA HÀNG XE ĐẠP TRƯỜNG THỊNH,240327631,"Thụy Khuê, Xã Sài Sơn, Huyện Quốc Oai, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00247,HỘ KINH DOANH NGỌC ANH,126842694,"Nho Lâm, Tân Lập, Yên Mỹ, Hưng Yên",,31,Hưng Yên,Miền Bắc,hung yen,MATCHED_REGEX
+KH-00248,CÔNG TY CỔ PHẦN THƯƠNG MẠI ĐẠI DƯƠNG,161131229,"Khối 5, ngã tư thị trấn Cầu Giát, huyện Quỳnh Lưu, Nghệ An",,40,Nghệ An,Miền Trung,nghe an,MATCHED_SUBSTRING_PRIMARY
+KH-00249,HỘ KINH DOANH PHÚC AN,207216600,"Ngã tư Chợ Túc, xã Xuân Lâm, huyện Tĩnh Gia, tỉnh Thanh Hóa",,55,Thanh Hóa,Miền Trung,thanh hoa,MATCHED_REGEX
+KH-00250,DOANH NGHIỆP TW XUÂN MAI,241026555,"đường Nguyễn Trãi, phường Thanh Xuân, quận Thanh Xuân, thành phố Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00251,HỘ KINH DOANH KHẢI HOÀN,103868186,"Tân Việt, Xã Tân Việt, Huyện Yên Mỹ, Hưng Yên",,31,Hưng Yên,Miền Bắc,hung yen,MATCHED_REGEX
+KH-00252,CÔNG TY TNHH TÂY BẮC,279246114,"xã Hữu Văn, Chương Mỹ, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00253,CÔNG TY TNHH YÊN BÌNH,250081077,"Nhà số 7, Khu đấu giá Đồng Đỗ, Tổ 13, Phường Thượng Thanh, Quận Long Biên, Thành phố Hà Nội, Việt Nam",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00254,CỬA HÀNG XE ĐẠP ĐÔNG NAM,212857192,"đường Lê Công Thanh, P. HBT, TP Phủ Lý, Hà Nam",,24,Hà Nam,Miền Bắc,ha nam,MATCHED_REGEX
+KH-00255,CÔNG TY TNHH PHÚ THỊNH,222050767,"Tân An, Thanh Hà, Hải Dương",,26,Hải Dương,Miền Bắc,hai duong,MATCHED_SUBSTRING_PRIMARY
+KH-00256,CÔNG TY TNHH XUÂN MAI,259666683,"đường 70, xã Tân Triều, huyện Thanh Trì, thành phố Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00257,HỘ KINH DOANH PHÚC AN,229248753,"phố Trương Công Giai, Phường Dịch Vọng, Quận Cầu Giấy, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00258,CỬA HÀNG XE ĐẠP HOÀ BÌNH,269035225,"phố Xã Đàn, Phường Nam Đồng, Quận Đống đa, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00259,DOANH NGHIỆP TW MINH PHƯƠNG,175351245,"Kim Nỗ, Đông Anh, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00260,CỬA HÀNG XE ĐẠP XUÂN MAI,259118009,Sóc Sơn-Hà Nội,,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00261,CÔNG TY TNHH THƯƠNG MẠI VẠN LỢI,154365715,"TDP Nhuệ Giang, Phường Tây Mỗ, Quận Nam Từ Liêm, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00262,CÔNG TY TNHH VIỆT ANH,285823149,"thôn Bạch Trữ, xã Tiến Thắng, Mê Linh, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00263,DOANH NGHIỆP TW TRƯỜNG THỊNH,288236004,"TK 2, Thị trấn Thiệu Hóa, Huyện Thiệu Hoá, Thanh Hoá",,55,Thanh Hóa,Miền Trung,thanh hoa,MATCHED_REGEX
+KH-00264,DOANH NGHIỆP TW NGỌC ANH,194538931,"Xả Hải Châu , Thị Xã Nghi Sơn , Tỉnh Thanh Hoá",,55,Thanh Hóa,Miền Trung,thanh hoa,MATCHED_REGEX
+KH-00265,CÔNG TY TNHH THƯƠNG MẠI PHÚC AN,178845373,phố số 6 - Thị trấn Diêm Điền - Huyện Thái Thụy - Thái Bình.,,53,Thái Bình,Miền Bắc,thai binh,MATCHED_REGEX
+KH-00266,CỬA HÀNG XE ĐẠP TÂN TIẾN,233350259,"Thị trấn Xuân Trường, huyện Xuân Trường, tỉnh Nam Định",,39,Nam Định,Miền Bắc,nam dinh,MATCHED_REGEX
+KH-00267,CÔNG TY CỔ PHẦN HÙNG CƯỜNG,118237892,"Đội 16, Yên Cường, Ý Yên, Nam Định",,39,Nam Định,Miền Bắc,nam dinh,MATCHED_REGEX
+KH-00268,CÔNG TY CỔ PHẦN THƯƠNG MẠI TRƯỜNG THỊNH,141539439,"tổ dân phố Văn Giang, Thị trấn Đại Nghĩa, Huyện Mỹ Đức, Thành phố Hà Nội, Việt Nam",,2,An Giang,Miền Nam,an giang,MATCHED_SUBSTRING_PRIMARY
+KH-00269,HỘ KINH DOANH AN PHÁT,154542056,"Khu 8, thị trấn Hạ Hòa, Hạ Hòa, Phú Thọ",,43,Phú Thọ,Miền Bắc,phu tho,MATCHED_REGEX
+KH-00270,DOANH NGHIỆP TW TÚ ANH,287515890,"Khu 22, Hoàng Xá, Xã Hoàng Xá, Huyện Thanh Thuỷ, Tỉnh Phú Thọ, Việt Nam",,43,Phú Thọ,Miền Bắc,phu tho,MATCHED_REGEX
+KH-00271,CÔNG TY CỔ PHẦN THƯƠNG MẠI HÙNG CƯỜNG,119915097,"TDP 15, Phường Tây Tựu, Quận Bắc Từ Liêm, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00272,CÔNG TY TNHH THƯƠNG MẠI VĨNH PHÁT,199890094,"Phố Chợ Lầm, thị trấn Tam Hồng, Yên Lạc, Vĩnh Phúc",,61,Vĩnh Phúc,Miền Bắc,vinh phuc,MATCHED_REGEX
+KH-00273,CÔNG TY TNHH THƯƠNG MẠI PHÚ THỊNH,128707561,"Hợp lý, Xã Hợp Lý, Huyện Lập Thạch, Tỉnh Vĩnh Phúc, Việt Nam",,61,Vĩnh Phúc,Miền Bắc,vinh phuc,MATCHED_REGEX
+KH-00274,CÔNG TY CỔ PHẦN THƯƠNG MẠI YÊN BÌNH,157173967,"Khu 4, thị trấn Tứ Trưng, Vĩnh Tường, Vĩnh Phúc",,61,Vĩnh Phúc,Miền Bắc,vinh phuc,MATCHED_REGEX
+KH-00275,CÔNG TY CỔ PHẦN THƯƠNG MẠI QUANG VINH,132784515,"xã Kỳ Phú, huyện Đại Từ, Thái Nguyên",,54,Thái Nguyên,Miền Bắc,thai nguyen,MATCHED_REGEX
+KH-00276,CÔNG TY TNHH VẠN LỢI,256134024,"Ngọc Lâm, Long Biên, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00277,CÔNG TY CỔ PHẦN THƯƠNG MẠI VĨNH PHÁT,198044771,"Khối 1, Phường Hồng Sơn, Thành phố Vinh, Nghệ An",,40,Nghệ An,Miền Trung,nghe an,MATCHED_SUBSTRING_PRIMARY
+KH-00278,CÔNG TY TNHH QUANG VINH,235125313,"Cổng chợ Đường 2, Phủ Lỗ, Sóc Sơn, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00279,CỬA HÀNG XE ĐẠP CHI THÀNH,204617798,"Ki ốt số 14 Chợ Hòa Mạc, phố Phú Hòa, thị trấn Hòa Mạc, huyện Duy Tiên, tỉnh Hà Nam",,24,Hà Nam,Miền Bắc,ha nam,MATCHED_REGEX
+KH-00280,CÔNG TY TNHH THƯƠNG MẠI MINH PHƯƠNG,121060925,"xã Yên Bắc, Duy Tiên, Hà Nam",,24,Hà Nam,Miền Bắc,ha nam,MATCHED_REGEX
+KH-00281,CỬA HÀNG XE ĐẠP PHÚC AN,278081212,"Trần Hưng Đạo , Phường Quảng Tiến , TP Sầm Sơn , Tỉnh Thanh Hoá",,55,Thanh Hóa,Miền Trung,thanh hoa,MATCHED_REGEX
+KH-00282,CÔNG TY TNHH THƯƠNG MẠI LONG PHÚ,196629011,"xã Ngũ Hiệp, quận Thanh Trì, thành phố Hà Nội.",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00283,CỬA HÀNG XE ĐẠP TRƯỜNG THỊNH,247282250,"Bồ Thời, Hồng Tiến, Khoái Châu, Hưng Yên",,31,Hưng Yên,Miền Bắc,hung yen,MATCHED_REGEX
+KH-00284,HỘ KINH DOANH NGỌC ANH,196142234,"Ngã 35, Tứ Mỹ, Phùng Chí Kiên, Mỹ Hào, Hưng Yên",,31,Hưng Yên,Miền Bắc,hung yen,MATCHED_REGEX
+KH-00285,CÔNG TY TNHH ĐÔNG NAM,213161347,"thị trấn Quốc Oai, Quốc Oai, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00286,DOANH NGHIỆP TW VIỆT ANH,238527107,"Liễu Giai, Cống Vị, Ba Đình, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00287,CÔNG TY TNHH THƯƠNG MẠI THUỶ TIÊN,197348849,"Khu phố 1 ,Thị trấn Hương Canh,Huyện Bình Xuyên, Tỉnh Vĩnh Phúc,Việt Nam",,61,Vĩnh Phúc,Miền Bắc,vinh phuc,MATCHED_REGEX
+KH-00288,CÔNG TY TNHH THƯƠNG MẠI TOÀN THẮNG,145372018,"Khối Bắc Mỹ, phường Quỳnh Thiện, thị xã Hoàng Mai, tỉnh Nghệ An",,40,Nghệ An,Miền Trung,nghe an,MATCHED_SUBSTRING_PRIMARY
+KH-00289,CÔNG TY CỔ PHẦN KHẢI HOÀN,126020636,"Ga Lạc Đạo, Văn Lâm, Hưng Yên",,31,Hưng Yên,Miền Bắc,hung yen,MATCHED_REGEX
+KH-00290,CÔNG TY CỔ PHẦN THƯƠNG MẠI TÂY BẮC,173776390,"đường Nguyễn Lương Bằng, TT. Kim Động, Hưng Yên",,31,Hưng Yên,Miền Bắc,hung yen,MATCHED_REGEX
+KH-00291,CÔNG TY TNHH VĨNH PHÁT,283932296,"Xã Đức Lý, Huyện Lý Nhân, Tỉnh Hà Nam",,24,Hà Nam,Miền Bắc,ha nam,MATCHED_REGEX
+KH-00292,CÔNG TY TNHH VIỆT ANH,259690820,"phố Vũ Tông Phan, Phường Khương Đình, Quận Thanh Xuân, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00293,CÔNG TY TNHH THƯƠNG MẠI TÚ ANH,146670169,"Phòng 303, tầng 3, tòa nhà Detech, số 8 Tôn Thất Thuyết, phường Mỹ Đình 2, quận Nam Từ Liêm, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00294,HỘ KINH DOANH SÁN LẠP,180574048,"Khu Công nghiệp Đình Vũ,Phường Đông Hải 2,Quận Hải An,Thành phố Hải Phòng,Việt Nam",,27,Hải Phòng,Miền Bắc,hai phong,MATCHED_REGEX
+KH-00295,DOANH NGHIỆP TW XÂY DỰNG,130031986,"Phố Mới, Xóm Thượng, Cổ Loa, Đông Anh, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00296,CÔNG TY TNHH THƯƠNG MẠI HOÀ BÌNH,168119351,"phố Cầu Bây, Phường Sài Đồng, quận Long Biên, thành phố Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00297,CỬA HÀNG XE ĐẠP TÂY BẮC,273031726,"đường Ngọc Lâm, phường Ngọc Lâm, quận Long Biên, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00298,CÔNG TY CỔ PHẦN THƯƠNG MẠI ĐÔNG NAM,116255494,"Cầu Xây, Xã Tân Dân, Huyện Sóc Sơn, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00299,CỬA HÀNG XE ĐẠP VIỆT ANH,252841289,"đường Nguyễn Tấn Thiện, Thị trấn Phổ Châu, Hương Sơn, Hà Tĩnh",,25,Hà Tĩnh,Miền Trung,ha tinh,MATCHED_REGEX
+KH-00300,CÔNG TY TNHH THƯƠNG MẠI QUANG VINH,130541454,"Dương Xá, xã Dương Quang, TX. Mỹ Hào, Hưng Yên
+Hưng Yên, Việt Nam",,31,Hưng Yên,Miền Bắc,hung yen,MATCHED_REGEX
+KH-00301,CÔNG TY TNHH THƯƠNG MẠI THUỶ TIÊN,170658873,"xã Thanh Sơn, huyện Kiến Thụy, thành phố Hải Phòng, Việt Nam",,27,Hải Phòng,Miền Bắc,hai phong,MATCHED_REGEX
+KH-00302,CÔNG TY TNHH XÂY DỰNG,289905306,"đường Trần Phú, tổ 21, Phường Minh Khai, TP Hà Giang, Hà Giang",,23,Hà Giang,Miền Bắc,ha giang,MATCHED_REGEX
+KH-00303,CÔNG TY CỔ PHẦN BÌNH MINH,140966707,"huyện Thanh Oai, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00304,DOANH NGHIỆP TW TÚ ANH,249743922,"Phú Thượng, Tây Hồ, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00305,CÔNG TY CỔ PHẦN TÂY BẮC,271894809,"chùa Thông, Phường sơn lộc, Thị Xã Sơn Tây, Thành phố Hà Nội, Việt Nam",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00306,CÔNG TY TNHH HOÀ BÌNH,296781585,"đường Trường Chinh, phường Đồng Xuân, TT. Phúc Yên, Vĩnh Phúc",,61,Vĩnh Phúc,Miền Bắc,vinh phuc,MATCHED_REGEX
+KH-00307,DOANH NGHIỆP TW THIÊN AN,217123045,"Nguyễn Bình, Khu 3, Phường Đông Triều, TX Đông Triều, Tỉnh Quảng Ninh",,48,Quảng Ninh,Miền Bắc,quang ninh,MATCHED_REGEX
+KH-00308,CÔNG TY TNHH THIÊN AN,243936458,Cường Tráng - An Thịnh - Lương Tài - Bắc Ninh,,7,Bắc Ninh,Miền Bắc,bac ninh,MATCHED_REGEX
+KH-00309,CÔNG TY CỔ PHẦN PHÚC AN,276149880,"Phao Sơn, phường Phả Lại, TP. Chí Linh, Hải Dương",,26,Hải Dương,Miền Bắc,hai duong,MATCHED_SUBSTRING_PRIMARY
+KH-00310,HỘ KINH DOANH VẠN LỢI,226832989,"khu Minh Khai, phường Đại Yên, TP. Hạ Long, Quảng Ninh",,48,Quảng Ninh,Miền Bắc,quang ninh,MATCHED_REGEX
+KH-00311,CÔNG TY TNHH THƯƠNG MẠI QUANG VINH,130475146,"Lý Bôn, Phường Cẩm Đông, TP Cẩm Phả, Quảng Ninh",,48,Quảng Ninh,Miền Bắc,quang ninh,MATCHED_REGEX
+KH-00312,DOANH NGHIỆP TW HOÀ BÌNH,296346170,"phố Vườn Trầu, phường Trần Phú, Móng Cái, Quảng Ninh",,48,Quảng Ninh,Miền Bắc,quang ninh,MATCHED_REGEX
+KH-00313,DOANH NGHIỆP TW BÌNH MINH,119816429,"phố Yên Sở, tổ 7, phường Yên Sở, quận Hoàng Mai, thành phố Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00314,CÔNG TY TNHH THƯƠNG MẠI YÊN BÌNH,159486963,"Tú Sơn, Kiến Thụy, Hải Phòng",,27,Hải Phòng,Miền Bắc,hai phong,MATCHED_REGEX
+KH-00315,CÔNG TY CỔ PHẦN THƯƠNG MẠI THUỶ TIÊN,176951854,"đường Nguyễn Tất Thành, Phường Định Trung, Thành phố Vĩnh Yên, Vĩnh Phúc",,61,Vĩnh Phúc,Miền Bắc,vinh phuc,MATCHED_REGEX
+KH-00316,CÔNG TY CỔ PHẦN THƯƠNG MẠI THUỶ TIÊN,177746222,"Nguyễn Trãi, Thanh Xuân, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00317,CỬA HÀNG XE ĐẠP THIÊN AN,248670282,"Tây Tựu, Thượng Cát, Bắc Từ Liêm, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00318,HỘ KINH DOANH BÌNH MINH,178573967,"Tiểu khu 4, thị trấn Mai Châu, huyện Mai Châu, tỉnh Hòa Bình",,29,Hòa Bình,Miền Bắc,hoa binh,MATCHED_REGEX
+KH-00319,CỬA HÀNG XE ĐẠP QUANG VINH,293341104,"đường Điện Biên 1, P. Lê Lợi, TP Hưng Yên",,19,Điện Biên,Miền Bắc,dien bien,MATCHED_REGEX
+KH-00320,HỘ KINH DOANH PHÚC AN,201832088,"Đường Đa Tốn, Xã Đa Tốn, Huyện Gia Lâm, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00321,CỬA HÀNG XE ĐẠP VIỆT ANH,256795773,"Lê Lợi, Phường Gia Viên, Quận Ngô Quyền, Thành phố Hải Phòng, Việt Nam",,27,Hải Phòng,Miền Bắc,hai phong,MATCHED_REGEX
+KH-00322,CÔNG TY TNHH THƯƠNG MẠI THANH BÌNH,137979005,"Khu Phố, Tân Hòa, thị trấn Vĩnh Bảo, Hải Phòng",,27,Hải Phòng,Miền Bắc,hai phong,MATCHED_REGEX
+KH-00323,CÔNG TY CỔ PHẦN PHÚ THỊNH,155433116,"Khối kim Tân , Phường Hoà Hiếu , Thị Xã Thái Hoà , Tỉnh Nghệ An",,40,Nghệ An,Miền Trung,nghe an,MATCHED_SUBSTRING_PRIMARY
+KH-00324,CÔNG TY CỔ PHẦN ĐÔNG NAM,143502848,"Lý Thường Kiệt, Cửa Ông, Cẩm Phả, Quảng Ninh",,48,Quảng Ninh,Miền Bắc,quang ninh,MATCHED_REGEX
+KH-00325,HỘ KINH DOANH THANH BÌNH,101623879,"Số 568+570, đường Nguyễn Văn Cừ, Tổ 11, Khu 9, Phường Hồng Hà, Thành phố Hạ Long, Quảng Ninh",,48,Quảng Ninh,Miền Bắc,quang ninh,MATCHED_REGEX
+KH-00326,CỬA HÀNG XE ĐẠP VĨNH PHÁT,281322516,"đường Tô Hiệu, phường Cẩm Trung, TP Cẩm Phả, Quảng NinhSố",,48,Quảng Ninh,Miền Bắc,quang ninh,MATCHED_SUBSTRING_PRIMARY
+KH-00327,CÔNG TY TNHH MẶT TRỜI,260802272,"Phố Tân Hoa, thị trấn Thổ Tang, Vĩnh Phúc",,61,Vĩnh Phúc,Miền Bắc,vinh phuc,MATCHED_REGEX
+KH-00328,CÔNG TY CỔ PHẦN PHÚC AN,261790186,"TDP Tích Cực,  TT Hợp Châu,  huyện Tam Đảo,  tỉnh Vĩnh Phúc",,61,Vĩnh Phúc,Miền Bắc,vinh phuc,MATCHED_REGEX
+KH-00329,HỘ KINH DOANH TRÍ ĐỨC,123592140,"UBND Phường Mỹ Đình 2, Quận Nam Từ Liêm, TP. Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00330,CÔNG TY TNHH THIÊN AN,247948215,"Đồng Kem, Đồng Yên, Bắc Quang, Hà Giang",,23,Hà Giang,Miền Bắc,ha giang,MATCHED_REGEX
+KH-00331,HỘ KINH DOANH ĐẠI DƯƠNG,283795180,"đường Trần Phú, tổ 11, Phường Trần Phú, TP Hà Giang, Tỉnh Hà Giang, Việt Nam",,23,Hà Giang,Miền Bắc,ha giang,MATCHED_REGEX
+KH-00332,DOANH NGHIỆP TW TOÀN THẮNG,274830518,"Phố Nỷ, Truy Giã, Sóc Sơn, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00333,DOANH NGHIỆP TW ĐÔNG NAM,179009806,"khu Trung Phú, Thị trấn Hậu Lộc, Huyện Hậu Lộc, Tỉnh Thanh Hoá, Việt Nam",,55,Thanh Hóa,Miền Trung,thanh hoa,MATCHED_REGEX
+KH-00334,HỘ KINH DOANH YÊN BÌNH,279251363,"444 Hoàng Hoa Thám, Phường Thụy Khuê, Quận Tây Hồ, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00335,CÔNG TY CỔ PHẦN THUỶ TIÊN,245446412,"khu đất dịch vụ cụm công nghiệp Lai Xá, Xã Hoài Đức, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00336,CÔNG TY CỔ PHẦN LONG PHÚ,265982781,"Khu Thái Bảo, Phường Nam Sơn, Bắc Ninh",,7,Bắc Ninh,Miền Bắc,bac ninh,MATCHED_REGEX
+KH-00337,DOANH NGHIỆP TW VĨNH PHÁT,181315422,"Ngõ 6 phố Kim Đồng, Phường Hoàng Mai, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00338,CÔNG TY TNHH THƯƠNG MẠI ĐẠI LỢI,105330405,"đường Vạn Xuân, Thôn Cựu Quán, Xã Hoài Đức, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00339,CỬA HÀNG XE ĐẠP ĐẠI LỢI,201307366,"phố Ngọc Lâm, Phường Bồ Đề, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00340,CÔNG TY TNHH THANH BÌNH,233786843,"Bà Triệu, Phường Cửa Nam, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00341,CỬA HÀNG XE ĐẠP VIỆT ANH,251045016,"Đường Điện Biên, Phường Đông A, Tỉnh Ninh Bình, Việt Nam",,19,Điện Biên,Miền Bắc,dien bien,MATCHED_REGEX
+KH-00342,HỘ KINH DOANH VĨNH PHÁT,241299865,"phố Vác, Xã Dân Hòa, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00343,CÔNG TY CỔ PHẦN THƯƠNG MẠI THUỶ TIÊN,174408116,"Thôn Tân Ngữ 2, Xã Yên Định, Thanh Hóa",,55,Thanh Hóa,Miền Trung,thanh hoa,MATCHED_REGEX
+KH-00344,CÔNG TY TNHH PHÚC AN,277265717,"TDP Tảo Phú, Xã Tam Hồng, Phú Thọ",,43,Phú Thọ,Miền Bắc,phu tho,MATCHED_REGEX
+KH-00345,DOANH NGHIỆP TW PHÚ THỊNH,189269333,"Xã Thổ Tang, Phú Thọ",,43,Phú Thọ,Miền Bắc,phu tho,MATCHED_REGEX
+KH-00346,DOANH NGHIỆP TW TRƯỜNG THỊNH,249935091,"SN19, Đường Hùng Vương, Phường Vĩnh Yên, Tỉnh Phú Thọ",,43,Phú Thọ,Miền Bắc,phu tho,MATCHED_REGEX
+KH-00347,CÔNG TY TNHH THƯƠNG MẠI VẠN LỢI,155019036,"Phố Tân Hoa, Thị Trấn Thổ Tang, Huyện Vĩnh Tường, Tỉnh Vĩnh Phúc, Việt Nam",,61,Vĩnh Phúc,Miền Bắc,vinh phuc,MATCHED_REGEX
+KH-00348,CÔNG TY TNHH THƯƠNG MẠI YÊN BÌNH,198501882,"Tiểu khu 3 - Thị trấn Hà trung, Xã Hà Trung, Tỉnh Thanh Hóa",,55,Thanh Hóa,Miền Trung,thanh hoa,MATCHED_REGEX
+KH-00349,HỘ KINH DOANH TRƯỜNG THỊNH,265371689,"Khu Tái Định Cư Tiên Dược - Mai Đình, Xã Sóc Sơn, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00350,CÔNG TY TNHH BÌNH MINH,208593833,"Đường 2, Xã Sóc Sơn, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00351,CÔNG TY TNHH AN PHÁT,203013287,"khu phố Minh Khai, Phường Từ Sơn, Bắc Ninh",,7,Bắc Ninh,Miền Bắc,bac ninh,MATCHED_REGEX
+KH-00352,CỬA HÀNG XE ĐẠP LONG PHÚ,260474206,"khu 3B, Phường Việt Hưng, Tỉnh Quảng Ninh",,48,Quảng Ninh,Miền Bắc,quang ninh,MATCHED_REGEX
+KH-00353,CỬA HÀNG XE ĐẠP THANH BÌNH,236477595,"Xã Đông Anh, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00354,CÔNG TY TNHH THƯƠNG MẠI NAM TIẾN,124258493,"Phường Tích Lương, Thái Nguyên",,54,Thái Nguyên,Miền Bắc,thai nguyen,MATCHED_REGEX
+KH-00355,DOANH NGHIỆP TW PHÚC AN,286106120,"135-QL 1A-Khu 1, Phường Quang Trung, Thanh Hóa",,55,Thanh Hóa,Miền Trung,thanh hoa,MATCHED_REGEX
+KH-00356,CÔNG TY TNHH THƯƠNG MẠI QUANG VINH,133103356,"Khu 2, Xã Kim Tân, Thanh Hóa",,55,Thanh Hóa,Miền Trung,thanh hoa,MATCHED_REGEX
+KH-00357,CÔNG TY TNHH THƯƠNG MẠI THANH BÌNH,134244014,"Ngô Quyền, Phường Trung Sơn, Thành Phố Sầm Sơn, Thanh Hoá",,55,Thanh Hóa,Miền Trung,thanh hoa,MATCHED_REGEX
+KH-00358,CÔNG TY TNHH SƠN HÀ,297712723,"Đường 7, thôn Bắc Sơn, Xã Hà Long, Tỉnh Thanh Hóa",,55,Thanh Hóa,Miền Trung,thanh hoa,MATCHED_REGEX
+KH-00359,CÔNG TY CỔ PHẦN VẠN LỢI,203193677,"Thửa đất số 223-1 , Tờ bản đồ số 07, Đường 422, Thôn Lũng Kênh, Xã Hoài Đức, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00360,CÔNG TY TNHH THƯƠNG MẠI LONG PHÚ,168932615,"QL 45,Phố Kiểu, Xã Yên Trường, Tỉnh Thanh Hóa",,55,Thanh Hóa,Miền Trung,thanh hoa,MATCHED_REGEX
+KH-00361,CÔNG TY CỔ PHẦN THƯƠNG MẠI TÂY BẮC,175111287,"tổ dân phố Hồng Ngự, Phường Thụy Phương, Quận Bắc Từ Liêm, Thành phố Hà Nội, Việt Nam",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00362,HỘ KINH DOANH MẶT TRỜI,296027857,"Tòa nhà Mitec, Lô E2, Khu đô thị mới Cầu Giấy,Phường Yên Hoà,Quận Cầu Giấy, Hà Nội,Việt Nam",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00363,HỘ KINH DOANH ĐẠI LỢI,177914308,"Đường Trần Hưng Đạo, Phường Kinh Môn, Thành phố Hải Phòng",,27,Hải Phòng,Miền Bắc,hai phong,MATCHED_REGEX
+KH-00364,DOANH NGHIỆP TW XUÂN MAI,242402965,"Phường Việt Hòa, TP Hải Phòng",,27,Hải Phòng,Miền Bắc,hai phong,MATCHED_REGEX
+KH-00365,CÔNG TY CỔ PHẦN THƯƠNG MẠI TRÍ ĐỨC,184450711,"Nguyễn Trãi -Thanh xuân Trung, Phường Khương Đình, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00366,HỘ KINH DOANH THIÊN AN,259901723,"Xã Diễn Trường, Huyện Diễn Châu, Nghệ An",,40,Nghệ An,Miền Trung,nghe an,MATCHED_SUBSTRING_PRIMARY
+KH-00367,CÔNG TY CỔ PHẦN ĐÔNG NAM,100836757,"Hòa Bình, Phường Ngọc Sơn, Tỉnh Thanh Hóa",,55,Thanh Hóa,Miền Trung,thanh hoa,MATCHED_REGEX
+KH-00368,HỘ KINH DOANH HOÀ BÌNH,212823241,"Nhà bà Hoàng Thị Bẩy, Khu X2, Thôn Đông Trù, Xã Đông Anh, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00369,CÔNG TY TNHH VẠN LỢI,259168716,"Hà Huy Tập, Xã Phù Đổng, Thành phố Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00370,CÔNG TY CỔ PHẦN THƯƠNG MẠI PHÚ THỊNH,124305160,"Phường Phượng Sơn, Bắc Ninh",,7,Bắc Ninh,Miền Bắc,bac ninh,MATCHED_REGEX
+KH-00371,CÔNG TY TNHH THƯƠNG MẠI LONG PHÚ,166739281,"Thửa 159, tờ bản đồ 25, tổ dân phố 3, Phường Yên Dũng, Bắc Ninh",,7,Bắc Ninh,Miền Bắc,bac ninh,MATCHED_REGEX
+KH-00372,CÔNG TY CỔ PHẦN THƯƠNG MẠI MẶT TRỜI,161706232,"Quốc lộ 47, thôn Nhật Quả, Xã Thọ Phú, Thanh Hóa",,55,Thanh Hóa,Miền Trung,thanh hoa,MATCHED_REGEX
+KH-00373,DOANH NGHIỆP TW THIÊN AN,208198878,"Thôn Nho Lâm - Tân Lập, Xã Yên Mỹ, Tỉnh Hưng Yên",,31,Hưng Yên,Miền Bắc,hung yen,MATCHED_REGEX
+KH-00374,CÔNG TY CỔ PHẦN XÂY DỰNG,103389922,"Xã Yên Mỹ, Hưng Yên",,31,Hưng Yên,Miền Bắc,hung yen,MATCHED_REGEX
+KH-00375,CÔNG TY TNHH ĐẠI DƯƠNG,260083710,"Xuân Thuỷ, Phường Cầu Giấy, Thành phố Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00376,CÔNG TY TNHH THƯƠNG MẠI AN PHÁT,190470594,"Hoàng Quốc Việt, Phường Nghĩa Tân, Quận Cầu Giấy, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00377,DOANH NGHIỆP TW PHÚ THỊNH,136757644,"Đường Đa Tốn, Xã Bát Tràng, Thành phố Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00378,CỬA HÀNG XE ĐẠP VĨNH PHÁT,280387462,"Nguyễn Đức Thuận, Xã Gia Lâm, Thành phố Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00379,CÔNG TY TNHH MINH PHƯƠNG,299229713,"Tân Sơn 9, Xã Phú Bình, Tỉnh Thái Nguyên",,54,Thái Nguyên,Miền Bắc,thai nguyen,MATCHED_REGEX
+KH-00380,DOANH NGHIỆP TW HÙNG CƯỜNG,177437743,Tỉnh Ninh Bình,,41,Ninh Bình,Miền Bắc,ninh binh,MATCHED_REGEX
+KH-00381,DOANH NGHIỆP TW TÚ ANH,292263548,"Phố phú hoà - Thị trấn Hoà Mạc, Phường Hòa Mạc(Hết hiệu lực), Tỉnh Ninh Bình",,41,Ninh Bình,Miền Bắc,ninh binh,MATCHED_REGEX
+KH-00382,CÔNG TY TNHH LÊ ANH,210714803,"Xã Yên Cường, Tỉnh Ninh Bình",,41,Ninh Bình,Miền Bắc,ninh binh,MATCHED_REGEX
+KH-00383,HỘ KINH DOANH VẠN LỢI,259593644,"Thị Trấn Gôi, Xã Vụ Bản, Ninh Bình",,41,Ninh Bình,Miền Bắc,ninh binh,MATCHED_REGEX
+KH-00384,CỬA HÀNG XE ĐẠP PHÚC AN,273587333,"Khu dân cư Thái Học 1, Phường Chu Văn An, TP Hải Phòng",,27,Hải Phòng,Miền Bắc,hai phong,MATCHED_REGEX
+KH-00385,CÔNG TY CỔ PHẦN THƯƠNG MẠI THIÊN AN,149646321,"Lê Thanh Nghị, Phường Lê Thanh Nghị, Thành phố Hải Dương, Hải Dương",,26,Hải Dương,Miền Bắc,hai duong,MATCHED_SUBSTRING_PRIMARY
+KH-00386,CÔNG TY TNHH THƯƠNG MẠI KHẢI HOÀN,113978498,"Thụy Sơn 2, Phường Tân Sơn, Thị Xã Kim Bảng, Tỉnh Hà Nam, Việt Nam",,24,Hà Nam,Miền Bắc,ha nam,MATCHED_REGEX
+KH-00387,CÔNG TY CỔ PHẦN THANH BÌNH,156553168,"Khu Dương Xá 3, phường Kinh Bắc, Tỉnh Bắc Ninh",,7,Bắc Ninh,Miền Bắc,bac ninh,MATCHED_REGEX
+KH-00388,CÔNG TY CỔ PHẦN MẶT TRỜI,240670179,"đường Đê La Thành, Phường Ô Chợ Dừa, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00389,CÔNG TY CỔ PHẦN TRƯỜNG THỊNH,246201679,"Đường Đình Hương, Phường Đông Cương, Thành phố Thanh Hoá, Tỉnh Thanh Hoá",,55,Thanh Hóa,Miền Trung,thanh hoa,MATCHED_REGEX
+KH-00390,HỘ KINH DOANH ĐẠI LỢI,135724552,"đường Cổ Vân, Khu Trung, Thôn Dục Nội, Xã Đông Anh, Thành phố Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00391,CÔNG TY TNHH THƯƠNG MẠI NAM TIẾN,192157668,"Xã Đức Thọ, Hà Tĩnh",,25,Hà Tĩnh,Miền Trung,ha tinh,MATCHED_REGEX
+KH-00392,HỘ KINH DOANH SƠN HÀ,213919514,"7, Xã Đức Thọ, Hà Tĩnh",,25,Hà Tĩnh,Miền Trung,ha tinh,MATCHED_REGEX
+KH-00393,CÔNG TY TNHH THƯƠNG MẠI SƠN HÀ,173978090,"thôn 1, Xã Kim Tân, Thanh Hóa",,55,Thanh Hóa,Miền Trung,thanh hoa,MATCHED_REGEX
+KH-00394,CÔNG TY TNHH THƯƠNG MẠI NAM TIẾN,125193114,"TDP Cửa Hà, Xã Cẩm Thủy, Thanh Hóa",,55,Thanh Hóa,Miền Trung,thanh hoa,MATCHED_REGEX
+KH-00395,HỘ KINH DOANH TÂY BẮC,221631348,"Ki ốt số 6,7 Chợ Mọc , Phố Mới, Xã Tân Yên, Bắc Ninh",,7,Bắc Ninh,Miền Bắc,bac ninh,MATCHED_REGEX
+KH-00396,CÔNG TY CỔ PHẦN VIỆT ANH,204122086,"TDP Trung Nghĩa, Phường Chũ, Tỉnh Bắc Ninh",,7,Bắc Ninh,Miền Bắc,bac ninh,MATCHED_REGEX
+KH-00397,CÔNG TY CỔ PHẦN THUỶ TIÊN,294943283,"hoàng liên, Phường Lào Cai, Tỉnh Lào Cai",,37,Lào Cai,Miền Bắc,lao cai,MATCHED_REGEX
+KH-00398,CÔNG TY TNHH PHÚC AN,273969467,"Tôn Đức Thắng, Phường Hòa Khánh, TP Đà Nẵng",,16,Đà Nẵng,Miền Trung,da nang,MATCHED_REGEX
+KH-00399,CÔNG TY TNHH ĐẠI LỢI,204057022,"ngõ 562, đường Trần Cung, Phường Xuân Đỉnh, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00400,CÔNG TY TNHH XÂY DỰNG,288262846,"C4/110, KP 3, Khu dân cư An Bình, Phường Trấn Biên, Đồng Nai",,20,Đồng Nai,Miền Nam,dong nai,MATCHED_REGEX
+KH-00401,HỘ KINH DOANH THUỶ TIÊN,283600026,"Khu Miếu Môn, Xã Trần Phú, Thành phố Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00402,CÔNG TY CỔ PHẦN ĐẠI LỢI,100950622,"Ngô Gia Tự, Phường Việt Hưng, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00403,CÔNG TY CỔ PHẦN THƯƠNG MẠI LONG PHÚ,161351930,"đường Quang Trung, tiểu khu 3, Phường Tĩnh Gia, Thanh Hóa",,55,Thanh Hóa,Miền Trung,thanh hoa,MATCHED_REGEX
+KH-00404,HỘ KINH DOANH PHÚ THỊNH,170678283,"phố Hoà Bình, Phường Ngọc Sơn, Tỉnh Thanh Hóa",,55,Thanh Hóa,Miền Trung,thanh hoa,MATCHED_REGEX
+KH-00405,CÔNG TY CỔ PHẦN THƯƠNG MẠI QUANG VINH,138897153,"đường ĐH-HH33, thôn 6, Xã Hoằng Thanh, Thanh Hóa",,55,Thanh Hóa,Miền Trung,thanh hoa,MATCHED_REGEX
+KH-00406,CÔNG TY CỔ PHẦN THƯƠNG MẠI LONG PHÚ,166896844,"Ngõ xóm Chùa, Thôn Lôi Cầu, Xã Việt Tiến, Tỉnh Hưng Yên",,31,Hưng Yên,Miền Bắc,hung yen,MATCHED_REGEX
+KH-00407,DOANH NGHIỆP TW LONG PHÚ,255918865,"Yên Thế, Hòa An, Phường An Khê, Thành phố Đà Nẵng",,16,Đà Nẵng,Miền Trung,da nang,MATCHED_REGEX
+KH-00408,CÔNG TY CỔ PHẦN MINH PHƯƠNG,189600214,"Đường ĐH-HH.25, Thôn 1, Xã Hoằng Thành, tỉnh Thanh Hóa",,55,Thanh Hóa,Miền Trung,thanh hoa,MATCHED_REGEX
+KH-00409,CÔNG TY CỔ PHẦN THƯƠNG MẠI BÌNH MINH,102927878,"Thôn 4B, Xã Thọ Phú, Huyện Triệu Sơn, Tỉnh Thanh Hoá, Việt Nam",,55,Thanh Hóa,Miền Trung,thanh hoa,MATCHED_REGEX
+KH-00410,CỬA HÀNG XE ĐẠP NAM TIẾN,220091382,"Xã Đức Châu, Nghệ An",,40,Nghệ An,Miền Trung,nghe an,MATCHED_SUBSTRING_PRIMARY
+KH-00411,CỬA HÀNG XE ĐẠP MẶT TRỜI,266652812,"Phòng 808, toà nhà C8 Đại Cồ Việt, Phường Bách Khoa,Quận Hai Bà Trưng, TP Hà Nội,Việt Nam",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00412,CÔNG TY TNHH TRÍ ĐỨC,284712620,"Đường D2 - Khu D - Khu công nghiệp Phố Nối A, Xã Như Quỳnh, Hưng Yên",,31,Hưng Yên,Miền Bắc,hung yen,MATCHED_REGEX
+KH-00413,CÔNG TY CỔ PHẦN CHI THÀNH,120483290,"Điện biên Phủ, Phường Hồng Bàng, TP Hải Phòng",,19,Điện Biên,Miền Bắc,dien bien,MATCHED_REGEX
+KH-00414,HỘ KINH DOANH ĐẠI LỢI,105325305,"Nhà số 7, đường Tam Đạc 2, cụm 7, xã Liên Minh, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00415,DOANH NGHIỆP TW KHẢI HOÀN,114724820,"57B Nguyễn Trãi, Phường Hạc Thành, Thanh Hóa",,55,Thanh Hóa,Miền Trung,thanh hoa,MATCHED_REGEX
+KH-00416,DOANH NGHIỆP TW HOÀ BÌNH,288704629,"Khu 3, Phường Đông Triều, Quảng Ninh",,48,Quảng Ninh,Miền Bắc,quang ninh,MATCHED_REGEX
+KH-00417,CÔNG TY CỔ PHẦN THƯƠNG MẠI VIỆT ANH,159379852,"Đường Mạc Đăng Dung, Khu Tân Thành, Phường Đông Mai, Quảng Ninh, Việt Nam",,48,Quảng Ninh,Miền Bắc,quang ninh,MATCHED_REGEX
+KH-00418,CÔNG TY CỔ PHẦN PHÚ THỊNH,187513466,"Xã Tam Hưng, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00419,DOANH NGHIỆP TW ĐẠI DƯƠNG,248272374,"ngách 6, Ngõ 13 Tả Thanh Oai, Xã Đại Thanh, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00420,CÔNG TY CỔ PHẦN QUANG VINH,161267125,"Trần Kế Xương, Phường Hải Châu, Thành phố Đà Nẵng",,16,Đà Nẵng,Miền Trung,da nang,MATCHED_REGEX
+KH-00421,DOANH NGHIỆP TW YÊN BÌNH,213755155,"tổ 15, phường Phương Lâm, thành phố Hòa Bình, tỉnh Hòa Bình",,29,Hòa Bình,Miền Bắc,hoa binh,MATCHED_REGEX
+KH-00422,CÔNG TY CỔ PHẦN THƯƠNG MẠI SƠN HÀ,172138158,"Khu D, Xã Sóc Sơn, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00423,DOANH NGHIỆP TW THIÊN AN,289452861,"đường Thân Nhân Trung, phường Bích Động, Thị xã Việt Yên, Tỉnh Bắc Giang",,5,Bắc Giang,Miền Bắc,bac giang,MATCHED_REGEX
+KH-00424,CÔNG TY TNHH TRÍ ĐỨC,289702397,"Tổ 10, Thôn Xuân Thủy, Xã Xuân Mai, Thành phố Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00425,CỬA HÀNG XE ĐẠP MINH PHƯƠNG,228573972,"14, MBQH 06, đường Kim Xuân, thôn 1 Nghĩa Trang, Xã Hoằng Phú, Thanh Hóa",,55,Thanh Hóa,Miền Trung,thanh hoa,MATCHED_REGEX
+KH-00426,CÔNG TY CỔ PHẦN THƯƠNG MẠI THIÊN AN,148560955,"TDP 4, Phường Phổ Yên, Thái Nguyên",,54,Thái Nguyên,Miền Bắc,thai nguyen,MATCHED_REGEX
+KH-00427,CÔNG TY CỔ PHẦN THƯƠNG MẠI TÚ ANH,148682042,"Phường Láng, Thành phố Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00428,CỬA HÀNG XE ĐẠP NAM TIẾN,225926379,"khu 6, Phường Hồng Gai, Quảng Ninh",,48,Quảng Ninh,Miền Bắc,quang ninh,MATCHED_REGEX
+KH-00429,CỬA HÀNG XE ĐẠP XUÂN MAI,254310456,"thôn Làng, Xã Thống Nhất, Quảng Ninh",,48,Quảng Ninh,Miền Bắc,quang ninh,MATCHED_REGEX
+KH-00430,CÔNG TY CỔ PHẦN BÌNH MINH,132506859,"Xã Vân Đình, Thành phố Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00431,CÔNG TY CỔ PHẦN THƯƠNG MẠI KHẢI HOÀN,113300214,"Tử Dương, Xã Chương Dương, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00432,CÔNG TY TNHH THƯƠNG MẠI THUỶ TIÊN,176474462,"Xã Đại Xuyên, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00433,CÔNG TY CỔ PHẦN THƯƠNG MẠI TRƯỜNG THỊNH,140441927,"Tk Phú Mỹ, Xã Phú Xuyên, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00434,HỘ KINH DOANH TRƯỜNG THỊNH,269803619,"TDP 15, Phường Tây Tựu, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00435,DOANH NGHIỆP TW NGỌC ANH,141517724,"TDP Chợ, đường Đại Mỗ, Phường Tây Mỗ, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00436,CÔNG TY TNHH XÂY DỰNG,288507012,"xã Tân Lập, huyện Yên Mỹ, tỉnh Hưng Yên",,31,Hưng Yên,Miền Bắc,hung yen,MATCHED_REGEX
+KH-00437,DOANH NGHIỆP TW HÙNG CƯỜNG,139242743,"Dương Xá, Phường Thượng Hồng, Hưng Yên",,31,Hưng Yên,Miền Bắc,hung yen,MATCHED_REGEX
+KH-00438,CỬA HÀNG XE ĐẠP ĐẠI LỢI,280232870,"Xã Khoái Châu, Hưng Yên",,31,Hưng Yên,Miền Bắc,hung yen,MATCHED_REGEX
+KH-00439,DOANH NGHIỆP TW THUỶ TIÊN,226721723,"Khối Xuân Khoa, Xã Vạn An, Tỉnh Nghệ An",,40,Nghệ An,Miền Trung,nghe an,MATCHED_SUBSTRING_PRIMARY
+KH-00440,CÔNG TY TNHH THƯƠNG MẠI ĐÔNG NAM,117737983,"đường Tây Tựu, Phường Thượng Cát, Thành phố Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00441,CỬA HÀNG XE ĐẠP NGỌC ANH,229454718,"Xuân Giang, Xã Nghi Xuân, Hà Tĩnh",,25,Hà Tĩnh,Miền Trung,ha tinh,MATCHED_REGEX
+KH-00442,CÔNG TY TNHH HOÀ BÌNH,264440823,"TDP 3 Đoài, Xã Yên Lạc, Phú Thọ",,43,Phú Thọ,Miền Bắc,phu tho,MATCHED_REGEX
+KH-00443,CÔNG TY TNHH HÙNG CƯỜNG,212318218,"Khu Tân Bình, Xã Xuân Mai, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00444,CÔNG TY TNHH THƯƠNG MẠI SÁN LẠP,131134539,"đường Cao Lỗ, Thôn Phan Xá, Xã Đông Anh, Thành phố Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00445,CÔNG TY CỔ PHẦN TÂN TIẾN,145783397,"Thạch Trụ Tây, Xã Lân Phong, Tỉnh Quảng Ngãi",,47,Quảng Ngãi,Miền Trung,quang ngai,MATCHED_REGEX
+KH-00446,CÔNG TY TNHH THƯƠNG MẠI MINH PHƯƠNG,125873321,"Hùng Vương, Phường Nam Đông Hà, Quảng Trị",,49,Quảng Trị,Miền Trung,quang tri,MATCHED_REGEX
+KH-00447,CÔNG TY TNHH THƯƠNG MẠI KHẢI HOÀN,191136065,"Phường Chương Mỹ, Thành phố Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00448,CÔNG TY TNHH THUỶ TIÊN,272636071,"Tiểu khu Phú Gia, Thị Trấn Phú Minh, Huyện Phú Xuyên, Thành phố Hà Nội, Việt Nam",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00449,CÔNG TY CỔ PHẦN THUỶ TIÊN,213821835,"Khu 5, Xã Phù Ninh, Tỉnh Phú Thọ",,43,Phú Thọ,Miền Bắc,phu tho,MATCHED_REGEX
+KH-00450,HỘ KINH DOANH QUANG VINH,142986152,"Lê Thái Tổ, Thôn Tân Minh, Xã Triệu Sơn, Tỉnh Thanh Hoá, Việt Nam",,55,Thanh Hóa,Miền Trung,thanh hoa,MATCHED_REGEX
+KH-00451,CÔNG TY CỔ PHẦN THƯƠNG MẠI TRƯỜNG THỊNH,147387564,"TDP Tân Lập, Xã Bình Thuyền, Tỉnh Phú Thọ",,43,Phú Thọ,Miền Bắc,phu tho,MATCHED_REGEX
+KH-00452,CÔNG TY CỔ PHẦN THƯƠNG MẠI BÌNH MINH,104174075,"Phố Giắt, Xã Triệu Sơn, Thanh Hóa",,55,Thanh Hóa,Miền Trung,thanh hoa,MATCHED_REGEX
+KH-00453,CÔNG TY TNHH YÊN BÌNH,256489869,"Xã Phú Sơn, Tỉnh Ninh Bình",,41,Ninh Bình,Miền Bắc,ninh binh,MATCHED_REGEX
+KH-00454,HỘ KINH DOANH LONG PHÚ,251882403,"Phố Đồng Tâm, Xã Đoan Hùng, Phú Thọ",,43,Phú Thọ,Miền Bắc,phu tho,MATCHED_REGEX
+KH-00455,CÔNG TY TNHH THƯƠNG MẠI ĐẠI LỢI,103264637,"Trần Phú, Xã Hương Khê, Hà Tĩnh",,25,Hà Tĩnh,Miền Trung,ha tinh,MATCHED_REGEX
+KH-00456,CÔNG TY TNHH THƯƠNG MẠI AN PHÁT,190862479,"đường Nguyễn Đổng Chi, TDP 1, Phường Nam Hồng Lĩnh, Hà Tĩnh",,25,Hà Tĩnh,Miền Trung,ha tinh,MATCHED_REGEX
+KH-00457,CÔNG TY TNHH THƯƠNG MẠI VIỆT ANH,157974773,"Xã Đồng Tiến, Thanh Hóa",,55,Thanh Hóa,Miền Trung,thanh hoa,MATCHED_REGEX
+KH-00458,HỘ KINH DOANH VẠN LỢI,276096821,"An Lộc, Xã Mai Phụ, Tỉnh Hà Tĩnh",,25,Hà Tĩnh,Miền Trung,ha tinh,MATCHED_REGEX
+KH-00459,CÔNG TY CỔ PHẦN TOÀN THẮNG,267718135,"Xã Bình Minh, Thành phố Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00460,DOANH NGHIỆP TW THUỶ TIÊN,284197843,"Khu Đồng Xốc, Xã Thái Hòa, Phú Thọ",,43,Phú Thọ,Miền Bắc,phu tho,MATCHED_REGEX
+KH-00461,CÔNG TY TNHH THUỶ TIÊN,273073186,"Hoàng Lộc, Phường Lê Thanh Nghị, Thành phố Hải Dương, Tỉnh Hải Dương, Việt Nam",,26,Hải Dương,Miền Bắc,hai duong,MATCHED_SUBSTRING_PRIMARY
+KH-00462,HỘ KINH DOANH TRƯỜNG THỊNH,248237153,"số B-1, Khu công nghiệp Thăng Long II, Xã Nguyễn Văn Linh, Hưng Yên",,31,Hưng Yên,Miền Bắc,hung yen,MATCHED_REGEX
+KH-00463,CÔNG TY TNHH THƯƠNG MẠI YÊN BÌNH,150900540,"Xã Thuận An, Thành phố Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00464,CÔNG TY TNHH THƯƠNG MẠI KHẢI HOÀN,112958913,"0Ki ốt T1A 10, Phường Việt Trì, Tỉnh Phú Thọ",,43,Phú Thọ,Miền Bắc,phu tho,MATCHED_REGEX
+KH-00465,CÔNG TY CỔ PHẦN KHẢI HOÀN,107648091,"Khu Phố 1, Phường Mạo Khê, Quảng Ninh",,48,Quảng Ninh,Miền Bắc,quang ninh,MATCHED_REGEX
+KH-00466,HỘ KINH DOANH HÙNG CƯỜNG,133736575,"phố Trần Bình Trọng, Xã Quảng Hà, Quảng Ninh",,48,Quảng Ninh,Miền Bắc,quang ninh,MATCHED_REGEX
+KH-00467,DOANH NGHIỆP TW TÂY BẮC,237140523,"48B Quang Trung, Phường Bắc Gianh, Tỉnh Quảng Trị",,49,Quảng Trị,Miền Trung,quang tri,MATCHED_REGEX
+KH-00468,CÔNG TY CỔ PHẦN KHẢI HOÀN,124230463,"Xã Diễn Trung, Huyện Diễn Châu, Nghệ An",,40,Nghệ An,Miền Trung,nghe an,MATCHED_SUBSTRING_PRIMARY
+KH-00469,CỬA HÀNG XE ĐẠP HOÀ BÌNH,296168544,"Khối Tân Đông, Phường Tân Mai, Nghệ An",,40,Nghệ An,Miền Trung,nghe an,MATCHED_SUBSTRING_PRIMARY
+KH-00470,CÔNG TY CỔ PHẦN VĨNH PHÁT,296996112,"phố số 3, Xã Nghi Lộc, Nghệ An",,40,Nghệ An,Miền Trung,nghe an,MATCHED_SUBSTRING_PRIMARY
+KH-00471,CÔNG TY CỔ PHẦN TRÍ ĐỨC,262408032,"phố Kim Thành, Xã Đồng Lộc, Hà Tĩnh",,25,Hà Tĩnh,Miền Trung,ha tinh,MATCHED_REGEX
+KH-00472,CÔNG TY CỔ PHẦN TRÍ ĐỨC,114511070,"đường Cát Quế, thôn 1, Xã Dương Hòa, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00473,CÔNG TY TNHH TRÍ ĐỨC,298912155,"Xã Đoài Phương, Thành phố Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00474,HỘ KINH DOANH MẶT TRỜI,203796397,"Thôn Đồng Tâm, Phường Trần Lãm, Hưng Yên",,31,Hưng Yên,Miền Bắc,hung yen,MATCHED_REGEX
+KH-00475,CỬA HÀNG XE ĐẠP THIÊN AN,243307651,"Nhân Cầu 2, Xã Hưng Hà, Hưng Yên",,31,Hưng Yên,Miền Bắc,hung yen,MATCHED_REGEX
+KH-00476,CÔNG TY CỔ PHẦN THƯƠNG MẠI MẶT TRỜI,163174528,"Xã Nam Tiền Hải, Hưng Yên",,31,Hưng Yên,Miền Bắc,hung yen,MATCHED_REGEX
+KH-00477,CỬA HÀNG XE ĐẠP ĐẠI LỢI,206875995,"Phường Hà Đông, Thành phố Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00478,CÔNG TY TNHH BÌNH MINH,203650236,"LK 37-02 Khu Đô thị mới Phú Lương, Phường Phú Lương, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00479,DOANH NGHIỆP TW NGỌC ANH,117667111,"Phường Đại Mỗ, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00480,DOANH NGHIỆP TW ĐẠI DƯƠNG,231827993,"Ngách 108/1, Phố Nguyễn Lân, Phường Phương Liệt, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00481,CÔNG TY CỔ PHẦN HOÀ BÌNH,213822453,"Chợ Mơ, Xã Cổ Đô, Thành phố Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00482,CỬA HÀNG XE ĐẠP KHẢI HOÀN,210627241,"đường Giải Phóng, Phường Tương Mai, Thành phố Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00483,HỘ KINH DOANH VẠN LỢI,207511456,"Thanh Hoài, Phường Trí Quả, Tỉnh Bắc Ninh",,7,Bắc Ninh,Miền Bắc,bac ninh,MATCHED_REGEX
+KH-00484,CÔNG TY CỔ PHẦN THƯƠNG MẠI HOÀ BÌNH,167781419,"Cường Tráng, Xã Trung Kênh, Tỉnh Bắc Ninh",,7,Bắc Ninh,Miền Bắc,bac ninh,MATCHED_REGEX
+KH-00485,CÔNG TY CỔ PHẦN SÁN LẠP,188289521,"Thôn Mùi, Xã Bình Minh, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00486,CÔNG TY TNHH VẠN LỢI,252868808,"Xã Yên Phong, Bắc Ninh",,7,Bắc Ninh,Miền Bắc,bac ninh,MATCHED_REGEX
+KH-00487,DOANH NGHIỆP TW TRƯỜNG THỊNH,296532555,"Phường Đa Mai, Bắc Ninh",,7,Bắc Ninh,Miền Bắc,bac ninh,MATCHED_REGEX
+KH-00488,CÔNG TY TNHH TRƯỜNG THỊNH,248193169,"Phạm Ngọc Nhị, TDP Phạm Văn Đồng, Phường Đồng Văn, Ninh Bình",,41,Ninh Bình,Miền Bắc,ninh binh,MATCHED_REGEX
+KH-00489,CÔNG TY CỔ PHẦN ĐÔNG NAM,100492499,"đường Lê Công Thanh, phường Hai Bà Trưng, thành phố Phủ Lý, tỉnh Hà Nam",,24,Hà Nam,Miền Bắc,ha nam,MATCHED_REGEX
+KH-00490,CÔNG TY TNHH TÂN TIẾN,231728208,"Tại nhà số 327, đường Cù Chính Lan, tổ 1, Phường Hòa Bình, Phú Thọ",,29,Hòa Bình,Miền Bắc,hoa binh,MATCHED_REGEX
+KH-00491,CÔNG TY TNHH PHÚC AN,279355689,"Trung (thửa đất số 524, tờ bản đồ số 22), Phường Nghi Đức, Thành phố Vinh, Nghệ An",,40,Nghệ An,Miền Trung,nghe an,MATCHED_SUBSTRING_PRIMARY
+KH-00492,HỘ KINH DOANH ĐÔNG NAM,170963548,"Bà Triệu, Xã Hậu Lộc, Thanh Hóa",,55,Thanh Hóa,Miền Trung,thanh hoa,MATCHED_REGEX
+KH-00493,CÔNG TY CỔ PHẦN THƯƠNG MẠI QUANG VINH,139142865,"Xã Hà Tây, TP Hải Phòng",,27,Hải Phòng,Miền Bắc,hai phong,MATCHED_REGEX
+KH-00494,HỘ KINH DOANH AN PHÁT,144374945,"Xã Thiên Lộc, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00495,CÔNG TY CỔ PHẦN THƯƠNG MẠI HOÀ BÌNH,164765497,"Xã Mê Linh, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00496,CÔNG TY CỔ PHẦN TOÀN THẮNG,219883019,"Quốc Lộ 3, Phố Nỷ, Xã Trung Giã, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00497,CÔNG TY TNHH THƯƠNG MẠI QUANG VINH,193689414,"Chợ đường cái, Xã Như Quỳnh, Tỉnh Hưng Yên",,31,Hưng Yên,Miền Bắc,hung yen,MATCHED_REGEX
+KH-00498,CỬA HÀNG XE ĐẠP MINH PHƯƠNG,220157462,"Khu giãn dân Bùi Thị Cúc, Xã Ân Thi, Hưng Yên",,31,Hưng Yên,Miền Bắc,hung yen,MATCHED_REGEX
+KH-00499,CÔNG TY CỔ PHẦN THƯƠNG MẠI TÚ ANH,194153307,"Xã Nam Thái Ninh, Hưng Yên",,31,Hưng Yên,Miền Bắc,hung yen,MATCHED_REGEX
+KH-00500,CÔNG TY CỔ PHẦN THƯƠNG MẠI VĨNH PHÁT,186392956,"Tầng 1 LK9 – 20 Khu nhà ở FLC số 24, ngõ 64 Phố Sài Đồng, Phường Phúc Lợi, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00501,CÔNG TY CỔ PHẦN VĨNH PHÁT,186437422,"Tố Hữu, TDP Trung Phong, Xã Lưu Vệ, Tỉnh Thanh Hóa",,55,Thanh Hóa,Miền Trung,thanh hoa,MATCHED_REGEX
+KH-00502,CỬA HÀNG XE ĐẠP BÌNH MINH,204074148,"Tương Chúc, Xã Nam Phù, Thành phố Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00503,DOANH NGHIỆP TW PHÚ THỊNH,170794199,"Phố Vồi, Xã Thường Tín, Thành phố Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00504,CÔNG TY CỔ PHẦN THƯƠNG MẠI TÂY BẮC,173118358,"Xã Phúc Sơn, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00505,CÔNG TY CỔ PHẦN TÚ ANH,215542711,"Khối 5, Xã Quỳnh Lưu, Nghệ An",,40,Nghệ An,Miền Trung,nghe an,MATCHED_SUBSTRING_PRIMARY
+KH-00506,CÔNG TY TNHH THANH BÌNH,293390264,"phố Nguyễn Thái Học, Xã Đan Phượng, Thành phố Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00507,CỬA HÀNG XE ĐẠP BÌNH MINH,205389693,"Xã Vĩnh Hưng, Phú Thọ",,43,Phú Thọ,Miền Bắc,phu tho,MATCHED_REGEX
+KH-00508,CÔNG TY CỔ PHẦN VĨNH PHÁT,232320227,"Xã Hà Đông, TP Hải Phòng",,27,Hải Phòng,Miền Bắc,hai phong,MATCHED_REGEX
+KH-00509,CÔNG TY TNHH THƯƠNG MẠI BÌNH MINH,108925009,"Chợ Thứa, Xã Lương Tài, Tỉnh Bắc Ninh",,7,Bắc Ninh,Miền Bắc,bac ninh,MATCHED_REGEX
+KH-00510,CỬA HÀNG XE ĐẠP NGỌC ANH,221409129,"Phố mới - TT Hồ, Phường Thuận Thành, Bắc Ninh",,7,Bắc Ninh,Miền Bắc,bac ninh,MATCHED_REGEX
+KH-00511,CÔNG TY TNHH BÌNH MINH,204530740,"đường Nguyễn Huệ, Phường Lào Cai, Tỉnh Lào Cai",,37,Lào Cai,Miền Bắc,lao cai,MATCHED_REGEX
+KH-00512,CÔNG TY TNHH ĐẠI DƯƠNG,262139034,"Khu 12, Xã Lâm Thao, Tỉnh Phú Thọ",,43,Phú Thọ,Miền Bắc,phu tho,MATCHED_REGEX
+KH-00513,CÔNG TY CỔ PHẦN THƯƠNG MẠI ĐÔNG NAM,181076657,"TDP Phố Huyện, Xã Quốc Oai, Thành phố Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00514,CỬA HÀNG XE ĐẠP HÙNG CƯỜNG,291784533,"TDP phố Săn, thị trấn Liên Quan, huyện Thạch Thất, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00515,CÔNG TY CỔ PHẦN THƯƠNG MẠI SƠN HÀ,174783130,"109C, khu 2, Thị trấn Cẩm Giang(Hết hiệu lực), TP Hải Phòng",,27,Hải Phòng,Miền Bắc,hai phong,MATCHED_REGEX
+KH-00516,CÔNG TY TNHH SÁN LẠP,230936283,"Xã Tiên Tiến, Tỉnh Hưng Yên",,31,Hưng Yên,Miền Bắc,hung yen,MATCHED_REGEX
+KH-00517,CỬA HÀNG XE ĐẠP PHÚ THỊNH,221030390,"Xã Quang Hưng, Hưng Yên",,31,Hưng Yên,Miền Bắc,hung yen,MATCHED_REGEX
+KH-00518,CÔNG TY TNHH THƯƠNG MẠI VĨNH PHÁT,183952775,"Đội 5, Thôn Hạ Tân, Xã Nghĩa Trụ, Tỉnh Hưng Yên",,31,Hưng Yên,Miền Bắc,hung yen,MATCHED_REGEX
+KH-00519,CÔNG TY CỔ PHẦN XUÂN MAI,257785403,"TT Bô Thời, Hồng Tiến, Xã Việt Tiến, Hưng Yên",,31,Hưng Yên,Miền Bắc,hung yen,MATCHED_REGEX
+KH-00520,CÔNG TY TNHH TÂY BẮC,274088653,"phố Tường Thụy 2, Phường Duy Tiên, Ninh Bình",,41,Ninh Bình,Miền Bắc,ninh binh,MATCHED_REGEX
+KH-00521,CỬA HÀNG XE ĐẠP KHẢI HOÀN,291633835,"Xã Bình Lục, Tỉnh Ninh Bình",,41,Ninh Bình,Miền Bắc,ninh binh,MATCHED_REGEX
+KH-00522,CÔNG TY TNHH HÙNG CƯỜNG,216017109,"TDP Bình Tiến, Xã Bình Mỹ, Tỉnh Ninh Bình",,41,Ninh Bình,Miền Bắc,ninh binh,MATCHED_REGEX
+KH-00523,HỘ KINH DOANH KHẢI HOÀN,197470458,"Lạc long Quân, Phường Bưởi(Hết hiệu lực), Thành phố Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00524,CÔNG TY CỔ PHẦN THƯƠNG MẠI TRÍ ĐỨC,198942489,"trương xá, Xã Nghĩa Dân, Tỉnh Hưng Yên",,31,Hưng Yên,Miền Bắc,hung yen,MATCHED_REGEX
+KH-00525,CỬA HÀNG XE ĐẠP SÁN LẠP,234141559,"Điện Biên, Phường Phố Hiến, Tỉnh Hưng Yên",,19,Điện Biên,Miền Bắc,dien bien,MATCHED_REGEX
+KH-00526,CÔNG TY CỔ PHẦN NAM TIẾN,180153456,"phố số 6, Xã Thái Thụy, Hưng Yên",,31,Hưng Yên,Miền Bắc,hung yen,MATCHED_REGEX
+KH-00527,CÔNG TY CỔ PHẦN THƯƠNG MẠI HOÀ BÌNH,166090037,"đường mương Đan Hoài, thôn 6, Xã Sơn Đồng, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00528,CÔNG TY CỔ PHẦN VẠN LỢI,298434475,"TDP Nếnh, Phường Nếnh, tỉnh Bắc Ninh, Việt Nam",,7,Bắc Ninh,Miền Bắc,bac ninh,MATCHED_REGEX
+KH-00529,CÔNG TY CỔ PHẦN THƯƠNG MẠI THIÊN AN,194440034,"Khối 6, Thị trấn Tân Kỳ, Huyện Tân Kỳ, Nghệ An",,40,Nghệ An,Miền Trung,nghe an,MATCHED_SUBSTRING_PRIMARY
+KH-00530,DOANH NGHIỆP TW TÂY BẮC,296781744,"Xã Quảng Oai, Thành phố Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00531,CÔNG TY TNHH THƯƠNG MẠI VẠN LỢI,153446491,"Xã Vật Lại, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00532,CÔNG TY TNHH THƯƠNG MẠI MẶT TRỜI,161819698,"Phường Sơn Tây, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00533,CÔNG TY TNHH YÊN BÌNH,251387989,"Khu phố II, Xã Bình Nguyên, Tỉnh Phú Thọ",,43,Phú Thọ,Miền Bắc,phu tho,MATCHED_REGEX
+KH-00534,DOANH NGHIỆP TW AN PHÁT,171317819,"Phố Me, Xã Tam Dương, Tỉnh Phú Thọ",,43,Phú Thọ,Miền Bắc,phu tho,MATCHED_REGEX
+KH-00535,CỬA HÀNG XE ĐẠP QUANG VINH,239051064,"đường Nguyễn Tất Thành, Phường Vĩnh Phúc, Phú Thọ",,61,Vĩnh Phúc,Miền Bắc,vinh phuc,MATCHED_REGEX
+KH-00536,CỬA HÀNG XE ĐẠP LONG PHÚ,260443448,"tòa nhà CT1 Khu Nhà Bắc Linh Đàm, Phường Định Công, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00537,CÔNG TY CỔ PHẦN ĐÔNG NAM,194950902,"Thị trấn Đồng Tâm, Huyện Chợ mới, Bắc Kạn",,6,Bắc Kạn,Miền Bắc,bac kan,MATCHED_REGEX
+KH-00538,HỘ KINH DOANH PHÚC AN,247587793,"Xã Nguyên Bình, Cao Bằng",,14,Cao Bằng,Miền Bắc,cao bang,MATCHED_REGEX
+KH-00539,CỬA HÀNG XE ĐẠP CHI THÀNH,204142388,"Pháp, Xã Điềm Thụy, Thái Nguyên",,54,Thái Nguyên,Miền Bắc,thai nguyen,MATCHED_REGEX
+KH-00540,CÔNG TY TNHH NGỌC ANH,224039499,"Đường vành đai, Thôn Thượng, Xã Sơn Đồng, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00541,HỘ KINH DOANH SÁN LẠP,110864198,"Khu du lịch Xuân Thiều, Phường Hải Vân, TP Đà Nẵng",,16,Đà Nẵng,Miền Trung,da nang,MATCHED_REGEX
+KH-00542,CÔNG TY TNHH THƯƠNG MẠI NAM TIẾN,192892165,"Xã Chi Lăng, Lạng Sơn",,36,Lạng Sơn,Miền Bắc,lang son,MATCHED_REGEX
+KH-00543,CÔNG TY CỔ PHẦN SƠN HÀ,241076147,"đường Cầu Diễn, Phường Xuân Phương, Thành phố Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00544,DOANH NGHIỆP TW VIỆT ANH,240687273,"tổ 3, Phường Kiến Hưng, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00545,CÔNG TY CỔ PHẦN AN PHÁT,136695790,"Tại nhà số 461, tổ 15, Phường Hòa Bình, Phú Thọ",,29,Hòa Bình,Miền Bắc,hoa binh,MATCHED_REGEX
+KH-00546,CÔNG TY CỔ PHẦN SÁN LẠP,117966807,"TDP Thượng Giang, Xã Lệ Thủy, Quảng Trị",,49,Quảng Trị,Miền Trung,quang tri,MATCHED_REGEX
+KH-00547,DOANH NGHIỆP TW THANH BÌNH,114803989,"Xã Mộ Đức, Quảng Ngãi",,47,Quảng Ngãi,Miền Trung,quang ngai,MATCHED_REGEX
+KH-00548,CÔNG TY TNHH KHẢI HOÀN,217754474,"Trần Hưng Đạo, KP3, Phường Quảng Trị, Quảng Trị",,49,Quảng Trị,Miền Trung,quang tri,MATCHED_REGEX
+KH-00549,CỬA HÀNG XE ĐẠP TÚ ANH,241840289,"K8 thị trấn Hạ Hoà, Xã Hạ Hòa, Phú Thọ",,43,Phú Thọ,Miền Bắc,phu tho,MATCHED_REGEX
+KH-00550,CÔNG TY TNHH ĐÔNG NAM,215180645,"Khu Tân Tiến, Xã Cẩm Khê, Tỉnh Phú Thọ",,43,Phú Thọ,Miền Bắc,phu tho,MATCHED_REGEX
+KH-00551,CÔNG TY CỔ PHẦN THƯƠNG MẠI SÁN LẠP,131569872,"phố Phú Bình, Phường Phong Châu, Phú Thọ",,43,Phú Thọ,Miền Bắc,phu tho,MATCHED_REGEX
+KH-00552,CỬA HÀNG XE ĐẠP YÊN BÌNH,252432585,"Khu 7, Xã Phùng Nguyên, Phú Thọ",,43,Phú Thọ,Miền Bắc,phu tho,MATCHED_REGEX
+KH-00553,CÔNG TY CỔ PHẦN SƠN HÀ,243677870,"Tây Sơn, Phường Đống Đa, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00554,CÔNG TY CỔ PHẦN THƯƠNG MẠI SÁN LẠP,132303358,"TDP Phượng Bãi, Phường Chương Mỹ, Thành phố Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00555,CỬA HÀNG XE ĐẠP TRƯỜNG THỊNH,240177337,"Chợ Lương, Phường Đồng Văn, Ninh Bình",,41,Ninh Bình,Miền Bắc,ninh binh,MATCHED_REGEX
+KH-00556,DOANH NGHIỆP TW THIÊN AN,297200694,"XÓM GIAO THÔNG, Xã An Khánh, Thành phố Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00557,CÔNG TY TNHH THƯƠNG MẠI MINH PHƯƠNG,120842089,"Phố Bà Triệu, Phường Cửa Nam, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00558,CÔNG TY CỔ PHẦN THƯƠNG MẠI SƠN HÀ,179084489,"phố Xã Đàn, Phường Văn Miếu - Quốc Tử Giám, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00559,CÔNG TY TNHH THƯƠNG MẠI TÂY BẮC,170061850,"Trần Hưng Đạo, Phường Sầm Sơn, Thanh Hóa",,55,Thanh Hóa,Miền Trung,thanh hoa,MATCHED_REGEX
+KH-00560,CÔNG TY CỔ PHẦN THƯƠNG MẠI NGỌC ANH,125926109,"Xã Vĩnh Hải(Hết hiệu lực), Thành phố Hải Phòng",,27,Hải Phòng,Miền Bắc,hai phong,MATCHED_REGEX
+KH-00561,CÔNG TY TNHH THƯƠNG MẠI VĨNH PHÁT,185362399,"Thửa 110, tờ bản đồ 71, tổ dân phố Hương, Phường Tân An, Bắc Ninh",,7,Bắc Ninh,Miền Bắc,bac ninh,MATCHED_REGEX
+KH-00562,CÔNG TY CỔ PHẦN THƯƠNG MẠI NAM TIẾN,192433335,"Quang Trung, Phường Hà Đông, Thành phố Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00563,HỘ KINH DOANH YÊN BÌNH,236481534,"đường Phạm Văn Đồng, Phường Đông Ngạc, Thành phố Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00564,CỬA HÀNG XE ĐẠP SÁN LẠP,237058486,"Xã Quang Lịch, Huyện Kiến Xương, Thái Bình",,53,Thái Bình,Miền Bắc,thai binh,MATCHED_REGEX
+KH-00565,CÔNG TY CỔ PHẦN THƯƠNG MẠI KHẢI HOÀN,111558627,"Xã Kiến Hải, Thành phố Hải Phòng",,27,Hải Phòng,Miền Bắc,hai phong,MATCHED_REGEX
+KH-00566,DOANH NGHIỆP TW PHÚ THỊNH,128093953,"KP Tân Hoà, Xã Vĩnh Bảo, Thành phố Hải Phòng",,27,Hải Phòng,Miền Bắc,hai phong,MATCHED_REGEX
+KH-00567,CÔNG TY CỔ PHẦN THƯƠNG MẠI SƠN HÀ,197718949,"Phường An Phong, TP Hải Phòng",,27,Hải Phòng,Miền Bắc,hai phong,MATCHED_REGEX
+KH-00568,DOANH NGHIỆP TW NGỌC ANH,147661615,"Tô Hiệu, Phường Lê Chân, TP Hải Phòng",,27,Hải Phòng,Miền Bắc,hai phong,MATCHED_REGEX
+KH-00569,CÔNG TY TNHH VẠN LỢI,251887557,"Hòa Vang 3, Xã Hưng Lộc, TP Huế",,56,Thừa Thiên Huế,Miền Trung,thua thien hue,MATCHED_REGEX
+KH-00570,HỘ KINH DOANH TOÀN THẮNG,224741140,"(Tầng 1+2) Lê Lợi, Phường Gia Viên, Thành phố Hải Phòng",,27,Hải Phòng,Miền Bắc,hai phong,MATCHED_REGEX
+KH-00571,CỬA HÀNG XE ĐẠP THUỶ TIÊN,273679758,"đường chiến thắng Sông Lô, tổ 2, Phường Minh Xuân, Tuyên Quang",,59,Tuyên Quang,Miền Bắc,tuyen quang,MATCHED_REGEX
+KH-00572,CÔNG TY CỔ PHẦN THƯƠNG MẠI VIỆT ANH,150242956,"Đông Hải 1, Phường Cẩm Phả, Tỉnh Quảng Ninh",,48,Quảng Ninh,Miền Bắc,quang ninh,MATCHED_REGEX
+KH-00573,DOANH NGHIỆP TW THANH BÌNH,164007647,"SN: 35, tổ 1, khu 4A, Phường Cẩm Phả, Tỉnh Quảng Ninh",,48,Quảng Ninh,Miền Bắc,quang ninh,MATCHED_REGEX
+KH-00574,CỬA HÀNG XE ĐẠP LONG PHÚ,288617546,"Số:466,tổ 109,khu 8 B, Phường Cửa Ông, Quảng Ninh",,48,Quảng Ninh,Miền Bắc,quang ninh,MATCHED_REGEX
+KH-00575,CÔNG TY CỔ PHẦN THƯƠNG MẠI NAM TIẾN,120291779,"Vườn Trầu 022, Phường Móng Cái 1, Tỉnh Quảng Ninh",,48,Quảng Ninh,Miền Bắc,quang ninh,MATCHED_REGEX
+KH-00576,DOANH NGHIỆP TW THIÊN AN,236945584,"khu Trới 10, phường Hoành Bồ, TP. Hạ Long, Quảng Ninh",,48,Quảng Ninh,Miền Bắc,quang ninh,MATCHED_REGEX
+KH-00577,CÔNG TY CỔ PHẦN THƯƠNG MẠI ĐẠI DƯƠNG,165696049,"Cổng phụ trường THPT Hùng Vương, Xã Như Quỳnh, Tỉnh Hưng Yên",,31,Hưng Yên,Miền Bắc,hung yen,MATCHED_REGEX
+KH-00578,DOANH NGHIỆP TW NGỌC ANH,134709777,"thôn Thụy Khuê, Xã Quốc Oai, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00579,CÔNG TY TNHH THƯƠNG MẠI XÂY DỰNG,183360116,"Tổ 1, khu 3A, Phường Cẩm Phả, Quảng Ninh",,48,Quảng Ninh,Miền Bắc,quang ninh,MATCHED_REGEX
+KH-00580,CÔNG TY CỔ PHẦN THƯƠNG MẠI LONG PHÚ,169985646,"Mẹ Thứ, Phường Hòa Xuân, Thành phố Đà Nẵng",,16,Đà Nẵng,Miền Trung,da nang,MATCHED_REGEX
+KH-00581,DOANH NGHIỆP TW SƠN HÀ,285787156,"Phường Điện Biên Phủ, Tỉnh Điện Biên",,19,Điện Biên,Miền Bắc,dien bien,MATCHED_REGEX
+KH-00582,HỘ KINH DOANH LONG PHÚ,226747813,"Tổ 2, Phường Mường Thanh, Điện Biên",,19,Điện Biên,Miền Bắc,dien bien,MATCHED_REGEX
+KH-00583,CÔNG TY TNHH THƯƠNG MẠI THANH BÌNH,135037784,"Ngô Quyền, Phường An Hải, Thành phố Đà Nẵng",,16,Đà Nẵng,Miền Trung,da nang,MATCHED_REGEX
+KH-00584,CÔNG TY TNHH CHI THÀNH,204828533,"phố Trương Công Giai, Phường Cầu Giấy, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00585,CÔNG TY TNHH TÂY BẮC,270125357,"Đồng Mon Đại Lý Việt Hưng, Phường Bình Thuận, Tuyên Quang",,59,Tuyên Quang,Miền Bắc,tuyen quang,MATCHED_REGEX
+KH-00586,CÔNG TY CỔ PHẦN THƯƠNG MẠI MINH PHƯƠNG,127211976,"Khu 22, Xã Tu Vũ, Phú Thọ",,43,Phú Thọ,Miền Bắc,phu tho,MATCHED_REGEX
+KH-00587,DOANH NGHIỆP TW AN PHÁT,173911310,"Minh Cường, Xã Phú Xuyên, Thành phố Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00588,CÔNG TY CỔ PHẦN TÂY BẮC,279444263,"Xã Phú Xuyên, Thành phố Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00589,DOANH NGHIỆP TW KHẢI HOÀN,149513186,"đường Louis II, KĐT Louis City, Phường Đại Mỗ, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00590,CÔNG TY TNHH TOÀN THẮNG,241210122,"Khu công nghiệp Lễ Môn, Phường Quảng Phú, Thanh Hóa",,55,Thanh Hóa,Miền Trung,thanh hoa,MATCHED_REGEX
+KH-00591,CÔNG TY TNHH THƯƠNG MẠI KHẢI HOÀN,119249220,"TTTM Mandarin Garden 2, Số 99 Tân Mai, Phường Tương Mai, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00592,CỬA HÀNG XE ĐẠP SÁN LẠP,238891143,"Phường Hội An Đông, TP Đà Nẵng",,16,Đà Nẵng,Miền Trung,da nang,MATCHED_REGEX
+KH-00593,CÔNG TY CỔ PHẦN NGỌC ANH,122197125,"Km 9, đường Võ Văn Kiệt, Xã Quang Minh, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00594,DOANH NGHIỆP TW LONG PHÚ,246803444,"Khối 4, Xã Yên Thành, Tỉnh Nghệ An, Việt Nam",,40,Nghệ An,Miền Trung,nghe an,MATCHED_SUBSTRING_PRIMARY
+KH-00595,CÔNG TY CỔ PHẦN THƯƠNG MẠI YÊN BÌNH,152411241,"Đường Trần Phú, Tổ 21, Phường Hà Giang 2, Tuyên Quang",,59,Tuyên Quang,Miền Bắc,tuyen quang,MATCHED_REGEX
+KH-00596,DOANH NGHIỆP TW THUỶ TIÊN,273804658,"KDC mới, Xã Nam An Phụ, TP Hải Phòng",,27,Hải Phòng,Miền Bắc,hai phong,MATCHED_REGEX
+KH-00597,CÔNG TY TNHH THƯƠNG MẠI PHÚ THỊNH,122680125,"Đại Tân, Phường Trần Nhân Tông, TP Hải Phòng",,27,Hải Phòng,Miền Bắc,hai phong,MATCHED_REGEX
+KH-00598,DOANH NGHIỆP TW SƠN HÀ,279652439,"Phao Sơn, Phường Chí Linh, Thành phố Hải Phòng",,27,Hải Phòng,Miền Bắc,hai phong,MATCHED_REGEX
+KH-00599,CÔNG TY CỔ PHẦN XÂY DỰNG,126170961,"Trần Đăng Ninh, Phường Nam Định, Tỉnh Ninh Bình",,41,Ninh Bình,Miền Bắc,ninh binh,MATCHED_REGEX
+KH-00600,CỬA HÀNG XE ĐẠP TOÀN THẮNG,294118067,"tổ 5, Xã Phụ Dực, Hưng Yên",,31,Hưng Yên,Miền Bắc,hung yen,MATCHED_REGEX
+KH-00601,HỘ KINH DOANH PHÚ THỊNH,191407386,"Lê Hồng Phong, Phường Hà Đông, Thành phố Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00602,CÔNG TY TNHH THƯƠNG MẠI THIÊN AN,141472612,"Xã Trần Phú, Thành phố Hà Nội, Việt Nam",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00603,CÔNG TY CỔ PHẦN QUANG VINH,191739127,"Khối Thanh Chiếm, Phường Hội An Tây, Thành phố Đà Nẵng",,16,Đà Nẵng,Miền Trung,da nang,MATCHED_REGEX
+KH-00604,CÔNG TY CỔ PHẦN THƯƠNG MẠI PHÚC AN,197428634,"Phan Châu Trinh, Phường Hương Trà, Thành phố Đà Nẵng",,16,Đà Nẵng,Miền Trung,da nang,MATCHED_REGEX
+KH-00605,CÔNG TY CỔ PHẦN VĨNH PHÁT,144322845,"Tổ dân phố Lê Duẩn, Phường Kiến An, TP Hải Phòng",,27,Hải Phòng,Miền Bắc,hai phong,MATCHED_REGEX
+KH-00606,CỬA HÀNG XE ĐẠP BÌNH MINH,290083932,"Đức Nghiêm, Xã Hoàng Vân, Tỉnh Bắc Ninh",,7,Bắc Ninh,Miền Bắc,bac ninh,MATCHED_REGEX
+KH-00607,CÔNG TY TNHH TÚ ANH,249735697,"Khối 3, Xã Đô Lương, Nghệ An",,40,Nghệ An,Miền Trung,nghe an,MATCHED_SUBSTRING_PRIMARY
+KH-00608,CÔNG TY TNHH THƯƠNG MẠI TÚ ANH,194612630,"TDP 3, Xã Hoàn Lão, Quảng Trị",,49,Quảng Trị,Miền Trung,quang tri,MATCHED_REGEX
+KH-00609,DOANH NGHIỆP TW NGỌC ANH,139564642,"Đội 3, thôn Dị Chế, , Tỉnh Hưng Yên",,31,Hưng Yên,Miền Bắc,hung yen,MATCHED_REGEX
+KH-00610,DOANH NGHIỆP TW HÙNG CƯỜNG,119129914,"Xã Nam Thái Ninh, Tỉnh Hưng Yên",,31,Hưng Yên,Miền Bắc,hung yen,MATCHED_REGEX
+KH-00611,CÔNG TY TNHH VIỆT ANH,253321194,"Xã Đồng Tiến, Huyện Quỳnh Phụ, Thái Bình",,53,Thái Bình,Miền Bắc,thai binh,MATCHED_REGEX
+KH-00612,DOANH NGHIỆP TW XÂY DỰNG,255039901,"Phường Bạch Đằng, TP Hải Phòng",,27,Hải Phòng,Miền Bắc,hai phong,MATCHED_REGEX
+KH-00613,DOANH NGHIỆP TW HÙNG CƯỜNG,156713920,"Phường Hiệp Hòa, Quảng Ninh",,48,Quảng Ninh,Miền Bắc,quang ninh,MATCHED_REGEX
+KH-00614,CỬA HÀNG XE ĐẠP NAM TIẾN,229201634,"Khu 7, Đặc khu Vân Đồn, Quảng Ninh",,48,Quảng Ninh,Miền Bắc,quang ninh,MATCHED_REGEX
+KH-00615,CÔNG TY CỔ PHẦN THƯƠNG MẠI QUANG VINH,139299647,"Thị tứ Đồng Gia, Xã Kim Thành, Thành phố Hải Phòng",,27,Hải Phòng,Miền Bắc,hai phong,MATCHED_REGEX
+KH-00616,CÔNG TY CỔ PHẦN TRÍ ĐỨC,105352983,"Ngõ 19, đường Tô Ngọc Vân, Phường Tây Hồ, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00617,CÔNG TY CỔ PHẦN ĐẠI LỢI,147277498,"đường Nguyễn Văn Linh, Phường Phúc Lợi, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00618,HỘ KINH DOANH ĐÔNG NAM,103230684,"xã An Châu, Tỉnh Nghệ An",,40,Nghệ An,Miền Trung,nghe an,MATCHED_SUBSTRING_PRIMARY
+KH-00619,CỬA HÀNG XE ĐẠP VĨNH PHÁT,288609649,"Phan Triêm, Phường Hòa Xuân, TP Đà Nẵng",,16,Đà Nẵng,Miền Trung,da nang,MATCHED_REGEX
+KH-00620,CỬA HÀNG XE ĐẠP ĐẠI DƯƠNG,269183876,"phố Đồng Phú, Xã Kỳ Anh, Hà Tĩnh",,25,Hà Tĩnh,Miền Trung,ha tinh,MATCHED_REGEX
+KH-00621,CÔNG TY TNHH SƠN HÀ,273225623,"TTTM chợ Đồng Than, Xã Hoàn Long, Tỉnh Hưng Yên",,31,Hưng Yên,Miền Bắc,hung yen,MATCHED_REGEX
+KH-00622,CÔNG TY CỔ PHẦN XUÂN MAI,266529710,"đường Hoàng Quốc Việt, tổ 2, Bắc Lệnh, Phường Cam Đường, Lào Cai",,37,Lào Cai,Miền Bắc,lao cai,MATCHED_REGEX
+KH-00623,CÔNG TY TNHH THƯƠNG MẠI ĐẠI LỢI,102062325,"SN;231 tổ 32 khu 4A, Phường Cửa Ông, Quảng Ninh",,48,Quảng Ninh,Miền Bắc,quang ninh,MATCHED_REGEX
+KH-00624,CÔNG TY TNHH THƯƠNG MẠI HÙNG CƯỜNG,191638308,"Khu Lạch Đồng Giếng, Thôn Quyết Tiến, Xã Trần Phú, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00625,CÔNG TY TNHH MINH PHƯƠNG,226039129,"Xã Hồng Vân, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00626,CÔNG TY TNHH AN PHÁT,204411093,"TT Liễu Đề, Xã Nghĩa Hưng, Ninh Bình",,41,Ninh Bình,Miền Bắc,ninh binh,MATCHED_REGEX
+KH-00627,CÔNG TY CỔ PHẦN KHẢI HOÀN,130729984,"Phan Kế Bính, Phường Giảng Võ, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00628,CỬA HÀNG XE ĐẠP PHÚ THỊNH,224507573,"Xã Quỳnh Lưu, Xã Quỳnh Lưu, Tỉnh Ninh Bình",,41,Ninh Bình,Miền Bắc,ninh binh,MATCHED_REGEX
+KH-00629,CÔNG TY TNHH ĐÔNG NAM,214016268,"Xã Lý Nhân, Ninh Bình",,41,Ninh Bình,Miền Bắc,ninh binh,MATCHED_REGEX
+KH-00630,CÔNG TY TNHH THƯƠNG MẠI ĐẠI DƯƠNG,165591149,"phố Vũ Xuân Thiều, Phường Phúc Lợi, Thành phố Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00631,CÔNG TY TNHH VIỆT ANH,256599219,"Đường Chợ Bún, Xã Bát Tràng, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00632,CỬA HÀNG XE ĐẠP LONG PHÚ,264237748,"Xã Quang Trung, Bắc Ninh",,7,Bắc Ninh,Miền Bắc,bac ninh,MATCHED_REGEX
+KH-00633,DOANH NGHIỆP TW KHẢI HOÀN,157332000,"Xã Ngọc Lý, Huyện Tân Yên, Bắc Giang",,5,Bắc Giang,Miền Bắc,bac giang,MATCHED_REGEX
+KH-00634,CÔNG TY CỔ PHẦN TRÍ ĐỨC,179859950,"Xã Yên Lãng, Thành phố Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00635,DOANH NGHIỆP TW ĐẠI LỢI,174433965,"Xã Vạn Phú, Thái Nguyên",,54,Thái Nguyên,Miền Bắc,thai nguyen,MATCHED_REGEX
+KH-00636,CỬA HÀNG XE ĐẠP YÊN BÌNH,259265947,"Phố Yên Sở, Phường Hoàng Mai, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00637,CỬA HÀNG XE ĐẠP ĐẠI DƯƠNG,264490556,"Cầu Xây, Xã Kim Anh, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00638,CÔNG TY CỔ PHẦN THƯƠNG MẠI THANH BÌNH,136372809,"Lương Hội, Xã Lương Bằng, Tỉnh Hưng Yên",,31,Hưng Yên,Miền Bắc,hung yen,MATCHED_REGEX
+KH-00639,CÔNG TY CỔ PHẦN TRƯỜNG THỊNH,247789308,"Quốc lộ 45, Thôn Tân Ngữ 2, Xã Yên Định, Tỉnh Thanh Hóa",,55,Thanh Hóa,Miền Trung,thanh hoa,MATCHED_REGEX
+KH-00640,CÔNG TY TNHH XUÂN MAI,259359004,"Khu 1, Xã Vĩnh Lộc, Thanh Hóa",,55,Thanh Hóa,Miền Trung,thanh hoa,MATCHED_REGEX
+KH-00641,DOANH NGHIỆP TW ĐÔNG NAM,139588991,"ngách 127/32 Đường Lạc Long Quân, Phường Nghĩa Đô, Quận Cầu Giấy, Thành phố Hà Nội, Việt Nam",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00642,CÔNG TY CỔ PHẦN HOÀ BÌNH,263067132,"Liền kề 8 - Ô 31 - Khu đô thị mới Tân Tây Đô, Xã Ô Diên, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00643,CÔNG TY TNHH TÂY BẮC,298726390,"NP2- 10 MBQH trung tâm thương mại Đại Siêu Thị Big C, Phường Hạc Thành, Thanh Hóa",,55,Thanh Hóa,Miền Trung,thanh hoa,MATCHED_REGEX
+KH-00644,HỘ KINH DOANH THUỶ TIÊN,275318287,"Xã Đông Ngũ, Quảng Ninh",,48,Quảng Ninh,Miền Bắc,quang ninh,MATCHED_REGEX
+KH-00645,CỬA HÀNG XE ĐẠP QUANG VINH,236036979,"TK Đồng Văn, Xã Đồng Lê, Quảng Trị",,49,Quảng Trị,Miền Trung,quang tri,MATCHED_REGEX
+KH-00646,DOANH NGHIỆP TW ĐẠI DƯƠNG,233590509,"Xã Phụng Công, Hưng Yên",,31,Hưng Yên,Miền Bắc,hung yen,MATCHED_REGEX
+KH-00647,CÔNG TY CỔ PHẦN THƯƠNG MẠI MẶT TRỜI,167701196,"đường 422, cụm 13, Xã Ô Diên, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00648,CÔNG TY CỔ PHẦN THƯƠNG MẠI MINH PHƯƠNG,129917238,"Khu Long Vân, Xã Vân Du, Tỉnh Thanh Hóa",,55,Thanh Hóa,Miền Trung,thanh hoa,MATCHED_REGEX
+KH-00649,CÔNG TY CỔ PHẦN ĐÔNG NAM,101959033,"Khu Ba Đề, Xã Yên Lãng, Thành phố Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00650,DOANH NGHIỆP TW HOÀ BÌNH,268764819,"Cầu Đào, Thị trấn Nhân Thắng(Hết hiệu lưc), Tỉnh Bắc Ninh",,7,Bắc Ninh,Miền Bắc,bac ninh,MATCHED_REGEX
+KH-00651,CÔNG TY TNHH CHI THÀNH,207708009,"Xã Đại Đồng, tỉnh Hưng Yên",,31,Hưng Yên,Miền Bắc,hung yen,MATCHED_REGEX
+KH-00652,DOANH NGHIỆP TW XUÂN MAI,267491139,"Đường Quốc lộ 45, Khu phố 2, Xã Thiệu Hóa, Tỉnh Thanh Hóa",,55,Thanh Hóa,Miền Trung,thanh hoa,MATCHED_REGEX
+KH-00653,HỘ KINH DOANH SƠN HÀ,201290868,"thôn Hạ Lôi, Xã Mê Linh, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00654,HỘ KINH DOANH TÂY BẮC,262570297,"Thửa đất 23, tờ bản đồ 02, thôn Dương Huy, Phường Vân Hà, Tỉnh Bắc Ninh, Việt Nam",,7,Bắc Ninh,Miền Bắc,bac ninh,MATCHED_REGEX
+KH-00655,HỘ KINH DOANH TÂN TIẾN,186234866,"Xã Cẩm Trung, Hà Tĩnh",,25,Hà Tĩnh,Miền Trung,ha tinh,MATCHED_REGEX
+KH-00656,CỬA HÀNG XE ĐẠP VĨNH PHÁT,286247842,"Phố Giếng Khía, Xã Gia Lộc, TP Hải Phòng",,27,Hải Phòng,Miền Bắc,hai phong,MATCHED_REGEX
+KH-00657,CÔNG TY TNHH KHẢI HOÀN,291118110,"Phố Sàn, Xã Lục Nam, Bắc Ninh",,7,Bắc Ninh,Miền Bắc,bac ninh,MATCHED_REGEX
+KH-00658,DOANH NGHIỆP TW VĨNH PHÁT,223829306,"đường Nguyễn Công Trứ, khối 1, Phường Trường Vinh, Nghệ An",,40,Nghệ An,Miền Trung,nghe an,MATCHED_SUBSTRING_PRIMARY
+KH-00659,CỬA HÀNG XE ĐẠP QUANG VINH,232799936,"Xã Hợp Lý, Phú Thọ",,43,Phú Thọ,Miền Bắc,phu tho,MATCHED_REGEX
+KH-00660,CÔNG TY CỔ PHẦN THƯƠNG MẠI TOÀN THẮNG,194183069,"Thôn La Văn Cầu, Xã Nam Sách, TP Hải Phòng",,27,Hải Phòng,Miền Bắc,hai phong,MATCHED_REGEX
+KH-00661,HỘ KINH DOANH QUANG VINH,116141023,"đường 70, Phường Thanh Liệt, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00662,DOANH NGHIỆP TW ĐẠI DƯƠNG,240599472,"Cầu Tó, đường Phan Trọng Tuệ, Xã Đại Thanh, Thành phố Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00663,CÔNG TY CỔ PHẦN TRƯỜNG THỊNH,298813347,"Tổ dân phố Hòa Sơn, Phường Chương Mỹ, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00664,CÔNG TY CỔ PHẦN THƯƠNG MẠI TÂN TIẾN,136593384,"Xã Hòa Xá, Thành phố Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00665,CÔNG TY CỔ PHẦN TÂY BẮC,271182478,"Hoàng Đạo Thành, Phường Khương Đình, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00666,CÔNG TY CỔ PHẦN TÂN TIẾN,163284946,"Đường Minh Khai, Phường Tương Mai, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00667,CÔNG TY CỔ PHẦN MINH PHƯƠNG,172431458,"Phạm Văn Đồng, Khối 2, Xã Núi Thành, Thành phố Đà Nẵng",,16,Đà Nẵng,Miền Trung,da nang,MATCHED_REGEX
+KH-00668,CỬA HÀNG XE ĐẠP AN PHÁT,204212624,"Xã Tiên Lãng, Thành phố Hải Phòng",,27,Hải Phòng,Miền Bắc,hai phong,MATCHED_REGEX
+KH-00669,CÔNG TY TNHH THƯƠNG MẠI LONG PHÚ,164447246,"Xã Thiên Lộc, Thành phố Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00670,CỬA HÀNG XE ĐẠP THIÊN AN,294098662,"Xã cẩm trung , Huyện Cẩm xuyên , Tĩnh Hà Tĩnh",,25,Hà Tĩnh,Miền Trung,ha tinh,MATCHED_REGEX
+KH-00671,HỘ KINH DOANH VIỆT ANH,288545088,"Đường Xuân Thủy, Phường Cầu Giấy, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00672,CÔNG TY CỔ PHẦN TÂN TIẾN,197203228,"đường Cầu Diễn, Phường Phú Diễn, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00673,CỬA HÀNG XE ĐẠP HÙNG CƯỜNG,281322558,"đường Hồ Tùng Mậu, Phường Phú Diễn, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00674,CỬA HÀNG XE ĐẠP TÚ ANH,294480048,"đường Cầu Diễn, TDP Nguyên xá 2, Phường Tây Tựu, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00675,CỬA HÀNG XE ĐẠP SÁN LẠP,293463790,"Nhà số 10, ngõ 7, phố Nguyễn Khả Trạc, Phường Phú Diễn, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00676,CÔNG TY CỔ PHẦN THƯƠNG MẠI VẠN LỢI,195108987,"ngõ 2/27 đường Phương Canh, Tổ 2, Phường Xuân Phương, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00677,CỬA HÀNG XE ĐẠP LÊ ANH,216151781,"Xã Nội Bài, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00678,DOANH NGHIỆP TW MINH PHƯƠNG,184371363,"Quầy Q7 chợ Kim Giang, Phường Khương Đình, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00679,HỘ KINH DOANH ĐẠI DƯƠNG,265472961,"TK Cơ Quan, Phường Thảo Nguyên, Tỉnh Sơn La",,51,Sơn La,Miền Bắc,son la,MATCHED_REGEX
+KH-00680,HỘ KINH DOANH ĐẠI LỢI,123506143,"Đường Xô Viết Nghệ Tĩnh, Xã Can Lộc, Tỉnh Hà Tĩnh",,25,Hà Tĩnh,Miền Trung,ha tinh,MATCHED_REGEX
+KH-00681,DOANH NGHIỆP TW NGỌC ANH,192750698,"đường Trần Phú, tổ 11, Phường Hà Giang 2, Tuyên Quang",,59,Tuyên Quang,Miền Bắc,tuyen quang,MATCHED_REGEX
+KH-00682,DOANH NGHIỆP TW TRƯỜNG THỊNH,298952958,"phường sông cầu, Phường Bắc Kạn, Thái Nguyên",,54,Thái Nguyên,Miền Bắc,thai nguyen,MATCHED_REGEX
+KH-00683,DOANH NGHIỆP TW ĐẠI LỢI,193587406,"Phường Thi Sơn, Thị xã Kim Bảng, Hà Nam",,24,Hà Nam,Miền Bắc,ha nam,MATCHED_REGEX
+KH-00684,CÔNG TY CỔ PHẦN THƯƠNG MẠI VĨNH PHÁT,187455638,"Xã Yên Hòa, Hà Tĩnh",,25,Hà Tĩnh,Miền Trung,ha tinh,MATCHED_REGEX
+KH-00685,CÔNG TY CỔ PHẦN MẶT TRỜI,235249845,"Trần Khát Chân, Phường Hai Bà Trưng, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00686,CỬA HÀNG XE ĐẠP LONG PHÚ,264154293,"TT Tứ Trưng, Xã Vĩnh Tường, Tỉnh Phú Thọ",,43,Phú Thọ,Miền Bắc,phu tho,MATCHED_REGEX
+KH-00687,CÔNG TY CỔ PHẦN THƯƠNG MẠI LÊ ANH,116491290,"Đội 7, Thôn 2, Xã Quảng Bị, Huyện Chương Mỹ, Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00688,CÔNG TY CỔ PHẦN THƯƠNG MẠI XUÂN MAI,159013136,"Thửa đất số 109, tờ bản đồ số 41, khu Lê Bình, Thị trấn Thanh Miện, Huyện Thanh Miện, Hải Dương",,26,Hải Dương,Miền Bắc,hai duong,MATCHED_SUBSTRING_PRIMARY
+KH-00689,CÔNG TY TNHH THƯƠNG MẠI HOÀ BÌNH,160380169,"Đường An Khánh, Thôn Vân Lũng, Xã An Khánh, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00690,CỬA HÀNG XE ĐẠP NAM TIẾN,229779155,"đường Nguyễn Chí Thanh, Phường Thành Sen, Tỉnh Hà Tĩnh",,25,Hà Tĩnh,Miền Trung,ha tinh,MATCHED_REGEX
+KH-00691,CÔNG TY TNHH PHÚ THỊNH,282201142,"Xã Hưng Đạo, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00692,CỬA HÀNG XE ĐẠP SÁN LẠP,234723217,"đường Vạn Xuân, thôn Phố Thú Y, Xã Hoài Đức, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00693,CỬA HÀNG XE ĐẠP XÂY DỰNG,298726858,"Xã Hòa Phú, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00694,HỘ KINH DOANH NGỌC ANH,108715433,"Phố Kênh Đào, Xã Hồng Sơn, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00695,CÔNG TY CỔ PHẦN THƯƠNG MẠI AN PHÁT,109684991,"ngách 250/60 Kim Giang, Phường Định Công, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00696,CÔNG TY TNHH THƯƠNG MẠI PHÚ THỊNH,126180245,"Đường Trần Hưng Đạo, Xã Kẻ Sặt, TP Hải Phòng",,27,Hải Phòng,Miền Bắc,hai phong,MATCHED_REGEX
+KH-00697,CÔNG TY TNHH THƯƠNG MẠI TRƯỜNG THỊNH,145379687,"Hoàng Quốc Việt, Phường Nghĩa Đô, TP Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00698,CÔNG TY CỔ PHẦN THƯƠNG MẠI HÙNG CƯỜNG,119074357,"Ngõ 42 Phố Sài Đồng, Phường Phúc Lợi, Thành phố Hà Nội",,1,Hà Nội,Miền Bắc,ha noi,MATCHED_SUBSTRING_PRIMARY
+KH-00699,CÔNG TY CỔ PHẦN YÊN BÌNH,227063774,"Thửa đất số 183, tờ bản đồ số 33, thôn Ngò Báng, xã Đức Lý, huyện Lý Nhân, tỉnh Hà Nam",,24,Hà Nam,Miền Bắc,ha nam,MATCHED_REGEX
+KH-00700,CÔNG TY TNHH TÂY BẮC,274652796,"Nhân Vinh, Phường Đường Hào, Tỉnh Hưng Yên",,31,Hưng Yên,Miền Bắc,hung yen,MATCHED_REGEX
+KH-00701,CÔNG TY TNHH THƯƠNG MẠI TRƯỜNG THỊNH,148312767,"phố 3, Xã Tiên Điền, Hà Tĩnh",,25,Hà Tĩnh,Miền Trung,ha tinh,MATCHED_REGEX
+KH-00702,CỬA HÀNG XE ĐẠP YÊN BÌNH,255953146,"Xã Xuân Trường, Ninh Bình",,41,Ninh Bình,Miền Bắc,ninh binh,MATCHED_REGEX

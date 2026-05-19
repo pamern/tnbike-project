@@ -27,7 +27,7 @@ Hệ thống tự động thực hiện các tác vụ:
 - Git
 - ~2GB dung lượng trống
 
-### Các bước chính
+### 5 bước chính
 
 Chuẩn bị dữ liệu cho Power BI:
 ```powershell
@@ -45,11 +45,8 @@ pip install -r requirements.txt
 # 4. Khởi động database (PostgreSQL + Adminer)
 docker compose up -d
 
-# 5. Khởi tạo DB (init) hoặc reset (nếu cần DB sạch)
-.\scripts\database.ps1 -Action init
-
-# 6. (Tuỳ chọn) Restore DB từ backup
-py -m src.database.backup restore --input data/backup/restore_db/<ten_file_backup.sql>
+# 5. (Tuỳ chọn) Restore DB từ backup
+py -m src.database.backup restore --input data/backup/restore_db/<ten_file_backup.dump>
 
 ```
 

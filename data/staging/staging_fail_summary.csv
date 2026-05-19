@@ -1,5 +1,0 @@
-﻿group_type,group_value,count
-record_type,order_line,81
-record_type,sales_order,40
-error_group,product_code không tồn tại trong master,81
-error_group,Không còn order_line hợp lệ,40

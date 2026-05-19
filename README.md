@@ -133,7 +133,7 @@ python -m src.pipeline.run_pipeline --skip-update-fact
 #### Backup dữ liệu
 
 ```powershell
-py -m src.database.backup backup --format dump --timestamp```
+py -m src.database.backup backup --format dump --timestamp
 ```
 #### Restore dữ liệu
 

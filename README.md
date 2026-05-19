@@ -133,8 +133,7 @@ python -m src.pipeline.run_pipeline --skip-update-fact
 #### Backup dữ liệu
 
 ```powershell
-docker exec tnbike_postgres pg_dump -U postgres tnbike_db > backup/tnbike_db_$(Get-Date -Format 'yyyyMMdd').sql
-```
+py -m src.database.backup backup --format dump --timestamp```
 
 #### Restore dữ liệu
 

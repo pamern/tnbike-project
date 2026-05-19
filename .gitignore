@@ -6,6 +6,5 @@ __pycache__/
 
 # Else
 data/incoming/
-data/processed/eml/
-data/failed/
-temp/
+data/processed/
+logs/

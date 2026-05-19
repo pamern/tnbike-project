@@ -18,3 +18,4 @@ unidecode
 # watchdog
 matplotlib
 statsmodels
+pyyaml

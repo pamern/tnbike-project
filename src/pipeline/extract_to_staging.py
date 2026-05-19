@@ -76,7 +76,9 @@ REASON_PROCESSING = "PROCESSING"
 REASON_SUCCESS = "SUCCESS"
 REASON_NEW_CUSTOMER = "NEW_CUSTOMER"
 REASON_LINE_ERROR = "LINE_ERROR"
+REASON_PRODUCT_NOT_IN_MASTER_DATA = "PRODUCT_NOT_IN_MASTER_DATA"
 REASON_NEW_CUSTOMER_LINE_ERROR = "NEW_CUSTOMER+LINE_ERROR"
+REASON_NEW_CUSTOMER_PRODUCT_NOT_IN_MASTER_DATA = "NEW_CUSTOMER+PRODUCT_NOT_IN_MASTER_DATA"
 REASON_MISSING_PDF = "MISSING_PDF"
 REASON_HEADER_ERROR = "HEADER_ERROR"
 REASON_NO_LINES = "NO_LINES"
@@ -810,6 +812,19 @@ def validate_order_line(line: dict, product_codes: set[str]) -> list[str]:
     return errors
 
 
+def has_product_not_in_master_error(fail_rows: list[dict]) -> bool:
+    """
+    Dùng để tách riêng lỗi master data sản phẩm khỏi LINE_ERROR chung.
+    Chỉ cần có ít nhất 1 dòng lỗi product_code không tồn tại trong master
+    thì email_log.processing_reason sẽ ưu tiên PRODUCT_NOT_IN_MASTER_DATA.
+    """
+
+    return any(
+        "product_code không tồn tại trong master" in clean_text(row.get("error", ""))
+        for row in fail_rows
+    )
+
+
 # ============================================================
 # CUSTOMER STAGING
 # ============================================================
@@ -1022,11 +1037,17 @@ def process_email_to_staging_rows(
             }
         )
 
+        processing_reason = (
+            REASON_PRODUCT_NOT_IN_MASTER_DATA
+            if has_product_not_in_master_error(fail_rows)
+            else REASON_NO_VALID_LINES
+        )
+
         update_email_log_row(
             email_log_row,
             attachment_name=attachment_name,
             processing_status=STATUS_FAILED,
-            processing_reason=REASON_NO_VALID_LINES,
+            processing_reason=processing_reason,
         )
 
         return None, [], fail_rows, email_log_row, []
@@ -1075,13 +1096,20 @@ def process_email_to_staging_rows(
 
     has_new_customer = len(staging_customer_rows) > 0
     has_line_error = len(fail_rows) > 0
+    has_missing_product = has_product_not_in_master_error(fail_rows)
 
-    if has_new_customer and has_line_error:
+    if has_new_customer and has_missing_product:
+        processing_status = STATUS_NEEDS_REVIEW
+        processing_reason = REASON_NEW_CUSTOMER_PRODUCT_NOT_IN_MASTER_DATA
+    elif has_new_customer and has_line_error:
         processing_status = STATUS_NEEDS_REVIEW
         processing_reason = REASON_NEW_CUSTOMER_LINE_ERROR
     elif has_new_customer:
         processing_status = STATUS_NEEDS_REVIEW
         processing_reason = REASON_NEW_CUSTOMER
+    elif has_missing_product:
+        processing_status = STATUS_NEEDS_REVIEW
+        processing_reason = REASON_PRODUCT_NOT_IN_MASTER_DATA
     elif has_line_error:
         processing_status = STATUS_NEEDS_REVIEW
         processing_reason = REASON_LINE_ERROR
@@ -1123,7 +1151,7 @@ def normalize_error(error: str) -> str:
         ("Không trích xuất được MST", "Không trích xuất được MST"),
         ("Không trích xuất được customer_name", "Không trích xuất được customer_name từ email body"),
         ("Không tạo/lấy được customer_code", "Không tạo/lấy được customer_code"),
-        ("product_code không tồn tại trong master", "product_code không tồn tại trong master"),
+        ("product_code không tồn tại trong master", "product_code không tồn tại trong master data"),
         ("Không đủ 3 số cuối", "Không đủ 3 số cuối để lấy quantity, unit_price, line_total"),
         ("Lỗi parse số:", "Lỗi parse số"),
         ("Thiếu product_code", "Thiếu product_code"),

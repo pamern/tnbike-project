@@ -161,18 +161,6 @@ docker compose up -d
 ### 4. Debugging 
 
 ```powershell
-# Xem log chính
-Get-Content logs/run_pipeline.log -Tail 50
-
-# Xem error log
-Get-Content logs/error.log
-
-# Xem lỗi extract
-Get-Content data/processed/quality_check/extract_fail.csv
-
-# Xem lỗi load (legacy nếu có)
-Get-Content data/processed/staging/staging_fail.csv
-
 # Rollback thủ công
 python -m src.pipeline.fallback restore-db
 ```
@@ -378,13 +366,13 @@ Input: *.eml files in data/incoming/eml/
 │ - Generate quality check results        │
 └─────────────────────────────────────────┘
                     ↓
-        Output: staging CSVs
+        Output: 
         ├─ staging_sales_order.csv
         ├─ staging_order_line.csv
         ├─ staging_customer.csv
         ├─ staging_email_log.csv
-        ├─ staging_fail.csv (errors)
-        └─ extract_fail.csv (quality issues)
+        ├─ extract_fail.csv (errors)
+        └─ extract_fail_summary.csv
                     ↓
 ┌─────────────────────────────────────────┐
 │ STEP 2: LOAD                            │

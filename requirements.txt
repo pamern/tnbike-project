@@ -15,7 +15,8 @@ unidecode
 # transformers 
 # torch
 # openrouter
-# watchdog
+watchdog
 matplotlib
 statsmodels
 pyyaml
+scikit-learn

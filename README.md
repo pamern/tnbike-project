@@ -1,164 +1,422 @@
-﻿# tnbike-project
+﻿# TNBIKE Project
 
-## 1. Khởi tạo env
+> **ETL/ELT Pipeline cho TNBIKE**  
+> Tự động xử lý email → PostgreSQL DWH → Power BI Dashboard
 
-### 1.1. Tạo venv
+[![Python](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/)
+[![PostgreSQL](https://img.shields.io/badge/postgresql-14+-336791.svg)](https://www.postgresql.org/)
+[![Docker](https://img.shields.io/badge/docker-compose-2496ED.svg)](https://www.docker.com/)
 
+---
+## 🎯 Tổng quan
+
+Hệ thống tự động thực hiện các tác vụ:
+
+1. **Trích xuất** sales orders từ tệp đính kèm của email (`.eml` + PDF)
+2. **Chuẩn hoá** dữ liệu (khách hàng, tỉnh/thành, màu sản phẩm)
+3. **Nạp** dữ liệu giao dịch vào PostgreSQL (schema: `tnbike`)
+4. **Cập nhật** `fact_sales`, phục vụ phân tích kinh doanh
+
+---
+## ⚡ Thao tác nhanh
+
+### Yêu cầu tối thiểu
+
+- Python 3.10+
+- Docker & Docker Compose
+- Git
+- ~2GB dung lượng trống
+
+### 5 bước chính
+
+Chuẩn bị dữ liệu cho Power BI:
 ```powershell
+# 1. Clone và vào thư mục project
+git clone <repo-url>
+cd tnbike-project
+
+# 2. Tạo virtual environment
 python -m venv venv
 .\venv\Scripts\Activate.ps1
-```
 
-### 1.2. Cài thư viện
-
-```powershell
-python -m pip install -U pip
+# 3. Cài dependencies
 pip install -r requirements.txt
-```
 
-### 1.3. Cấu hình `.env`
-
-Tạo file `.env` ở root project (hoặc sửa file `.env` hiện có) với các biến tối thiểu:
-
-- `PGHOST` (ví dụ: `localhost`)
-- `PGPORT` (mặc định: `5432`)
-- `PGDATABASE` (mặc định: `tnbike_db`)
-- `PGUSER` (mặc định: `postgres`)
-- `PGPASSWORD` (mặc định: `postgres`)
-
-Python scripts trong `src/` sẽ đọc các biến này bằng `python-dotenv`.
-
-## 2. Khởi tạo docker
-
-Tại thư mục root (có `docker-compose.yml`):
-
-```powershell
+# 4. Khởi động database (PostgreSQL + Adminer)
 docker compose up -d
-docker ps
+
+# 5. (Tuỳ chọn) Restore DB từ backup
+py -m src.database.backup restore --input data/backup/restore_db/<ten_file_backup.dump>
+
 ```
 
-Postgres chạy ở `localhost:5432` (mặc định: user `postgres`, pass `postgres`, db `tnbike_db`).
+---
+## ⚙️ Cấu hình
 
-Adminer chạy ở `http://localhost:8080` để quản trị DB trên local.
+### Các biến môi trường
 
-Thông tin login Adminer (PostgreSQL):
-- System: `PostgreSQL`
-- Server: `postgres` (nếu Adminer chạy trong Docker Compose) hoặc `localhost` (nếu bạn chạy Adminer ngoài Docker)
-- Username: `postgres`
-- Password: `postgres`
-- Database: `tnbike_db`
+| Biến          | Mặc định    | Mô tả               |
+| ------------- | ----------- | ------------------- |
+| `PGHOST`      | `localhost` | PostgreSQL host     |
+| `PGPORT`      | `5432`      | PostgreSQL port     |
+| `PGDATABASE`  | `tnbike_db` | Database name       |
+| `PGUSER`      | `postgres`  | DB username         |
+| `PGPASSWORD`  | `postgres`  | DB password         |
+| `DB_SCHEMA`   | `tnbike`    | Schema mặc định     |
+| `DB_MIN_CONN` | `1`         | Số kết nối tối thiểu |
+| `DB_MAX_CONN` | `5`         | Số kết nối tối đa    |
 
-## 3. Restore DB (không cần chạy từng file SQL)
-
-Nếu bạn muốn có sẵn schema + data mẫu để chạy dashboard/Power BI nhanh, có thể restore từ file backup trong `data/backup/`.
-
-### 3.1. (Khuyến nghị) Làm sạch DB trước khi restore
-
-Nếu bạn đã từng import/restore trước đó và muốn reset về trạng thái sạch:
+## 🚀 Quy trình xử lý hoàn chỉnh
 
 ```powershell
+# 1. Clone và vào thư mục project
+git clone <repo-url>
+cd tnbike-project
+
+# 2. Tạo virtual environment
+python -m venv venv
+.\venv\Scripts\Activate.ps1
+
+# 3. Cài dependencies
+pip install -r requirements.txt
+
+# 4. Init database
+.\scripts\database.ps1 -Action init
+
+# 5. Preprocessing (all steps)
+python -m src.preprocessing.run_preprocessing
+
+# 6. Run pipeline (all steps)
+python -m src.pipeline.run_pipeline --rollback-on-fail
+```
+**Preprocessing (tuỳ chọn)**
+```powershell
+# Dry-run (chỉ in lệnh, không thực thi)
+python -m src.preprocessing.run_preprocessing --dry-run
+
+# Skip specific steps
+python -m src.preprocessing.run_preprocessing --skip-province --skip-color
+
+# Only map customers without province
+python -m src.preprocessing.run_preprocessing --only-missing-customer-province
+
+# Không reset customer.province_id trước khi map
+python -m src.preprocessing.run_preprocessing --no-reset-customer-province
+
+# Không rebuild fact_sales toàn bộ (không truyền --all cho update_fact_sales)
+python -m src.preprocessing.run_preprocessing --no-refresh-fact-all
+```
+
+**Chạy pipeline (tuỳ chọn)**
+```powershell
+# Test with 5 emails only
+python -m src.pipeline.run_pipeline --limit 5
+
+# Dry-run (no DB changes)
+python -m src.pipeline.run_pipeline --dry-run
+
+# Create timestamped restore point
+python -m src.pipeline.run_pipeline --timestamp-restore-point
+
+# Move files even with --limit
+python -m src.pipeline.run_pipeline --limit 5 --move-on-limit
+
+# Auto-rollback on failure
+python -m src.pipeline.run_pipeline --rollback-on-fail
+
+# Skip updating fact_sales
+python -m src.pipeline.run_pipeline --skip-update-fact
+```
+
+### 3. Vận hành cơ sở dữ liệu 
+
+#### Backup dữ liệu
+
+```powershell
+py -m src.database.backup backup --format dump --timestamp
+```
+#### Restore dữ liệu
+
+```powershell
+# Backup dạng dump
+py -m src.database.backup backup --format dump --timestamp
+# Hoặc dạng sql
+py -m src.database.backup backup --format sql --timestamp
+```
+
+#### Giao diện cơ sở dữ liệu
+
+Đường dẫn http://localhost:8080 và thực hiện đăng nhập theo cấu hình ở file .env
+
+#### Reset cơ sở dữ liệu (CẨN THẬN)
+
+```powershell
+# Remove all data and volumes
 docker compose down -v
+
+# Restart fresh
 docker compose up -d
 ```
 
-### 3.2. Restore từ file backup
-
-File backup hiện có: `data/backup/tnbike_db_backup.sql`.
+### 4. Debugging 
 
 ```powershell
-docker cp data/backup/tnbike_db_backup.sql tnbike_postgres:/tmp/tnbike_db_backup.sql
-docker exec -it tnbike_postgres psql -U postgres -d tnbike_db -f /tmp/tnbike_db_backup.sql
+# Rollback thủ công
+python -m src.pipeline.fallback restore-db
 ```
-Lưu ý: Nếu restore db thì trực tiếp connect với Power BI luôn.
-## 4. Import dữ liệu
 
-### 4.1. Tạo bảng
+### 5. Power BI 
+
+**File:** `dashboard/tnbike_dashboard.pbix`
+
+**Steps:**
+
+1. Open Power BI Desktop
+2. Click "Get Data" → PostgreSQL
+3. Connection settings:
+   - Server: `localhost:5432`
+   - Database: `tnbike_db`
+4. Load tables: `fact_sales`, `sales_order`, `order_line`
+5. Click "Refresh" to update data
+
+---
+
+## ⏱️ Scheduling
+
+### Tổng quan
+
+Scheduler cho phép tự động chạy pipeline theo nhiều chế độ:
+
+- **Manual**: chạy 1 lần theo yêu cầu
+- **Watch**: tự chạy khi có file `.eml` mới trong thư mục incoming
+- **Interval**: chạy mỗi N phút
+- **Fixed Time**: chạy theo giờ cố định trong tuần
+
+### File cấu hình
+
+**Vị trí**: `schedules/pipeline_schedule.yaml`
+
+#### Mode 1: Manual (chạy 1 lần)
 
 ```powershell
-docker cp sql/01_create_tables.sql tnbike_postgres:/01_create_tables.sql
-docker exec -it tnbike_postgres psql -U postgres -d tnbike_db -f /01_create_tables.sql
+python schedules/run_pipeline_scheduler.py
+# or
+python -m schedules.run_pipeline_scheduler
 ```
 
-### 4.2. Import dữ liệu ban đầu
+**Phù hợp**: test nhanh, chạy thủ công
+
+#### Mode 2: Watch (tự chạy khi có file mới)
+
+```yaml
+mode: watch
+watch:
+  poll_seconds: 10
+  stable_seconds: 5
+```
 
 ```powershell
-docker cp sql/02_import_data.sql tnbike_postgres:/02_import_data.sql
-docker exec -it tnbike_postgres psql -U postgres -d tnbike_db -f /02_import_data.sql
+python schedules/run_pipeline_scheduler.py
 ```
 
-## 5. Xử lý dữ liệu
+**Cách hoạt động:**
+1. Poll thư mục `data/incoming/eml/` mỗi 10 giây
+2. Khi phát hiện `.eml` mới, đợi 5 giây để file copy xong
+3. Tự động chạy pipeline
+4. Di chuyển `.eml` đã xử lý sang success/failed
+5. Tiếp tục canh thư mục
 
-Chạy extract để đọc email/PDF tháng 3/2026 và xuất ra các file staging CSV trong `data/staging/`.
+**Phù hợp**: vận hành liên tục trong giờ làm việc
 
-Input mặc định:
-- `data/raw/tnbike_emails_mar2026/`
+#### Mode 3: Interval (mỗi N phút)
 
-Output:
-- `data/staging/staging_email_log.csv`
-- `data/staging/staging_sales_order.csv`
-- `data/staging/staging_order_line.csv`
-- (tùy trường hợp) `data/staging/staging_customer.csv`, `data/staging/staging_customer_log.csv`
-- file lỗi: `data/staging/staging_fail.csv`, `data/staging/staging_fail_summary.csv`
+```yaml
+mode: interval
+interval:
+  every_minutes: 60
+```
 
 ```powershell
-python src/extract_data.py
+python schedules/run_pipeline_scheduler.py
 ```
 
-## 6. Import log, ghi dữ liệu 3/2026
+**Phù hợp**: chạy theo batch định kỳ (ví dụ mỗi giờ)
 
-### 6.1. Tạo bảng email log
+#### Mode 4: Fixed Time (chạy theo giờ cố định)
+
+```yaml
+mode: fixed_time
+fixed_time:
+  times:
+    - "08:00"
+    - "12:00"
+    - "17:30"
+  days:
+    - mon
+    - tue
+    - wed
+    - thu
+    - fri
+```
+
+### Scheduler Options
 
 ```powershell
-docker cp sql/03_create_email_log.sql tnbike_postgres:/03_create_email_log.sql
-docker exec -it tnbike_postgres psql -U postgres -d tnbike_db -f /03_create_email_log.sql
+# Dùng file config cụ thể
+python schedules/run_pipeline_scheduler.py --config schedules/pipeline_schedule.yaml
+
+# Ghi đè mode
+python schedules/run_pipeline_scheduler.py --mode watch
+```
+---
+## 📁 Cấu trúc thư mục
+
+```
+tnbike-project/
+│
+├── README.md                      # Tài liệu hướng dẫn
+├── requirements.txt               # Thư viện Python
+├── docker-compose.yml             # PostgreSQL + Adminer
+└── .env                           # Biến môi trường
+│
+├── src/                           # Mã nguồn
+│   ├── __init__.py
+│   ├── constants.py              # Hằng số dùng chung
+│   ├── types.py                  # Định nghĩa kiểu dữ liệu
+│   │
+│   ├── config/                   # Cấu hình
+│   │   ├── __init__.py
+│   │   ├── settings.py           # Thiết lập & đường dẫn
+│   │   └── logging_config.py     # Cấu hình ghi log
+│   │
+│   ├── utils/                    # Tiện ích
+│   │   ├── __init__.py
+│   │   ├── time_utils.py         # Tiện ích thời gian
+│   │   ├── file_utils.py         # Tiện ích xử lý file
+│   │   └── executor.py           # Chạy từng bước (bước)
+│   │
+│   ├── database/                 # Tầng database
+│   │   ├── connection.py         # Kết nối DB / pool
+│   │   └── backup.py             # Backup/restore DB
+│   │
+│   ├── pipeline/                 # Pipeline ETL chính
+│   │   ├── __init__.py
+│   │   ├── run_pipeline.py       # Điều phối pipeline ⭐
+│   │   ├── extract_to_staging.py # Trích xuất email
+│   │   ├── load_staging_to_db.py # Load dữ liệu vào DB
+│   │   ├── update_fact_sales.py  # Cập nhật fact_sales
+│   │   ├── move_processed_file.py # Di chuyển file đã xử lý
+│   │   ├── fallback.py           # Fallback/rollback DB
+│   │   └── email_extractor.py    # Phân tích PDF/đơn hàng
+│   │
+│   ├── preprocessing/            # Chuẩn hoá dữ liệu master
+│   │   ├── __init__.py
+│   │   ├── run_preprocessing.py  # Điều phối preprocessing
+│   │   ├── standardize_province.py     # Chuẩn hoá tỉnh/thành
+│   │   ├── map_customer_province.py    # Map tỉnh/thành cho customer
+│   │   └── standardize_color.py        # Chuẩn hoá màu
+│   │
+│   └── analystics/               # Phân tích
+│       └── overview.ipynb        # Notebook phân tích
+│
+├── sql/                          # Schema DB / script SQL
+│   ├── 01_create_tables.sql      # Tạo bảng
+│   ├── 02_import_data.sql        # Import dữ liệu ban đầu
+│   ├── 03_create_email_log.sql   # Tạo bảng email_log
+│   └── 04_standardize_province.sql # Chuẩn hoá tỉnh/thành
+│
+├── schedules/                    # Lịch chạy pipeline
+│   ├── run_pipeline_scheduler.py # Chương trình scheduler ⚙️
+│   └── pipeline_schedule.yaml    # Cấu hình lịch
+│
+├── data/                         # Dữ liệu (thường bỏ qua bởi git)
+│   ├── incoming/eml/             # Email đầu vào (thư mục watch)
+│   ├── processed/
+│   │   ├── staging/              # CSV staging
+│   │   ├── quality_check/        # Lỗi trích xuất
+│   │   ├── cleaned/              # Dữ liệu đã làm sạch (nếu có)
+│   │   ├── success_eml/eml/      # Email xử lý OK
+│   │   └── failed_eml/eml/       # Email lỗi
+│   └── backup/                   # Backup/restore point của DB
+│
+├── logs/                         # Log chạy (thường bỏ qua bởi git)
+│   ├── run_pipeline.log
+│   ├── error.log
+│   └── run_preprocessing.log
+│
+├── dashboard/
+│   └── tnbike_dashboard.pbix     # Dashboard Power BI
+│
+└── reports/                      # Báo cáo xuất ra
+    └── img/pipeline.png          # Sơ đồ pipeline
 ```
 
-### 6.1a. Chú thích `email_log.processing_status`
+---
 
-File `data/staging/staging_email_log.csv` có cột `processing_status` (được ghi bởi `python src/extract_data.py`). Ý nghĩa:
+## 🔄 Pipeline Flow
 
-- `STARTED`: bắt đầu xử lý email (đã parse header/body, chưa kết luận).
-- `SUCCESS`: xử lý thành công, có ghi `sales_order` + `order_line`, không có lỗi kèm theo.
-- `PARTIAL_SUCCESS`: xử lý được nhưng có phát sinh lỗi dòng (`staging_fail.csv`) hoặc phát sinh customer mới cần staging.
-- `FAILED_NO_ATTACHMENT`: không tìm thấy file PDF đính kèm.
-- `FAILED_VALIDATION`: header đơn hàng thiếu trường bắt buộc nên không ghi `sales_order/order_line`.
-- `FAILED_NO_LINES`: không trích xuất được dòng hàng nào từ PDF nên không ghi `sales_order/order_line`.
-- `FAILED_NO_VALID_LINES`: có parse line nhưng không còn line hợp lệ (ví dụ product_code không có trong master) nên không ghi `sales_order`.
-- `FAILED_CUSTOMER`: không tạo/lấy được `customer_code` nên không ghi `sales_order/order_line`.
-
-Ghi chú: `NEW_CUSTOMER` là status dùng cho `staging_customer_log.csv` (không phải `email_log.processing_status`).
-
-### 6.2. Import staging CSV vào DB (email_log / sales_order / order_line)
-
-```powershell
-python src/import_staging_to_db.py
+```
+Input: *.eml files in data/incoming/eml/
+                    ↓
+┌─────────────────────────────────────────┐
+│ STEP 1: EXTRACT                         │
+│ - Read .eml files                       │
+│ - Parse PDF attachments                 │
+│ - Extract order/customer/product info   │
+│ - Generate quality check results        │
+└─────────────────────────────────────────┘
+                    ↓
+        Output: 
+        ├─ staging_sales_order.csv
+        ├─ staging_order_line.csv
+        ├─ staging_customer.csv
+        ├─ staging_email_log.csv
+        ├─ extract_fail.csv (errors)
+        └─ extract_fail_summary.csv
+                    ↓
+┌─────────────────────────────────────────┐
+│ STEP 2: LOAD                            │
+│ - Validate data quality                 │
+│ - Upsert to PostgreSQL                  │
+│ - Log processing results                │
+└─────────────────────────────────────────┘
+                    ↓
+        Output: Updated database tables
+        ├─ tnbike.sales_order (upserted)
+        ├─ tnbike.order_line (upserted)
+        ├─ tnbike.customer (upserted)
+        └─ tnbike.email_log (inserted)
+                    ↓
+┌─────────────────────────────────────────┐
+│ STEP 3: REFRESH FACT                    │
+│ - Delete old fact_sales rows            │
+│ - Recalculate from base tables          │
+│ - Update fact_sales                     │
+└─────────────────────────────────────────┘
+                    ↓
+        Output: Refreshed fact table
+        └─ tnbike.fact_sales
+                    ↓
+┌─────────────────────────────────────────┐
+│ STEP 4: ORGANIZE FILES                  │
+│ - Successful emails → success folder    │
+│ - Failed emails → failed folder         │
+└─────────────────────────────────────────┘
+                    ↓
+Output: Organized .eml files
+├─ data/processed/success_eml/eml/ ✓
+└─ data/processed/failed_eml/eml/ ✗
 ```
 
-## 7. Đồng bộ fact_sales
+### Processing Status Values
 
-Chạy refresh `fact_sales` cho tháng 03/2026 (xóa/insert lại để tránh duplicate):
+| Status         | Ý nghĩa              | Nơi ghi nhận                | Hành động              |
+| -------------- | -------------------- | --------------------------- | ---------------------- |
+| `PROCESSING`   | Đang xử lý           | `email_log`                 | Pipeline đang chạy     |
+| `SUCCESS`      | Xử lý thành công     | `email_log`                 | Move sang success      |
+| `NEEDS_REVIEW` | Cần kiểm tra thủ công | `email_log`                 | Move sang success      |
+| `FAILED`       | Lỗi xử lý            | `email_log`                 | Move sang failed       |
 
-```powershell
-docker cp sql/04_refresh_fact_sales_03_2026.sql tnbike_postgres:/04_refresh_fact_sales_03_2026.sql
-docker exec -it tnbike_postgres psql -U postgres -d tnbike_db -f /04_refresh_fact_sales_03_2026.sql
-```
+---
 
-## 8. Connect DB với Power BI
-
-### 8.1. Thông tin kết nối (mặc định)
-
-- Server: `localhost`
-- Port: `5432`
-- Database: `tnbike_db`
-- Username: `postgres`
-- Password: `postgres`
-
-### 8.2. Kết nối trong Power BI Desktop
-
-1. `Home` → `Get data` → `PostgreSQL database`.
-2. Nhập:
-   - `Server`: `localhost:5432`
-   - `Database`: `tnbike_db`
-3. Chọn mode: `Import` (khuyến nghị).
-4. Khi được hỏi credentials, chọn `Database` và nhập user/password ở trên.
-5. Trong Navigator, chọn schema `tnbike` và các bảng cần dùng (thường: `fact_sales`, `sales_order`, `order_line`, `customer`, `product`...).
+## 📄 License

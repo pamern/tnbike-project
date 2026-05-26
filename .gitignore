@@ -5,5 +5,9 @@ venv/
 __pycache__/
 
 # Else
-data/raw/tnbike_emails_mar2026/
-data/raw/tnbike_pdfs_mar2026/
+data/incoming/
+data/processed/cleaned/
+data/processed/failed_eml/
+data/processed/success_eml/
+
+logs/

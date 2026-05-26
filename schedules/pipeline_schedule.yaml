@@ -1,0 +1,56 @@
+# ============================================================
+# schedules/pipeline_schedule.yaml
+# Admin config for running TNBIKE pipeline
+# ============================================================
+
+enabled: true
+
+# Modes:
+#   manual     : chạy 1 lần rồi dừng
+#   watch      : tự chạy khi có file .eml trong incoming
+#   interval   : chạy sau mỗi N phút
+#   fixed_time : chạy theo giờ cố định trong ngày
+mode: fixed_time
+
+pipeline:
+  input_dir: data/incoming/eml
+  staging_dir: data/processed/staging
+  quality_check_dir: data/processed/quality_check
+  success_dir: data/processed/success_eml/eml
+  failed_dir: data/processed/failed_eml/eml
+
+  limit:
+
+  skip_restore_point: false
+  timestamp_restore_point: false
+  dry_run: false
+
+  skip_update_fact: false
+  refresh_fact_all: false
+
+  skip_move_files: false
+  move_on_limit: false
+
+  rollback_on_fail: true
+
+watch:
+  poll_seconds: 10
+  stable_seconds: 5
+  file_pattern: "*.eml"
+
+interval:
+  every_minutes: 60
+
+fixed_time:
+  times:
+    - "08:00"
+    - "17:10"
+
+  # mon, tue, wed, thu, fri, sat, sun
+  days:
+    - mon
+    - tue
+    - wed
+    - thu
+    - fri
+    - sat

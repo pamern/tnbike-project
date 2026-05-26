@@ -53,7 +53,7 @@ def get_db_connection():
     """
 
     try:
-        from src.utils.db_connection import get_connection
+        from src.utils.db_connection import get_connection # type: ignore
 
         logger.info("Using src.utils.db_connection.get_connection()")
         return get_connection()

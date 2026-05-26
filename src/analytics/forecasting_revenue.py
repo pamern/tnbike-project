@@ -1,9 +1,9 @@
 """
-forecasting_revenue_adjusted.py
+forecasting_revenue.py
 
-Code hiệu chỉnh phần forecast Q2/2026 cho notebook `forcasting_revenue.ipynb`.
+Code forecast Q2/2026 cho `src/analytics/forecasting_revenue.py`.
 
-Mục tiêu sửa:
+Mục tiêu:
 1. Không tạo dòng tháng tương lai với qty = 0 để predict chính tháng đó.
 2. Dự báo T4 bằng trạng thái T3/2026, T5 bằng trạng thái forecast T4, T6 bằng trạng thái forecast T5.
 3. Nếu Random Forest kém baseline, dùng baseline tốt hơn làm fallback.
@@ -13,14 +13,19 @@ Mục tiêu sửa:
 
 Cách dùng trong notebook:
 - Chạy xong các cell tạo `df_model_input` và `df_train_ready`.
-- Dán/chạy toàn bộ file này trong một cell hoặc `%run path/to/forecasting_revenue_adjusted.py`.
+- Dán/chạy toàn bộ file này trong một cell hoặc `%run src/analytics/forecasting_revenue.py`.
 """
 
 from __future__ import annotations
 
 from pathlib import Path
+
 import numpy as np
 import pandas as pd
+
+CSV_ENCODING = "utf-8-sig"
+INPUT_SUBDIR = Path("data") / "processed" / "forecast" / "input"
+OUTPUT_SUBDIR = Path("data") / "processed" / "forecast" / "results" / "sku_monthly_q2_2026"
 
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
@@ -32,18 +37,365 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
 
 # ============================================================
-# 0. Auto-load required dataframes if running as a .py file
+# 0. Load / prepare required dataframes
 # ============================================================
+
+PREP_CATEGORICAL_FEATURES = [
+    "product_code",
+    "group_code",
+    "group_name",
+    "line_name",
+    "color",
+]
+
+PREP_NUMERIC_FEATURES = [
+    "fiscal_year",
+    "fiscal_month",
+    "qty",
+    "revenue",
+    "order_count",
+    "active_dealer_count",
+    "avg_unit_price",
+    "qty_lag_1",
+    "qty_lag_2",
+    "revenue_lag_1",
+    "revenue_lag_2",
+    "rolling_2m_qty",
+    "rolling_3m_qty",
+    "mom_qty_growth",
+    "mom_revenue_growth",
+    "group_month_qty",
+    "group_month_revenue",
+    "sku_qty_share_in_group",
+    "sku_revenue_share_in_group",
+    "same_month_qty_last_year",
+    "same_month_revenue_last_year",
+    "sku_yoy_qty_growth",
+    "sku_yoy_revenue_growth",
+    "has_sku_yoy",
+    "is_new_sku",
+    "missing_master_flag",
+    "missing_group_flag",
+    "missing_line_flag",
+    "missing_color_flag",
+    "numeric_issue_flag",
+    "outlier_flag",
+]
+
+
+def _resolve_project_root() -> Path:
+    """Tìm project root khi chạy bằng `py -m src.analytics.forecasting_revenue`."""
+    try:
+        return Path(project_root)
+    except NameError:
+        root = Path.cwd()
+        if not (root / "data").exists() and (root.parent / "data").exists():
+            root = root.parent
+        return root
+
+
+def _read_fact_sales_from_postgres() -> pd.DataFrame:
+    """
+    Đọc dữ liệu từ PostgreSQL bảng tnbike.fact_sales.
+
+    Cần file .env ở project root có các biến:
+    PGHOST, PGPORT, PGDATABASE, PGUSER, PGPASSWORD.
+    """
+    try:
+        from dotenv import load_dotenv
+        import psycopg2
+    except ImportError as exc:
+        raise ImportError(
+            "Thiếu thư viện để đọc PostgreSQL. Cài thêm: pip install python-dotenv psycopg2-binary"
+        ) from exc
+
+    import os
+
+    root = _resolve_project_root()
+    load_dotenv(root / ".env")
+
+    conn_kwargs = {
+        "host": os.getenv("PGHOST", "localhost"),
+        "port": int(os.getenv("PGPORT", "5432")),
+        "dbname": os.getenv("PGDATABASE", "tnbike_db"),
+        "user": os.getenv("PGUSER", "postgres"),
+        "password": os.getenv("PGPASSWORD", "postgres"),
+    }
+
+    query = """
+        SELECT
+            order_date,
+            fiscal_year,
+            fiscal_month,
+            so_number,
+            customer_code,
+            product_code,
+            product_name,
+            color,
+            line_name,
+            group_code,
+            group_name,
+            quantity,
+            unit_price,
+            line_total
+        FROM tnbike.fact_sales
+        WHERE order_date IS NOT NULL
+    """
+
+    with psycopg2.connect(**conn_kwargs) as conn:
+        return pd.read_sql_query(query, conn)
+
+
+def _rebuild_features_for_prepared_panel(panel: pd.DataFrame) -> pd.DataFrame:
+    """Tạo lại lag, rolling, tỷ trọng nhóm và YoY cho panel SKU-tháng."""
+    panel = panel.copy()
+    panel = panel.sort_values(["product_code", "fiscal_year", "fiscal_month"])
+
+    # Lag theo SKU
+    panel["qty_lag_1"] = panel.groupby("product_code")["qty"].shift(1)
+    panel["qty_lag_2"] = panel.groupby("product_code")["qty"].shift(2)
+    panel["revenue_lag_1"] = panel.groupby("product_code")["revenue"].shift(1)
+    panel["revenue_lag_2"] = panel.groupby("product_code")["revenue"].shift(2)
+
+    # Rolling chỉ dùng tháng quá khứ, không dùng tháng hiện tại để tránh leakage
+    panel["rolling_2m_qty"] = (
+        panel.groupby("product_code")["qty"]
+        .transform(lambda s: s.shift(1).rolling(window=2, min_periods=1).mean())
+    )
+    panel["rolling_3m_qty"] = (
+        panel.groupby("product_code")["qty"]
+        .transform(lambda s: s.shift(1).rolling(window=3, min_periods=1).mean())
+    )
+
+    panel["mom_qty_growth"] = np.where(
+        panel["qty_lag_1"] > 0,
+        (panel["qty"] - panel["qty_lag_1"]) / panel["qty_lag_1"],
+        0,
+    )
+    panel["mom_revenue_growth"] = np.where(
+        panel["revenue_lag_1"] > 0,
+        (panel["revenue"] - panel["revenue_lag_1"]) / panel["revenue_lag_1"],
+        0,
+    )
+
+    panel = panel.drop(columns=["group_month_qty", "group_month_revenue"], errors="ignore")
+    group_month_total = (
+        panel.groupby(["fiscal_year", "fiscal_month", "group_name"], dropna=False)
+        .agg(
+            group_month_qty=("qty", "sum"),
+            group_month_revenue=("revenue", "sum"),
+        )
+        .reset_index()
+    )
+    panel = panel.merge(
+        group_month_total,
+        on=["fiscal_year", "fiscal_month", "group_name"],
+        how="left",
+    )
+
+    panel["sku_qty_share_in_group"] = np.where(
+        panel["group_month_qty"] > 0,
+        panel["qty"] / panel["group_month_qty"],
+        0,
+    )
+    panel["sku_revenue_share_in_group"] = np.where(
+        panel["group_month_revenue"] > 0,
+        panel["revenue"] / panel["group_month_revenue"],
+        0,
+    )
+
+    last_year = panel[["product_code", "fiscal_year", "fiscal_month", "qty", "revenue"]].copy()
+    last_year["fiscal_year"] = last_year["fiscal_year"] + 1
+    last_year = last_year.rename(
+        columns={
+            "qty": "same_month_qty_last_year",
+            "revenue": "same_month_revenue_last_year",
+        }
+    )
+    panel = panel.drop(
+        columns=["same_month_qty_last_year", "same_month_revenue_last_year"],
+        errors="ignore",
+    )
+    panel = panel.merge(
+        last_year,
+        on=["product_code", "fiscal_year", "fiscal_month"],
+        how="left",
+    )
+
+    panel["same_month_qty_last_year"] = panel["same_month_qty_last_year"].fillna(0)
+    panel["same_month_revenue_last_year"] = panel["same_month_revenue_last_year"].fillna(0)
+    panel["has_sku_yoy"] = (panel["same_month_qty_last_year"] > 0).astype(int)
+    panel["sku_yoy_qty_growth"] = np.where(
+        panel["same_month_qty_last_year"] > 0,
+        (panel["qty"] - panel["same_month_qty_last_year"]) / panel["same_month_qty_last_year"],
+        0,
+    )
+    panel["sku_yoy_revenue_growth"] = np.where(
+        panel["same_month_revenue_last_year"] > 0,
+        (panel["revenue"] - panel["same_month_revenue_last_year"]) / panel["same_month_revenue_last_year"],
+        0,
+    )
+
+    numeric_cols = list(dict.fromkeys(PREP_NUMERIC_FEATURES + ["qty_next_month"]))
+    for col in numeric_cols:
+        if col not in panel.columns:
+            panel[col] = 0
+        panel[col] = pd.to_numeric(panel[col], errors="coerce")
+
+    panel[numeric_cols] = panel[numeric_cols].replace([np.inf, -np.inf], np.nan).fillna(0)
+    return panel
+
+
+def _prepare_forecast_input_from_fact_sales() -> tuple[pd.DataFrame, pd.DataFrame]:
+    """
+    Chuẩn bị df_model_input và df_train_ready trực tiếp từ fact_sales.
+
+    Hàm này chỉ tạo dataframe trong bộ nhớ.
+    File input CSV được xuất sau bước split, chỉ gồm:
+    - train_sku.csv
+    - test_sku.csv
+    """
+    root = _resolve_project_root()
+    input_dir = root / INPUT_SUBDIR
+    input_dir.mkdir(parents=True, exist_ok=True)
+
+    fact = _read_fact_sales_from_postgres()
+    if fact.empty:
+        raise ValueError("Bảng tnbike.fact_sales đang rỗng, không thể chuẩn bị dữ liệu forecast.")
+
+    fact = fact.copy()
+    fact["order_date"] = pd.to_datetime(fact["order_date"], errors="coerce")
+    fact["fiscal_year"] = pd.to_numeric(fact["fiscal_year"], errors="coerce").astype("Int64")
+    fact["fiscal_month"] = pd.to_numeric(fact["fiscal_month"], errors="coerce").astype("Int64")
+    fact["product_code"] = fact["product_code"].astype("string")
+
+    for col in ["quantity", "unit_price", "line_total"]:
+        fact[col] = pd.to_numeric(fact[col], errors="coerce").fillna(0)
+
+    dim_cols = ["product_code", "product_name", "color", "line_name", "group_code", "group_name"]
+    product_dim = (
+        fact.sort_values("order_date")
+        .groupby("product_code", as_index=False)[dim_cols[1:]]
+        .last()
+    )
+
+    months = (
+        fact[["fiscal_year", "fiscal_month"]]
+        .dropna()
+        .drop_duplicates()
+        .sort_values(["fiscal_year", "fiscal_month"])
+        .reset_index(drop=True)
+    )
+    products = product_dim[["product_code"]].drop_duplicates().reset_index(drop=True)
+
+    # Cross join để mỗi SKU có đủ dòng theo từng tháng quan sát được.
+    months["_key"] = 1
+    products["_key"] = 1
+    panel = products.merge(months, on="_key", how="outer").drop(columns="_key")
+    panel = panel.merge(product_dim, on="product_code", how="left")
+
+    monthly = (
+        fact.groupby(["fiscal_year", "fiscal_month", "product_code"], dropna=False)
+        .agg(
+            qty=("quantity", "sum"),
+            revenue=("line_total", "sum"),
+            order_count=("so_number", "nunique"),
+            active_dealer_count=("customer_code", "nunique"),
+            observed_avg_unit_price=("unit_price", "mean"),
+        )
+        .reset_index()
+    )
+
+    panel = panel.merge(monthly, on=["fiscal_year", "fiscal_month", "product_code"], how="left")
+    for col in ["qty", "revenue", "order_count", "active_dealer_count", "observed_avg_unit_price"]:
+        panel[col] = pd.to_numeric(panel[col], errors="coerce").fillna(0)
+
+    product_price_fallback = (
+        fact[fact["unit_price"] > 0]
+        .groupby("product_code", as_index=False)
+        .agg(product_avg_unit_price=("unit_price", "median"))
+    )
+    panel = panel.merge(product_price_fallback, on="product_code", how="left")
+    global_price = float(fact.loc[fact["unit_price"] > 0, "unit_price"].median()) if (fact["unit_price"] > 0).any() else 0
+    panel["avg_unit_price"] = np.where(
+        panel["qty"] > 0,
+        panel["revenue"] / panel["qty"].replace(0, np.nan),
+        panel["product_avg_unit_price"],
+    )
+    panel["avg_unit_price"] = pd.to_numeric(panel["avg_unit_price"], errors="coerce").fillna(global_price).fillna(0)
+    panel = panel.drop(columns=["observed_avg_unit_price", "product_avg_unit_price"], errors="ignore")
+
+    for col in PREP_CATEGORICAL_FEATURES:
+        panel[col] = panel[col].astype("string").fillna("Unknown")
+        panel[col] = panel[col].replace({"": "Unknown", "<NA>": "Unknown"})
+
+    panel["missing_group_flag"] = panel["group_name"].isin(["Unknown", "", pd.NA]).astype(int)
+    panel["missing_line_flag"] = panel["line_name"].isin(["Unknown", "", pd.NA]).astype(int)
+    panel["missing_color_flag"] = panel["color"].isin(["Unknown", "", pd.NA]).astype(int)
+    panel["missing_master_flag"] = (
+        (panel["missing_group_flag"] == 1)
+        | (panel["missing_line_flag"] == 1)
+        | (panel["missing_color_flag"] == 1)
+    ).astype(int)
+    panel["numeric_issue_flag"] = ((panel["qty"] < 0) | (panel["revenue"] < 0) | (panel["avg_unit_price"] < 0)).astype(int)
+
+    first_sale = (
+        fact[fact["quantity"] > 0]
+        .groupby("product_code", as_index=False)
+        .agg(first_sale_date=("order_date", "min"))
+    )
+    panel = panel.merge(first_sale, on="product_code", how="left")
+    panel["is_new_sku"] = (panel["first_sale_date"].dt.year >= 2026).astype(int)
+    panel = panel.drop(columns=["first_sale_date"], errors="ignore")
+
+    # Outlier đơn giản theo SKU, chỉ đánh dấu để model biết tháng bất thường; không xoá dữ liệu.
+    panel["outlier_flag"] = 0
+    for _, idx in panel.groupby("product_code").groups.items():
+        qty = panel.loc[idx, "qty"].astype(float)
+        if len(qty) >= 4:
+            q1, q3 = qty.quantile(0.25), qty.quantile(0.75)
+            iqr = q3 - q1
+            if iqr > 0:
+                panel.loc[idx, "outlier_flag"] = ((qty < q1 - 1.5 * iqr) | (qty > q3 + 1.5 * iqr)).astype(int)
+
+    panel["year_month"] = panel["fiscal_year"].astype(str) + "-" + panel["fiscal_month"].astype(str).str.zfill(2)
+    panel = _rebuild_features_for_prepared_panel(panel)
+
+    panel = panel.sort_values(["product_code", "fiscal_year", "fiscal_month"])
+    panel["qty_next_month"] = panel.groupby("product_code")["qty"].shift(-1)
+
+    # Chỉ train/backtest trên các dòng có tháng kế tiếp thật sự trong dữ liệu.
+    train_ready = panel[panel["qty_next_month"].notna()].copy()
+
+    # Chuẩn hoá cột lần cuối để tránh thiếu feature.
+    for col in PREP_CATEGORICAL_FEATURES:
+        panel[col] = panel[col].astype("string").fillna("Unknown")
+        train_ready[col] = train_ready[col].astype("string").fillna("Unknown")
+    for col in PREP_NUMERIC_FEATURES + ["qty_next_month"]:
+        if col not in panel.columns:
+            panel[col] = 0
+        if col not in train_ready.columns:
+            train_ready[col] = 0
+        panel[col] = pd.to_numeric(panel[col], errors="coerce").fillna(0)
+        train_ready[col] = pd.to_numeric(train_ready[col], errors="coerce").fillna(0)
+
+    print("Prepared forecast input from PostgreSQL fact_sales:")
+    print(f"- df_model_input: {panel.shape}")
+    print(f"- df_train_ready: {train_ready.shape}")
+    print("Input CSV export is limited to train_sku.csv and test_sku.csv after train/test split.")
+
+    return panel, train_ready
+
 
 def _auto_load_required_dataframes_if_needed():
     """
-    Khi chạy bằng %run, notebook phải có sẵn:
-    - df_model_input
-    - df_train_ready
+    Ưu tiên dùng dataframe có sẵn trong notebook.
+    Nếu chạy bằng file .py thì tự đọc PostgreSQL fact_sales và chuẩn bị dữ liệu.
 
-    Nếu chưa có, hàm này sẽ thử load từ file CSV đã xuất ở bước tiền xử lý:
-    data/processed/forecasting/forecast_model_input_panel.csv
-    data/processed/forecasting/forecast_train_ready.csv
+    Không còn load/xuất model_input_panel.csv và train_ready.csv nữa
+    để thư mục input chỉ giữ 2 file chính:
+    - train_sku.csv
+    - test_sku.csv
     """
     global df_model_input, df_train_ready, project_root
 
@@ -54,37 +406,9 @@ def _auto_load_required_dataframes_if_needed():
     except NameError:
         pass
 
-    import sys
-    from pathlib import Path
-    import pandas as pd
-
-    try:
-        root = Path(project_root)
-    except NameError:
-        root = Path.cwd()
-        if not (root / "data").exists() and (root.parent / "data").exists():
-            root = root.parent
-        project_root = root
-
-    input_dir = root / "data" / "processed" / "forecasting"
-
-    model_input_path = input_dir / "forecast_model_input_panel.csv"
-    train_ready_path = input_dir / "forecast_train_ready.csv"
-
-    if not model_input_path.exists() or not train_ready_path.exists():
-        raise NameError(
-            "Không tìm thấy df_model_input/df_train_ready trong notebook và cũng không tìm thấy file CSV đã xử lý.\n"
-            "Bạn cần chạy lại phần preprocessing trước, hoặc kiểm tra 2 file:\n"
-            f"- {model_input_path}\n"
-            f"- {train_ready_path}"
-        )
-
-    df_model_input = pd.read_csv(model_input_path)
-    df_train_ready = pd.read_csv(train_ready_path)
-
-    print("Auto-loaded required dataframes:")
-    print(f"- df_model_input: {df_model_input.shape} from {model_input_path}")
-    print(f"- df_train_ready: {df_train_ready.shape} from {train_ready_path}")
+    root = _resolve_project_root()
+    project_root = root
+    df_model_input, df_train_ready = _prepare_forecast_input_from_fact_sales()
 
 
 _auto_load_required_dataframes_if_needed()
@@ -491,6 +815,31 @@ model_data = safe_prepare_model_data(df_train_ready)
 test_mask = model_data["fiscal_month"] == 3
 train_df = model_data[~test_mask].copy()
 test_df = model_data[test_mask].copy()
+
+# Xuất train/test dùng cho kiểm chứng và tái lập kết quả.
+# Chỉ giữ 2 file chính để thư mục input gọn: train_sku.csv và test_sku.csv.
+_input_dir_for_split = _resolve_project_root() / INPUT_SUBDIR
+_input_dir_for_split.mkdir(parents=True, exist_ok=True)
+
+# Xoá các file input cũ của phiên bản trước để tránh nhầm lẫn.
+for _old_input_file in [
+    "model_input_panel.csv",
+    "train_ready.csv",
+    "train.csv",
+    "test.csv",
+    "train_sku.csv",
+    "test_sku.csv",
+]:
+    _old_path = _input_dir_for_split / _old_input_file
+    if _old_path.exists():
+        _old_path.unlink()
+
+train_df.to_csv(_input_dir_for_split / "train_sku.csv", index=False, encoding=CSV_ENCODING)
+test_df.to_csv(_input_dir_for_split / "test_sku.csv", index=False, encoding=CSV_ENCODING)
+
+print(f"Saved selected train/test input CSVs to: {_input_dir_for_split}")
+print(f"- train_sku.csv: {train_df.shape}")
+print(f"- test_sku.csv: {test_df.shape}")
 
 if train_df.empty or test_df.empty:
     raise ValueError(
@@ -1163,24 +1512,73 @@ forecast_selection_summary = pd.DataFrame([
     }
 ])
 
-try:
-    output_dir = project_root / "data" / "processed" / "forecasting_adjusted"
-except NameError:
-    output_dir = Path("data") / "processed" / "forecasting_adjusted"
+def resolve_output_dir() -> Path:
+    """Trả về thư mục output chuẩn cho kết quả forecast Q2/2026."""
+    try:
+        root = Path(project_root)
+    except NameError:
+        root = Path.cwd()
+        if not (root / "data").exists() and (root.parent / "data").exists():
+            root = root.parent
 
-output_dir.mkdir(parents=True, exist_ok=True)
+    output_dir = root / OUTPUT_SUBDIR
+    output_dir.mkdir(parents=True, exist_ok=True)
+    return output_dir
 
-metrics_all.to_csv(output_dir / "forecast_model_metrics_adjusted.csv", index=False, encoding="utf-8-sig")
-forecast_selection_summary.to_csv(output_dir / "forecast_selection_summary_adjusted.csv", index=False, encoding="utf-8-sig")
+
+def save_csv(df: pd.DataFrame, file_name: str, output_dir: Path) -> None:
+    """Lưu CSV thống nhất encoding UTF-8 BOM để mở tốt trên Excel/Power BI."""
+    df.to_csv(output_dir / file_name, index=False, encoding=CSV_ENCODING)
+
+
+# Chỉ xuất các file thật sự cần dùng cho báo cáo, dashboard và kiểm chứng model.
+output_dir = resolve_output_dir()
+
+sku_monthly_cols = [
+    "fiscal_year",
+    "fiscal_month",
+    "product_code",
+    "product_name",
+    "group_code",
+    "group_name",
+    "line_name",
+    "color",
+    "avg_unit_price",
+    "forecast_qty_base",
+    "forecast_revenue_base",
+    "forecast_qty_conservative",
+    "forecast_qty_optimistic",
+    "forecast_revenue_conservative",
+    "forecast_revenue_optimistic",
+    "calibration_factor",
+    "selected_forecast_model",
+    "forecast_selection_type",
+]
+sku_monthly_cols = [col for col in sku_monthly_cols if col in forecast_main.columns]
+sku_monthly_q2 = (
+    forecast_main[sku_monthly_cols]
+    .sort_values(["fiscal_year", "fiscal_month", "forecast_revenue_base"], ascending=[True, True, False])
+    .reset_index(drop=True)
+)
+
+export_tables = {
+    "metrics.csv": metrics_all,
+    "selection.csv": forecast_selection_summary,
+    "calibration.csv": group_calibration,
+    "monthly.csv": forecast_monthly_q2,
+    "group.csv": forecast_group_q2,
+    "sku_q2.csv": forecast_sku_q2,
+    "sku_monthly.csv": sku_monthly_q2,
+    "top20_sku.csv": top20_sku_q2,
+}
+
 if not ewma_alpha_metrics.empty:
-    ewma_alpha_metrics.to_csv(output_dir / "forecast_ewma_alpha_metrics_adjusted.csv", index=False, encoding="utf-8-sig")
-month_factor_global.to_csv(output_dir / "forecast_month_factor_global_adjusted.csv", index=False, encoding="utf-8-sig")
-month_factor_group.to_csv(output_dir / "forecast_month_factor_group_adjusted.csv", index=False, encoding="utf-8-sig")
-group_calibration.to_csv(output_dir / "forecast_group_calibration_adjusted.csv", index=False, encoding="utf-8-sig")
-forecast_main.to_csv(output_dir / "forecast_main_q2_sku_monthly_adjusted.csv", index=False, encoding="utf-8-sig")
-forecast_monthly_q2.to_csv(output_dir / "forecast_monthly_q2_adjusted.csv", index=False, encoding="utf-8-sig")
-forecast_group_q2.to_csv(output_dir / "forecast_group_q2_adjusted.csv", index=False, encoding="utf-8-sig")
-forecast_sku_q2.to_csv(output_dir / "forecast_sku_q2_adjusted.csv", index=False, encoding="utf-8-sig")
-top20_sku_q2.to_csv(output_dir / "top20_sku_q2_adjusted.csv", index=False, encoding="utf-8-sig")
+    export_tables["ewma_alpha.csv"] = ewma_alpha_metrics
 
-print(f"\nSaved adjusted forecast outputs to: {output_dir}")
+for file_name, df_out in export_tables.items():
+    save_csv(df_out, file_name, output_dir)
+
+print(f"\nSaved forecast CSV outputs to: {output_dir}")
+print("Exported files:")
+for file_name in export_tables:
+    print(f"- {file_name}")

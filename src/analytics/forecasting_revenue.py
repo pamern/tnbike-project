@@ -7,7 +7,7 @@ Mục tiêu:
 1. Không tạo dòng tháng tương lai với qty = 0 để predict chính tháng đó.
 2. Dự báo T4 bằng trạng thái T3/2026, T5 bằng trạng thái forecast T4, T6 bằng trạng thái forecast T5.
 3. Nếu Random Forest kém baseline, dùng baseline tốt hơn làm fallback.
-4. Thêm group-share benchmark ổn định hơn cho dữ liệu ngắn.
+4. Giữ benchmark gọn và ổn định (Naive, Rolling 2/3 months, EWMA).
 5. Calibration theo nhóm dựa trên forecast bias, có giới hạn hệ số.
 6. Xuất forecast theo tháng, nhóm sản phẩm, SKU và top 20 SKU.
 
@@ -766,41 +766,14 @@ def add_next_state_to_panel(
 
 def build_group_share_forecast_q2(df_model_input: pd.DataFrame) -> pd.DataFrame:
     """
-    Benchmark ổn định:
-    - Lấy mức trung bình tháng của Q1/2026 làm nền.
-    - Phân bổ T4-T6 theo momentum nhẹ: T4=100%, T5=98%, T6=96% so với monthly base.
-    - Forecast ở cấp SKU bằng trung bình Q1/2026 theo SKU.
+    (DEPRECATED) Benchmark ổn định theo group-share của phiên bản trước.
+
+    File này đã chuyển sang lựa chọn benchmark thuần dữ liệu (naive/rolling/EWMA)
+    và so sánh trực tiếp với các mô hình tree-based.
     """
-    q1_2026 = df_model_input[
-        (df_model_input["fiscal_year"] == 2026)
-        & (df_model_input["fiscal_month"].isin([1, 2, 3]))
-    ].copy()
-
-    sku_base = (
-        q1_2026.groupby(
-            ["product_code", "product_name", "group_code", "group_name", "line_name", "color"],
-            dropna=False,
-        )
-        .agg(
-            avg_monthly_qty_q1_2026=("qty", "mean"),
-            avg_unit_price=("avg_unit_price", "mean"),
-            is_new_sku=("is_new_sku", "max"),
-            missing_master_flag=("missing_master_flag", "max"),
-        )
-        .reset_index()
+    raise NotImplementedError(
+        "build_group_share_forecast_q2 is deprecated; use naive/rolling/EWMA benchmarks instead."
     )
-
-    factors = pd.DataFrame({
-        "forecast_year": [2026, 2026, 2026],
-        "forecast_month": [4, 5, 6],
-        "month_factor": [1.00, 0.98, 0.96],
-    })
-
-    benchmark = sku_base.merge(factors, how="cross")
-    benchmark["benchmark_qty"] = benchmark["avg_monthly_qty_q1_2026"] * benchmark["month_factor"]
-    benchmark["benchmark_revenue"] = benchmark["benchmark_qty"] * benchmark["avg_unit_price"]
-
-    return benchmark
 
 
 
@@ -852,82 +825,6 @@ def safe_ratio(numerator, denominator, default=1.0):
     denominator = pd.to_numeric(denominator, errors="coerce")
     return np.where(denominator > 0, numerator / denominator, default)
 
-
-def build_seasonal_factor_tables(train_df: pd.DataFrame):
-    """
-    Học hệ số mùa vụ từ dữ liệu train, không đặt tay.
-
-    Vì target_col = qty_next_month, mỗi dòng tháng m cho biết qty tháng m+1.
-    Hệ số học được là: factor(m -> m+1) = qty_next_month / qty_current_month.
-
-    Có 2 bảng:
-    - global: theo fiscal_month
-    - group: theo fiscal_month + group_name
-    """
-    base = train_df.copy()
-    base["ratio_next_over_current"] = safe_ratio(base[target_col], base["qty"], default=np.nan)
-    base["ratio_next_over_current"] = (
-        pd.to_numeric(base["ratio_next_over_current"], errors="coerce")
-        .replace([np.inf, -np.inf], np.nan)
-    )
-
-    # Loại ratio quá cực đoan để tránh SKU bán rất ít làm méo hệ số.
-    ratio_clean = base[base["ratio_next_over_current"].between(0.2, 3.0)].copy()
-    if ratio_clean.empty:
-        ratio_clean = base.copy()
-
-    overall_factor = float(ratio_clean["ratio_next_over_current"].median())
-    if not np.isfinite(overall_factor):
-        overall_factor = 1.0
-
-    month_factor_global = (
-        ratio_clean.groupby("fiscal_month", dropna=False)
-        .agg(
-            seasonal_factor=("ratio_next_over_current", "median"),
-            factor_sample_size=("ratio_next_over_current", "count"),
-        )
-        .reset_index()
-    )
-    month_factor_global["seasonal_factor"] = (
-        month_factor_global["seasonal_factor"]
-        .replace([np.inf, -np.inf], np.nan)
-        .fillna(overall_factor)
-        .clip(0.3, 2.0)
-    )
-
-    month_factor_group = (
-        ratio_clean.groupby(["fiscal_month", "group_name"], dropna=False)
-        .agg(
-            seasonal_group_factor=("ratio_next_over_current", "median"),
-            group_factor_sample_size=("ratio_next_over_current", "count"),
-        )
-        .reset_index()
-    )
-
-    # Nhóm nào quá ít mẫu thì fallback về factor theo tháng để đỡ nhiễu.
-    month_factor_group = month_factor_group.merge(
-        month_factor_global[["fiscal_month", "seasonal_factor"]],
-        on="fiscal_month",
-        how="left",
-    )
-    month_factor_group["seasonal_group_factor"] = np.where(
-        month_factor_group["group_factor_sample_size"] >= 10,
-        month_factor_group["seasonal_group_factor"],
-        month_factor_group["seasonal_factor"],
-    )
-    month_factor_group["seasonal_group_factor"] = (
-        month_factor_group["seasonal_group_factor"]
-        .replace([np.inf, -np.inf], np.nan)
-        .fillna(month_factor_group["seasonal_factor"])
-        .fillna(overall_factor)
-        .clip(0.3, 2.0)
-    )
-
-    return month_factor_global, month_factor_group, overall_factor
-
-
-month_factor_global, month_factor_group, overall_factor = build_seasonal_factor_tables(train_df)
-
 # EWMA alpha grid: alpha càng cao thì càng tin tháng gần nhất nhiều hơn.
 # Code sẽ backtest từng alpha và tự chọn alpha có WMAPE thấp nhất.
 EWMA_ALPHA_GRID = [0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
@@ -948,14 +845,11 @@ def parse_ewma_alpha(method_name: str) -> float:
 
 def add_benchmark_predictions(
     df_eval: pd.DataFrame,
-    month_factor_global: pd.DataFrame,
-    month_factor_group: pd.DataFrame,
-    overall_factor: float,
 ) -> pd.DataFrame:
     """Sinh nhiều benchmark ứng viên để backtest, hoàn toàn dựa trên dữ liệu."""
     out = df_eval.copy()
 
-    out["benchmark_naive_current_pred"] = out["qty"].clip(lower=0)
+    out["benchmark_naive_pred"] = out["qty"].clip(lower=0)
     out["benchmark_rolling_2m_pred"] = out["rolling_2m_qty"].clip(lower=0)
     out["benchmark_rolling_3m_pred"] = out["rolling_3m_qty"].clip(lower=0)
 
@@ -967,34 +861,6 @@ def add_benchmark_predictions(
             alpha * out["qty"] + (1 - alpha) * out["qty_lag_1"]
         ).clip(lower=0)
 
-    # Momentum có chặn biên, để tránh tháng tăng/giảm đột biến kéo forecast quá mạnh.
-    out["benchmark_momentum_clipped_pred"] = (
-        out["qty"] * (1 + out["mom_qty_growth"].clip(-0.5, 0.5))
-    ).clip(lower=0)
-
-    # Seasonal global: factor theo tháng hiện tại -> tháng kế tiếp.
-    out = out.merge(
-        month_factor_global[["fiscal_month", "seasonal_factor"]],
-        on="fiscal_month",
-        how="left",
-    )
-    out["seasonal_factor"] = out["seasonal_factor"].fillna(overall_factor).clip(0.3, 2.0)
-    out["benchmark_seasonal_global_pred"] = (out["qty"] * out["seasonal_factor"]).clip(lower=0)
-
-    # Seasonal group: factor theo tháng + nhóm sản phẩm, fallback nếu thiếu mẫu.
-    out = out.merge(
-        month_factor_group[["fiscal_month", "group_name", "seasonal_group_factor"]],
-        on=["fiscal_month", "group_name"],
-        how="left",
-    )
-    out["seasonal_group_factor"] = (
-        out["seasonal_group_factor"]
-        .fillna(out["seasonal_factor"])
-        .fillna(overall_factor)
-        .clip(0.3, 2.0)
-    )
-    out["benchmark_seasonal_group_pred"] = (out["qty"] * out["seasonal_group_factor"]).clip(lower=0)
-
     return out
 
 
@@ -1004,19 +870,13 @@ def add_benchmark_predictions(
 
 test_eval = add_benchmark_predictions(
     test_df,
-    month_factor_global=month_factor_global,
-    month_factor_group=month_factor_group,
-    overall_factor=overall_factor,
 )
 
 benchmark_pred_cols = {
-    "benchmark_naive_current": "benchmark_naive_current_pred",
+    "benchmark_naive": "benchmark_naive_pred",
     "benchmark_rolling_2m": "benchmark_rolling_2m_pred",
     "benchmark_rolling_3m": "benchmark_rolling_3m_pred",
     **{format_ewma_model_name(alpha): f"{format_ewma_model_name(alpha)}_pred" for alpha in EWMA_ALPHA_GRID},
-    "benchmark_momentum_clipped": "benchmark_momentum_clipped_pred",
-    "benchmark_seasonal_global": "benchmark_seasonal_global_pred",
-    "benchmark_seasonal_group": "benchmark_seasonal_group_pred",
 }
 
 metrics_rows = []
@@ -1039,26 +899,26 @@ def make_preprocess() -> ColumnTransformer:
 
 
 model_specs = {
-    "decision_tree": DecisionTreeRegressor(
+    "dt": DecisionTreeRegressor(
         max_depth=8,
         min_samples_leaf=5,
         random_state=42,
     ),
-    "random_forest_global": RandomForestRegressor(
+    "rf": RandomForestRegressor(
         n_estimators=500,
         max_depth=10,
         min_samples_leaf=3,
         random_state=42,
         n_jobs=-1,
     ),
-    "extra_trees_global": ExtraTreesRegressor(
+    "extra_trees": ExtraTreesRegressor(
         n_estimators=500,
         max_depth=12,
         min_samples_leaf=3,
         random_state=42,
         n_jobs=-1,
     ),
-    "gradient_boosting": GradientBoostingRegressor(
+    "gb": GradientBoostingRegressor(
         n_estimators=300,
         learning_rate=0.03,
         max_depth=3,
@@ -1153,14 +1013,11 @@ def predict_next_month_by_benchmark(
     method_name: str,
     target_year: int,
     target_month: int,
-    month_factor_global: pd.DataFrame,
-    month_factor_group: pd.DataFrame,
-    overall_factor: float,
 ) -> pd.DataFrame:
     """Dự báo tháng kế tiếp bằng benchmark đã thắng validation."""
     x = current_state.copy()
 
-    if method_name == "benchmark_naive_current":
+    if method_name == "benchmark_naive":
         pred_qty = x["qty"]
 
     elif method_name == "benchmark_rolling_2m":
@@ -1172,38 +1029,6 @@ def predict_next_month_by_benchmark(
     elif method_name.startswith("benchmark_ewma_2m_a") or method_name == "benchmark_ewma_2m":
         alpha = parse_ewma_alpha(method_name)
         pred_qty = alpha * x["qty"] + (1 - alpha) * x["qty_lag_1"]
-
-    elif method_name == "benchmark_momentum_clipped":
-        pred_qty = x["qty"] * (1 + x["mom_qty_growth"].clip(-0.5, 0.5))
-
-    elif method_name == "benchmark_seasonal_global":
-        x = x.merge(
-            month_factor_global[["fiscal_month", "seasonal_factor"]],
-            on="fiscal_month",
-            how="left",
-        )
-        x["seasonal_factor"] = x["seasonal_factor"].fillna(overall_factor).clip(0.3, 2.0)
-        pred_qty = x["qty"] * x["seasonal_factor"]
-
-    elif method_name == "benchmark_seasonal_group":
-        x = x.merge(
-            month_factor_global[["fiscal_month", "seasonal_factor"]],
-            on="fiscal_month",
-            how="left",
-        )
-        x = x.merge(
-            month_factor_group[["fiscal_month", "group_name", "seasonal_group_factor"]],
-            on=["fiscal_month", "group_name"],
-            how="left",
-        )
-        x["seasonal_factor"] = x["seasonal_factor"].fillna(overall_factor).clip(0.3, 2.0)
-        x["seasonal_group_factor"] = (
-            x["seasonal_group_factor"]
-            .fillna(x["seasonal_factor"])
-            .fillna(overall_factor)
-            .clip(0.3, 2.0)
-        )
-        pred_qty = x["qty"] * x["seasonal_group_factor"]
 
     else:
         raise ValueError(f"Benchmark method không hợp lệ: {method_name}")
@@ -1267,9 +1092,6 @@ else:
             method_name=selected_forecast_model,
             target_year=target_year,
             target_month=target_month,
-            month_factor_global=month_factor_global,
-            month_factor_group=month_factor_group,
-            overall_factor=overall_factor,
         )
         forecast_rows.append(pred)
         forecast_panel = add_next_state_to_panel(forecast_panel, pred)

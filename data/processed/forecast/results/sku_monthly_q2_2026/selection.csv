@@ -1,2 +1,2 @@
 ﻿selected_forecast_model,selected_ewma_alpha,forecast_selection_type,selected_wmape,best_ml_model,best_ml_wmape,best_benchmark_model,best_benchmark_wmape,selection_reason,scenario_margin
-benchmark_ewma_2m_a30,0.3,data_driven_benchmark,68.0958456263456,decision_tree,152.03218442736238,benchmark_ewma_2m_a30,68.0958456263456,"selected=benchmark_ewma_2m_a30, WMAPE=68.10%; best_benchmark=benchmark_ewma_2m_a30, WMAPE=68.10%; best_ml=decision_tree, WMAPE=152.03%",0.2
+benchmark_ewma_2m_a30,0.3,data_driven_benchmark,68.0958456263456,dt,152.03218442736238,benchmark_ewma_2m_a30,68.0958456263456,"selected=benchmark_ewma_2m_a30, WMAPE=68.10%; best_benchmark=benchmark_ewma_2m_a30, WMAPE=68.10%; best_ml=dt, WMAPE=152.03%",0.2

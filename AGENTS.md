@@ -678,7 +678,7 @@ git push origin nhat                # CHỈ nhánh nhat
 ## 10. Status (agent tự cập nhật)
 
 ```
-LAST UPDATED: 2026-05-28 16:15 Asia/Saigon
+LAST UPDATED: 2026-05-28 16:36 Asia/Saigon
 
 Phase 0 — Setup:         [x] Completed
 Phase 1 — BI Interpreter:[x] Completed
@@ -706,9 +706,8 @@ NOTES:
 - Nâng cấp Strategic Insight Engine: thêm `ai/report/strategic_intelligence.py` với statistical signal extraction, executive digest, hypothesis/contradiction/self-critique prompt orchestration, quality gate và deterministic strategic fallback. Report template chuyển thành Strategic Executive Intelligence Report gồm business situation, hidden patterns, strategic risks, growth opportunities, multi-scenario forecast, sensitivity analysis, prioritized recommendations, data-quality meta-analysis và reflection loop. Để tránh gián đoạn khi Groq gần quota, report runner bỏ các LLM narrative cũ và chỉ dùng strategic synthesis; nếu quota/model lỗi, fallback chiến lược vẫn tạo report đầy đủ.
 - Phase 5 tạo FastAPI localhost dashboard trong `ui/`: backend `ui/app.py`, WebSocket emitter, CSS/JS thuần, trang Control Center, Settings và Report Viewer. UI lưu Groq/DB config trong server-side session, không ghi xuống `.env`.
 - Đã cài `ui/requirements.txt` vào `ai/.venv`, kiểm tra `py_compile`, import `ui.app`, TestClient cho `/`, `/settings`, `/reports`, `/api/health/db`, chạy `/api/pipeline/run` dry-run tạo `report_20260528_161446_298106.html`, và khởi động Uvicorn thành công tại `http://127.0.0.1:8501/`.
-- Phase 6 partial: tạo workspace-root `.gitignore`, `README.md`, `ui/.env.example`, cập nhật `ai/.env.example` để bỏ placeholder secret-like values. Chạy lại `py_compile`, `pytest ai/tests/test_integration.py -q` pass 4/4 và UI route smoke test pass. Chưa thể `git add/commit/push` vì root không có `.git`; đã ghi blocker vào `ai/logs/pending_issues.log`.
-- Phase 6 final: tích hợp `ai/` và `ui/` vào root repo `tnbike-project/`, chỉnh `ai/common.py` để nhận layout mới, cập nhật README/.gitignore/env examples, remove `.env` khỏi Git index, commit trên nhánh `nhat` và push lên `origin/nhat`.
-- [agent điền tiếp sau Phase 5 và 6]
+- Phase 6 packaging: tạo/cập nhật `.gitignore`, `README.md`, `ui/.env.example`, `ai/.env.example`; chạy lại `py_compile`, `pytest ai/tests/test_integration.py -q` pass 4/4 và UI route smoke test pass.
+- Phase 6 final: tích hợp `ai/` và `ui/` vào root repo `tnbike-project/`, chỉnh `ai/common.py` để nhận layout mới, cập nhật README/.gitignore/env examples, remove `.env` khỏi Git index, commit trên nhánh `nhat` và push lên `origin/nhat` thành công.
 ```
 
 ---

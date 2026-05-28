@@ -84,7 +84,7 @@ def build_monthly_group_features(df_fact: pd.DataFrame) -> pd.DataFrame:
     monthly["month_sin"] = np.sin(2 * np.pi * monthly["fiscal_month"].astype(float) / 12)
     monthly["month_cos"] = np.cos(2 * np.pi * monthly["fiscal_month"].astype(float) / 12)
     for col in ["group_code", "group_name"]:
-        monthly[col] = monthly[col].fillna("Unknown")
+        monthly[col] = monthly[col].fillna("Chưa định danh")
     numeric_cols = monthly.select_dtypes(include=["number"]).columns
     monthly[numeric_cols] = monthly[numeric_cols].replace([np.inf, -np.inf], np.nan).fillna(0)
     return monthly
@@ -103,7 +103,7 @@ def build_color_features(df_fact: pd.DataFrame) -> pd.DataFrame:
         )
         .reset_index()
     )
-    color["color"] = color["color"].fillna("Unknown")
+    color["color"] = color["color"].fillna("Chưa định danh")
     color["period"] = pd.to_datetime(
         color["fiscal_year"].astype(str) + "-" + color["fiscal_month"].astype(str).str.zfill(2) + "-01"
     )

@@ -27,7 +27,14 @@ REPORT_DIR = WORKSPACE_ROOT / "ai" / "report" / "output"
 
 load_environment()
 
-app = FastAPI(title="TNBIKE Intelligence", version="0.1.0")
+PROVIDER_ENV = {
+    "groq": ("GROQ_API_KEYS", "GROQ_MODEL", "llama-3.3-70b-versatile"),
+    "openai": ("OPENAI_API_KEYS", "OPENAI_MODEL", "gpt-4o-mini"),
+    "anthropic": ("ANTHROPIC_API_KEYS", "ANTHROPIC_MODEL", "claude-3-5-haiku-latest"),
+    "openrouter": ("OPENROUTER_API_KEYS", "OPENROUTER_MODEL", "openai/gpt-4o-mini"),
+}
+
+app = FastAPI(title="VIZOR", version="0.2.0")
 app.add_middleware(
     SessionMiddleware,
     secret_key=os.getenv("UI_SESSION_SECRET", "dev-session-secret-change-me"),
@@ -54,12 +61,15 @@ async def on_startup() -> None:
 
 def _session_config(request: Request) -> dict[str, str]:
     config = dict(request.session.get("config", {}))
-    keys = request.session.get("groq_api_keys", "")
+    provider = request.session.get("llm_provider", "groq")
+    keys = request.session.get("llm_api_keys", "")
     model = request.session.get("llm_model", "")
+    key_env, model_env, _ = PROVIDER_ENV.get(provider, PROVIDER_ENV["groq"])
+    config["LLM_PROVIDER"] = provider
     if keys:
-        config["GROQ_API_KEYS"] = keys
+        config[key_env] = keys
     if model:
-        config["GROQ_MODEL"] = model
+        config[model_env] = model
         config["LLM_MODEL"] = model
     return {k: str(v) for k, v in config.items() if v is not None and str(v).strip()}
 
@@ -102,22 +112,22 @@ def _latest_report_name() -> str | None:
 
 def _pipeline_worker(branch: str, dry_run: bool, date_from: str, date_to: str, config: dict[str, str]) -> None:
     if not _pipeline_lock.acquire(blocking=False):
-        emitter.emit(0, "error", "Pipeline đang chạy; bỏ qua yêu cầu trùng.", level="WARN")
+        emitter.emit(0, "error", "VIZOR đang xử lý; bỏ qua yêu cầu trùng.", level="WARN")
         return
 
     _pipeline_state.update({"running": True, "last_error": None})
     start = time.perf_counter()
     steps = [
-        (1, "Kết nối DB"),
-        (2, "Trích xuất dữ liệu"),
-        (3, "Phân tích BI"),
-        (4, "Dự báo ML"),
-        (5, "Lập luận AI"),
-        (6, "Xuất báo cáo"),
+        (1, "Đánh thức kho dữ liệu", "Mở kết nối an toàn tới PostgreSQL và kiểm tra sức khỏe dữ liệu."),
+        (2, "Gom tín hiệu kinh doanh", "Đọc doanh thu, sản phẩm, đại lý, địa lý và KPI vận hành."),
+        (3, "Dựng bản đồ tình huống", "Ghép các tín hiệu thành ngữ cảnh dễ hiểu cho phân tích BI."),
+        (4, "Mô phỏng quý tới", "Chạy mô hình dự báo nhu cầu, màu sắc và rủi ro đại lý."),
+        (5, "Hội đồng AI phản biện", "LLM kiểm tra giả thuyết, rủi ro và cơ hội chiến lược."),
+        (6, "Đóng gói bản điều hành", "Xuất báo cáo HTML/Markdown sẵn sàng chia sẻ."),
     ]
     try:
-        for step, name in steps:
-            emitter.emit(step, "running", f"{name}...", int((time.perf_counter() - start) * 1000))
+        for step, name, detail in steps:
+            emitter.emit(step, "running", name, int((time.perf_counter() - start) * 1000), detail=detail)
             time.sleep(0.18 if dry_run else 0.35)
 
         with _temporary_env(config):
@@ -130,11 +140,11 @@ def _pipeline_worker(branch: str, dry_run: bool, date_from: str, date_to: str, c
             _pipeline_state["last_report"] = _latest_report_name()
         _pipeline_state["last_result"] = result
         elapsed = int((time.perf_counter() - start) * 1000)
-        emitter.emit(6, "success", "Pipeline hoàn thành.", elapsed, result=result, report=_pipeline_state["last_report"])
+        emitter.emit(6, "success", "Bản điều hành đã sẵn sàng.", elapsed, result=result, report=_pipeline_state["last_report"])
     except Exception as exc:
         _pipeline_state["last_error"] = str(exc)
         elapsed = int((time.perf_counter() - start) * 1000)
-        emitter.emit(6, "error", f"Pipeline lỗi: {exc}", elapsed, level="ERROR")
+        emitter.emit(6, "error", f"VIZOR gặp lỗi: {exc}", elapsed, level="ERROR")
     finally:
         _pipeline_state["running"] = False
         _pipeline_lock.release()
@@ -149,6 +159,9 @@ async def index(request: Request) -> HTMLResponse:
             "active": "home",
             "state": _pipeline_state,
             "latest_report": _pipeline_state.get("last_report") or _latest_report_name(),
+            "provider": request.session.get("llm_provider", "groq"),
+            "llm_model": request.session.get("llm_model", PROVIDER_ENV.get(request.session.get("llm_provider", "groq"), PROVIDER_ENV["groq"])[2]),
+            "has_keys": bool(request.session.get("llm_api_keys")),
         },
     )
 
@@ -156,14 +169,16 @@ async def index(request: Request) -> HTMLResponse:
 @app.get("/settings", response_class=HTMLResponse)
 async def settings(request: Request) -> HTMLResponse:
     config = dict(request.session.get("config", {}))
+    provider = request.session.get("llm_provider", "groq")
     return templates.TemplateResponse(
         request,
         "settings.html",
         {
             "active": "settings",
             "config": config,
-            "has_keys": bool(request.session.get("groq_api_keys")),
-            "llm_model": request.session.get("llm_model", os.getenv("GROQ_MODEL", "llama-3.3-70b-versatile")),
+            "has_keys": bool(request.session.get("llm_api_keys")),
+            "llm_provider": provider,
+            "llm_model": request.session.get("llm_model", PROVIDER_ENV.get(provider, PROVIDER_ENV["groq"])[2]),
         },
     )
 
@@ -171,8 +186,10 @@ async def settings(request: Request) -> HTMLResponse:
 @app.post("/api/settings")
 async def save_settings(
     request: Request,
+    llm_provider: str = Form("groq"),
+    llm_api_keys: str = Form(""),
     groq_api_keys: str = Form(""),
-    llm_model: str = Form("llama-3.3-70b-versatile"),
+    llm_model: str = Form(""),
     pghost: str = Form(""),
     pgport: str = Form(""),
     pgdatabase: str = Form(""),
@@ -180,8 +197,14 @@ async def save_settings(
     pgpassword: str = Form(""),
     db_schema: str = Form(""),
 ) -> JSONResponse:
-    request.session["groq_api_keys"] = groq_api_keys.strip()
-    request.session["llm_model"] = llm_model.strip()
+    provider = llm_provider.strip().lower()
+    if provider not in PROVIDER_ENV:
+        provider = "groq"
+    keys = llm_api_keys.strip() or groq_api_keys.strip()
+    model = llm_model.strip() or PROVIDER_ENV[provider][2]
+    request.session["llm_provider"] = provider
+    request.session["llm_api_keys"] = keys
+    request.session["llm_model"] = model
     request.session["config"] = {
         "PGHOST": pghost.strip(),
         "PGPORT": pgport.strip(),
@@ -190,7 +213,7 @@ async def save_settings(
         "PGPASSWORD": pgpassword.strip(),
         "DB_SCHEMA": db_schema.strip(),
     }
-    return JSONResponse({"ok": True, "has_keys": bool(groq_api_keys.strip())})
+    return JSONResponse({"ok": True, "provider": provider, "has_keys": bool(keys)})
 
 
 @app.get("/reports", response_class=HTMLResponse)
@@ -210,7 +233,7 @@ async def report_viewer(request: Request, file: str | None = None) -> HTMLRespon
 async def report_raw(filename: str) -> Response:
     path = (REPORT_DIR / filename).resolve()
     if REPORT_DIR.resolve() not in path.parents or not path.is_file():
-        raise HTTPException(status_code=404, detail="Report not found")
+        raise HTTPException(status_code=404, detail="Không tìm thấy báo cáo")
     media_type = "text/html; charset=utf-8" if path.suffix == ".html" else "text/markdown; charset=utf-8"
     return Response(path.read_text(encoding="utf-8"), media_type=media_type)
 
@@ -219,7 +242,7 @@ async def report_raw(filename: str) -> Response:
 async def report_download(filename: str) -> FileResponse:
     path = (REPORT_DIR / filename).resolve()
     if REPORT_DIR.resolve() not in path.parents or not path.is_file():
-        raise HTTPException(status_code=404, detail="Report not found")
+        raise HTTPException(status_code=404, detail="Không tìm thấy báo cáo")
     return FileResponse(path, filename=path.name)
 
 
@@ -233,7 +256,7 @@ async def run_pipeline_api(
     date_to: str = Form("2026-03-31"),
 ) -> JSONResponse:
     if _pipeline_state["running"]:
-        return JSONResponse({"ok": False, "message": "Pipeline đang chạy."}, status_code=409)
+        return JSONResponse({"ok": False, "message": "VIZOR đang xử lý."}, status_code=409)
     config = _session_config(request)
     background_tasks.add_task(_pipeline_worker, branch, dry_run, date_from, date_to, config)
     return JSONResponse({"ok": True, "running": True})
@@ -260,21 +283,26 @@ async def health_db(request: Request) -> JSONResponse:
             with conn.cursor() as cur:
                 cur.execute(f"SELECT COUNT(*) FROM {schema}.fact_sales;")
                 count = cur.fetchone()[0]
-        return JSONResponse({"ok": True, "message": f"DB OK, fact_sales={count:,}"})
+        return JSONResponse({"ok": True, "message": f"Cơ sở dữ liệu sẵn sàng, fact_sales={count:,}"})
     except Exception as exc:
         return JSONResponse({"ok": False, "message": str(exc)}, status_code=503)
 
 
 @app.get("/api/health/llm")
 async def health_llm(request: Request) -> JSONResponse:
-    keys = request.session.get("groq_api_keys", "")
-    model = request.session.get("llm_model", os.getenv("GROQ_MODEL", "llama-3.3-70b-versatile"))
+    provider = request.session.get("llm_provider", "groq")
+    keys = request.session.get("llm_api_keys", "")
+    model = request.session.get("llm_model", PROVIDER_ENV.get(provider, PROVIDER_ENV["groq"])[2])
     if not keys.strip():
-        return JSONResponse({"ok": False, "message": "Chưa có Groq API key trong session."}, status_code=400)
+        return JSONResponse({"ok": False, "message": f"Chưa có API key {provider} trong phiên hiện tại."}, status_code=400)
     try:
-        client = GroqKeyPoolClient(keys=[key.strip() for key in keys.replace(",", "\n").splitlines() if key.strip()], model=model)
-        result = client.chat_json('Return exactly {"ok": true, "service": "groq"} as JSON.')
-        return JSONResponse({"ok": bool(result.get("ok")), "message": f"LLM OK ({client.model})"})
+        client = GroqKeyPoolClient(
+            keys=[key.strip() for key in keys.replace(",", "\n").splitlines() if key.strip()],
+            provider=provider,
+            model=model,
+        )
+        result = client.chat_json(f'Chỉ trả đúng JSON sau: {{"ok": true, "service": "{provider}"}}.')
+        return JSONResponse({"ok": bool(result.get("ok")), "message": f"{provider} sẵn sàng ({client.model})"})
     except Exception as exc:
         return JSONResponse({"ok": False, "message": str(exc)}, status_code=503)
 
@@ -284,7 +312,7 @@ async def ws_pipeline(websocket: WebSocket) -> None:
     await websocket.accept()
     queue = await emitter.subscribe()
     try:
-        await websocket.send_json({"step": 0, "status": "connected", "message": "WebSocket connected.", "level": "INFO", "elapsed_ms": 0})
+        await websocket.send_json({"step": 0, "status": "connected", "message": "Kênh tường thuật đã kết nối.", "level": "INFO", "elapsed_ms": 0})
         while True:
             event = await queue.get()
             await websocket.send_json(event)

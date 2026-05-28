@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>TNBIKE AI Report - {{ generated_at }}</title>
+  <title>Báo cáo điều hành VIZOR - {{ generated_at }}</title>
   <style>
     :root {
       color-scheme: light;
@@ -123,56 +123,56 @@
 </head>
 <body>
   <header>
-    <h1>TNBIKE Strategic Executive Intelligence Report</h1>
-    <p class="meta">Generated at {{ generated_at }} | Window: {{ date_from }} to {{ date_to }} | Dry run: {{ dry_run }}</p>
+    <h1>Báo cáo điều hành chiến lược VIZOR</h1>
+    <p class="meta">Tạo lúc {{ generated_at }} | Kỳ dữ liệu: {{ date_from }} đến {{ date_to }} | Chế độ thử: {{ dry_run }}</p>
   </header>
   <main>
     <section>
-      <h2>Business Situation</h2>
+      <h2>Tình hình kinh doanh</h2>
       <div class="kpis">
-        <div class="kpi"><div class="label">Orders</div><div class="value">{{ metrics.order_count }}</div></div>
-        <div class="kpi"><div class="label">Active Dealers</div><div class="value">{{ metrics.active_customer_count }}</div></div>
-        <div class="kpi"><div class="label">Revenue</div><div class="value">{{ metrics.total_revenue }}</div></div>
-        <div class="kpi"><div class="label">AOV</div><div class="value">{{ metrics.avg_order_value }}</div></div>
+        <div class="kpi"><div class="label">Đơn hàng</div><div class="value">{{ metrics.order_count }}</div></div>
+        <div class="kpi"><div class="label">Đại lý hoạt động</div><div class="value">{{ metrics.active_customer_count }}</div></div>
+        <div class="kpi"><div class="label">Doanh thu</div><div class="value">{{ metrics.total_revenue }}</div></div>
+        <div class="kpi"><div class="label">Giá trị đơn bình quân</div><div class="value">{{ metrics.avg_order_value }}</div></div>
       </div>
       <p>{{ executive_narrative.business_situation }}</p>
 
-      <h2>Executive Narrative</h2>
-      <h3>Hidden Patterns</h3>
+      <h2>Tường thuật điều hành</h2>
+      <h3>Mẫu hình ẩn</h3>
       <ul>{% for item in executive_narrative.hidden_patterns %}<li>{{ item.action or item.recommendation or item.title or item.summary or item }}</li>{% endfor %}</ul>
-      <h3>Strategic Risks</h3>
+      <h3>Rủi ro chiến lược</h3>
       <ul>{% for item in executive_narrative.strategic_risks %}<li>{{ item.action or item.recommendation or item.title or item.summary or item }}</li>{% endfor %}</ul>
-      <h3>Growth Opportunities</h3>
+      <h3>Cơ hội tăng trưởng</h3>
       <ul>{% for item in executive_narrative.growth_opportunities %}<li>{{ item.action or item.recommendation or item.title or item.summary or item }}</li>{% endfor %}</ul>
-      <h3>Prioritized Actions</h3>
+      <h3>Hành động ưu tiên</h3>
       <ul>{% for item in executive_narrative.prioritized_actions %}<li>{{ item.action or item.recommendation or item.title or item.summary or item }}</li>{% endfor %}</ul>
 
-      <h2>Strategic Insights</h2>
+      <h2>Insight chiến lược</h2>
       {% for insight in strategic_insights %}
         <div class="insight">
           <h3>{{ insight.title }}</h3>
-          <p><strong>What is happening:</strong> {{ insight.what_is_happening }}</p>
-          <p><strong>Why it is happening:</strong> {{ insight.why_it_is_happening }}</p>
-          <p><strong>Quantitative evidence:</strong> {{ insight.quantitative_evidence | join("; ") }}</p>
-          <p><strong>Benchmark comparison:</strong> {{ insight.benchmark_comparison }}</p>
-          <p><strong>Root-cause reasoning:</strong> {{ insight.root_cause_reasoning }}</p>
-          <p><strong>Long-term impact:</strong> {{ insight.long_term_impact }}</p>
-          <p><strong>Risk if ignored:</strong> {{ insight.risk_if_ignored }}</p>
-          <p><strong>Optimal lever:</strong> {{ insight.optimal_lever }}</p>
-          <p><strong>Highest ROI action:</strong> {{ insight.highest_roi_action }}</p>
-          <p><strong>Strategic implication:</strong> {{ insight.strategic_implication }}</p>
-          <p class="muted">Confidence: {{ insight.confidence }}</p>
+          <p><strong>Diễn biến:</strong> {{ insight.what_is_happening }}</p>
+          <p><strong>Nguyên nhân:</strong> {{ insight.why_it_is_happening }}</p>
+          <p><strong>Bằng chứng định lượng:</strong> {{ insight.quantitative_evidence | join("; ") }}</p>
+          <p><strong>So sánh chuẩn:</strong> {{ insight.benchmark_comparison }}</p>
+          <p><strong>Lý giải gốc rễ:</strong> {{ insight.root_cause_reasoning }}</p>
+          <p><strong>Tác động dài hạn:</strong> {{ insight.long_term_impact }}</p>
+          <p><strong>Rủi ro nếu bỏ qua:</strong> {{ insight.risk_if_ignored }}</p>
+          <p><strong>Đòn bẩy tối ưu:</strong> {{ insight.optimal_lever }}</p>
+          <p><strong>Hành động ROI cao nhất:</strong> {{ insight.highest_roi_action }}</p>
+          <p><strong>Hàm ý chiến lược:</strong> {{ insight.strategic_implication }}</p>
+          <p class="muted">Độ tin cậy: {{ insight.confidence }}</p>
         </div>
       {% else %}
         <div class="insight warning">
-          <h3>Strategic synthesis unavailable</h3>
-          <p>Run without <code>--dry-run</code> and configure <code>GROQ_API_KEYS</code> to generate consultant-grade insights.</p>
+          <h3>Chưa có tổng hợp chiến lược</h3>
+          <p>Chạy không dùng <code>--dry-run</code> và cấu hình API key của nhà cung cấp để tạo insight ở cấp tư vấn.</p>
         </div>
       {% endfor %}
 
-      <h3>Product Group Snapshot</h3>
+      <h3>Ảnh chụp nhóm sản phẩm</h3>
       <table>
-        <thead><tr><th>Group</th><th>Revenue</th><th>Qty</th><th>Orders</th><th>Share</th></tr></thead>
+        <thead><tr><th>Nhóm</th><th>Doanh thu</th><th>Số lượng</th><th>Đơn hàng</th><th>Tỷ trọng</th></tr></thead>
         <tbody>
         {% for row in product_rows %}
           <tr>
@@ -188,30 +188,30 @@
     </section>
 
     <section>
-      <h2>Predictive Results & Strategic Insights</h2>
+      <h2>Kết quả dự báo và hàm ý chiến lược</h2>
       <div class="kpis">
-        <div class="kpi"><div class="label">Q2 Revenue Forecast</div><div class="value">{{ forecast_metrics.q2_total_revenue_forecast }}</div></div>
-        <div class="kpi"><div class="label">Forecast Method</div><div class="value">{{ forecast_metrics.methods }}</div></div>
-        <div class="kpi"><div class="label">High Risk Dealers</div><div class="value">{{ churn_summary.high_risk_count }}</div></div>
-        <div class="kpi"><div class="label">Dealers Scored</div><div class="value">{{ churn_summary.customer_count }}</div></div>
+        <div class="kpi"><div class="label">Dự báo doanh thu Q2</div><div class="value">{{ forecast_metrics.q2_total_revenue_forecast }}</div></div>
+        <div class="kpi"><div class="label">Phương pháp dự báo</div><div class="value">{{ forecast_metrics.methods }}</div></div>
+        <div class="kpi"><div class="label">Đại lý rủi ro cao</div><div class="value">{{ churn_summary.high_risk_count }}</div></div>
+        <div class="kpi"><div class="label">Đại lý đã chấm điểm</div><div class="value">{{ churn_summary.customer_count }}</div></div>
       </div>
 
-      <h3>Multi-Scenario Forecast</h3>
+      <h3>Dự báo theo nhiều kịch bản</h3>
       <table>
-        <thead><tr><th>Scenario</th><th>Forecast</th></tr></thead>
+        <thead><tr><th>Kịch bản</th><th>Dự báo</th></tr></thead>
         <tbody>
-          <tr><td>Pessimistic</td><td>{{ scenario.pessimistic }}</td></tr>
-          <tr><td>Base</td><td>{{ scenario.base }}</td></tr>
-          <tr><td>Optimistic</td><td>{{ scenario.optimistic }}</td></tr>
+          <tr><td>Thận trọng</td><td>{{ scenario.pessimistic }}</td></tr>
+          <tr><td>Cơ sở</td><td>{{ scenario.base }}</td></tr>
+          <tr><td>Tích cực</td><td>{{ scenario.optimistic }}</td></tr>
         </tbody>
       </table>
-      <p><strong>Confidence interval explanation:</strong> {{ scenario.confidence_interval_explanation }}</p>
-      <p><strong>Key drivers:</strong> {{ scenario.key_drivers | join("; ") }}</p>
-      <p><strong>Sensitivity:</strong> {{ scenario.sensitivity_analysis | join("; ") }}</p>
+      <p><strong>Giải thích khoảng tin cậy:</strong> {{ scenario.confidence_interval_explanation }}</p>
+      <p><strong>Động lực chính:</strong> {{ scenario.key_drivers | join("; ") }}</p>
+      <p><strong>Độ nhạy:</strong> {{ scenario.sensitivity_analysis | join("; ") }}</p>
 
-      <h3>Q2 Forecast by Product Group</h3>
+      <h3>Dự báo Q2 theo nhóm sản phẩm</h3>
       <table>
-        <thead><tr><th>Group</th><th>Revenue</th><th>Qty</th><th>Low</th><th>High</th></tr></thead>
+        <thead><tr><th>Nhóm</th><th>Doanh thu</th><th>Số lượng</th><th>Thấp</th><th>Cao</th></tr></thead>
         <tbody>
         {% for row in forecast_group_rows %}
           <tr>
@@ -225,19 +225,19 @@
         </tbody>
       </table>
 
-      <h3>Color Strategy</h3>
-      <p><strong>Rising:</strong> {{ reasoning.color_strategy.rising_colors | join(", ") }}</p>
-      <p><strong>Declining:</strong> {{ reasoning.color_strategy.declining_colors | join(", ") }}</p>
+      <h3>Chiến lược màu sắc</h3>
+      <p><strong>Đang tăng:</strong> {{ reasoning.color_strategy.rising_colors | join(", ") }}</p>
+      <p><strong>Đang giảm:</strong> {{ reasoning.color_strategy.declining_colors | join(", ") }}</p>
       <p>{{ reasoning.color_strategy.recommendation }}</p>
 
-      <h3>Dealer Actions</h3>
-      <p><strong>Retention priority:</strong> {{ reasoning.dealer_actions.retention_priority | join(", ") }}</p>
+      <h3>Hành động với đại lý</h3>
+      <p><strong>Ưu tiên giữ chân:</strong> {{ reasoning.dealer_actions.retention_priority | join(", ") }}</p>
       <p>{{ reasoning.dealer_actions.strategy }}</p>
 
-      <h3>Prioritized Strategic Recommendations</h3>
+      <h3>Khuyến nghị chiến lược ưu tiên</h3>
       <table>
         <thead>
-          <tr><th>Priority</th><th>Score</th><th>Recommendation</th><th>Impact</th><th>Complexity</th><th>ROI</th><th>Dependency</th><th>Timeline</th></tr>
+          <tr><th>Ưu tiên</th><th>Điểm</th><th>Khuyến nghị</th><th>Tác động</th><th>Độ phức tạp</th><th>ROI</th><th>Phụ thuộc</th><th>Thời hạn</th></tr>
         </thead>
         <tbody>
         {% for item in strategic_recommendations %}
@@ -255,14 +255,14 @@
         </tbody>
       </table>
 
-      <h2>Meta-Analysis, Data Confidence & Self-Critique</h2>
+      <h2>Phân tích độ tin cậy dữ liệu và tự phản biện</h2>
       <div class="insight warning">
-        <h3>Data Quality Assessment</h3>
-        <pre>{{ data_quality_assessment | tojson(indent=2) }}</pre>
+        <h3>Đánh giá chất lượng dữ liệu</h3>
+        <ul>{% for item in data_quality_assessment_lines %}<li>{{ item }}</li>{% endfor %}</ul>
       </div>
-      <h3>Reflection Loop</h3>
-      <p><strong>Removed low-value insights:</strong> {{ self_critique.removed_low_value_insights | join("; ") }}</p>
-      <p><strong>Confidence notes:</strong> {{ self_critique.confidence_notes | join("; ") }}</p>
+      <h3>Vòng phản biện</h3>
+      <p><strong>Insight giá trị thấp đã loại bỏ:</strong> {{ self_critique.removed_low_value_insights | join("; ") }}</p>
+      <p><strong>Ghi chú độ tin cậy:</strong> {{ self_critique.confidence_notes | join("; ") }}</p>
     </section>
   </main>
 </body>

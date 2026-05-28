@@ -85,20 +85,20 @@ def _fallback(forecast_results: dict[str, Any], churn_results: dict[str, Any], r
         "reason": reason,
         "q2_forecast_summary": {
             "total_revenue_forecast": demand_summary.get("q2_total_revenue_forecast", 0),
-            "growth_vs_q1": "LLM_UNAVAILABLE",
+            "growth_vs_q1": "Không có diễn giải AI",
             "top_products": demand_summary.get("top_groups", []),
             "risk_products": [],
         },
         "color_strategy": {
             "rising_colors": [r.get("color") for r in color_results.get("rising_colors", [])[:5]],
             "declining_colors": [r.get("color") for r in color_results.get("declining_colors", [])[:5]],
-            "recommendation": "Review rising/declining color lists from model output.",
+            "recommendation": "Rà soát danh sách màu tăng/giảm từ kết quả mô hình trước khi chốt kế hoạch nhập hàng.",
         },
         "dealer_actions": {
             "high_risk_count": churn_results.get("summary", {}).get("high_risk_count", 0),
             "retention_priority": churn_results.get("summary", {}).get("top_priority_dealers", []),
             "reactivation_targets": [],
-            "strategy": "Prioritize dealers with high churn probability and high revenue contribution.",
+            "strategy": "Ưu tiên đại lý có xác suất rời bỏ cao nhưng vẫn đóng góp doanh thu lớn.",
         },
         "strategic_recommendations": [],
     }
@@ -112,15 +112,9 @@ def reason_over_forecasts(
     if dry_run:
         return _fallback(forecast_results, churn_results, "DRY_RUN")
 
-    provider = os.getenv("LLM_PROVIDER", "groq").lower()
-    if provider != "groq":
-        reason = f"Unsupported LLM_PROVIDER={provider}; only groq is configured for this project."
-        log_pending_issue(reason)
-        return _fallback(forecast_results, churn_results, reason)
-
     client = GroqKeyPoolClient()
     if not client.has_keys():
-        reason = "GROQ_API_KEYS is missing; skipped forecast LLM reasoning."
+        reason = f"{client.provider.upper()} API keys are missing; skipped forecast LLM reasoning."
         log_pending_issue(reason)
         return _fallback(forecast_results, churn_results, reason)
 
@@ -132,11 +126,11 @@ def reason_over_forecasts(
     try:
         parsed = client.chat_json(prompt=prompt)
         parsed.setdefault("status", "SUCCESS")
-        parsed.setdefault("llm_provider", "groq")
+        parsed.setdefault("llm_provider", client.provider)
         parsed.setdefault("llm_model", client.model)
         return parsed
     except Exception as exc:
-        last_error = f"Groq forecast reasoning failed after key rotation: {exc}"
+        last_error = f"Lập luận dự báo bằng {client.provider} không thành công sau khi đổi khóa: {exc}"
         logger.warning(last_error)
         log_pending_issue(last_error)
         return _fallback(forecast_results, churn_results, last_error)

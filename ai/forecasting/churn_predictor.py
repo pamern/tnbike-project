@@ -84,7 +84,7 @@ def predict_churn(customer_features: pd.DataFrame) -> dict[str, Any]:
         else:
             df["churn_probability"] = _heuristic_churn_probability(df)
     except Exception as exc:
-        reason = f"Churn model failed; using heuristic fallback. Error: {exc}"
+        reason = f"Mô hình rời bỏ không thành công; chuyển sang phương án heuristic dự phòng. Lỗi: {exc}"
         logger.warning(reason)
         log_pending_issue(reason)
         df["churn_probability"] = _heuristic_churn_probability(df)
@@ -120,4 +120,3 @@ def predict_churn(customer_features: pd.DataFrame) -> dict[str, Any]:
             "top_priority_dealers": result.head(5)["customer_code"].tolist(),
         },
     }
-

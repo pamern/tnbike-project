@@ -68,8 +68,8 @@ def _summarize_forecast(
         "base_revenue": total_revenue,
         "optimistic_revenue": optimistic,
         "confidence_interval_explanation": (
-            "Scenario range is derived from recent volatility, trend direction and model fallback uncertainty. "
-            "Because the available monthly history is short, scenario planning is more reliable than a single-point forecast."
+            "Khoảng kịch bản được suy ra từ biến động gần đây, hướng xu thế và bất định của mô hình dự phòng. "
+            "Do lịch sử theo tháng còn ngắn, lập kịch bản đáng tin cậy hơn một con số dự báo đơn lẻ."
         ),
     }
     sensitivity = {
@@ -88,7 +88,7 @@ def _summarize_forecast(
             "Recent product-group revenue run-rate",
             "Observed Q1 seasonality versus prior-year Q1",
             "Average selling price by product group",
-            "Dealer churn/retention exposure",
+            "Rủi ro rời bỏ và giữ chân đại lý",
             "Color demand momentum as inventory velocity proxy",
         ],
     }, scenario_summary, sensitivity
@@ -181,7 +181,7 @@ def forecast_demand(monthly_group: pd.DataFrame) -> dict[str, Any]:
                     }
                 )
     except Exception as exc:
-        reason = f"Prophet forecast failed; using rolling fallback. Error: {exc}"
+        reason = f"Dự báo Prophet không thành công; chuyển sang phương án dự phòng rolling. Lỗi: {exc}"
         logger.warning(reason)
         log_pending_issue(reason)
         forecast_rows = []

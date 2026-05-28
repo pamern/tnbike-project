@@ -678,7 +678,7 @@ git push origin nhat                # CHỈ nhánh nhat
 ## 10. Status (agent tự cập nhật)
 
 ```
-LAST UPDATED: 2026-05-28 16:36 Asia/Saigon
+LAST UPDATED: 2026-05-28 19:12 Asia/Saigon
 
 Phase 0 — Setup:         [x] Completed
 Phase 1 — BI Interpreter:[x] Completed
@@ -688,7 +688,7 @@ Phase 4 — Integration:   [x] Completed
 Phase 5 — Web UI:        [x] Completed
 Phase 6 — Packaging:     [x] Completed
 
-CURRENT BLOCKER: none for push. PR creation is manual because GitHub CLI (`gh`) is not installed in this environment.
+CURRENT BLOCKER: none
 PENDING ISSUES: (xem ai/logs/pending_issues.log)
 
 NOTES:
@@ -709,6 +709,7 @@ NOTES:
 - Phase 6 packaging: tạo/cập nhật `.gitignore`, `README.md`, `ui/.env.example`, `ai/.env.example`; chạy lại `py_compile`, `pytest ai/tests/test_integration.py -q` pass 4/4 và UI route smoke test pass.
 - Phase 6 final: tích hợp `ai/` và `ui/` vào root repo `tnbike-project/`, chỉnh `ai/common.py` để nhận layout mới, cập nhật README/.gitignore/env examples, remove `.env` khỏi Git index, commit trên nhánh `nhat` và push lên `origin/nhat` thành công.
 - PR chưa được tạo tự động vì `gh` không có trong môi trường hiện tại; có thể mở PR từ `nhat` sang `main` trên GitHub.
+- Tổng duyệt cuối: nâng cấp sản phẩm thành VIZOR với UI/UX trắng sạch, mềm mại; thêm cấu hình nhiều nhà cung cấp LLM (Groq/OpenAI/Anthropic/OpenRouter); mở rộng onboarding/product tour cho Home, Settings và Reports; Việt hóa giao diện, thông báo và báo cáo đầu ra. Kiểm thử `py_compile`, FastAPI TestClient, `pytest ai/tests/test_integration.py -q`, `python -m ai.run_ai_pipeline --dry-run`, quét secret và `git diff --check` đều đạt trước khi đóng gói.
 ```
 
 ---
@@ -724,6 +725,6 @@ Hệ thống được coi là hoàn thành khi:
 5. LLM không lặp lại 6 baseline insights mà mở rộng hoặc phát hiện thêm
 6. Nếu DB hoặc LLM down: pipeline vẫn chạy, báo cáo vẫn tạo ra (với cảnh báo graceful)
 7. `uvicorn ui.app:app --port 8501` khởi động thành công, UI hiển thị đúng trên localhost
-8. Người dùng có thể nhập Groq API keys trực tiếp trên UI và chạy pipeline không cần chỉnh file
+8. Người dùng có thể nhập API key của nhiều nhà cung cấp LLM trực tiếp trên UI và chạy pipeline không cần chỉnh file
 9. Stepper hiển thị đúng 6 bước với trạng thái realtime qua WebSocket
-10. `git push origin nhat` thành công, không có secret bị commit, PR được tạo trên GitHub
+10. `git push origin nhat` thành công, không có secret bị commit

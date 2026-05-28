@@ -15,20 +15,21 @@ logger = setup_logging(__name__)
 STRATEGY_SYSTEM_PROMPT = """
 Bạn là senior strategy consultant cho TNBIKE, không phải BI summarizer.
 Nhiệm vụ của bạn là biến tín hiệu dữ liệu thành Executive Intelligence Report có discovery value cao.
+Toàn bộ giá trị văn bản hiển thị cho người dùng phải viết bằng tiếng Việt thuần túy, chuyên nghiệp.
 
 Quy tắc bắt buộc:
 - Không viết insight theo template nông "Finding/Impact/Action" nếu không có causal reasoning.
 - Mỗi insight phải trả lời: điều gì xảy ra, vì sao, tác động dài hạn, hậu quả nếu không xử lý, đòn bẩy tối ưu, action ROI cao nhất.
 - Luôn so sánh đa chiều giữa geography, dealer cohort, product lifecycle, seasonality, margin/price structure, churn risk, inventory velocity proxy và data quality.
 - Phải gọi rõ quantitative evidence, benchmark comparison, root-cause reasoning, strategic implication.
-- Phát hiện contradiction: ví dụ tăng trưởng revenue nhưng loyalty/churn xấu; growth category nhưng margin/ASP yếu; forecast tăng nhưng data quality Unknown cao.
-- Meta-analysis là bắt buộc: tự đánh giá độ tin cậy dữ liệu và coi vùng Unknown/missing mapping là business risk nếu material.
+- Phát hiện mâu thuẫn: ví dụ doanh thu tăng nhưng loyalty/churn xấu; danh mục tăng trưởng nhưng biên lợi nhuận hoặc ASP yếu; dự báo tăng nhưng chất lượng dữ liệu kém.
+- Meta-analysis là bắt buộc: tự đánh giá độ tin cậy dữ liệu và coi vùng chưa định danh hoặc thiếu mapping là rủi ro kinh doanh nếu có ý nghĩa vật chất.
 - Recommendation phải có prioritization_score, expected_business_impact, implementation_complexity, estimated_roi, execution_dependency, timeline.
 - Insight kém là insight hiển nhiên, chỉ nhắc lại aggregation, hoặc không actionable. Loại bỏ chúng trong self-critique.
 - Cấm dùng nguyên nhân vòng lặp như "tăng vì nhu cầu tăng", "do khách hàng thích", "quảng cáo nhiều hơn" nếu không có cơ chế vận hành hoặc dữ liệu hỗ trợ.
 - Cấm recommendation chung chung như "tăng quảng cáo/khuyến mãi" nếu không có cohort, SKU, geography, dependency và ROI logic.
 - Nếu evidence không đủ để khẳng định nguyên nhân, phải nói là "hypothesis" và nêu cách kiểm chứng.
-- Chỉ trả JSON hợp lệ.
+- Chỉ trả JSON hợp lệ; giữ tên key JSON theo schema, nhưng mọi giá trị nội dung phải là tiếng Việt.
 """
 
 
@@ -196,54 +197,54 @@ def _fallback_strategy(signals: dict[str, Any], reason: str) -> dict[str, Any]:
         "status": "STRATEGIC_FALLBACK",
         "reason": reason,
         "executive_narrative": {
-            "business_situation": f"Q1 revenue reached {_num(kpis.get('revenue')):,.0f} VND with {_num(kpis.get('active_dealers')):,.0f} active dealers.",
+            "business_situation": f"Doanh thu Q1 đạt {_num(kpis.get('revenue')):,.0f} VND với {_num(kpis.get('active_dealers')):,.0f} đại lý đang hoạt động.",
             "hidden_patterns": [
-                "Revenue concentration and churn risk must be interpreted together, not as separate BI views.",
-                f"Unknown product mapping accounts for {unknown_share:.1%} of revenue, creating blind spots in portfolio decisions.",
+                "Tập trung doanh thu và rủi ro rời bỏ cần được đọc cùng nhau, không nên tách thành hai góc nhìn BI độc lập.",
+                f"Nhóm sản phẩm chưa định danh chiếm {unknown_share:.1%} doanh thu, tạo điểm mù trong quyết định danh mục.",
             ],
             "strategic_risks": [
-                f"High-risk dealer share is {_num(dealer.get('high_risk_dealer_share')):.1%}; revenue growth can leak through dealer inactivity.",
-                "Forecast confidence is limited by short seasonal history, so scenario planning is more defensible than single-point forecast.",
+                f"Tỷ lệ đại lý rủi ro cao là {_num(dealer.get('high_risk_dealer_share')):.1%}; tăng trưởng doanh thu có thể thất thoát qua nhóm đại lý giảm hoạt động.",
+                "Độ tin cậy dự báo bị giới hạn bởi lịch sử mùa vụ ngắn, vì vậy lập kịch bản đáng tin cậy hơn một con số dự báo đơn lẻ.",
             ],
             "growth_opportunities": [
-                "Use top product groups and rising colors to build focused bundles for high-value dealer cohorts.",
-                "Treat Unknown category cleanup as a revenue-protection initiative before SKU rationalization decisions.",
+                "Kết hợp nhóm sản phẩm chủ lực và màu đang tăng để tạo bundle tập trung cho nhóm đại lý giá trị cao.",
+                "Xem việc làm sạch nhóm chưa định danh như một sáng kiến bảo vệ doanh thu trước khi tinh gọn SKU.",
             ],
             "prioritized_actions": [
-                "Launch a 30-day retention sprint for the top priority dealers before expanding acquisition spend.",
-                "Resolve Unknown product mapping and re-run product lifecycle analysis before inventory commitments.",
+                "Triển khai chiến dịch giữ chân 30 ngày cho nhóm đại lý ưu tiên trước khi tăng ngân sách mở rộng.",
+                "Xử lý mapping sản phẩm chưa định danh và chạy lại phân tích vòng đời sản phẩm trước khi cam kết tồn kho.",
             ],
         },
         "strategic_insights": [
             {
-                "title": "Growth is exposed to dealer retention leakage",
-                "what_is_happening": "Q2 forecast implies growth, while churn model flags a material high-risk dealer base.",
-                "why_it_is_happening": "Dealer purchase behavior is uneven; high monetary customers can still show stale recency.",
+                "title": "Tăng trưởng đang hở qua rủi ro giữ chân đại lý",
+                "what_is_happening": "Dự báo Q2 cho thấy tăng trưởng, trong khi mô hình rời bỏ vẫn đánh dấu một nhóm đại lý rủi ro cao đáng kể.",
+                "why_it_is_happening": "Hành vi mua hàng của đại lý không đồng đều; khách hàng có doanh thu cao vẫn có thể đã lâu chưa quay lại.",
                 "quantitative_evidence": [
-                    f"High-risk dealers: {_num(dealer.get('high_risk_dealer_count')):,.0f}/{_num(dealer.get('dealer_count')):,.0f}",
-                    f"Q2 forecast: {_num(forecast.get('q2_total_revenue_forecast')):,.0f} VND",
+                    f"Đại lý rủi ro cao: {_num(dealer.get('high_risk_dealer_count')):,.0f}/{_num(dealer.get('dealer_count')):,.0f}",
+                    f"Dự báo Q2: {_num(forecast.get('q2_total_revenue_forecast')):,.0f} VND",
                 ],
-                "benchmark_comparison": "Compared with a healthy growth pattern, forecast growth is not matched by uniformly active dealer cohorts.",
-                "root_cause_reasoning": "Revenue momentum is likely pulled by a subset of active/high-value dealers while inactive or stale dealers widen the loyalty gap.",
-                "long_term_impact": "If unresolved, revenue becomes more concentrated and less repeatable across quarters.",
-                "risk_if_ignored": "Sales targets may be met short term but CAC and reactivation cost rise later.",
-                "optimal_lever": "Dealer cohort retention and reactivation sequencing.",
-                "highest_roi_action": "Prioritize top-risk high-value dealers with bundle and credit/service interventions.",
-                "strategic_implication": "Retention should be managed as a growth lever, not a customer-service afterthought.",
+                "benchmark_comparison": "So với một mô hình tăng trưởng khỏe, tăng trưởng dự báo chưa đi kèm mức hoạt động đồng đều giữa các nhóm đại lý.",
+                "root_cause_reasoning": "Đà doanh thu có thể đang được kéo bởi một nhóm đại lý còn hoạt động và giá trị cao, trong khi đại lý ngừng mua làm rộng thêm khoảng trống loyalty.",
+                "long_term_impact": "Nếu không xử lý, doanh thu sẽ tập trung hơn và kém lặp lại qua các quý.",
+                "risk_if_ignored": "Mục tiêu ngắn hạn có thể vẫn đạt, nhưng chi phí kích hoạt lại và chi phí mở rộng sẽ tăng về sau.",
+                "optimal_lever": "Giữ chân theo cohort đại lý và sắp xếp ưu tiên kích hoạt lại.",
+                "highest_roi_action": "Ưu tiên đại lý giá trị cao nhưng rủi ro lớn bằng bundle và chính sách tín dụng/dịch vụ phù hợp.",
+                "strategic_implication": "Giữ chân cần được quản trị như một đòn bẩy tăng trưởng, không phải phần việc hậu mãi.",
                 "confidence": "medium",
             },
             {
-                "title": "Unknown portfolio share is a strategic blind spot",
-                "what_is_happening": "A material share of revenue is not cleanly mapped to product group lifecycle logic.",
-                "why_it_is_happening": "Master-data mapping gaps hide true SKU/category performance.",
-                "quantitative_evidence": [f"Unknown revenue share: {unknown_share:.1%}"],
-                "benchmark_comparison": "For executive product decisions, unknown category share should be immaterial; above 5% is a governance risk.",
-                "root_cause_reasoning": "Analytics can overstate or understate category winners if unmapped revenue is large.",
-                "long_term_impact": "Inventory and assortment decisions may reinforce the wrong product lines.",
-                "risk_if_ignored": "SKU rationalization and forecast allocation can shift capital into misclassified demand.",
-                "optimal_lever": "Master-data remediation before portfolio pruning.",
-                "highest_roi_action": "Resolve Unknown mapping and re-run lifecycle/margin analysis.",
-                "strategic_implication": "Data quality is a business risk because it directly affects inventory and category bets.",
+                "title": "Tỷ trọng danh mục chưa định danh là điểm mù chiến lược",
+                "what_is_happening": "Một phần doanh thu đáng kể chưa được gắn rõ vào logic vòng đời nhóm sản phẩm.",
+                "why_it_is_happening": "Khoảng trống mapping dữ liệu chủ làm che khuất hiệu quả thật của SKU và danh mục.",
+                "quantitative_evidence": [f"Tỷ trọng doanh thu chưa định danh: {unknown_share:.1%}"],
+                "benchmark_comparison": "Với quyết định danh mục cấp điều hành, nhóm chưa định danh nên không đáng kể; trên 5% đã là rủi ro quản trị.",
+                "root_cause_reasoning": "Phân tích có thể đánh giá quá cao hoặc quá thấp nhóm thắng cuộc nếu doanh thu chưa mapping còn lớn.",
+                "long_term_impact": "Quyết định tồn kho và phối danh mục có thể củng cố sai dòng sản phẩm.",
+                "risk_if_ignored": "Tinh gọn SKU và phân bổ dự báo có thể đẩy vốn vào nhu cầu bị phân loại sai.",
+                "optimal_lever": "Sửa dữ liệu chủ trước khi tinh gọn danh mục.",
+                "highest_roi_action": "Xử lý mapping nhóm chưa định danh và chạy lại phân tích vòng đời/biên lợi nhuận.",
+                "strategic_implication": "Chất lượng dữ liệu là rủi ro kinh doanh vì ảnh hưởng trực tiếp tới tồn kho và lựa chọn danh mục.",
                 "confidence": "high" if unknown_share >= 0.05 else "medium",
             },
         ],
@@ -252,28 +253,28 @@ def _fallback_strategy(signals: dict[str, Any], reason: str) -> dict[str, Any]:
         "recommendations": [
             {
                 "priority": "P1",
-                "recommendation": "Dealer retention sprint for high-risk/high-value customers",
+                "recommendation": "Chiến dịch giữ chân đại lý giá trị cao có rủi ro rời bỏ",
                 "prioritization_score": 92,
-                "expected_business_impact": "Protect Q2 forecast base and reduce revenue concentration risk.",
-                "implementation_complexity": "medium",
-                "estimated_roi": "high",
-                "execution_dependency": "Sales owner list, dealer call scripts, bundle/credit guardrails.",
-                "timeline": "First 30 days of Q2",
+                "expected_business_impact": "Bảo vệ nền doanh thu dự báo Q2 và giảm rủi ro tập trung doanh thu.",
+                "implementation_complexity": "trung bình",
+                "estimated_roi": "cao",
+                "execution_dependency": "Danh sách phụ trách bán hàng, kịch bản gọi đại lý, chính sách bundle/tín dụng.",
+                "timeline": "30 ngày đầu Q2",
             },
             {
                 "priority": "P1",
-                "recommendation": "Clean Unknown product group mapping before inventory decisions",
+                "recommendation": "Làm sạch mapping nhóm sản phẩm chưa định danh trước quyết định tồn kho",
                 "prioritization_score": 88,
-                "expected_business_impact": "Improve forecast allocation and SKU rationalization quality.",
-                "implementation_complexity": "low-medium",
-                "estimated_roi": "medium-high",
-                "execution_dependency": "Product master owner and ERP mapping rules.",
-                "timeline": "2 weeks",
+                "expected_business_impact": "Cải thiện phân bổ dự báo và chất lượng quyết định tinh gọn SKU.",
+                "implementation_complexity": "thấp đến trung bình",
+                "estimated_roi": "trung bình đến cao",
+                "execution_dependency": "Người phụ trách dữ liệu sản phẩm và quy tắc mapping ERP.",
+                "timeline": "2 tuần",
             },
         ],
         "self_critique": {
             "removed_low_value_insights": [],
-            "confidence_notes": ["Fallback strategy used because LLM synthesis was unavailable."],
+            "confidence_notes": ["Đã dùng chiến lược dự phòng vì tổng hợp LLM chưa khả dụng."],
         },
     }
 
@@ -318,10 +319,10 @@ def _quality_issues(report: dict[str, Any]) -> list[str]:
 
     for idx, rec in enumerate(report.get("recommendations", []), start=1):
         if rec.get("prioritization_score") in (None, ""):
-            issues.append(f"Recommendation {idx} missing prioritization_score.")
+            issues.append(f"Khuyến nghị {idx} thiếu prioritization_score.")
         for field in ["expected_business_impact", "implementation_complexity", "estimated_roi", "execution_dependency", "timeline"]:
             if not rec.get(field):
-                issues.append(f"Recommendation {idx} missing {field}.")
+                issues.append(f"Khuyến nghị {idx} thiếu {field}.")
     return issues
 
 
@@ -336,26 +337,26 @@ def generate_strategic_intelligence(
 
     client = GroqKeyPoolClient()
     if not client.has_keys():
-        reason = "GROQ_API_KEYS is missing; strategic intelligence synthesis skipped."
+        reason = f"{client.provider.upper()} API keys are missing; strategic intelligence synthesis skipped."
         log_pending_issue(reason)
         return _fallback_strategy(signals, reason)
 
     try:
         client.max_tokens = min(client.max_tokens, 800)
         synthesis_prompt = f"""
-Run this multi-step pipeline internally, then output only final JSON:
-1. Statistical signal extraction.
-2. Hypothesis generation.
-3. Contradiction checking.
-4. Business interpretation.
-5. Executive recommendation synthesis.
-6. Self-critique: remove obvious, repeated or non-actionable insights.
+Chạy nội bộ quy trình nhiều bước sau, sau đó chỉ trả JSON cuối cùng:
+1. Trích xuất tín hiệu thống kê.
+2. Tạo giả thuyết.
+3. Kiểm tra mâu thuẫn.
+4. Diễn giải kinh doanh.
+5. Tổng hợp khuyến nghị điều hành.
+6. Tự phản biện: loại bỏ insight hiển nhiên, lặp lại hoặc không hành động được.
 
 Signals:
 {_compact(_executive_digest(signals), 4200)}
 
-Create a consulting-style Strategic Executive Intelligence Report.
-Return JSON with this exact shape:
+Tạo báo cáo điều hành chiến lược theo phong cách tư vấn.
+Tất cả giá trị văn bản phải là tiếng Việt chuyên nghiệp. Trả JSON theo đúng cấu trúc sau:
 {{
   "status": "SUCCESS",
   "executive_narrative": {{
@@ -414,23 +415,24 @@ Return JSON with this exact shape:
         issues = _quality_issues(strategic)
         if issues:
             repair_prompt = f"""
-STEP 4 - Quality gate repair.
-The draft report failed these quality checks:
+Bước 4 - Sửa lỗi kiểm định chất lượng.
+Bản nháp chưa đạt các kiểm tra chất lượng sau:
 {_compact(issues)}
 
-Original draft:
+Bản nháp gốc:
 {_compact(strategic, 16000)}
 
 Signals:
 {_compact(_executive_digest(signals), 4200)}
 
-Rewrite the report to fix all issues. Requirements:
-- Replace generic causal claims with cross-dimensional mechanisms.
-- Use numbers in every insight.
-- Add contradiction detection, risk propagation, opportunity sizing and data-quality meta-analysis.
-- Keep only non-obvious, strategically actionable insights.
-- Do not recommend generic advertising/promotion unless tied to a specific cohort/product/geography and ROI mechanism.
-- Return the same JSON shape as STEP 3.
+Viết lại báo cáo để sửa toàn bộ lỗi. Yêu cầu:
+- Thay các nhận định nguyên nhân chung chung bằng cơ chế đa chiều.
+- Dùng số liệu trong mọi insight.
+- Bổ sung phát hiện mâu thuẫn, lan truyền rủi ro, định lượng cơ hội và phân tích chất lượng dữ liệu.
+- Chỉ giữ insight không hiển nhiên và có thể hành động ở cấp chiến lược.
+- Không khuyến nghị quảng cáo/khuyến mãi chung chung nếu không gắn với cohort, SKU, địa lý, phụ thuộc thực thi và logic ROI.
+- Tất cả giá trị văn bản phải viết bằng tiếng Việt chuyên nghiệp.
+- Trả lại cùng cấu trúc JSON như bước trước.
 """
             repaired = client.chat_json(repair_prompt, system=STRATEGY_SYSTEM_PROMPT)
             repaired.setdefault("status", "SUCCESS")
@@ -442,7 +444,7 @@ Rewrite the report to fix all issues. Requirements:
         if issues:
             fallback = _fallback_strategy(
                 signals,
-                "LLM output failed strategic quality gate; using deterministic strategic fallback.",
+                "Đầu ra LLM không đạt kiểm định chất lượng chiến lược; dùng bản dự phòng xác định.",
             )
             fallback.setdefault("self_critique", {})
             fallback["self_critique"]["quality_gate_failures"] = issues
@@ -452,7 +454,7 @@ Rewrite the report to fix all issues. Requirements:
         strategic["statistical_signals"] = signals
         return strategic
     except Exception as exc:
-        reason = f"Strategic intelligence LLM pipeline failed: {exc}"
+        reason = f"Quy trình tổng hợp chiến lược bằng LLM gặp lỗi: {exc}"
         logger.warning(reason)
         log_pending_issue(reason)
         fallback = _fallback_strategy(signals, reason)

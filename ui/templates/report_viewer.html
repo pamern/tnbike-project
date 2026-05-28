@@ -1,36 +1,34 @@
 {% extends "base.html" %}
-{% block title %}Reports{% endblock %}
+{% block title %}Báo cáo VIZOR{% endblock %}
 {% block content %}
-<section class="page-head">
-  <div>
-    <p class="eyebrow">Report Viewer</p>
-    <h1>Strategic Reports</h1>
-  </div>
+<section class="page-hero compact" data-tour="reports-hero">
+  <p class="eyebrow">Báo cáo</p>
+  <h1>Bản điều hành.</h1>
   {% if selected %}
-  <a class="btn secondary" href="/reports/download/{{ selected }}">Download HTML</a>
+  <a class="btn secondary" href="/reports/download/{{ selected }}"><i data-lucide="download"></i>HTML</a>
   {% endif %}
 </section>
 
 <section class="report-layout">
-  <aside class="report-list">
+  <aside class="report-list" data-tour="report-history">
     {% for report in reports %}
     <a class="{{ 'active' if report.html == selected else '' }}" href="/reports?file={{ report.html }}">
-      <span>{{ report.name }}</span>
+      <span>{{ report.name.replace('report_', '').replace('.html', '') }}</span>
       <small>{{ (report.size / 1024) | round(1) }} KB</small>
     </a>
     {% else %}
-    <p class="hint">Chưa có báo cáo trong ai/report/output.</p>
+    <p class="hint">Chưa có báo cáo.</p>
     {% endfor %}
   </aside>
-  <div class="report-frame-wrap">
+  <div class="report-frame-wrap" data-tour="report-preview">
     {% if selected %}
     <iframe class="report-frame" src="/reports/raw/{{ selected }}" title="Selected report"></iframe>
-    <div class="download-row">
-      <a class="btn ghost" href="/reports/download/{{ selected }}">HTML</a>
-      <a class="btn ghost" href="/reports/download/{{ selected.replace('.html', '.md') }}">Markdown</a>
+    <div class="download-row" data-tour="report-downloads">
+      <a class="btn ghost" href="/reports/download/{{ selected }}"><i data-lucide="file-code"></i>HTML</a>
+      <a class="btn ghost" href="/reports/download/{{ selected.replace('.html', '.md') }}"><i data-lucide="file-text"></i>Markdown</a>
     </div>
     {% else %}
-    <div class="empty-state">Không tìm thấy báo cáo.</div>
+    <div class="empty-state">Chạy VIZOR để tạo bản điều hành đầu tiên.</div>
     {% endif %}
   </div>
 </section>

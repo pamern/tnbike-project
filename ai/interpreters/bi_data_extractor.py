@@ -49,7 +49,7 @@ def get_product_analysis(date_from: str | date, date_to: str | date) -> pd.DataF
     query = f"""
         SELECT
             COALESCE(group_code, 'UNKNOWN') AS group_code,
-            COALESCE(group_name, 'Unknown') AS group_name,
+            COALESCE(group_name, 'Chưa định danh') AS group_name,
             COUNT(DISTINCT product_code) AS sku_count,
             COUNT(DISTINCT so_number) AS order_count,
             SUM(quantity)::float AS total_qty,
@@ -112,8 +112,8 @@ def get_customer_rfm(date_from: str | date, date_to: str | date) -> pd.DataFrame
 def get_geo_analysis(date_from: str | date, date_to: str | date) -> pd.DataFrame:
     query = f"""
         SELECT
-            COALESCE(region, 'Unknown') AS region,
-            COALESCE(province_name, 'Unknown') AS province_name,
+            COALESCE(region, 'Chưa định danh') AS region,
+            COALESCE(province_name, 'Chưa định danh') AS province_name,
             COUNT(DISTINCT customer_code) AS active_customer_count,
             COUNT(DISTINCT so_number) AS order_count,
             SUM(quantity)::float AS total_qty,
@@ -159,4 +159,3 @@ def extract_bi_data(date_from: str | date, date_to: str | date) -> dict[str, pd.
 
 def close_db_pool() -> None:
     close_connection_pool()
-

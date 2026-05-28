@@ -3,30 +3,43 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{% block title %}TNBIKE Intelligence{% endblock %}</title>
+  <title>{% block title %}VIZOR{% endblock %}</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ url_for('static', path='/style.css') }}">
 </head>
-<body>
-  <div class="shell">
-    <aside class="nav">
-      <a class="brand" href="/">
-        <span class="brand-mark">T</span>
-        <span>TNBIKE Intelligence</span>
+<body data-page="{{ active }}">
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="VIZOR">
+        <span class="brand-mark">V</span>
+        <span>VIZOR</span>
       </a>
-      <nav class="nav-links" aria-label="Main navigation">
-        <a href="/" class="{{ 'active' if active == 'home' else '' }}">Control Center</a>
-        <a href="/reports" class="{{ 'active' if active == 'reports' else '' }}">Reports</a>
-        <a href="/settings" class="{{ 'active' if active == 'settings' else '' }}">Settings</a>
+      <nav class="nav-links" aria-label="Điều hướng chính">
+        <a href="/" class="{{ 'active' if active == 'home' else '' }}">Phòng phân tích</a>
+        <a href="/reports" class="{{ 'active' if active == 'reports' else '' }}">Báo cáo</a>
+        <a href="/settings" class="{{ 'active' if active == 'settings' else '' }}">Kết nối</a>
       </nav>
-    </aside>
+      <button class="icon-btn" type="button" data-tour-start title="Hướng dẫn sử dụng">
+        <i data-lucide="sparkles"></i>
+      </button>
+    </header>
     <main class="content">
       {% block content %}{% endblock %}
     </main>
   </div>
+  <div class="tour-backdrop" data-tour-backdrop hidden></div>
+  <aside class="tour-card" data-tour-card hidden>
+    <div class="tour-count" data-tour-count>1/5</div>
+    <h3 data-tour-title>Kết nối</h3>
+    <p data-tour-text></p>
+    <div class="tour-actions">
+      <button class="btn ghost" type="button" data-tour-skip>Bỏ qua</button>
+      <button class="btn primary" type="button" data-tour-next>Tiếp tục</button>
+    </div>
+  </aside>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   <script src="{{ url_for('static', path='/app.js') }}" defer></script>
 </body>
 </html>
-

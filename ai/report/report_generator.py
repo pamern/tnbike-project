@@ -36,6 +36,34 @@ def format_pct(value: Any) -> str:
     return f"{_num(value) * 100:.1f}%"
 
 
+def _format_method_name(value: Any) -> str:
+    mapping = {
+        "rolling_trend_fallback": "dự phòng xu thế trượt",
+        "prophet": "Prophet",
+        "heuristic": "heuristic",
+        "RandomForestClassifier": "Random Forest",
+        "LogisticRegression": "Logistic Regression",
+    }
+    return mapping.get(str(value), str(value))
+
+
+def _format_data_quality(value: dict[str, Any]) -> list[str]:
+    if not value:
+        return ["Chưa có đánh giá chất lượng dữ liệu."]
+    lines = []
+    if "unknown_group_revenue_share" in value:
+        lines.append(f"Tỷ trọng doanh thu chưa định danh: {format_pct(value.get('unknown_group_revenue_share'))}.")
+    if value.get("unknown_group_is_material") is True:
+        lines.append("Nhóm chưa định danh đủ lớn để xem là rủi ro quản trị dữ liệu.")
+    elif value.get("unknown_group_is_material") is False:
+        lines.append("Nhóm chưa định danh chưa vượt ngưỡng rủi ro vật chất.")
+    if value.get("forecast_method_warning") is True:
+        lines.append("Dự báo đang dùng phương án dự phòng do lịch sử dữ liệu theo tháng còn ngắn.")
+    elif value.get("forecast_method_warning") is False:
+        lines.append("Phương pháp dự báo không phát sinh cảnh báo trọng yếu.")
+    return lines or [json.dumps(value, ensure_ascii=False, default=str)]
+
+
 def _stringify(value: Any) -> str:
     if isinstance(value, str):
         return value
@@ -63,7 +91,7 @@ def _format_product_rows(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
     out = []
     for row in rows[:12]:
         item = dict(row)
-        item["group_name"] = item.get("group_name") or "Unknown"
+        item["group_name"] = item.get("group_name") or "Chưa định danh"
         item["total_revenue_fmt"] = format_money(item.get("total_revenue"))
         item["total_qty_fmt"] = format_number(item.get("total_qty"))
         item["revenue_share_fmt"] = format_pct(item.get("revenue_share"))
@@ -75,7 +103,7 @@ def _format_forecast_group_rows(rows: list[dict[str, Any]]) -> list[dict[str, An
     out = []
     for row in rows[:12]:
         item = dict(row)
-        item["group_name"] = item.get("group_name") or "Unknown"
+        item["group_name"] = item.get("group_name") or "Chưa định danh"
         item["forecast_revenue_q2_fmt"] = format_money(item.get("forecast_revenue_q2"))
         item["forecast_qty_q2_fmt"] = format_number(item.get("forecast_qty_q2"))
         item["lower_revenue_q2_fmt"] = format_money(item.get("lower_revenue_q2"))
@@ -116,7 +144,7 @@ def build_report_context(
         "product_rows": _format_product_rows(product_rows),
         "forecast_metrics": {
             "q2_total_revenue_forecast": format_money(forecast_summary.get("q2_total_revenue_forecast")),
-            "methods": ", ".join(forecast_summary.get("methods", [])) or "n/a",
+            "methods": ", ".join(_format_method_name(method) for method in forecast_summary.get("methods", [])) or "không có",
         },
         "forecast_group_rows": _format_forecast_group_rows(forecast_groups),
         "churn_summary": {
@@ -140,6 +168,7 @@ def build_report_context(
         "strategic_insights": strategic.get("strategic_insights", []),
         "strategic_recommendations": strategic.get("recommendations", []),
         "data_quality_assessment": strategic.get("data_quality_assessment", {}),
+        "data_quality_assessment_lines": _format_data_quality(strategic.get("data_quality_assessment", {})),
         "self_critique": strategic.get("self_critique", {}),
         "scenario": strategic.get("scenario_forecast") or {
             "base": format_money(scenario.get("base_revenue") or forecast_summary.get("q2_total_revenue_forecast")),
@@ -148,9 +177,9 @@ def build_report_context(
             "confidence_interval_explanation": scenario.get("confidence_interval_explanation", ""),
             "key_drivers": forecast_summary.get("key_drivers", []),
             "sensitivity_analysis": [
-                f"Price +5%: {format_money(sensitivity.get('price_plus_5pct_revenue_delta'))}",
-                f"Volume +10%: {format_money(sensitivity.get('volume_plus_10pct_revenue_delta'))}",
-                f"Dealer retention +5% proxy: {format_money(sensitivity.get('dealer_retention_plus_5pct_proxy'))}",
+                f"Giá +5%: {format_money(sensitivity.get('price_plus_5pct_revenue_delta'))}",
+                f"Sản lượng +10%: {format_money(sensitivity.get('volume_plus_10pct_revenue_delta'))}",
+                f"Giữ chân đại lý +5%: {format_money(sensitivity.get('dealer_retention_plus_5pct_proxy'))}",
             ],
         },
     }
@@ -167,7 +196,7 @@ def render_html(context: dict[str, Any]) -> str:
 
 def render_markdown(context: dict[str, Any]) -> str:
     product_lines = [
-        f"- {row['group_name']}: {row['total_revenue_fmt']} revenue, {row['total_qty_fmt']} units"
+        f"- {row['group_name']}: doanh thu {row['total_revenue_fmt']}, {row['total_qty_fmt']} xe"
         for row in context["product_rows"]
     ]
     forecast_lines = [
@@ -181,96 +210,96 @@ def render_markdown(context: dict[str, Any]) -> str:
             evidence = item.get("quantitative_evidence", [])
             insight_lines.extend(
                 [
-                    f"### {item.get('title', 'Strategic insight')}",
-                    f"- What is happening: {item.get('what_is_happening', '')}",
-                    f"- Why it is happening: {item.get('why_it_is_happening', '')}",
-                    f"- Evidence: {'; '.join(str(x) for x in evidence)}",
-                    f"- Benchmark: {item.get('benchmark_comparison', '')}",
-                    f"- Root cause: {item.get('root_cause_reasoning', '')}",
-                    f"- Long-term impact: {item.get('long_term_impact', '')}",
-                    f"- Risk if ignored: {item.get('risk_if_ignored', '')}",
-                    f"- Optimal lever: {item.get('optimal_lever', '')}",
-                    f"- Highest ROI action: {item.get('highest_roi_action', '')}",
-                    f"- Strategic implication: {item.get('strategic_implication', '')}",
+                    f"### {item.get('title', 'Insight chiến lược')}",
+                    f"- Diễn biến: {item.get('what_is_happening', '')}",
+                    f"- Nguyên nhân: {item.get('why_it_is_happening', '')}",
+                    f"- Bằng chứng định lượng: {'; '.join(str(x) for x in evidence)}",
+                    f"- So sánh chuẩn: {item.get('benchmark_comparison', '')}",
+                    f"- Lý giải gốc rễ: {item.get('root_cause_reasoning', '')}",
+                    f"- Tác động dài hạn: {item.get('long_term_impact', '')}",
+                    f"- Rủi ro nếu bỏ qua: {item.get('risk_if_ignored', '')}",
+                    f"- Đòn bẩy tối ưu: {item.get('optimal_lever', '')}",
+                    f"- Hành động ROI cao nhất: {item.get('highest_roi_action', '')}",
+                    f"- Hàm ý chiến lược: {item.get('strategic_implication', '')}",
                 ]
             )
             continue
         insight_lines.extend(
             [
                 f"### {item.get('title', 'Insight')}",
-                f"- Finding: {item.get('finding', '')}",
-                f"- Impact: {item.get('business_impact', '')}",
-                f"- Action: {item.get('action', '')}",
+                f"- Phát hiện: {item.get('finding', '')}",
+                f"- Tác động: {item.get('business_impact', '')}",
+                f"- Hành động: {item.get('action', '')}",
             ]
         )
     if not insight_lines:
         insight_lines = [
-            "### LLM interpretation unavailable",
-            "- Finding: BI data was extracted successfully, but narrative insights were not generated.",
-            "- Impact: Report remains usable for operational review with model outputs and tables.",
-            "- Action: Add GROQ_API_KEYS and rerun without --dry-run for full interpretation.",
+            "### Chưa có diễn giải AI",
+            "- Phát hiện: dữ liệu BI đã được trích xuất thành công, nhưng chưa tạo phần diễn giải.",
+            "- Tác động: báo cáo vẫn dùng được cho rà soát vận hành với bảng và đầu ra mô hình.",
+            "- Hành động: thêm API key của nhà cung cấp và chạy lại không dùng --dry-run để tạo diễn giải đầy đủ.",
         ]
 
     return "\n".join(
         [
-            "# TNBIKE AI Business Report",
-            f"Generated: {context['generated_at']}",
-            f"Window: {context['date_from']} to {context['date_to']}",
+            "# Báo cáo điều hành VIZOR cho TNBIKE",
+            f"Thời điểm tạo: {context['generated_at']}",
+            f"Kỳ dữ liệu: {context['date_from']} đến {context['date_to']}",
             "",
-            "## BI & Operational Insights",
-            f"- Orders: {context['metrics']['order_count']}",
-            f"- Active dealers: {context['metrics']['active_customer_count']}",
-            f"- Revenue: {context['metrics']['total_revenue']}",
-            f"- AOV: {context['metrics']['avg_order_value']}",
+            "## Insight BI và vận hành",
+            f"- Số đơn hàng: {context['metrics']['order_count']}",
+            f"- Đại lý hoạt động: {context['metrics']['active_customer_count']}",
+            f"- Doanh thu: {context['metrics']['total_revenue']}",
+            f"- Giá trị đơn hàng bình quân: {context['metrics']['avg_order_value']}",
             "",
-            "## Executive Narrative",
-            f"- Business situation: {context.get('executive_narrative', {}).get('business_situation', '')}",
-            f"- Hidden patterns: {_join_items(context.get('executive_narrative', {}).get('hidden_patterns', []))}",
-            f"- Strategic risks: {_join_items(context.get('executive_narrative', {}).get('strategic_risks', []))}",
-            f"- Growth opportunities: {_join_items(context.get('executive_narrative', {}).get('growth_opportunities', []))}",
-            f"- Prioritized actions: {_join_items(context.get('executive_narrative', {}).get('prioritized_actions', []))}",
+            "## Tường thuật điều hành",
+            f"- Tình hình kinh doanh: {context.get('executive_narrative', {}).get('business_situation', '')}",
+            f"- Mẫu hình ẩn: {_join_items(context.get('executive_narrative', {}).get('hidden_patterns', []))}",
+            f"- Rủi ro chiến lược: {_join_items(context.get('executive_narrative', {}).get('strategic_risks', []))}",
+            f"- Cơ hội tăng trưởng: {_join_items(context.get('executive_narrative', {}).get('growth_opportunities', []))}",
+            f"- Hành động ưu tiên: {_join_items(context.get('executive_narrative', {}).get('prioritized_actions', []))}",
             "",
-            "## Strategic Insights",
+            "## Insight chiến lược",
             *insight_lines,
             "",
-            "## Product Group Snapshot",
+            "## Ảnh chụp nhóm sản phẩm",
             *product_lines,
             "",
-            "## Predictive Results & Strategic Insights",
-            f"- Q2 revenue forecast: {context['forecast_metrics']['q2_total_revenue_forecast']}",
-            f"- Forecast method: {context['forecast_metrics']['methods']}",
-            f"- High-risk dealers: {context['churn_summary']['high_risk_count']}",
+            "## Kết quả dự báo và hàm ý chiến lược",
+            f"- Dự báo doanh thu Q2: {context['forecast_metrics']['q2_total_revenue_forecast']}",
+            f"- Phương pháp dự báo: {context['forecast_metrics']['methods']}",
+            f"- Đại lý rủi ro cao: {context['churn_summary']['high_risk_count']}",
             "",
-            "## Scenario Forecast",
-            f"- Pessimistic: {context.get('scenario', {}).get('pessimistic', '')}",
-            f"- Base: {context.get('scenario', {}).get('base', '')}",
-            f"- Optimistic: {context.get('scenario', {}).get('optimistic', '')}",
-            f"- Confidence: {context.get('scenario', {}).get('confidence_interval_explanation', '')}",
-            f"- Drivers: {_join_items(context.get('scenario', {}).get('key_drivers', []))}",
-            f"- Sensitivity: {_join_items(context.get('scenario', {}).get('sensitivity_analysis', []))}",
+            "## Dự báo theo kịch bản",
+            f"- Thận trọng: {context.get('scenario', {}).get('pessimistic', '')}",
+            f"- Cơ sở: {context.get('scenario', {}).get('base', '')}",
+            f"- Tích cực: {context.get('scenario', {}).get('optimistic', '')}",
+            f"- Độ tin cậy: {context.get('scenario', {}).get('confidence_interval_explanation', '')}",
+            f"- Động lực chính: {_join_items(context.get('scenario', {}).get('key_drivers', []))}",
+            f"- Độ nhạy: {_join_items(context.get('scenario', {}).get('sensitivity_analysis', []))}",
             "",
-            "## Q2 Forecast By Product Group",
+            "## Dự báo Q2 theo nhóm sản phẩm",
             *forecast_lines,
             "",
-            "## Color Strategy",
-            f"- Rising: {', '.join(context['reasoning']['color_strategy']['rising_colors'])}",
-            f"- Declining: {', '.join(context['reasoning']['color_strategy']['declining_colors'])}",
-            f"- Recommendation: {context['reasoning']['color_strategy']['recommendation']}",
+            "## Chiến lược màu sắc",
+            f"- Màu đang tăng: {', '.join(context['reasoning']['color_strategy']['rising_colors'])}",
+            f"- Màu đang giảm: {', '.join(context['reasoning']['color_strategy']['declining_colors'])}",
+            f"- Khuyến nghị: {context['reasoning']['color_strategy']['recommendation']}",
             "",
-            "## Dealer Actions",
-            f"- Retention priority: {', '.join(context['reasoning']['dealer_actions']['retention_priority'])}",
-            f"- Strategy: {context['reasoning']['dealer_actions']['strategy']}",
+            "## Hành động với đại lý",
+            f"- Ưu tiên giữ chân: {', '.join(context['reasoning']['dealer_actions']['retention_priority'])}",
+            f"- Chiến lược: {context['reasoning']['dealer_actions']['strategy']}",
             "",
-            "## Prioritized Strategic Recommendations",
+            "## Khuyến nghị chiến lược ưu tiên",
             *[
-                f"- {item.get('priority', '')} | score {item.get('prioritization_score', '')}: {item.get('recommendation', '')} | impact: {item.get('expected_business_impact', '')} | complexity: {item.get('implementation_complexity', '')} | ROI: {item.get('estimated_roi', '')} | dependency: {item.get('execution_dependency', '')} | timeline: {item.get('timeline', '')}"
+                f"- {item.get('priority', '')} | điểm {item.get('prioritization_score', '')}: {item.get('recommendation', '')} | tác động: {item.get('expected_business_impact', '')} | độ phức tạp: {item.get('implementation_complexity', '')} | ROI: {item.get('estimated_roi', '')} | phụ thuộc: {item.get('execution_dependency', '')} | thời hạn: {item.get('timeline', '')}"
                 for item in context.get("strategic_recommendations", [])
             ],
             "",
-            "## Data Confidence & Self-Critique",
-            f"- Data quality: {json.dumps(context.get('data_quality_assessment', {}), ensure_ascii=False, default=str)}",
-            f"- Removed low-value insights: {_join_items(context.get('self_critique', {}).get('removed_low_value_insights', []))}",
-            f"- Confidence notes: {_join_items(context.get('self_critique', {}).get('confidence_notes', []))}",
+            "## Độ tin cậy dữ liệu và tự phản biện",
+            f"- Chất lượng dữ liệu: {_join_items(context.get('data_quality_assessment_lines', []))}",
+            f"- Insight giá trị thấp đã loại bỏ: {_join_items(context.get('self_critique', {}).get('removed_low_value_insights', []))}",
+            f"- Ghi chú độ tin cậy: {_join_items(context.get('self_critique', {}).get('confidence_notes', []))}",
             "",
         ]
     )
@@ -297,7 +326,7 @@ def generate_report(
     html_path.write_text(html, encoding="utf-8")
     markdown_path.write_text(markdown, encoding="utf-8")
 
-    logger.info("Generated report: %s", html_path)
+    logger.info("Đã tạo báo cáo: %s", html_path)
     return {
         "html": str(html_path),
         "markdown": str(markdown_path),

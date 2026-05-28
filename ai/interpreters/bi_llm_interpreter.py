@@ -88,20 +88,13 @@ def interpret_bi_context(
             "context_chars": len(data_context),
         }
 
-    provider = os.getenv("LLM_PROVIDER", "groq").lower()
-    if provider != "groq":
-        reason = f"Unsupported LLM_PROVIDER={provider}; only groq is configured for this project."
-        logger.warning(reason)
-        log_pending_issue(reason)
-        return _fallback(reason)
-
     prompt = BI_SYSTEM_PROMPT.format(
         baseline_insights=baseline_insights,
         data_context=data_context,
     )
     client = GroqKeyPoolClient()
     if not client.has_keys():
-        reason = "GROQ_API_KEYS is missing; skipped BI LLM interpretation."
+        reason = f"{client.provider.upper()} API keys are missing; skipped BI LLM interpretation."
         logger.warning(reason)
         log_pending_issue(reason)
         return _fallback(reason)
@@ -109,15 +102,15 @@ def interpret_bi_context(
     try:
         parsed = client.chat_json(prompt=prompt)
         parsed.setdefault("status", "SUCCESS")
-        parsed.setdefault("llm_provider", "groq")
+        parsed.setdefault("llm_provider", client.provider)
         parsed.setdefault("llm_model", client.model)
         return parsed
     except json.JSONDecodeError as exc:
-        last_error = f"Groq LLM JSON parse failed: {exc}"
+        last_error = f"Không thể đọc JSON từ {client.provider}: {exc}"
         logger.warning(last_error)
         return _fallback(last_error)
     except Exception as exc:
-        last_error = f"Groq BI interpretation failed after key rotation: {exc}"
+        last_error = f"Diễn giải BI bằng {client.provider} không thành công sau khi đổi khóa: {exc}"
         logger.warning(last_error)
         log_pending_issue(last_error)
         return _fallback(last_error)

@@ -1,39 +1,53 @@
 {% extends "base.html" %}
-{% block title %}Settings{% endblock %}
+{% block title %}Kết nối VIZOR{% endblock %}
 {% block content %}
-<section class="page-head">
-  <div>
-    <p class="eyebrow">Runtime Settings</p>
-    <h1>API Keys & Config</h1>
-  </div>
-  <span class="badge">{{ "keys loaded" if has_keys else "no keys in session" }}</span>
+<section class="page-hero compact" data-tour="connect-hero">
+  <p class="eyebrow">Kết nối</p>
+  <h1>Dùng mô hình bạn tin cậy.</h1>
+  <span class="status-pill">{{ "đã sẵn sàng" if has_keys else "chỉ lưu trong phiên" }}</span>
 </section>
 
-<form id="settings-form" class="panel form-grid">
-  <label class="field wide">
-    <span>GROQ_API_KEYS</span>
-    <textarea name="groq_api_keys" rows="6" placeholder="Mỗi key một dòng"></textarea>
-  </label>
-  <label class="field">
-    <span>LLM_MODEL</span>
-    <select name="llm_model">
-      <option value="llama-3.3-70b-versatile" {{ "selected" if llm_model == "llama-3.3-70b-versatile" else "" }}>llama-3.3-70b-versatile</option>
-      <option value="llama-3.1-8b-instant" {{ "selected" if llm_model == "llama-3.1-8b-instant" else "" }}>llama-3.1-8b-instant</option>
-    </select>
-  </label>
-  <label class="field"><span>PGHOST</span><input name="pghost" value="{{ config.get('PGHOST', '') }}" placeholder="localhost"></label>
-  <label class="field"><span>PGPORT</span><input name="pgport" value="{{ config.get('PGPORT', '') }}" placeholder="5432"></label>
-  <label class="field"><span>PGDATABASE</span><input name="pgdatabase" value="{{ config.get('PGDATABASE', '') }}" placeholder="tnbike_db"></label>
-  <label class="field"><span>PGUSER</span><input name="pguser" value="{{ config.get('PGUSER', '') }}" placeholder="postgres"></label>
-  <label class="field"><span>PGPASSWORD</span><input name="pgpassword" type="password" value="" placeholder="session password"></label>
-  <label class="field"><span>DB_SCHEMA</span><input name="db_schema" value="{{ config.get('DB_SCHEMA', '') }}" placeholder="tnbike"></label>
-  <p class="hint wide">Keys chỉ tồn tại trong phiên làm việc này. Tắt server = mất keys.</p>
-  <div class="action-bar wide">
-    <button type="submit" class="btn primary">Lưu session</button>
-    <button type="button" id="test-db" class="btn secondary">Test kết nối DB</button>
-    <button type="button" id="test-llm" class="btn secondary">Test LLM key</button>
-  </div>
-  <div id="settings-result" class="result wide"></div>
+<form id="settings-form" class="settings-grid">
+  <section class="soft-panel provider-card" data-tour="provider-choice">
+    <h2>Nhà cung cấp AI</h2>
+    <div class="provider-cards" data-provider-cards>
+      {% for value, label, model in [("groq", "Groq", "llama-3.3-70b-versatile"), ("openai", "OpenAI", "gpt-4o-mini"), ("anthropic", "Anthropic", "claude-3-5-haiku-latest"), ("openrouter", "OpenRouter", "openai/gpt-4o-mini")] %}
+      <label class="provider-option {{ 'selected' if llm_provider == value else '' }}">
+        <input type="radio" name="llm_provider" value="{{ value }}" data-default-model="{{ model }}" {{ "checked" if llm_provider == value else "" }}>
+        <span>{{ label }}</span>
+      </label>
+      {% endfor %}
+    </div>
+    <label class="field wide" data-tour="provider-key">
+      <span>Khóa API</span>
+      <textarea name="llm_api_keys" rows="5" placeholder="Mỗi khóa một dòng"></textarea>
+    </label>
+    <label class="field wide" data-tour="provider-model">
+      <span>Mô hình</span>
+      <input name="llm_model" value="{{ llm_model }}" placeholder="Tên mô hình">
+    </label>
+  </section>
+
+  <section class="soft-panel" data-tour="data-source">
+    <h2>Nguồn dữ liệu</h2>
+    <div class="form-grid">
+      <label class="field"><span>Máy chủ</span><input name="pghost" value="{{ config.get('PGHOST', '') }}" placeholder="localhost"></label>
+      <label class="field"><span>Cổng</span><input name="pgport" value="{{ config.get('PGPORT', '') }}" placeholder="5432"></label>
+      <label class="field"><span>Cơ sở dữ liệu</span><input name="pgdatabase" value="{{ config.get('PGDATABASE', '') }}" placeholder="tnbike_db"></label>
+      <label class="field"><span>Người dùng</span><input name="pguser" value="{{ config.get('PGUSER', '') }}" placeholder="postgres"></label>
+      <label class="field"><span>Mật khẩu</span><input name="pgpassword" type="password" value="" placeholder="mật khẩu phiên"></label>
+      <label class="field"><span>Lược đồ</span><input name="db_schema" value="{{ config.get('DB_SCHEMA', '') }}" placeholder="tnbike"></label>
+    </div>
+  </section>
+
+  <section class="soft-panel wide actions-panel" data-tour="connection-actions">
+    <p>Khóa chỉ tồn tại trong phiên trình duyệt hiện tại.</p>
+    <div class="action-bar">
+      <button type="submit" class="btn primary"><i data-lucide="check"></i>Lưu</button>
+      <button type="button" id="test-db" class="btn secondary"><i data-lucide="database"></i>Kiểm tra DB</button>
+      <button type="button" id="test-llm" class="btn secondary"><i data-lucide="brain"></i>Kiểm tra AI</button>
+    </div>
+    <div id="settings-result" class="result"></div>
+  </section>
 </form>
 {% endblock %}
-

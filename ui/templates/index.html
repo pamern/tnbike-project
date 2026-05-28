@@ -1,74 +1,110 @@
 {% extends "base.html" %}
-{% block title %}Pipeline Control Center{% endblock %}
+{% block title %}Phòng phân tích VIZOR{% endblock %}
 {% block content %}
-<section class="page-head">
-  <div>
-    <p class="eyebrow">Pipeline Control Center</p>
-    <h1>TNBIKE Intelligence</h1>
+<section class="hero-grid">
+  <div class="hero-copy">
+    <p class="eyebrow">Phòng điều phối AI</p>
+    <h1>Biến dữ liệu bán hàng thành bản điều hành chiến lược.</h1>
+    <div class="hero-actions" data-tour="run">
+      <form id="pipeline-form" class="run-form">
+        <input type="hidden" name="date_from" value="2026-01-01">
+        <input type="hidden" name="date_to" value="2026-03-31">
+        <input type="hidden" name="branch" value="all">
+        <button type="submit" class="btn primary" data-dry-run="false">
+          <i data-lucide="play"></i>
+          Chạy VIZOR
+        </button>
+        <button type="submit" class="btn secondary" data-dry-run="true">
+          <i data-lucide="wand-sparkles"></i>
+          Xem thử
+        </button>
+      </form>
+      <a class="btn ghost" id="latest-report-link" href="{{ '/reports?file=' ~ latest_report if latest_report else '/reports' }}">
+        <i data-lucide="file-text"></i>
+        Báo cáo mới nhất
+      </a>
+    </div>
   </div>
-  <div class="status-strip">
-    <span class="badge" id="db-badge">DB: checking</span>
-    <span class="badge" id="llm-badge">LLM: session</span>
-    <span class="badge" id="scheduler-badge">Scheduler: local</span>
+
+  <div class="glass-console" data-tour="engine">
+    <div class="console-head">
+      <span class="status-pill" id="run-state">{{ "đang chạy" if state.running else "sẵn sàng" }}</span>
+      <span class="status-dot"></span>
+    </div>
+    <div class="engine-stage" id="engine-stage">
+      <div class="core-node"><i data-lucide="brain-circuit"></i></div>
+      <div class="orbit orbit-a"></div>
+      <div class="orbit orbit-b"></div>
+      <div class="signal-card signal-a">Doanh thu</div>
+      <div class="signal-card signal-b">Đại lý</div>
+      <div class="signal-card signal-c">Dự báo</div>
+    </div>
+    <div class="cinema-caption">
+      <strong id="engine-title">VIZOR đang chờ lệnh.</strong>
+      <span id="engine-detail">Kết nối nhà cung cấp AI, sau đó chạy bản xem thử.</span>
+    </div>
   </div>
 </section>
 
-<section class="panel keys-panel">
-  <div>
-    <h2>API Keys</h2>
-    <p>Keys chỉ tồn tại trong phiên làm việc này. Tắt server = mất keys.</p>
-  </div>
-  <form id="quick-settings-form" class="inline-form">
-    <textarea name="groq_api_keys" rows="2" placeholder="GROQ API keys, mỗi key một dòng"></textarea>
-    <select name="llm_model" aria-label="LLM model">
-      <option value="llama-3.3-70b-versatile">llama-3.3-70b-versatile</option>
-      <option value="llama-3.1-8b-instant">llama-3.1-8b-instant</option>
-    </select>
+<section class="provider-strip" data-tour="connect">
+  <form id="quick-settings-form" class="provider-form">
+    <label class="provider-select">
+      <span>Nhà cung cấp</span>
+      <select name="llm_provider" id="quick-provider">
+        <option value="groq" {{ "selected" if provider == "groq" else "" }}>Groq</option>
+        <option value="openai" {{ "selected" if provider == "openai" else "" }}>OpenAI</option>
+        <option value="anthropic" {{ "selected" if provider == "anthropic" else "" }}>Anthropic</option>
+        <option value="openrouter" {{ "selected" if provider == "openrouter" else "" }}>OpenRouter</option>
+      </select>
+    </label>
+    <label class="key-field">
+      <span>Khóa phiên</span>
+      <input name="llm_api_keys" type="password" placeholder="{{ 'Đã có khóa' if has_keys else 'Dán API key' }}">
+    </label>
+    <label class="model-field">
+      <span>Mô hình</span>
+      <input name="llm_model" id="quick-model" value="{{ llm_model }}" placeholder="Tự động">
+    </label>
     <input type="hidden" name="pghost" value="">
     <input type="hidden" name="pgport" value="">
     <input type="hidden" name="pgdatabase" value="">
     <input type="hidden" name="pguser" value="">
     <input type="hidden" name="pgpassword" value="">
     <input type="hidden" name="db_schema" value="">
-    <button type="submit" class="btn secondary">Lưu session</button>
+    <button type="submit" class="btn secondary">
+      <i data-lucide="plug-zap"></i>
+      Kết nối
+    </button>
   </form>
 </section>
 
-<section class="panel">
-  <div class="section-title">
-    <h2>Pipeline Stepper</h2>
-    <span id="run-state">{{ "running" if state.running else "idle" }}</span>
-  </div>
-  <div class="stepper" id="stepper">
-    {% for label in ["Kết nối DB", "Trích xuất dữ liệu", "Phân tích BI", "Dự báo ML", "Lập luận AI", "Xuất báo cáo"] %}
-    <div class="step" data-step="{{ loop.index }}">
-      <span class="step-icon">{{ loop.index }}</span>
-      <span class="step-name">{{ label }}</span>
-      <span class="step-time">0 ms</span>
+<section class="stage-grid">
+  <div class="story-panel" data-tour="timeline">
+    <div class="section-title">
+      <span>Trình tự vận hành</span>
+      <span id="ws-state">đang kết nối</span>
     </div>
-    {% endfor %}
+    <div class="timeline" id="stepper">
+      {% for label in ["Đánh thức dữ liệu", "Gom tín hiệu", "Dựng tình huống", "Mô phỏng Q2", "AI phản biện", "Xuất bản điều hành"] %}
+      <div class="step" data-step="{{ loop.index }}">
+        <span class="step-icon">{{ loop.index }}</span>
+        <div>
+          <span class="step-name">{{ label }}</span>
+          <span class="step-time">đang chờ</span>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
   </div>
-</section>
 
-<section class="panel">
-  <div class="section-title">
-    <h2>Live Log</h2>
-    <span id="ws-state">connecting</span>
+  <div class="insight-panel" data-tour="logs">
+    <div class="section-title">
+      <span>Bên trong hệ thống</span>
+      <button class="mini-btn" type="button" data-tour-start>Hướng dẫn</button>
+    </div>
+    <div class="narrative-feed" id="log-panel" aria-live="polite">
+      <div class="log-line info">VIZOR sẽ tường thuật từng bước tại đây.</div>
+    </div>
   </div>
-  <div class="terminal" id="log-panel" aria-live="polite"></div>
-  <form id="pipeline-form" class="action-bar">
-    <input type="date" name="date_from" value="2026-01-01">
-    <input type="date" name="date_to" value="2026-03-31">
-    <select name="branch">
-      <option value="all">All</option>
-      <option value="bi">BI only</option>
-      <option value="predict">Predict only</option>
-      <option value="report">Report only</option>
-    </select>
-    <button type="submit" class="btn primary" data-dry-run="false">Chạy pipeline</button>
-    <button type="submit" class="btn secondary" data-dry-run="true">Dry-run</button>
-    <a class="btn ghost" id="latest-report-link" href="{{ '/reports?file=' ~ latest_report if latest_report else '/reports' }}">Xem báo cáo cuối</a>
-  </form>
 </section>
 {% endblock %}
-

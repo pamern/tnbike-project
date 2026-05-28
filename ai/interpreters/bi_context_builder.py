@@ -9,12 +9,12 @@ import pandas as pd
 
 
 BASELINE_INSIGHTS = [
-    "INSIGHT 1 - Loyalty Gap: Q1/2026 revenue growth has not translated into loyalty; 41% of dealers bought once, 274 dealers stopped >380 days, VIP+Active dealers create >70% revenue.",
-    "INSIGHT 2 - Premium Decline: Growth comes from mass segments while SPORTBIKE_A and SPORTBIKE_S declined despite higher ASP.",
-    "INSIGHT 3 - SKU Bloat: Stars and Dogs each have 27 lines; color revenue is concentrated in black/cream/gray while several colors are weak.",
-    "INSIGHT 4 - Natural Bundle: CITYBIKE_P and KIDBIKE_1 co-occur in about 45% of orders while AOV and products/order are declining.",
-    "INSIGHT 5 - Geographic Shift: The North has about 80% dealers but slower growth; Central provinces are growing strongly; each region depends on one lead province.",
-    "INSIGHT 6 - Highland Plateau: Northern midland/mountain region contributes 9% revenue but only 4% YoY growth; expansion ROI is lower than Central region.",
+    "INSIGHT 1 - Khoảng trống trung thành: tăng trưởng doanh thu Q1/2026 chưa chuyển hóa thành loyalty; 41% đại lý chỉ mua một lần, 274 đại lý ngừng giao dịch trên 380 ngày, nhóm VIP+Active tạo trên 70% doanh thu.",
+    "INSIGHT 2 - Suy giảm phân khúc cao cấp: tăng trưởng đến từ nhóm phổ thông, trong khi SPORTBIKE_A và SPORTBIKE_S giảm dù giá bán bình quân cao hơn.",
+    "INSIGHT 3 - Danh mục SKU phình to: nhóm Stars và Dogs mỗi nhóm có 27 dòng; doanh thu màu tập trung ở đen, kem, ghi trong khi nhiều màu rất yếu.",
+    "INSIGHT 4 - Bundle tự nhiên: CITYBIKE_P và KIDBIKE_1 xuất hiện cùng nhau trong khoảng 45% đơn hàng, trong khi AOV và số sản phẩm trên đơn giảm.",
+    "INSIGHT 5 - Dịch chuyển địa lý: miền Bắc có khoảng 80% đại lý nhưng tăng trưởng chậm lại; miền Trung tăng mạnh; mỗi miền phụ thuộc vào một tỉnh đầu tàu.",
+    "INSIGHT 6 - Cao nguyên tăng trưởng: Trung du miền núi phía Bắc đóng góp 9% doanh thu nhưng chỉ tăng 4% YoY; ROI mở rộng thấp hơn miền Trung.",
 ]
 
 
@@ -57,7 +57,7 @@ def build_bi_context(
         "product_analysis": payload["product_analysis"][:10],
         "customer_rfm_top": payload["customer_rfm_top"][:15],
         "geo_analysis_top": payload["geo_analysis_top"][:15],
-        "context_note": "Context was compacted to stay within token budget.",
+        "context_note": "Ngữ cảnh đã được rút gọn để giữ trong giới hạn token.",
     }
     text = json.dumps(compact_payload, ensure_ascii=False, indent=2, default=_json_default)
     return text[:max_chars]
@@ -68,4 +68,3 @@ def build_context_package(extracted: dict[str, pd.DataFrame]) -> dict[str, str]:
         "baseline_insights": build_baseline_context(),
         "data_context": build_bi_context(extracted),
     }
-

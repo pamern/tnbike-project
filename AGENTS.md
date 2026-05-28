@@ -351,14 +351,14 @@ READING ORDER
 
 - [x] **P6.4** Tạo `ai/.env.example` và `ui/.env.example` đầy đủ với comment giải thích từng biến
 
-- [ ] **P6.5** Đảm bảo không có secret nào bị commit
+- [x] **P6.5** Đảm bảo không có secret nào bị commit
   ```bash
   # Kiểm tra trước khi push
   git diff --staged | grep -E "(provider-key-prefix|password|secret)" && echo "STOP: secret detected" || echo "Clean"
   grep -r "provider-key-prefix" --include="*.py" --include="*.yaml" --include="*.json" . | grep -v ".env"
   ```
 
-- [!] **P6.6** Push lên nhánh `nhat`
+- [x] **P6.6** Push lên nhánh `nhat`
   ```bash
   # Kiểm tra nhánh hiện tại
   git branch --show-current   # phải KHÔNG phải main/master
@@ -385,7 +385,7 @@ READING ORDER
   git push origin nhat
   ```
 
-- [ ] **P6.7** Sau khi push: mở GitHub, tạo PR từ `nhat` → `main` với description tóm tắt những gì đã thêm
+- [!] **P6.7** Sau khi push: mở GitHub, tạo PR từ `nhat` → `main` với description tóm tắt những gì đã thêm
   - Không merge — để team review
 
 ---
@@ -688,7 +688,7 @@ Phase 4 — Integration:   [x] Completed
 Phase 5 — Web UI:        [x] Completed
 Phase 6 — Packaging:     [x] Completed
 
-CURRENT BLOCKER: none
+CURRENT BLOCKER: none for push. PR creation is manual because GitHub CLI (`gh`) is not installed in this environment.
 PENDING ISSUES: (xem ai/logs/pending_issues.log)
 
 NOTES:
@@ -708,6 +708,7 @@ NOTES:
 - Đã cài `ui/requirements.txt` vào `ai/.venv`, kiểm tra `py_compile`, import `ui.app`, TestClient cho `/`, `/settings`, `/reports`, `/api/health/db`, chạy `/api/pipeline/run` dry-run tạo `report_20260528_161446_298106.html`, và khởi động Uvicorn thành công tại `http://127.0.0.1:8501/`.
 - Phase 6 packaging: tạo/cập nhật `.gitignore`, `README.md`, `ui/.env.example`, `ai/.env.example`; chạy lại `py_compile`, `pytest ai/tests/test_integration.py -q` pass 4/4 và UI route smoke test pass.
 - Phase 6 final: tích hợp `ai/` và `ui/` vào root repo `tnbike-project/`, chỉnh `ai/common.py` để nhận layout mới, cập nhật README/.gitignore/env examples, remove `.env` khỏi Git index, commit trên nhánh `nhat` và push lên `origin/nhat` thành công.
+- PR chưa được tạo tự động vì `gh` không có trong môi trường hiện tại; có thể mở PR từ `nhat` sang `main` trên GitHub.
 ```
 
 ---

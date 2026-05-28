@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Reports{% endblock %}
+{% block content %}
+<section class="page-head">
+  <div>
+    <p class="eyebrow">Report Viewer</p>
+    <h1>Strategic Reports</h1>
+  </div>
+  {% if selected %}
+  <a class="btn secondary" href="/reports/download/{{ selected }}">Download HTML</a>
+  {% endif %}
+</section>
+
+<section class="report-layout">
+  <aside class="report-list">
+    {% for report in reports %}
+    <a class="{{ 'active' if report.html == selected else '' }}" href="/reports?file={{ report.html }}">
+      <span>{{ report.name }}</span>
+      <small>{{ (report.size / 1024) | round(1) }} KB</small>
+    </a>
+    {% else %}
+    <p class="hint">Chưa có báo cáo trong ai/report/output.</p>
+    {% endfor %}
+  </aside>
+  <div class="report-frame-wrap">
+    {% if selected %}
+    <iframe class="report-frame" src="/reports/raw/{{ selected }}" title="Selected report"></iframe>
+    <div class="download-row">
+      <a class="btn ghost" href="/reports/download/{{ selected }}">HTML</a>
+      <a class="btn ghost" href="/reports/download/{{ selected.replace('.html', '.md') }}">Markdown</a>
+    </div>
+    {% else %}
+    <div class="empty-state">Không tìm thấy báo cáo.</div>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

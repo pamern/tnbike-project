@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block title %}Pipeline Control Center{% endblock %}
+{% block content %}
+<section class="page-head">
+  <div>
+    <p class="eyebrow">Pipeline Control Center</p>
+    <h1>TNBIKE Intelligence</h1>
+  </div>
+  <div class="status-strip">
+    <span class="badge" id="db-badge">DB: checking</span>
+    <span class="badge" id="llm-badge">LLM: session</span>
+    <span class="badge" id="scheduler-badge">Scheduler: local</span>
+  </div>
+</section>
+
+<section class="panel keys-panel">
+  <div>
+    <h2>API Keys</h2>
+    <p>Keys chỉ tồn tại trong phiên làm việc này. Tắt server = mất keys.</p>
+  </div>
+  <form id="quick-settings-form" class="inline-form">
+    <textarea name="groq_api_keys" rows="2" placeholder="GROQ API keys, mỗi key một dòng"></textarea>
+    <select name="llm_model" aria-label="LLM model">
+      <option value="llama-3.3-70b-versatile">llama-3.3-70b-versatile</option>
+      <option value="llama-3.1-8b-instant">llama-3.1-8b-instant</option>
+    </select>
+    <input type="hidden" name="pghost" value="">
+    <input type="hidden" name="pgport" value="">
+    <input type="hidden" name="pgdatabase" value="">
+    <input type="hidden" name="pguser" value="">
+    <input type="hidden" name="pgpassword" value="">
+    <input type="hidden" name="db_schema" value="">
+    <button type="submit" class="btn secondary">Lưu session</button>
+  </form>
+</section>
+
+<section class="panel">
+  <div class="section-title">
+    <h2>Pipeline Stepper</h2>
+    <span id="run-state">{{ "running" if state.running else "idle" }}</span>
+  </div>
+  <div class="stepper" id="stepper">
+    {% for label in ["Kết nối DB", "Trích xuất dữ liệu", "Phân tích BI", "Dự báo ML", "Lập luận AI", "Xuất báo cáo"] %}
+    <div class="step" data-step="{{ loop.index }}">
+      <span class="step-icon">{{ loop.index }}</span>
+      <span class="step-name">{{ label }}</span>
+      <span class="step-time">0 ms</span>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="panel">
+  <div class="section-title">
+    <h2>Live Log</h2>
+    <span id="ws-state">connecting</span>
+  </div>
+  <div class="terminal" id="log-panel" aria-live="polite"></div>
+  <form id="pipeline-form" class="action-bar">
+    <input type="date" name="date_from" value="2026-01-01">
+    <input type="date" name="date_to" value="2026-03-31">
+    <select name="branch">
+      <option value="all">All</option>
+      <option value="bi">BI only</option>
+      <option value="predict">Predict only</option>
+      <option value="report">Report only</option>
+    </select>
+    <button type="submit" class="btn primary" data-dry-run="false">Chạy pipeline</button>
+    <button type="submit" class="btn secondary" data-dry-run="true">Dry-run</button>
+    <a class="btn ghost" id="latest-report-link" href="{{ '/reports?file=' ~ latest_report if latest_report else '/reports' }}">Xem báo cáo cuối</a>
+  </form>
+</section>
+{% endblock %}
+

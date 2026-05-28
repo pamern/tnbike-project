@@ -1,13 +1,24 @@
-# Python virtual environments
+# Environments
+.venv*/
 venv/
-
-# Python cache / artifacts
+ai/.venv/
 __pycache__/
+*.pyc
+.env
+*.env
+!*.env.example
 
-# Else
+# Sensitive or generated data
+keys.md
 data/incoming/
-data/processed/cleaned/
-data/processed/failed_eml/
-data/processed/success_eml/
-
+data/processed/
+data/backup/
+ai/report/output/
+ai/logs/
 logs/
+
+# Tooling
+.pytest_cache/
+.vscode/
+.idea/
+*.DS_Store

@@ -11,8 +11,9 @@ __pycache__/
 # Sensitive or generated data
 keys.md
 data/incoming/
-data/processed/
-data/backup/
+/data/raw/
+/data/processed/
+/data/backup/
 ai/report/output/
 ai/logs/
 logs/
